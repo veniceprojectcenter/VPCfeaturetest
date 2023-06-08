@@ -30,5 +30,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## our project structure
 
->/app is all next js stuff\
-  >>  /api is backend
+/app is all next js stuff\
+/app/api is backend
