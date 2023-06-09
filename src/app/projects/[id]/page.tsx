@@ -11,9 +11,17 @@ export default async function Page({params}: {
     if(projects.length > 0) {
         let project = projects[0];
         return (
-            <h1 className={"text-white"}>
-                {project.title}
-            </h1>
+            <div className={"flex flex-col"}>
+                <h1 className={"text-white"}>
+                    {project.title}
+                </h1>
+                <p className={"text-white"}>{project.description}</p>
+                <div className={"text-white border-2 border-white"}>
+                    <a href={project.dataurls[0]}>
+                        <h1>download pdf</h1>
+                    </a>
+                </div>
+            </div>
         );
     } else {
         return <h1 className={"text-white"}>

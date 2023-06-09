@@ -1,6 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {PrismaClient, Project} from '@prisma/client'
+import {Project} from '@prisma/client'
+import { prisma } from '../db'
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 
 export async function GET(request:NextRequest) {
@@ -21,14 +22,12 @@ export async function GET(request:NextRequest) {
 }
 
 export async function POST(request: Request) {
-    const prisma = new PrismaClient();
     let project:Project = await request.json();
     const createProject = await prisma.project.create({data:project});
     return NextResponse.json("we good");
 }
 
 export async function getProject(id:string):Promise<Project[]> {
-    const prisma = new PrismaClient();
     let projects:Project[] = [];
     if(id === "") {
         projects = await prisma.project.findMany();
@@ -42,6 +41,5 @@ export async function getProject(id:string):Promise<Project[]> {
             projects.push(project)
         }
     }
-    await prisma.$disconnect();
     return projects;
 }
