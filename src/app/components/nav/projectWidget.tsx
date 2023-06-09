@@ -1,6 +1,7 @@
 import {Project} from "@prisma/client";
 import Image from "next/image";
-
+import Link from 'next/link'
+import {LI} from "@storybook/components";
 interface ProjectLinkProps {
     project: Project
 }
@@ -20,19 +21,21 @@ export function ProjectWidget({project}: ProjectLinkProps) {
         }
     }
     return(
-        <div className={"text-white flex flex-row"}>
-            <Image src={imgSrc} height={50} width={50} alt={"iqp image"}></Image>
-            <div className={"flex flex-col"}>
-                <h1>
-                    {project.title}
-                </h1>
-                <h1>
-                    {project.description}
-                </h1>
+        <Link href={`/projects/${project.id}`}>
+            <div className={"text-white flex flex-row"}>
+                <Image src={imgSrc} height={50} width={50} alt={"iqp image"}></Image>
+                <div className={"flex flex-col"}>
+                    <h1>
+                        {project.title}
+                    </h1>
+                    <h1>
+                        {project.description}
+                    </h1>
+                </div>
+                <div className={"flex flex-col"}>
+                    {projectTags}
+                </div>
             </div>
-            <div className={"flex flex-col"}>
-                {projectTags}
-            </div>
-        </div>
+        </Link>
     )
 }

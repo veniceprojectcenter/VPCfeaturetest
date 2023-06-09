@@ -4,8 +4,6 @@ import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequ
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import {useEffect, useState} from "react";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 export function Navlist() {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
@@ -13,6 +11,7 @@ export function Navlist() {
     useEffect(() => {
         const getData = async () => {
             let data = await getProjects();
+            console.log(data?.projects)
             setData(data);
             setLoading(false)
         }
@@ -23,7 +22,7 @@ export function Navlist() {
     },[])
 
     if (loading) {
-        return <>loading...</>
+        return <h1 className={"text-white"}>loading...</h1>
     }
     return( <div className={"text-white flex-col"}>
         {data?.projects.map((project) => {
@@ -39,7 +38,6 @@ export function Navlist() {
 
 async function getProjects() {
     //TODO figure out how to make this only take in the end of the route
-    console.log()
     const  res = await fetch(  window.location.href + "api/projects", {
         method:"GET",
     }).then((res) => {return res}).catch(err => console.log(err));

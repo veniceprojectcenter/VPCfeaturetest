@@ -1,10 +1,11 @@
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
+import {Project} from "@prisma/client";
 
 
-export async function fetchProjects() {
-    let response = await fetch(`/api/projects/?id=${params.id}`, {
+export async function fetchProjects(id:string):Promise<Project[]> {
+    let response = await fetch(`/api/projects/?id=${id}`, {
         method: "GET"
     });
     let projectResponse: ProjectRequestResponse = await response.json();
-    return projectResponse;
+    return projectResponse.projects;
 }

@@ -4,32 +4,21 @@ import {PrismaClient, Project} from '@prisma/client'
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 
 export async function GET(request:NextRequest) {
-    const prisma = new PrismaClient();
-    let requsestPerams = request.nextUrl.searchParams;
+    let id = await request.nextUrl.searchParams.get("id");
     let data: ProjectRequestResponse = {
         projects:[]
     };
-    if(requsestPerams.size < 0) {
-
-        const allProjects = await prisma.project.findMany();
-        console.log("route call attempt");
+    if(id == null) {
+        const allProjects = await getProject("");
         data = {
             projects: allProjects
         }
     } else {
-        let id = requsestPerams.get("id");
-        if(id != null) {
-            const project = await prisma.project.findFirst({where:{
-                id:id
-            }});
-            if(project != null) {
-                 data = {
-                    projects: [project]
-                }
-            }
+        let project = await getProject(id);
+        data = {
+            projects:project
         }
     }
-    await prisma.$disconnect();
     return NextResponse.json(data);
 }
 
@@ -38,4 +27,23 @@ export async function POST(request: Request) {
     let project:Project = await request.json();
     const createProject = await prisma.project.create({data:project});
     return NextResponse.json("we good");
+}
+
+export async function getProject(id:string):Promise<Project[]> {
+    const prisma = new PrismaClient();
+    let projects:Project[] = [];
+    if(id === "") {
+        projects = await prisma.project.findMany();
+    } else {
+        const project = await prisma.project.findFirst({
+            where: {
+                id: id
+            }
+        });
+        if(project != null) {
+            projects.push(project)
+        }
+    }
+    await prisma.$disconnect();
+    return projects;
 }
