@@ -1,18 +1,35 @@
-import {NextResponse} from "next/server";
+import {NextRequest, NextResponse} from "next/server";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {PrismaClient, Project} from '@prisma/client'
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 
-export async function GET() {
+export async function GET(request:NextRequest) {
     const prisma = new PrismaClient();
+    let requsestPerams = request.nextUrl.searchParams;
+    let data: ProjectRequestResponse = {
+        projects:[]
+    };
+    if(requsestPerams.size < 0) {
 
-    const allProjects = await prisma.project.findMany();
-
-
-    console.log("route call attempt");
-    let data:ProjectRequestResponse = {
-        projects:allProjects
+        const allProjects = await prisma.project.findMany();
+        console.log("route call attempt");
+        data = {
+            projects: allProjects
+        }
+    } else {
+        let id = requsestPerams.get("id");
+        if(id != null) {
+            const project = await prisma.project.findFirst({where:{
+                id:id
+            }});
+            if(project != null) {
+                 data = {
+                    projects: [project]
+                }
+            }
+        }
     }
+    await prisma.$disconnect();
     return NextResponse.json(data);
 }
 

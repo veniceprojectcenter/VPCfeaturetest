@@ -2,7 +2,7 @@
 import fetch from "node-fetch";
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {ProjectLink} from "@/app/components/nav/projectLink";
+import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import {useEffect, useState} from "react";
 import {Simulate} from "react-dom/test-utils";
 import error = Simulate.error;
@@ -28,7 +28,7 @@ export function Navlist() {
     return( <div className={"text-white flex-col"}>
         {data?.projects.map((project) => {
                 return (
-                    <ProjectLink key={project.id} project={project}></ProjectLink>
+                    <ProjectWidget key={project.id} project={project}></ProjectWidget>
                 )
             }
         )}
@@ -38,13 +38,10 @@ export function Navlist() {
 
 
 async function getProjects() {
-    let body:ProjectGetRequestBody = {
-        fetchAll:true
-    }
     //TODO figure out how to make this only take in the end of the route
-    const  res = await fetch("http://localhost:3000/api/projects", {
-        method:"POST",
-        body: JSON.stringify(body),
+    console.log()
+    const  res = await fetch(  window.location.href + "api/projects", {
+        method:"GET",
     }).then((res) => {return res}).catch(err => console.log(err));
     if (res instanceof Response) {
         const data: ProjectRequestResponse = await res.json();
