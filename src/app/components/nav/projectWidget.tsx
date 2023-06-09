@@ -10,7 +10,6 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     let imgSrc = "";
     if(project.img != null) {
         imgSrc = project.img
-        console.log(imgSrc)
     }
     let projectTags = ""
     for (let i = 0; i < project.tags.length; i++) {
@@ -21,7 +20,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
         }
     }
     return(
-        <Link href={`/projects/${project.id}`}>
+        <Link className={"mx-10"} href={`/projects/${project.id}`}>
             <div className={"text-white flex flex-row"}>
                 <Image src={imgSrc} height={50} width={50} alt={"iqp image"}></Image>
                 <div className={"flex flex-col"}>

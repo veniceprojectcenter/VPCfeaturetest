@@ -5,9 +5,7 @@ import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequ
 
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
-    let data: ProjectRequestResponse = {
-        projects:[]
-    };
+    let data: ProjectRequestResponse;
     if(id == null) {
         const allProjects = await getProject("");
         data = {
