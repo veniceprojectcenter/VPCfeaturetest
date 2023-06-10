@@ -7,6 +7,12 @@ const nextConfig = {
                 hostname:'s3.amazonaws.com',
                 port:'',
                 pathname:'/hive-engine/open_data/imgs/**'
+            },
+            {
+                protocol:'https',
+                hostname:'digital.wpi.edu',
+                port:'',
+                pathname:'/**'
             }
         ]
     }
