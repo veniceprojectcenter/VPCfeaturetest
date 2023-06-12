@@ -1,7 +1,9 @@
+import {Navlist} from "@/app/components/nav/Navlist";
+
 export default function Page() {
     return(
-        <h1>
-            hello from page without
-        </h1>
+        <div>
+            <Navlist></Navlist>
+        </div>
     );
 }
