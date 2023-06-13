@@ -2,10 +2,9 @@
 import fetch from "node-fetch";
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {ProjectLink} from "@/app/components/nav/projectLink";
+import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import {useEffect, useState} from "react";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
+import {compileNonPath} from "next/dist/shared/lib/router/utils/prepare-destination";
 
 export function Navlist() {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
@@ -13,6 +12,7 @@ export function Navlist() {
     useEffect(() => {
         const getData = async () => {
             let data = await getProjects();
+            console.log(data?.projects)
             setData(data);
             setLoading(false)
         }
@@ -23,12 +23,12 @@ export function Navlist() {
     },[])
 
     if (loading) {
-        return <>loading...</>
+        return <h1 className={"text-white"}>loading...</h1>
     }
     return( <div className={"text-white flex-col"}>
         {data?.projects.map((project) => {
                 return (
-                    <ProjectLink key={project.id} project={project}></ProjectLink>
+                    <ProjectWidget key={project.id} project={project}></ProjectWidget>
                 )
             }
         )}
@@ -38,17 +38,11 @@ export function Navlist() {
 
 
 async function getProjects() {
-    let body:ProjectGetRequestBody = {
-        fetchAll:true
-    }
+    let domain = (new URL(window.location.href));
     //TODO figure out how to make this only take in the end of the route
-    const  res = await fetch("http://localhost:3000/api/projects", {
-        method:"POST",
-        body: JSON.stringify(body),
-    }).then((res) => {return res}).catch(err => console.log(err));
-    if (res instanceof Response) {
-        const data: ProjectRequestResponse = await res.json();
-        return data;
-    }
-    return undefined;
+    const  res = await fetch(  domain.origin + "/api/projects", {
+        method:"GET"
+    })
+    const data: ProjectRequestResponse = await res.json();
+    return data;
 }

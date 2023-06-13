@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,12 +7,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// this is an orm we define project as
 model Project {
-  id String @id @default(uuid())
-  title String
+  id          String       @id @unique @default(uuid())
+  title       String
   description String
-  tags String[]
-  img String?
-  dataurls String[]
+  tags        String[]
+  img         String?
+  dataurls    String[]
+  type        PROJECT_TYPE
+  iqp_team    iqp_team?
+}
+
+model iqp_team {
+  id        Int      @id @unique @default(autoincrement())
+  sponsors  String[]
+  team      String[]
+  advisors  String[]
+  projectId String   @unique
+  project   Project  @relation(fields: [projectId], references: [id])
+}
+
+enum PROJECT_TYPE {
+  IQP
+  DATA
+  APP
+  PUBLICATION
 }
