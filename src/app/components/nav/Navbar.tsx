@@ -1,10 +1,20 @@
+"use client"
 
+import React from "react";
+import {Sidebar} from "@/app/components/nav/Sidebar";
 
+const MenuOnClick = () => {
+    const sideBar = document.querySelector(".sidebar");
+    sideBar.classList.toggle("opensidebar");
+    console.log(sideBar);
+}
 export function Navbar() {
+
     return (
-        <div className="inline-flex space-x-48 pt-12 pb-12 min-w-full" style={{height: 180}}>
-            <button className="w-1/6 text-6xl font-bold text-white">Menu</button>
-            <p className="text-6xl font-bold text-white">Venice Project Center</p>
+        <div className={"flexNavBar"}>
+            <button onClick={MenuOnClick} className={"menu text-white"}>Menu</button>
+            <p className={"VPC text-white"}>Venice Project Center</p>
+            <button className={"logIn text-white"}>Log In</button>
         </div>
     )
 }
