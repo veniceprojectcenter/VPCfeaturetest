@@ -1,48 +1,35 @@
 "use client"
-import React from "react";
 
-const CloseOnClick = () => {
-    const sideBar = document.querySelector(".sidebar");
-    sideBar.classList.toggle("opensidebar");
-    console.log(sideBar);
-}
+import Link from "next/link";
+import React from "react";
+import {menuToggle} from "@/app/components/nav/menuToggle";
+
+
 
 export function Sidebar() {
 
     return (
         <nav className={"sidebar"}>
-            <button onClick={CloseOnClick} className={"closeMenu"}>Close</button>
+            <button onClick={menuToggle} className={"closeMenu"}>Close</button>
             <div className={"sidebar-content"}>
                 <ul className={"lists"}>
                     <li className={"list"}>
-                        <a href={"#"} className={"nav-link"}>
-                            <span className={"link"}>Home</span>
-                        </a>
+                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Home</Link>
                     </li>
                     <li className={"list"}>
-                        <a href={"#"} className={"nav-link"}>
-                            <span className={"link"}>Applications & Tools</span>
-                        </a>
+                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Applications & Tools</Link>
                     </li>
                     <li className={"list"}>
-                        <a href={"#"} className={"nav-link"}>
-                            <span className={"link"}>Impacts</span>
-                        </a>
+                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Impacts</Link>
                     </li>
                     <li className={"list"}>
-                        <a href={"#"} className={"nav-link"}>
-                            <span className={"link"}>Open Data</span>
-                        </a>
+                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Open Data</Link>
                     </li>
                     <li className={"list"}>
-                        <a href={"#"} className={"nav-link"}>
-                            <span className={"link"}>Publications</span>
-                        </a>
+                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Publications</Link>
                     </li>
                     <li className={"list"}>
-                        <a href={"#"} className={"nav-link"}>
-                            <span className={"link"}>Student Projects</span>
-                        </a>
+                        <Link onClick={menuToggle} href={"/projects"} className={"menuLink"}>Student Projects</Link>
                     </li>
                 </ul>
                 <div className={"bottom-content"}>
