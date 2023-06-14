@@ -1,14 +1,14 @@
 "use client"
 import fetch from "node-fetch";
-import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import {useEffect, useState} from "react";
-import {compileNonPath} from "next/dist/shared/lib/router/utils/prepare-destination";
+import {Project} from "@prisma/client";
 
-export function Navlist() {
+export function Navlist(props: {search:string}) {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
     const [loading, setLoading] = useState(true)
+    let projects:Project[] = [];
     useEffect(() => {
         const getData = async () => {
             let data = await getProjects();
@@ -21,18 +21,31 @@ export function Navlist() {
             // here you can clean the effect in case the component gets unmonth before the async function ends
         }
     },[])
-
+    if(data != undefined) {
+        //.filter(filterFunc,{""});
+        projects = data?.projects.filter(filterFunc(props.search))
+        console.log(projects);
+    }
     if (loading) {
         return <h1 className={"text-white"}>loading...</h1>
     }
     return( <div className={"text-white flex-col"}>
-        {data?.projects.map((project) => {
+        {projects.map((project) => {
                 return (
                     <ProjectWidget key={project.id} project={project}></ProjectWidget>
                 )
             }
         )}
     </div>);
+}
+function filterFunc(param:string) {
+    return function (element:Project,index:number) {
+        if(param === "") {
+            return true
+        }
+        return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase());
+
+    }
 }
 
 

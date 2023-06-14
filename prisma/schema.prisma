@@ -1,10 +1,12 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  extensions = [pgcrypto]
 }
 
 model Project {
@@ -16,6 +18,8 @@ model Project {
   dataurls    String[]
   type        PROJECT_TYPE
   iqp_team    iqp_team?
+  year        Int
+  term        String? @db.Char(1)
 }
 
 model iqp_team {
@@ -25,6 +29,12 @@ model iqp_team {
   advisors  String[]
   projectId String   @unique
   project   Project  @relation(fields: [projectId], references: [id])
+}
+
+model Maintainer {
+  id String @id @unique @default(uuid())
+  username String
+  password String
 }
 
 enum PROJECT_TYPE {

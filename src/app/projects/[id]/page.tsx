@@ -4,6 +4,8 @@ import {fetchProjects} from "@/app/projects/[id]/fetchProjects";
 import {getProject} from "@/app/api/projects/route";
 
 
+
+
 export default async function Page({params}: {
     params: {id:string}
 }) {
