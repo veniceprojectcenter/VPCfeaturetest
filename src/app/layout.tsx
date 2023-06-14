@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import {Navbar} from './components/nav/Navbar'
 import React from "react";
+import {Sidebar} from "@/app/components/nav/Sidebar";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -18,12 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
           <main>
-              <div className={"flex-col min-h-screen"}>
-                <Navbar/>
-                  <div>
+                  <Navbar/>
+                  <Sidebar/>
+                  <div className = {"pageContent"}>
                       {children}
                   </div>
-              </div>
           </main>
       </body>
     </html>

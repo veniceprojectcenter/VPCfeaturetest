@@ -3,8 +3,10 @@ import {Navlist} from "@/app/components/nav/Navlist";
 
 export default function Home() {
   return (
-    <div>
-        <Navlist></Navlist>
-    </div>
+      <html lang={"en"}>
+        <head>
+
+        </head>
+      </html>
   )
 }
