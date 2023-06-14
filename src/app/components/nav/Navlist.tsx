@@ -27,7 +27,7 @@ export function Navlist(props: {search:string}) {
         console.log(projects);
     }
     if (loading) {
-        return <h1 className={"text-white"}>loading...</h1>
+        return <h1 className={"text-white w-full"}>loading...</h1>
     }
     return( <div className={"text-white flex-col"}>
         {projects.map((project) => {
