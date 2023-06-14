@@ -11,16 +11,16 @@ export async function POST(request:NextRequest) {
     } catch (error) {
         return NextResponse.json("improper format")
     }
-    let maintanerFromDb = await prisma.maintainer.findFirst({where:{
+    let maintainerFromDb = await prisma.maintainer.findFirst({where:{
             username:maintainer.username
         }})
-    if(maintanerFromDb == null) {
+    if(maintainerFromDb == null) {
         return NextResponse.json("incorrect password or username")
     }
-    let passwordCheck = await compare(maintainer.password,maintanerFromDb.password);
+    let passwordCheck = await compare(maintainer.password,maintainerFromDb.password);
     if(!passwordCheck) {
         return NextResponse.json("incorrect password or username")
     }
-    let token = jwt.sign({id: maintainer.id, username: maintainer.username}, "secretkey")
+    let token = jwt.sign({id: maintainer.id, username: maintainer.username}, "secretkey",{expiresIn:'5h'})
     return NextResponse.json(token)
 }
