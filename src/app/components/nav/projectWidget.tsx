@@ -1,8 +1,9 @@
 import {Project} from "@prisma/client";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from 'next/link';
 import {LI} from "@storybook/components";
 import {reduceTextSection, stringHelpers, wordListToString} from "@/helpers/stringHelpers";
+
 interface ProjectLinkProps {
     project: Project
 }

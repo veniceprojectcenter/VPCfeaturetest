@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.veniceMapHomepage {
+
+}
+
+.homePage {
+    display: flex;
+    flex-direction:column;
+    z-index: 1;
+}
+
+.opendata {
+    top:15%;
+    left:7%;
+    width:86%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    margin-bottom:8%;
+    display: flex;
+    flex-direction:row;
+}
+
+.opendata .lefttt {
+    display:flex;
+    flex-direction:column;
+    top:0;
+    left:7%;
+    width: 70%;
+    height: 50%;
+}
+
+.opendata .lefttt .vpcStatement {
+    font-size: 2em;
+    margin-top: 5%;
+}
+
+.opendata .rightt {
+    display:flex;
+    width: 30%;
+    flex-direction:column;
+}
+
+.opendata .rightt .titleBox {
+    @apply content-center;
+}
+
+.opendata .rightt .titleBox .opendataTitle {
+    @apply self-center;
+    color:white;
+    left:20%;
+    font-size:xx-large;
+    border-color:white;
+    border-width:medium;
+    border-radius: 40px;
+    margin: auto;
+    padding: 4%;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.opendata .rightt .titleBox .opendataTitle:hover {
+    box-shadow: 0 0 0.5em white;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.opendata .rightt .opendataParagraph {
+    margin-top: 5%;
+    font-size: 1.25em;
+}
+
+.studentProjects {
+    left:7%;
+    width:86%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    margin-bottom:8%;
+    display: flex;
+    flex-direction:column;
+}
+
+.studentProjects .sptitle {
+    font-size: 3em;
+    margin:1%;
+}
+
+.studentProjects .sampleProjects {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    height:300px; /* simply a placeholder, feel free to change when you have images */
+    margin-top : 3%;
+}
+
+.studentProjects .sampleProjects .sampleProject {
+    width: 30%;
+    height:100%;
+    margin-top:2%;
+    margin-bottom:2%;
+    border-color: white;
+    border-width: medium;
+    padding: 2%;
+    transition: width 0.5s ease-in-out,height 0.5s ease-in-out;
+}
+
+.studentProjects .sampleProjects .sampleProject:hover {
+    width: 35%;
+    height: 117%;
+    margin-top:0%;
+    margin-bottom:0%;
+    padding: 2%;
+    transition: width 0.5s ease-in-out,height 0.5s ease-in-out;
+}
+
+.publications {
+    left:7%;
+    width:86%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    margin-bottom:8%;
+    display: flex;
+    flex-direction:column;
+}
+
+.publications .ptitle {
+    font-size: 2em;
+    margin:1%;
+}
+
+.publications .slideshowContainer {
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 72%;
+}
+
+.publications .slideshowContainer .slideshow {
+    white-space : nowrap;
+    transition: ease 700ms;
+}
+
+.publications .slideshowContainer .slideshow .slide {
+    display: inline-block;
+
+    width: 100%;
+    border-radius: 40px;
+}
+
+@keyframes fade {
+    from {opacity: .6}
+    to {opacity: 1}
+}
+
+.publications .slideshowContainer .slideshow .slide .Image {
+    vertical-align: middle;
+}
+
+.publications .slideshowContainer .slideshow .slide .publicationTitle {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.publications .slideshowContainer .dots {
+    text-align: center;
+}
+
+.publications .slideshowContainer .dots .dot {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 15px 7px 0px;
+    background-color: #c4c4c4;
+}
+
+.publications .slideshowContainer .dots .dot.active {
+    background-color: #6a0dad;
+}
