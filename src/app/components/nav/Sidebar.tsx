@@ -3,6 +3,8 @@
 import Link from "next/link";
 import React from "react";
 import {menuToggle} from "@/app/components/nav/menuToggle";
+import {Navbar} from "@/app/components/nav/Navbar";
+import {Navlist} from "@/app/components/nav/Navlist";
 
 
 
@@ -32,8 +34,8 @@ export function Sidebar() {
                         <Link onClick={menuToggle} href={"/projects"} className={"menuLink"}>Student Projects</Link>
                     </li>
                 </ul>
-                <div className={"bottom-content"}>
-                </div>
+                <div className = {"sidebarNavlist"}><Navlist/></div>
+                <div className={"bottom-content"}></div>
             </div>
         </nav>
     );
