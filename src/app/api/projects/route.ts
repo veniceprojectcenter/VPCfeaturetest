@@ -23,7 +23,30 @@ export async function GET(request:NextRequest) {
 
 export async function POST(request: Request) {
     let project:Project = await request.json();
-    const createProject = await prisma.project.create({data:project});
+    const checkDb = await prisma.project.findFirst({
+        where:{
+            id:project.id
+        }
+    });
+    if(checkDb == null) {
+        const createProject = await prisma.project.create({data:project});
+    } else {
+        const updateProject = await prisma.project.update({
+            where:{
+                id:checkDb.id
+            },
+            data:{
+                title:project.title,
+                description:project.description,
+                type:project.type,
+                term:project.term,
+                img:project.img,
+                tags:project.tags,
+                year:project.year,
+            }
+        })
+        console.log(updateProject);
+    }
     return NextResponse.json("we good");
 }
 

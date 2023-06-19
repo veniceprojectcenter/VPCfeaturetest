@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {Project} from "@prisma/client";
-import {awaitExpression} from "@babel/types";
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<Project | undefined>(undefined)
@@ -36,6 +35,13 @@ export function EditableProject(props:{id:string}) {
         }
         setEditedProject(editedProject);
     }
+    // @ts-ignore
+    let commit = async (event) => {
+        let create = await fetch(window.location.origin+"/api/projects",{
+            method:"POST",
+            body:JSON.stringify(editedProject),
+        });
+    }
     if(loading) {
         return (<div className={"text-white"}>
             loading
@@ -44,12 +50,14 @@ export function EditableProject(props:{id:string}) {
     if(project != undefined) {
         return (
             <div className={"flex flex-col"}>
+                <div className={"text-white"}>
+                    <button onClick={commit}>commit</button>
+                </div>
                 <h1 className={"text-white"} id={"title"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>
                     {project.title}
                 </h1>
                 <p className={"text-white"} id={"description"} contentEditable suppressContentEditableWarning={true}
                    onBlur={leftFocus}>{project.description}</p>
-                {}
             </div>
         );
     }
