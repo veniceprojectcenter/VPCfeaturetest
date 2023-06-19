@@ -1,23 +1,17 @@
 import {Navlist} from "@/app/components/nav/Navlist";
+import {NavListSearch} from "@/app/components/nav/NavListSearch";
 
 export default function Page() {
-
-    let iMax = 10;
-    let randGen:number[] = [];
-
-    for(let i = 0;i < iMax;i++) {
-        let die1: number = Math.random();
-        let die: number = Math.floor(die1 * 6) + 1;
-        randGen.push(die);
-    }
-
     return(
-        <div className = {"projectPage"}>
-            {randGen.map((dieNum) => {
-                let randText = "Hello World! " + dieNum;
-                return <div key = {dieNum}>{randText}</div>
-            })}
-            <Navlist/>
+        <div className={"flex-row flex mx-10"}>
+            <div className={"basis-1/3 back"}>
+                <div className={"flex flex-col text-white"}>
+                    <h1>input params</h1>
+                </div>
+            </div>
+            <div className={"w-fit basis-full"}>
+            <NavListSearch></NavListSearch>
+            </div>
         </div>
     );
 }

@@ -13,6 +13,12 @@ const nextConfig = {
                 hostname:'digital.wpi.edu',
                 port:'',
                 pathname:'/**'
+            },
+            {
+                protocol:'https',
+                hostname:'www.veniceprojectcenter.org',
+                port:'',
+                pathname:'/assets/**'
             }
         ]
     }
