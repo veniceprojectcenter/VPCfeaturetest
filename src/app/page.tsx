@@ -4,9 +4,6 @@ import {Navlist} from "@/app/components/nav/Navlist";
 export default function Home() {
   return (
       <html lang={"en"}>
-        <head>
-
-        </head>
       </html>
   )
 }
