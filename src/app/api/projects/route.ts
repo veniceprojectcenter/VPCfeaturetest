@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {Project} from '@prisma/client'
+import {Project, IqpTeam, Dataurl, } from '@prisma/client'
 import { prisma } from '../db'
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 
@@ -27,14 +27,23 @@ export async function POST(request: Request) {
     return NextResponse.json("we good");
 }
 
-export async function getProject(id:string):Promise<Project[]> {
-    let projects:Project[] = [];
+export async function getProject(id:string):Promise<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})[]> {
+    let projects:(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})[] = [];
     if(id === "") {
-        projects = await prisma.project.findMany();
+        projects = await prisma.project.findMany({
+            include:{
+                dataurls:true,
+                iqp_team:true
+            }
+        });
     } else {
-        const project = await prisma.project.findFirst({
+        const project:(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | null = await prisma.project.findFirst({
             where: {
                 id: id
+            },
+            include:{
+                dataurls:true,
+                iqp_team:true,
             }
         });
         if(project != null) {

@@ -9,6 +9,7 @@ import {EditableProject} from "@/app/projects/[id]/edit/EditableProject";
 export default async function Page({params}: {
     params: {id:string}
 }) {
+    // @ts-ignore
     return(
         <EditableProject id={params.id}></EditableProject>
     )
