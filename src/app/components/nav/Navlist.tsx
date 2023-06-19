@@ -40,7 +40,7 @@ export function Navlist(props: {search:string}) {
 }
 function filterFunc(param:string) {
     return function (element:Project,index:number) {
-        if(param === "") {
+        if(param === "" || param === undefined) {
             return true
         }
         return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase());
