@@ -3,16 +3,28 @@
 import Image from 'next/image'
 import {Navlist} from "@/app/components/nav/Navlist";
 import VeniceMapThing from "@/app/resources/VeniceMapThing.png";
+import fabioPic from "@/app/resources/IMG-1346.png";
+import fabio1 from "@/app/resources/Fabio1.jpg";
+import fabio2 from "@/app/resources/Fabio2.jpg";
+import fabio3 from "@/app/resources/Fabio3.webp";
+import fabio4 from "@/app/resources/Fabio4.jpg"
+
+import Link from "next/link";
 
 import React from 'react';
 import './homePage.css';
+import {menuToggle} from "@/app/components/nav/menuToggle";
 
 export default function Home() {
-    const publicationColors = ["#0088FE", "#00C49F", "#FFBB28"];
-    const publicationCaptions = ["Caption Text 1","Caption Text 2","Caption Text 3"];
+    const publicationColors = ["#0088FE", "#00C49F", "#FFBB28","#FF00FF","#FF1111"];
+    const publicationCaptions = ["ae","io","ua","ei","ou"];
+    const publicationPictures = [fabio3,fabioPic,VeniceMapThing,fabio4,fabio1];
     const [publicationSlideIndex, setPublicationSlideIndex] = React.useState(0);
-    const publicationSlideDelay = 3500;
+    const publicationSlideDelay = 4200;
     const timeoutRef = React.useRef(null);
+
+    const impactsPictures = [fabioPic,fabio1,fabio2,fabio3,fabio4,VeniceMapThing];
+    const impactsCaptions = ["Fabio 1","Fabio 2","Fabio 3","Fabio 4","Fabio 5","Fabio 6"];
 
     function resetTimeout() {
         if(timeoutRef.current) {
@@ -22,6 +34,7 @@ export default function Home() {
 
     React.useEffect(() => {
         resetTimeout();
+        // @ts-ignore
         timeoutRef.current = setTimeout(
            () =>
                setPublicationSlideIndex((prevIndex) =>
@@ -38,11 +51,10 @@ export default function Home() {
               <div className = {"lefttt"}>
                   <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"}></Image>
                   <div className = {"vpcStatement"}><p className = {"text-white"}>For 30 years we have been studying solutions to preserve and improve life in the city of Venice.</p></div>
-
               </div>
               <div className = {"rightt"}>
                   <div className = {"titleBox"}>
-                      <button className = {"opendataTitle"}>Open Data</button>
+                      <button className = {"opendataTitle"}><Link href={"/"}>Open Data</Link></button>
                   </div>
                   <div className = {"opendataParagraph"}><p className = {"text-white"}>Years of activity have allowed us to collect a considerable amount of data concerning the city.
                           This data is the basis for the operation of many services useful to the community, and are used daily by applications and predictive models. We are proud of our Open approach, giving access to our data in order to support and enhance the quality of life in the city.</p></div>
@@ -58,15 +70,20 @@ export default function Home() {
                   <div className = "sampleProject"><rect/></div>
                   <div className = "sampleProject"><rect/></div>
               </div>
+              <button className = {"seeAll"}><Link href={"/projects"}>See All ---></Link></button>
           </div>
           <div className = {"publications"}>
               <h1 className={"ptitle"}><p className = {"text-white"}>Publications</p></h1>
               <div className={"slideshowContainer"}>
                   <div className={"slideshow"} style={{transform: `translate3d(${-publicationSlideIndex * 100}%, 0, 0)`}}>
                       {publicationColors.map((backgroundColor, index) => (
-                          <div className="slide" key={index} style={{ backgroundColor }}>
-                              <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"}></Image>
-                              <div className="publicationTitle">{publicationCaptions[index]}</div>
+                          <div className="slide"
+                               key={index}
+                               style={{backgroundColor }}>
+                              <div className={"picContainer"}>
+                                  <Image src={publicationPictures[index]} height = {"500"} alt={"iqp image"} className={"publicationPic"}></Image>
+                                  <div className="publicationTitle">{publicationCaptions[index]}</div>
+                              </div>
                           </div>
                       ))}
                   </div>
@@ -79,6 +96,61 @@ export default function Home() {
                       ))}
                   </div>
               </div>
+              <button className = {"seeAll"}><Link href={"/"}>See All ---></Link></button>
+          </div>
+          <div className = {"applicationsTools"}>
+              <h1 className={"attitle"}><p className = {"text-white"}>Applications & Tools</p></h1>
+              <div className={"applicationsToolsDescription"}>
+                  <p className = {"text-white"}>Thanks to the knowledge collected over the years, we have produced a wide range of applications and tools, ranging from data visualization tools to tourist flow management models.</p>
+              </div>
+              <div className = {"sampleTools"}>
+                  <div className = "sampleTool"><rect/></div>
+                  <div className = "sampleTool"><rect/></div>
+                  <div className = "sampleTool"><rect/></div>
+              </div>
+              <button className = {"seeAll"}><Link href={"/"}>See All ---></Link></button>
+          </div>
+          <div className = {"impacts"}>
+              <h1 className = {"impactsTitle"}><p className = {"text-white"}>Impacts</p></h1>
+              <div className = {"sixImpacts flex flex-row"}>
+                  <div className = {"leftImpacts flex flex-row"}>
+                      <div className = {"bigImpact"}>
+                          <div className={"picContainer"}>
+                                <Image src={impactsPictures[0]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                                <div className="impactTitle">{impactsCaptions[0]}</div>
+                          </div>
+                      </div>
+                      <div className = {"limpacts flex flex-col"}>
+                          <div className={"picContainer"}>
+                              <Image src={impactsPictures[1]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <div className="impactTitle">{impactsCaptions[1]}</div>
+                          </div>
+                          <div className={"picContainer"}>
+                              <Image src={impactsPictures[2]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <div className="impactTitle">{impactsCaptions[2]}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div className = {"rightImpacts flex flex-row"}>
+                      <div className = {"rimpacts flex flex-col"}>
+                          <div className={"picContainer"}>
+                              <Image src={impactsPictures[2]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <div className="impactTitle">{impactsCaptions[3]}</div>
+                          </div>
+                          <div className={"picContainer"}>
+                              <Image src={impactsPictures[4]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <div className="impactTitle">{impactsCaptions[4]}</div>
+                          </div>
+                      </div>
+                      <div className = {"bigImpact"}>
+                          <div className={"picContainer"}>
+                              <Image src={impactsPictures[0]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <div className="impactTitle">{impactsCaptions[5]}</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <button className = {"seeAll"}><Link href={"/"}>See All ---></Link></button>
           </div>
       </div>
   )
