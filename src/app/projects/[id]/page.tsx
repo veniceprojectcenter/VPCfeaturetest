@@ -9,7 +9,7 @@ import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
 export default async function Page({params}: {
     params: {id:string}
 }) {
-    let projects = await getProject(params.id);
+    let projects = await getProject(params.id,"");
     if(projects.length > 0) {
         let project = projects[0];
         let team:IqpTeam = {

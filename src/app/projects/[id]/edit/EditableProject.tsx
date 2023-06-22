@@ -1,14 +1,15 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
 import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
 import Popup from "reactjs-popup";
+import AddDataUrl from "@/app/projects/[id]/edit/AddDataUrl";
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
     let [editedProject,setEditedProject] = useState<Project>({} as (Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}))
-    let [open,setOpen] = useState(false);
     let [loading,setLoading] = useState(true)
+    let [open,setOpen] = useState(false);
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
@@ -77,7 +78,7 @@ export function EditableProject(props:{id:string}) {
                     {dataurl.text}
                 </a>)
         });
-        dataElements.push(AddDataUrl())
+        dataElements.push(AddDataUrl(open,setOpen))
         console.log(dataElements.length)
         return (
             <div className={"flex flex-col"}>
@@ -121,35 +122,6 @@ export function EditableProject(props:{id:string}) {
     return (<div>
         no project
     </div>)
-
-    function AddDataUrl() {
-        const closeModal = () => setOpen(false);
-        const openModal = () => setOpen(true);
-        return (
-            <div>
-                <button className={""} onClick={openModal}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                         stroke="white" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                    </svg>
-                </button>
-                <Popup open={open} closeOnDocumentClick onClose={closeModal}>
-                    <div className={"text-white bg-gray-600 flex flex-row w-56 h-56 relative"}>
-                        <div className={"basis-10/12"}>
-                            pop up element
-                        </div>
-                        <div className={"basis-1/12"}>
-                            <button className={"justify-self-end top-0 absolute"} onClick={closeModal}>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </Popup>
-            </div>
-        )
-    }
 }
 
 async function getProject(id:string):Promise<ProjectRequestResponse> {
