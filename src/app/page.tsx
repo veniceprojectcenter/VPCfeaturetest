@@ -8,6 +8,7 @@ import fabio1 from "@/app/resources/Fabio1.jpg";
 import fabio2 from "@/app/resources/Fabio2.jpg";
 import fabio3 from "@/app/resources/Fabio3.webp";
 import fabio4 from "@/app/resources/Fabio4.jpg"
+import fabio5 from "@/app/resources/Fabio5.png"
 
 import Link from "next/link";
 
@@ -16,12 +17,21 @@ import './homePage.css';
 import {menuToggle} from "@/app/components/nav/menuToggle";
 
 export default function Home() {
+
+    const studentProjectColors = ["#000000","#000000","#000000"];
+    const studentProjectCaptions = ["Whiteboard Fabio","Whietboard Fabio","Whitebaord Fabio"];
+    const studentProjectPictures = [fabioPic,fabio2,fabio4];
+
     const publicationColors = ["#0088FE", "#00C49F", "#FFBB28","#FF00FF","#FF1111"];
     const publicationCaptions = ["ae","io","ua","ei","ou"];
-    const publicationPictures = [fabio3,fabioPic,VeniceMapThing,fabio4,fabio1];
+    const publicationPictures = [fabio3,fabioPic,fabio5,fabio4,fabio1];
     const [publicationSlideIndex, setPublicationSlideIndex] = React.useState(0);
     const publicationSlideDelay = 4200;
     const timeoutRef = React.useRef(null);
+
+    const applicationsToolsColors = ["#000000","#000000","#000000"];
+    const applicationsToolsCaptions = ["Wrench","Pliers","Screwdriver"];
+    const applicationsToolsPictures = [fabio3,fabio2,fabio1];
 
     const impactsPictures = [fabioPic,fabio1,fabio2,fabio3,fabio4,VeniceMapThing];
     const impactsCaptions = ["Fabio 1","Fabio 2","Fabio 3","Fabio 4","Fabio 5","Fabio 6"];
@@ -46,7 +56,7 @@ export default function Home() {
     }, [publicationSlideIndex]);
 
   return (
-      <div className = {"homePage"}>
+      <div className = {"homePage flex flex-col"}>
           <div className={"opendata"}>
               <div className = {"lefttt"}>
                   <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"}></Image>
@@ -66,9 +76,16 @@ export default function Home() {
                   <p className = {"text-white"}>Every year since 1988, WPI students have carried out relevant projects in order to solve issues and problems of the city of Venice with a scientific and technological approach. In 30 years of activity, the projects have covered a wide range of topics, from conservation of cultural heritage to in-depth analysis of the hydrogeological data of the lagoon. Many of these projects have inspired and started the creation of Venetian start-ups.</p>
               </div>
               <div className = {"sampleProjects"}>
-                  <div className = "sampleProject"><rect/></div>
-                  <div className = "sampleProject"><rect/></div>
-                  <div className = "sampleProject"><rect/></div>
+                  {studentProjectColors.map((backgroundColor,index) => (
+                    <div className = "sampleProject"
+                         key = {index}
+                         style = {{backgroundColor}}>
+                        <figure className = {"picContainer"}>
+                            <Image src={studentProjectPictures[index]} height = {"500"} alt={"iqp image"} className={"studentProjectPic"}></Image>
+                            <figcaption className="studentProjectTitle">{studentProjectCaptions[index]}</figcaption>
+                        </figure>
+                    </div>
+                  ))}
               </div>
               <button className = {"seeAll"}><Link href={"/projects"}>See All ---></Link></button>
           </div>
@@ -80,10 +97,10 @@ export default function Home() {
                           <div className="slide"
                                key={index}
                                style={{backgroundColor }}>
-                              <div className={"picContainer"}>
+                              <figure className={"picContainer"}>
                                   <Image src={publicationPictures[index]} height = {"500"} alt={"iqp image"} className={"publicationPic"}></Image>
-                                  <div className="publicationTitle">{publicationCaptions[index]}</div>
-                              </div>
+                                  <figcaption className="publicationTitle">{publicationCaptions[index]}</figcaption>
+                              </figure>
                           </div>
                       ))}
                   </div>
@@ -104,14 +121,24 @@ export default function Home() {
                   <p className = {"text-white"}>Thanks to the knowledge collected over the years, we have produced a wide range of applications and tools, ranging from data visualization tools to tourist flow management models.</p>
               </div>
               <div className = {"sampleTools"}>
-                  <div className = "sampleTool"><rect/></div>
-                  <div className = "sampleTool"><rect/></div>
-                  <div className = "sampleTool"><rect/></div>
+                  {applicationsToolsColors.map((backgroundColor,index) => (
+                      <div className = "sampleTool"
+                           key = {index}
+                           style = {{backgroundColor}}>
+                          <figure className = {"picContainer"}>
+                              <Image src={applicationsToolsPictures[index]} height = {"500"} alt={"iqp image"} className={"applicationToolPic"}></Image>
+                              <figcaption className="applicationToolTitle">{applicationsToolsCaptions[index]}</figcaption>
+                          </figure>
+                      </div>
+                  ))}
               </div>
               <button className = {"seeAll"}><Link href={"/"}>See All ---></Link></button>
           </div>
           <div className = {"impacts"}>
               <h1 className = {"impactsTitle"}><p className = {"text-white"}>Impacts</p></h1>
+              <div className={"impactsDescription"}>
+                  <p className = {"text-white"}>We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions in the city.</p>
+              </div>
               <div className = {"sixImpacts flex flex-row"}>
                   <div className = {"leftImpacts flex flex-row"}>
                       <div className = {"bigImpact"}>
@@ -138,7 +165,7 @@ export default function Home() {
                               <div className="impactTitle">{impactsCaptions[3]}</div>
                           </div>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[4]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[1]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[4]}</div>
                           </div>
                       </div>
