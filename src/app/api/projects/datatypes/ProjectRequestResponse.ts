@@ -1,5 +1,5 @@
-import {Project} from "@prisma/client";
+import {Dataurl, IqpTeam, Project} from "@prisma/client";
 
 export type ProjectRequestResponse = {
-    projects:Project[]
+    projects:(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})[]
 }

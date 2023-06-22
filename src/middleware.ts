@@ -1,6 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import jwt, {JwtPayload} from "jsonwebtoken"
-
+import {SignJWT, jwtVerify, type JWTPayload} from 'jose';
 //this middleware is to validate authentication
 export async function middleware(request:NextRequest) {
     let token = request.cookies.get("token")?.value;
@@ -15,22 +14,19 @@ export async function middleware(request:NextRequest) {
     if(secret == undefined) {
         return NextResponse.next();
     }
-    try {
-        let payload = jwt.verify(token, secret);
-        if(payload instanceof String) {
+    jwtVerify(token, new TextEncoder().encode(secret)).then((payload) => {
+        if(payload.payload.exp == payload.payload.iat || payload.payload.iat == undefined || payload.payload.exp == undefined) {
             if(request.nextUrl.pathname.includes("/edit")) {
                 return NextResponse.redirect(new URL("/"))
             }
         }
-    } catch (e) {
-        if (e instanceof jwt.JsonWebTokenError) {
-            // if the error thrown is because the JWT is unauthorized, return a 401 error
-            if(request.nextUrl.pathname.includes("/edit")) {
-                return NextResponse.redirect(new URL("/"))
-            }
-            return NextResponse.next();
+    }).catch(() => {
+        // if the error thrown is because the JWT is unauthorized, return a 401 error
+        if(request.nextUrl.pathname.includes("/edit")) {
+            return NextResponse.redirect(new URL("/"))
         }
-    }
+        return NextResponse.next();
+    });
     return NextResponse.next();
     //TODO make it so if they are trying to get to an edit page when not logged in then throw err
 }

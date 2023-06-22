@@ -6,7 +6,6 @@ generator client {
 datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")
-  extensions = [pgcrypto]
 }
 
 model Project {
@@ -57,3 +56,4 @@ enum PROJECT_TYPE {
   APP
   PUBLICATION
 }
+
