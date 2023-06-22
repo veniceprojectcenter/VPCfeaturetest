@@ -34,7 +34,12 @@ export function Sidebar() {
                         <Link onClick={menuToggle} href={"/projects"} className={"menuLink"}>Student Projects</Link>
                     </li>
                 </ul>
-                <div className = {"sidebarNavlist"}><Navlist/></div>
+                <div className = {"sidebarNavlist"}>
+                    {
+                        // TODO this makes it so we scroll for awhile
+                        //<Navlist search={""}/>
+                    }
+                </div>
                 <div className={"bottom-content"}></div>
             </div>
         </nav>

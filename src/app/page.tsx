@@ -88,7 +88,7 @@ export default function Home() {
                     </div>
                   ))}
               </div>
-              <button className = {"seeAll"}><Link href={"/projects"}>See All ---></Link></button>
+              <button className = {"seeAll"}><Link href={"/projects"}>See All {"--->"} </Link></button>
           </div>
           <div className = {"publications"}>
               <h1 className={"ptitle"}><p className = {"text-white"}>Publications</p></h1>
@@ -114,7 +114,7 @@ export default function Home() {
                       ))}
                   </div>
               </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All ---></Link></button>
+              <button className = {"seeAll"}><Link href={"/"}>See All {"--->"}</Link></button>
           </div>
           <div className = {"applicationsTools"}>
               <h1 className={"attitle"}><p className = {"text-white"}>Applications & Tools</p></h1>
@@ -135,7 +135,7 @@ export default function Home() {
                       </div>
                   ))}
               </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All ---></Link></button>
+              <button className = {"seeAll"}><Link href={"/"}>See All {"--->"}</Link></button>
           </div>
           <div className = {"impacts"}>
               <h1 className = {"impactsTitle"}><p className = {"text-white"}>Impacts</p></h1>
@@ -180,7 +180,7 @@ export default function Home() {
                       </div>
                   </div>
               </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All ---></Link></button>
+              <button className = {"seeAll"}><Link href={"/"}>See All {"--->"}</Link></button>
           </div>
       </div>
   )
