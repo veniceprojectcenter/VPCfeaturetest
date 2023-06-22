@@ -32,6 +32,7 @@ export default function Home() {
     const applicationsToolsColors = ["#000000","#000000","#000000"];
     const applicationsToolsCaptions = ["Wrench","Pliers","Screwdriver"];
     const applicationsToolsPictures = [fabio3,fabio2,fabio1];
+    const applicationsToolsLinks = ["/","https://storymaps.arcgis.com/stories/0e9aea9fc6c54b0eb9df8a5d80a37130","/"];
 
     const impactsPictures = [fabioPic,fabio1,fabio2,fabio3,fabio4,VeniceMapThing];
     const impactsCaptions = ["Fabio 1","Fabio 2","Fabio 3","Fabio 4","Fabio 5","Fabio 6"];
@@ -125,10 +126,12 @@ export default function Home() {
                       <div className = "sampleTool"
                            key = {index}
                            style = {{backgroundColor}}>
+                            <button>
                           <figure className = {"picContainer"}>
-                              <Image src={applicationsToolsPictures[index]} height = {"500"} alt={"iqp image"} className={"applicationToolPic"}></Image>
+                              <Link href={applicationsToolsLinks[index]} target={"_blank"}>
+                              <Image src={applicationsToolsPictures[index]} height = {"500"} alt={"iqp image"} className={"applicationToolPic"}></Image></Link>
                               <figcaption className="applicationToolTitle">{applicationsToolsCaptions[index]}</figcaption>
-                          </figure>
+                          </figure></button>
                       </div>
                   ))}
               </div>
