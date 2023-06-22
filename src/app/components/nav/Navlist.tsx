@@ -5,13 +5,21 @@ import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import {useEffect, useState} from "react";
 import {Project, PROJECT_TYPE} from "@prisma/client";
 
-export function Navlist(props: {search:string,tag:PROJECT_TYPE}) {
+interface NavlistProps {
+    type: PROJECT_TYPE
+}
+
+interface NavlistProps {
+    type: PROJECT_TYPE
+}
+
+export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
     const [loading, setLoading] = useState(true)
     let projects:Project[] = [];
     useEffect(() => {
         const getData = async () => {
-            let data = await getProjects(props.tag);
+            let data = await getProjects(props.type);
             console.log(data?.projects)
             setData(data);
             setLoading(false)
@@ -49,9 +57,9 @@ function filterFunc(param:string) {
 
 
 
-async function getProjects(tag:PROJECT_TYPE) {
+async function getProjects(type:PROJECT_TYPE) {
     let domain = (new URL(window.location.href));
-    const  res = await fetch(  domain.origin + `/api/projects?tag=${tag}`, {
+    const  res = await fetch(  domain.origin + `/api/projects?type=${type}`, {
         method:"GET"
     })
     const data: ProjectRequestResponse = await res.json();

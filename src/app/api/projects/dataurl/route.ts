@@ -12,13 +12,11 @@ export async function POST(request:NextRequest) {
         return NextResponse.json("bad request")
     }
     if(isDataUrlArray(dataUrl)) {
-        console.log(dataUrl)
         for (let i = 0; i < dataUrl.data.length; i++) {
             let dataUrlObeject = dataUrl.data[i];
             await createOrUpdateDataUrl(dataUrlObeject)
         }
     } else {
-        console.log(dataUrl.projectId)
         await createOrUpdateDataUrl(dataUrl)
     }
 

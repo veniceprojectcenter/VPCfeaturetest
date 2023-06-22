@@ -7,6 +7,7 @@ import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequ
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
     let type = await request.nextUrl.searchParams.get("type");
+    console.log(type)
     let data: ProjectRequestResponse;
     if(id == null) {
         const allProjects = await getProject("",type == null ? "" : type);
