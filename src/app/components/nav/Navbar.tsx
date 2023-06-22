@@ -12,7 +12,7 @@ export function Navbar() {
         <div className={"flexNavBar"}>
             <div className = {"menuBox"}><button onClick={menuToggle} className={"menu"}>Menu</button></div>
             <div className = {"vpcBox"}><h1 className={"VPC"}><Link href={"/"}>Venice Project Center</Link></h1></div>
-            <div className = {"loginBox"}><button className={"logIn text-white"}>Log In</button></div>
+            <div className = {"loginBox"}><button className={"logIn text-white"}><Link href={"/login"}>Log In</Link></button></div>
         </div>
     )
 }
