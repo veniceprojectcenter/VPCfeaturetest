@@ -274,7 +274,6 @@
     display: flex;
     flex-direction:row;
     justify-content: space-between;
-    height:350px; /* simply a placeholder, feel free to change when you have images */
     margin-top : 3%;
 }
 
@@ -305,9 +304,6 @@
 .applicationsTools .sampleTools .sampleTool .picContainer .applicationToolPic {
     height:auto;
     position:relative;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
 }
 
 .applicationsTools .sampleTools .sampleTool .picContainer .applicationToolTitle {
