@@ -6,7 +6,7 @@ const nextConfig = {
                 protocol:'https',
                 hostname:'s3.amazonaws.com',
                 port:'',
-                pathname:'/hive-engine/open_data/imgs/**'
+                pathname:'/hive-engine/**'
             },
             {
                 protocol:'https',
@@ -19,6 +19,12 @@ const nextConfig = {
                 hostname:'www.veniceprojectcenter.org',
                 port:'',
                 pathname:'/assets/**'
+            },
+            {
+                protocol:'https',
+                hostname:'upload.wikimedia.org',
+                port:'',
+                pathname:"**"
             }
         ]
     }
