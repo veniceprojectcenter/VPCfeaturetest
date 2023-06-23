@@ -22,7 +22,7 @@ export default function Home() {
     const studentProjectCaptions = ["Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","Vacation Rentals and Residential Housing in Venice"];
     const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
 
-    const publicationColors = ["#0088FE", "#00C49F", "#FFBB28","#FF00FF","#FF1111"];
+    const publicationColors = ["#0088FE", "#00C49F", "#FFBB28"];
     const publicationCaptions = ["Making History: an Emergent System for the Systematic Accrual of Transcriptions of Historic Manuscripts","The Future of Spatial Data Infrastructures: Capacity-building for the Emergence of Municipal SDIs","Venezia la Città dei Rii"];
     const publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
     const [publicationSlideIndex, setPublicationSlideIndex] = React.useState(0);
