@@ -127,8 +127,9 @@
 }
 
 .studentProjects .sampleProjects .sampleProject .picContainer .studentProjectTitle {
-    color: #f2f2f2;
     font-size: 21px;
+    background-color: rgb(128,128,128,0.5);
+    color: white;
     position: relative;
     width: 100%;
     text-align: center;
@@ -187,12 +188,14 @@
     height: 500px;
     width: 100%;
     border-radius: 40px;
+    white-space: nowrap;
 }
 
 .publications .slideshowContainer .slideshow .slide .picContainer {
     justify-content:center;
     align-items:center;
     height: 100%;
+    overflow:hidden;
 }
 
 .publications .slideshowContainer .slideshow .slide .picContainer .publicationPic {
@@ -211,6 +214,7 @@
     bottom: 8px;
     width: 100%;
     text-align: center;
+
 }
 
 .publications .slideshowContainer .dots {
