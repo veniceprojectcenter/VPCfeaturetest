@@ -19,23 +19,23 @@ import {menuToggle} from "@/app/components/nav/menuToggle";
 export default function Home() {
 
     const studentProjectColors = ["#000000","#000000","#000000"];
-    const studentProjectCaptions = ["Whiteboard Fabio","Whietboard Fabio","Whitebaord Fabio"];
-    const studentProjectPictures = [fabioPic,fabio2,fabio4];
+    const studentProjectCaptions = ["Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","Vacation Rentals and Residential Housing in Venice"];
+    const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
 
     const publicationColors = ["#0088FE", "#00C49F", "#FFBB28","#FF00FF","#FF1111"];
-    const publicationCaptions = ["ae","io","ua","ei","ou"];
-    const publicationPictures = [fabio3,fabioPic,fabio5,fabio4,fabio1];
+    const publicationCaptions = ["Making History: an Emergent System for the Systematic Accrual of Transcriptions of Historic Manuscripts","The Future of Spatial Data Infrastructures: Capacity-building for the Emergence of Municipal SDIs","Venezia la Città dei Rii"];
+    const publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
     const [publicationSlideIndex, setPublicationSlideIndex] = React.useState(0);
     const publicationSlideDelay = 4200;
     const timeoutRef = React.useRef(null);
 
     const applicationsToolsColors = ["#000000","#000000","#000000"];
-    const applicationsToolsCaptions = ["Wrench","Pliers","Screwdriver"];
-    const applicationsToolsPictures = [fabio3,fabio2,fabio1];
-    const applicationsToolsLinks = ["/","https://storymaps.arcgis.com/stories/0e9aea9fc6c54b0eb9df8a5d80a37130","/"];
+    const applicationsToolsCaptions = ["Dashboard","Bridges story map","Wifi hotspots"];
+    const applicationsToolsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Ponte_delle_Tette_%28Venice%29.jpg/1200px-Ponte_delle_Tette_%28Venice%29.jpg","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062"];
+    const applicationsToolsLinks = ["http://dashboard.cityknowledge.net/#/venice","https://storymaps.arcgis.com/stories/0e9aea9fc6c54b0eb9df8a5d80a37130","http://wifi.veniceprojectcenter.org/"];
 
-    const impactsPictures = [fabioPic,fabio1,fabio2,fabio3,fabio4,VeniceMapThing];
-    const impactsCaptions = ["Fabio 1","Fabio 2","Fabio 3","Fabio 4","Fabio 5","Fabio 6"];
+    const impactsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130",VeniceMapThing];
+    const impactsCaptions = ["","","","","",""];
 
     function resetTimeout() {
         if(timeoutRef.current) {
@@ -82,7 +82,7 @@ export default function Home() {
                          key = {index}
                          style = {{backgroundColor}}>
                         <figure className = {"picContainer"}>
-                            <Image src={studentProjectPictures[index]} height = {"500"} alt={"iqp image"} className={"studentProjectPic"}></Image>
+                            <Image src={studentProjectPictures[index]} width={500} height = {"500"} alt={"iqp image"} className={"studentProjectPic"}></Image>
                             <figcaption className="studentProjectTitle">{studentProjectCaptions[index]}</figcaption>
                         </figure>
                     </div>
@@ -99,7 +99,7 @@ export default function Home() {
                                key={index}
                                style={{backgroundColor }}>
                               <figure className={"picContainer"}>
-                                  <Image src={publicationPictures[index]} height = {"500"} alt={"iqp image"} className={"publicationPic"}></Image>
+                                  <Image src={publicationPictures[index]} width={"500"} height = {"500"} alt={"iqp image"} className={"publicationPic"}></Image>
                                   <figcaption className="publicationTitle">{publicationCaptions[index]}</figcaption>
                               </figure>
                           </div>
@@ -129,7 +129,7 @@ export default function Home() {
                             <button>
                           <figure className = {"picContainer"}>
                               <Link href={applicationsToolsLinks[index]} target={"_blank"}>
-                              <Image src={applicationsToolsPictures[index]} height = {"500"} alt={"iqp image"} className={"applicationToolPic"}></Image></Link>
+                              <Image src={applicationsToolsPictures[index]} width={"500"} height = {"500"} alt={"iqp image"} className={"applicationToolPic"}></Image></Link>
                               <figcaption className="applicationToolTitle">{applicationsToolsCaptions[index]}</figcaption>
                           </figure></button>
                       </div>
@@ -146,17 +146,17 @@ export default function Home() {
                   <div className = {"leftImpacts flex flex-row"}>
                       <div className = {"bigImpact"}>
                           <div className={"picContainer"}>
-                                <Image src={impactsPictures[0]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                                <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                                 <div className="impactTitle">{impactsCaptions[0]}</div>
                           </div>
                       </div>
                       <div className = {"limpacts flex flex-col"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[1]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[1]}</div>
                           </div>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[2]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[2]}</div>
                           </div>
                       </div>
@@ -164,17 +164,17 @@ export default function Home() {
                   <div className = {"rightImpacts flex flex-row"}>
                       <div className = {"rimpacts flex flex-col"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[2]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[3]}</div>
                           </div>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[1]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[4]}</div>
                           </div>
                       </div>
                       <div className = {"bigImpact"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[0]} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[5]}</div>
                           </div>
                       </div>
