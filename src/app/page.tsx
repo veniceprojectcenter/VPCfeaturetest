@@ -88,7 +88,7 @@ export default function Home() {
                     </div>
                   ))}
               </div>
-              <button className = {"seeAll"}><Link href={"/projects"}>See All {"--->"} </Link></button>
+              <button className = {"seeAll"}><Link href={"/ProjectContent"}>See All {"--->"} </Link></button>
           </div>
           <div className = {"publications"}>
               <h1 className={"ptitle"}><p className = {"text-white"}>Publications</p></h1>

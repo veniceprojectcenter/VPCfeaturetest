@@ -3,6 +3,7 @@ import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectReques
 import {fetchProjects} from "@/app/projects/[id]/fetchProjects";
 import {getProject} from "@/app/api/projects/route";
 import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
+import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
 
 
 
@@ -48,20 +49,13 @@ export default async function Page({params}: {
                     </div>
                     <div className={"basis-1/2 "}>
                     <p className={"text-white my-10"}>{project.description}</p>
-                        <div className={"flex flex-row"}>
-                            {dataUrls.map((dataurl,index) => {
-                                return(
-                                    <a href={dataurl.url}    key={dataurl.id + "link"} className={"text-white rounded border-4 text-base"}>
-                                        {dataurl.text}
-                                    </a>
-                                )
-                            })}
-                        </div>
+                        <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                 </div>
             </div>
         );
     } else {
+        //TODO make this a comp
         return <h1 className={"text-white"}>
             project not found
         </h1>

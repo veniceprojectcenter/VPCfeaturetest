@@ -25,17 +25,13 @@ export async function GET(request:NextRequest) {
 
 export async function POST(request: Request) {
     let project:Project = await request.json();
-    const checkDb = await prisma.project.findFirst({
-        where:{
-            id:project.id
-        }
-    });
-    if(checkDb == null) {
+    if(project.id == undefined) {
         const createProject = await prisma.project.create({data:project});
+        return NextResponse.json("created project");
     } else {
         const updateProject = await prisma.project.update({
             where:{
-                id:checkDb.id
+                id:project.id
             },
             data:{
                 title:project.title,
@@ -47,6 +43,8 @@ export async function POST(request: Request) {
                 year:project.year,
             }
         })
+        return NextResponse.json("updated project");
+
     }
     return NextResponse.json("Created or updated project");
 }
@@ -63,15 +61,17 @@ export async function getProject(id:string,type:string):Promise<(Project & {iqp_
                 }
             });
         } else {
+            let typeEnum = PROJECT_TYPE[type as keyof typeof PROJECT_TYPE]
             projects = await prisma.project.findMany({
                 where: {
-                    type:PROJECT_TYPE[type as keyof typeof PROJECT_TYPE]
+                    type:typeEnum
                 },
                 include: {
                     dataurls: true,
                     iqp_team: true
                 }
             });
+            console.log(projects)
         }
     } else {
         const project:(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | null = await prisma.project.findFirst({
