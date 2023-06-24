@@ -7,8 +7,7 @@ export default function EmbedUrlDisplay(props:{dataurls:Dataurl[]}) {
                 if(embed.type == "EMBED") {
                     return(
                     <div key={embed.projectId + index +"container"} className={"flex flex-col"}>
-                        <iframe src={embed.url} key={embed.projectId + index}></iframe>
-                        <h1>{embed.text}</h1>
+                        <iframe className={"mx-10 w-auto"} height={1000} src={embed.url} key={embed.projectId + index}></iframe>
                     </div>
                     )
                 }

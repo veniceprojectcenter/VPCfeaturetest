@@ -48,7 +48,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
 export function urlPathFromProject(project:Project) {
     switch (project.type) {
         case "APP":
-            return "/apps"
+            return "/applications"
         case "PUBLICATION":
             return "/publications"
         case "DATA":

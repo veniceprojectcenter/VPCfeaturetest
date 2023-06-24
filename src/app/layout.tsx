@@ -23,7 +23,7 @@ export default function RootLayout({
               <div className = {"pageLayout"}>
                   <Navbar/>
                   <Sidebar/>
-                  <div className = {"pageContent"}>
+                  <div className = {"pageContent w-full"}>
                       {children}
                       <Footer/>
                   </div>

@@ -19,12 +19,12 @@ export default async function Page({params}: {
             }
         }
         return (
-            <div className={"flex flex-col"}>
-            <ProjectTitleCard project={project}></ProjectTitleCard>
-            <div className={"flex flex-col"}>
-                    <div className={"flex"}>
-                        <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
-                        <p className={"text-white my-10"}>{project.description}</p>
+            <div className={"w-full"}>
+                <div className={"flex flex-col w-full"}>
+                <ProjectTitleCard project={project}></ProjectTitleCard>
+                    <div className={"flex flex-col"}>
+                            <p className={"text-white my-10"}>{project.description}</p>
+                            <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
                     </div>
                 </div>
             </div>
