@@ -2,12 +2,14 @@ import {getProject} from "@/app/api/projects/route";
 import {Dataurl} from "@prisma/client";
 import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
 import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
+import EmbedUrlDisplay from "@/app/components/ProjectContent/EmbedUrlDisplay";
+import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 
 export default async function Page({params}: {
     params: {id:string}
 }) {
-    const projects = await getProject(params.id,"");
+    const projects = await getProject(params.id,"APP");
     if(projects.length > 0) {
         const project = projects[0];
         let dataUrls:Dataurl[] = []
@@ -18,21 +20,15 @@ export default async function Page({params}: {
         }
         return (
             <div className={"flex flex-col"}>
-                <div className={"flex-row flex h-64 bg-blend-multiply bg-black bg-opacity-40"} style={{backgroundImage: `url(${project.img})`}}>
-                    <div className={"text-white text-2xl font-bold basis-1/2 justify-self-center flex flex-row"}>
-                        <h1 className={"ml-16 flex items-center"}>
-                            {project.title}
-                        </h1>
-                    </div>
-                </div>
-                <div className={"flex flex-col"}>
-                    <div className={"basis-1/2 "}>
+            <ProjectTitleCard project={project}></ProjectTitleCard>
+            <div className={"flex flex-col"}>
+                    <div className={"flex"}>
+                        <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
                         <p className={"text-white my-10"}>{project.description}</p>
-                        <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                 </div>
             </div>
         )
     }
-    return (<ProjectNotFound></ProjectNotFound>)
+    return <ProjectNotFound></ProjectNotFound>
 }

@@ -3,7 +3,10 @@ import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectReques
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
 import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
 import Popup from "reactjs-popup";
-import AddDataUrl from "@/app/projects/[id]/edit/AddDataUrl";
+import popupWindow, {OpenButton} from "@/app/components/random/PopupWithClose";
+import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
+import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
+import PopupWithClose from "@/app/components/random/PopupWithClose";
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
@@ -78,23 +81,23 @@ export function EditableProject(props:{id:string}) {
                     {dataurl.text}
                 </a>)
         });
-        dataElements.push(AddDataUrl(open,setOpen))
-        console.log(dataElements.length)
+        dataElements.push(
+            <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
+                <div>
+                    This is a data url
+                </div>
+            </PopupWithClose>
+        )
         return (
             <div className={"flex flex-col"}>
-                <div className={"flex-row flex h-64 bg-blend-multiply bg-black bg-opacity-40"} style={{backgroundImage: `url(${project.img})`}}>
-                    <div className={"text-white text-2xl font-bold basis-1/2 justify-self-center flex flex-row"}>
-                        <h1 className={"ml-16 flex items-center"} id={"title"} onBlur={leftFocus}  contentEditable suppressContentEditableWarning={true}>
-                            {project.title}
-                        </h1>
-                    </div>
+                <ProjectTitleCard project={project} onBlur={leftFocus} contentEditable>
                     <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
                         <h1 className={"text-white flex items-center"}>YEAR: </h1>
                         <h1 className={"text-white mx-3 flex items-center"} id={"year"} onBlur={leftFocus} contentEditable suppressContentEditableWarning={true}>{project.year}</h1>
                         <h1 className={"text-white flex items-center"}>| TERM: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                     </div>
-                </div>
+                </ProjectTitleCard>
                 <div className={"flex flex-row"}>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
                         <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
@@ -119,9 +122,7 @@ export function EditableProject(props:{id:string}) {
 
         );
     }
-    return (<div>
-        no project
-    </div>)
+    return (<ProjectNotFound></ProjectNotFound>)
 }
 
 async function getProject(id:string):Promise<ProjectRequestResponse> {

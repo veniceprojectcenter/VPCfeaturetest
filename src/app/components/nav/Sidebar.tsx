@@ -19,7 +19,7 @@ export function Sidebar() {
                         <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Home</Link>
                     </li>
                     <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Applications & Tools</Link>
+                        <Link onClick={menuToggle} href={"/applications"} className={"menuLink"}>Applications & Tools</Link>
                     </li>
                     <li className={"list"}>
                         <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Impacts</Link>

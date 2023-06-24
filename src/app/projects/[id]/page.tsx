@@ -4,6 +4,8 @@ import {fetchProjects} from "@/app/projects/[id]/fetchProjects";
 import {getProject} from "@/app/api/projects/route";
 import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
 import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
+import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
+import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 
 
 
@@ -31,16 +33,11 @@ export default async function Page({params}: {
         }
         return (
             <div className={"flex flex-col"}>
-                <div className={"flex-row flex h-64 bg-blend-multiply bg-black bg-opacity-40"} style={{backgroundImage: `url(${project.img})`}}>
-                    <div className={"text-white text-2xl font-bold basis-1/2 justify-self-center flex flex-row"}>
-                    <h1 className={"ml-16 flex items-center"}>
-                        {project.title}
-                    </h1>
-                    </div>
+                <ProjectTitleCard project={project}>
                     <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
                         <h1 className={"text-white mr-20 flex items-center"}>YEAR: {project.year} | TERM: {project.term}</h1>
                     </div>
-                </div>
+                </ProjectTitleCard>
                 <div className={"flex flex-row"}>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
                         <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
@@ -56,8 +53,6 @@ export default async function Page({params}: {
         );
     } else {
         //TODO make this a comp
-        return <h1 className={"text-white"}>
-            project not found
-        </h1>
+        return (<ProjectNotFound></ProjectNotFound>)
     }
 }
