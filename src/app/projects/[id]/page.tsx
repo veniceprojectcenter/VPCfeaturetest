@@ -6,6 +6,7 @@ import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
 import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
+import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 
 
 
@@ -45,7 +46,7 @@ export default async function Page({params}: {
                         <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
                     </div>
                     <div className={"basis-1/2 "}>
-                    <p className={"text-white my-10"}>{project.description}</p>
+                        <ProjectDescription project={project}></ProjectDescription>
                         <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                 </div>

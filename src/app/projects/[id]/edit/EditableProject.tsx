@@ -7,6 +7,7 @@ import popupWindow, {OpenButton} from "@/app/components/random/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import PopupWithClose from "@/app/components/random/PopupWithClose";
+import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
@@ -105,7 +106,7 @@ export function EditableProject(props:{id:string}) {
                         <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
                     </div>
                     <div className={"basis-1/2 "}>
-                        <p className={"text-white my-10"}  id={"description"} onBlur={leftFocus} contentEditable suppressContentEditableWarning={true}>{project.description}</p>
+                        <ProjectDescription project={project} onBlur={leftFocus} contentEditable></ProjectDescription>
                         <div className={"flex flex-row"}>
                             {dataElements.map((element,index)=> {
                                 return(<div key={"dataButton" + index}>

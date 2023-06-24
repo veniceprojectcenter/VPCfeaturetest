@@ -5,6 +5,7 @@ import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
 import EmbedUrlDisplay from "@/app/components/ProjectContent/EmbedUrlDisplay";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
+import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 
 export default async function Page({params}: {
     params: {id:string}
@@ -23,8 +24,8 @@ export default async function Page({params}: {
                 <div className={"flex flex-col w-full"}>
                 <ProjectTitleCard project={project}></ProjectTitleCard>
                     <div className={"flex flex-col"}>
-                            <p className={"text-white my-10"}>{project.description}</p>
-                            <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
+                        <ProjectDescription project={project}></ProjectDescription>
+                        <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
                     </div>
                 </div>
             </div>

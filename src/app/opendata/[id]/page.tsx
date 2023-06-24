@@ -3,6 +3,8 @@ import {Dataurl} from "@prisma/client";
 import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
 import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
+import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
+import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 
 export default async function Page({params}: {
     params: {id:string}
@@ -18,16 +20,10 @@ export default async function Page({params}: {
         }
         return (
             <div className={"flex flex-col"}>
-                <div className={"flex-row flex h-64 bg-blend-multiply bg-black bg-opacity-40"} style={{backgroundImage: `url(${project.img})`}}>
-                    <div className={"text-white text-2xl font-bold basis-1/2 justify-self-center flex flex-row"}>
-                        <h1 className={"ml-16 flex items-center"}>
-                            {project.title}
-                        </h1>
-                    </div>
-                </div>
+                <ProjectTitleCard project={project}></ProjectTitleCard>
                 <div className={"flex flex-col"}>
                     <div className={"basis-1/2 "}>
-                        <p className={"text-white my-10"}>{project.description}</p>
+                        <ProjectDescription project={project}></ProjectDescription>
                         <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                 </div>
