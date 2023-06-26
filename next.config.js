@@ -9,6 +9,12 @@ const nextConfig = {
                 pathname:'/hive-engine/**'
             },
             {
+                protocol:'http',
+                hostname:'s3.amazonaws.com',
+                port:'',
+                pathname:'/hive-engine/**'
+            },
+            {
                 protocol:'https',
                 hostname:'digital.wpi.edu',
                 port:'',
@@ -16,6 +22,12 @@ const nextConfig = {
             },
             {
                 protocol:'https',
+                hostname:'www.veniceprojectcenter.org',
+                port:'',
+                pathname:'/assets/**'
+            },
+            {
+                protocol:'http',
                 hostname:'www.veniceprojectcenter.org',
                 port:'',
                 pathname:'/assets/**'

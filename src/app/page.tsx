@@ -60,7 +60,7 @@ export default function Home() {
       <div className = {"homePage flex flex-col"}>
           <div className={"opendata"}>
               <div className = {"lefttt"}>
-                  <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"}></Image>
+                  <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"} loading="lazy"></Image>
                   <div className = {"vpcStatement"}><p className = {"text-white"}>For 30 years we have been studying solutions to preserve and improve life in the city of Venice.</p></div>
               </div>
               <div className = {"rightt"}>
@@ -82,13 +82,13 @@ export default function Home() {
                          key = {index}
                          style = {{backgroundColor}}>
                         <figure className = {"picContainer"}>
-                            <Image src={studentProjectPictures[index]} width={500} height = {"500"} alt={"iqp image"} className={"studentProjectPic"}></Image>
+                            <Image src={studentProjectPictures[index]} width={500} height = {"500"} alt={"iqp image"} className={"studentProjectPic"} loading="lazy"></Image>
                             <figcaption className="studentProjectTitle">{studentProjectCaptions[index]}</figcaption>
                         </figure>
                     </div>
                   ))}
               </div>
-              <button className = {"seeAll"}><Link href={"/projects"}>See All {"--->"} </Link></button>
+              <button className = {"seeAll"}><Link href={"/ProjectContent"}>See All {"--->"} </Link></button>
           </div>
           <div className = {"publications"}>
               <h1 className={"ptitle"}><p className = {"text-white"}>Publications</p></h1>
@@ -99,7 +99,7 @@ export default function Home() {
                                key={index}
                                style={{backgroundColor }}>
                               <div className={"picContainer"}>
-                                  <Image width = {400} height = {500} src={publicationPictures[index]} alt={"iqp image"} className={"publicationPic w-auto"}></Image>
+                                  <Image width = {400} height = {500} src={publicationPictures[index]} alt={"iqp image"} className={"publicationPic w-auto"} loading="lazy"></Image>
                                   <p className="publicationTitle">{publicationCaptions[index]}</p>
                               </div>
                           </div>
@@ -129,7 +129,7 @@ export default function Home() {
                             <button>
                           <figure className = {"picContainer"}>
                               <Link href={applicationsToolsLinks[index]} target={"_blank"}>
-                              <Image src={applicationsToolsPictures[index]} width={"500"} height = {"500"} alt={"iqp image"} className={"applicationToolPic"}></Image></Link>
+                              <Image src={applicationsToolsPictures[index]} width={"500"} height = {"500"} alt={"iqp image"} className={"applicationToolPic"} loading="lazy"></Image></Link>
                               <figcaption className="applicationToolTitle">{applicationsToolsCaptions[index]}</figcaption>
                           </figure></button>
                       </div>
@@ -146,17 +146,17 @@ export default function Home() {
                   <div className = {"leftImpacts flex flex-row"}>
                       <div className = {"bigImpact"}>
                           <div className={"picContainer"}>
-                                <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                                <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}   loading="lazy"></Image>
                                 <div className="impactTitle">{impactsCaptions[0]}</div>
                           </div>
                       </div>
                       <div className = {"limpacts flex flex-col"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
                               <div className="impactTitle">{impactsCaptions[1]}</div>
                           </div>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
                               <div className="impactTitle">{impactsCaptions[2]}</div>
                           </div>
                       </div>
@@ -164,17 +164,17 @@ export default function Home() {
                   <div className = {"rightImpacts flex flex-row"}>
                       <div className = {"rimpacts flex flex-col"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
                               <div className="impactTitle">{impactsCaptions[3]}</div>
                           </div>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
                               <div className="impactTitle">{impactsCaptions[4]}</div>
                           </div>
                       </div>
                       <div className = {"bigImpact"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
+                              <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
                               <div className="impactTitle">{impactsCaptions[5]}</div>
                           </div>
                       </div>

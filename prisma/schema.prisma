@@ -48,6 +48,7 @@ model Maintainer {
 enum DATAURL_TYPE {
   DOWNLOAD
   EMBED
+  LINK
 }
 
 enum PROJECT_TYPE {

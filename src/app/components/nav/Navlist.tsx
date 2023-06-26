@@ -26,9 +26,9 @@ export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
         }
         getData();
         return () => {
-            // here you can clean the effect in case the component gets unmonth before the async function ends
+            // here you can clean the effect in case the component gets unmounted before the async function ends
         }
-    },[])
+    },[props.type])
     if(data != undefined) {
         projects = data?.projects.filter(filterFunc(props.search))
         console.log(projects);
