@@ -1,8 +1,5 @@
--- CreateExtension
-CREATE EXTENSION IF NOT EXISTS "pgcrypto";
-
 -- CreateEnum
-CREATE TYPE "DATAURL_TYPE" AS ENUM ('DOWNLOAD', 'EMBED');
+CREATE TYPE "DATAURL_TYPE" AS ENUM ('DOWNLOAD', 'EMBED', 'LINK');
 
 -- CreateEnum
 CREATE TYPE "PROJECT_TYPE" AS ENUM ('IQP', 'DATA', 'APP', 'PUBLICATION');
@@ -57,9 +54,6 @@ CREATE UNIQUE INDEX "Project_id_key" ON "Project"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Dataurl_id_key" ON "Dataurl"("id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Dataurl_projectId_key" ON "Dataurl"("projectId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "IqpTeam_id_key" ON "IqpTeam"("id");

@@ -46,10 +46,9 @@ export async function POST(request: Request) {
         return NextResponse.json("updated project");
 
     }
-    return NextResponse.json("Created or updated project");
 }
 
-//TODO rework and simplefy
+//TODO rework and simplify
 export async function getProject(id:string,type:string):Promise<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})[]> {
     let projects:(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})[] = [];
     if(id === "") {

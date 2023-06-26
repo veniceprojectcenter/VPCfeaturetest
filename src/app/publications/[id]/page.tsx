@@ -19,14 +19,13 @@ export default async function Page({params}: {
                 dataUrls.push(project.dataurls[i]);
             }
         }
-        console.log(dataUrls)
         return (
             <div className={"w-full"}>
                 <div className={"flex flex-col w-full"}>
                 <ProjectTitleCard project={project}></ProjectTitleCard>
                     <div className={"flex flex-col"}>
                         <ProjectDescription project={project}></ProjectDescription>
-                        <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
+                        <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                 </div>
             </div>
