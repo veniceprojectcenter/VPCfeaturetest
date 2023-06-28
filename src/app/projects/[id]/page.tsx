@@ -9,6 +9,7 @@ import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 
 
+//TODO make a good way to store embeds on project
 
 export default async function Page({params}: {
     params: {id:string}
@@ -39,15 +40,15 @@ export default async function Page({params}: {
                         <h1 className={"text-white mr-20 flex items-center"}>YEAR: {project.year} | TERM: {project.term}</h1>
                     </div>
                 </ProjectTitleCard>
-                <div className={"flex flex-row"}>
+                <div className={"flex md:flex-row flex-col"}>
+                    <div className={"basis-1/2 "}>
+                        <ProjectDescription project={project}></ProjectDescription>
+                        <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
+                    </div>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
                         <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
                         <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors}></IqpTeamComp>
                         <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
-                    </div>
-                    <div className={"basis-1/2 "}>
-                        <ProjectDescription project={project}></ProjectDescription>
-                        <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                 </div>
             </div>
