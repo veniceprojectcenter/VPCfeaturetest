@@ -1,6 +1,3 @@
--- CreateExtension
-CREATE EXTENSION IF NOT EXISTS "pgcrypto";
-
 -- CreateEnum
 CREATE TYPE "DATAURL_TYPE" AS ENUM ('DOWNLOAD', 'EMBED');
 
@@ -52,14 +49,24 @@ CREATE TABLE "Maintainer" (
     CONSTRAINT "Maintainer_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "AutoSlideshow" (
+    "id" SERIAL NOT NULL,
+    "backgroundColors" TEXT[],
+    "pictureCaptions" TEXT[],
+    "slideDelay" DOUBLE PRECISION NOT NULL,
+    "pictures" TEXT[],
+    "picWidth" INTEGER NOT NULL,
+    "picHeight" INTEGER NOT NULL,
+
+    CONSTRAINT "AutoSlideshow_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Project_id_key" ON "Project"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Dataurl_id_key" ON "Dataurl"("id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Dataurl_projectId_key" ON "Dataurl"("projectId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "IqpTeam_id_key" ON "IqpTeam"("id");
@@ -69,6 +76,9 @@ CREATE UNIQUE INDEX "IqpTeam_projectId_key" ON "IqpTeam"("projectId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Maintainer_id_key" ON "Maintainer"("id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "AutoSlideshow_id_key" ON "AutoSlideshow"("id");
 
 -- AddForeignKey
 ALTER TABLE "Dataurl" ADD CONSTRAINT "Dataurl_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "Project"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

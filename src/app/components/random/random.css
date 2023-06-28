@@ -1,0 +1,68 @@
+.slideshowContainer {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 84%;
+}
+
+.slideshowContainer .slideshow {
+    white-space : nowrap;
+    transition: ease 700ms;
+}
+
+.slideshowContainer .slideshow .slide {
+    display: inline-block;
+    height: 500px;
+    width: 100%;
+    border-radius: 0px;
+    white-space: nowrap;
+}
+
+.slideshowContainer .slideshow .slide .picContainer {
+    justify-content:center;
+    align-items:center;
+    height: 100%;
+    overflow:hidden;
+}
+
+.slideshowContainer .slideshow .slide .picContainer .slidePic {
+    height:auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slideshowContainer .slideshow .slide .picContainer .slideTitle {
+    color: #000000;
+    font-size: 1.7vw;
+    padding: 8px 12px;
+    position: absolute;
+    width:100%;
+    bottom: 8px;
+    text-align: center;
+    background-color: rgba(200,200,200,0.7);
+
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+
+}
+
+.slideshowContainer .dots {
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.slideshowContainer .dots .dot {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 15px 7px 0px;
+    background-color: #c4c4c4;
+}
+
+.slideshowContainer .dots .dot.active {
+    background-color: #6a0dad;
+}

@@ -34,7 +34,7 @@
 }
 
 .opendata .lefttt .vpcStatement {
-    font-size: 2em;
+    font-size: 2.5vw;
     margin-top: 5%;
 }
 
@@ -52,7 +52,7 @@
     @apply self-center;
     color:white;
     left:20%;
-    font-size:xx-large;
+    font-size:3vw;
     border-color:white;
     border-width:medium;
     border-radius: 40px;
@@ -68,7 +68,7 @@
 
 .opendata .rightt .opendataParagraph {
     margin-top: 5%;
-    font-size: 1.25em;
+    font-size: 1.5vw;
 }
 
 .studentProjects {
@@ -84,8 +84,12 @@
 }
 
 .studentProjects .sptitle {
-    font-size: 4em;
+    font-size: 4.2vw;
     margin:1%;
+}
+
+.studentProjects .studentProjectsDescription {
+    font-size:1.5vw;
 }
 
 .studentProjects .sampleProjects {
@@ -127,7 +131,7 @@
 }
 
 .studentProjects .sampleProjects .sampleProject .picContainer .studentProjectTitle {
-    font-size: 21px;
+    font-size: 1.7vw;
     background-color: rgb(128,128,128,0.5);
     color: white;
     position: relative;
@@ -142,7 +146,7 @@
     @apply self-center;
     color:white;
     left:20%;
-    font-size:xx-large;
+    font-size:2.7vw;
     border-color:white;
     border-width:medium;
     border-radius: 40px;
@@ -157,7 +161,7 @@
 }
 
 .publications {
-    width:86%;
+    width:72%;
     margin-left:auto;
     margin-right:auto;
     margin-top:2%;
@@ -168,79 +172,15 @@
 }
 
 .publications .ptitle {
-    font-size: 3em;
+    font-size: 3.7vw;
     margin-bottom: 3%;
-}
-
-.publications .slideshowContainer {
-    margin: 0 auto;
-    overflow: hidden;
-    width: 72%;
-}
-
-.publications .slideshowContainer .slideshow {
-    white-space : nowrap;
-    transition: ease 700ms;
-}
-
-.publications .slideshowContainer .slideshow .slide {
-    display: inline-block;
-    height: 500px;
-    width: 100%;
-    border-radius: 40px;
-    white-space: nowrap;
-}
-
-.publications .slideshowContainer .slideshow .slide .picContainer {
-    justify-content:center;
-    align-items:center;
-    height: 100%;
-    overflow:hidden;
-}
-
-.publications .slideshowContainer .slideshow .slide .picContainer .publicationPic {
-    height:auto;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.publications .slideshowContainer .slideshow .slide .picContainer .publicationTitle {
-    color: #f2f2f2;
-    font-size: 21px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-
-}
-
-.publications .slideshowContainer .dots {
-    text-align: center;
-    margin-bottom: 5%;
-}
-
-.publications .slideshowContainer .dots .dot {
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 15px 7px 0px;
-    background-color: #c4c4c4;
-}
-
-.publications .slideshowContainer .dots .dot.active {
-    background-color: #6a0dad;
 }
 
 .publications .seeAll {
     @apply self-center;
     color:white;
     left:20%;
-    font-size:xx-large;
+    font-size:2.7vw;
     border-color:white;
     border-width:medium;
     border-radius: 40px;
@@ -265,12 +205,12 @@
 }
 
 .applicationsTools .attitle {
-    font-size: 3em;
+    font-size: 4.2vw;
     margin:1%;
 }
 
 .applicationsTools .applicationsToolsDescription {
-    font-size: 1.5em;
+    font-size: 1.5vw;
     margin:1%;
 }
 
@@ -312,9 +252,10 @@
 
 .applicationsTools .sampleTools .sampleTool .picContainer .applicationToolTitle {
     color: #f2f2f2;
-    font-size: 21px;
+    font-size: 1.6vw;
     text-align: center;
-    position:sticky;
+    margin-top:1.4vw;
+    position:relative;
     bottom: 8px;
     width: 100%;
 }
@@ -323,7 +264,7 @@
     @apply self-center;
     color:white;
     left:20%;
-    font-size:xx-large;
+    font-size:2vw;
     border-color:white;
     border-width:medium;
     border-radius: 40px;
@@ -343,20 +284,20 @@
     width:92%;
     margin-left:auto;
     margin-right:auto;
-    margin-top:20%;
-    margin-bottom:8%;
+    margin-top:7%;
+    margin-bottom:7%;
     display: flex;
     flex-direction:column;
     justify-content: center;
 }
 
 .impacts .impactsTitle {
-    font-size: 3em;
+    font-size: 4vw;
     margin:1%;
 }
 
 .impacts .impactsDescription {
-    font-size: 1.5em;
+    font-size: 2vw;
     margin:1%;
 }
 
@@ -398,10 +339,10 @@
 
 .impacts .sixImpacts .leftImpacts .bigImpact .picContainer .impactTitle {
     color:#FFFFFF;
-    font-size: 1.0em;
+    font-size: 1.5vw;
     padding: 2px 5px;
     bottom: 0.5em;
-    transform: translate(4em,-2em);
+    transform: translate(2vw,-1vw);
     width:100%;
 }
 
@@ -432,10 +373,10 @@
 
 .impacts .sixImpacts .leftImpacts .limpacts .picContainer .impactTitle {
     color:#00FFFF;
-    font-size:13px;
+    font-size:1.5vw;
     padding: 2px 5px;
     bottom: 8px;
-    transform: translate(24px,-24px);
+    transform: translate(2vw,-1vw);
     width:100%;
 }
 
@@ -473,10 +414,10 @@
 
 .impacts .sixImpacts .rightImpacts .rimpacts .picContainer .impactTitle {
     color:#00AA00;
-    font-size:13px;
+    font-size:1.5vw;
     padding: 2px 5px;
     bottom: 8px;
-    transform: translate(24px,-24px);
+    transform: translate(2vw,-1vw);
     width:100%;
 }
 
@@ -507,17 +448,17 @@
 
 .impacts .sixImpacts .rightImpacts .bigImpact .picContainer .impactTitle {
     color:#00FFFF;
-    font-size:13px;
+    font-size:1.5vw;
     padding: 2px 5px;
     bottom: 8px;
-    transform: translate(24px,-24px);
+    transform: translate(2vw,-1vw);
     width:100%;
 }
 
 .impacts .seeAll {
     color:white;
     left:20%;
-    font-size:xx-large;
+    font-size:2.7vw;
     border-color:white;
     border-width:medium;
     border-radius: 40px;
