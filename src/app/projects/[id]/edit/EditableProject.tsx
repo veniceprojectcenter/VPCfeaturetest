@@ -85,7 +85,18 @@ export function EditableProject(props:{id:string}) {
         dataElements.push(
             <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
                 <div>
-                    This is a data url
+                    <form>
+                        <h1>Url Input</h1>
+                        <input type={"text"}/>
+                        <h1> link text </h1>
+                        <h1>type</h1>
+                        <select>
+                            <option>DOWNLOAD</option>
+                            <option>LINK</option>
+                            <option>EMBED</option> {/* TODO make a good way to display embeds on projects */}
+                        </select>
+                        <input type={"submit"}/>
+                    </form>
                 </div>
             </PopupWithClose>
         )
@@ -99,13 +110,8 @@ export function EditableProject(props:{id:string}) {
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                     </div>
                 </ProjectTitleCard>
-                <div className={"flex flex-row"}>
-                    <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
-                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors}></IqpTeamComp>
-                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
-                    </div>
-                    <div className={"basis-1/2 "}>
+                <div className={"flex md:flex-row flex-col"}>
+                    <div className={"basis-1/2"}>
                         <ProjectDescription project={project} onBlur={leftFocus} contentEditable></ProjectDescription>
                         <div className={"flex flex-row"}>
                             {dataElements.map((element,index)=> {
@@ -114,6 +120,11 @@ export function EditableProject(props:{id:string}) {
                                 </div>)
                             })}
                         </div>
+                    </div>
+                    <div className={"basis-1/2 flex flex-col ml-9"}>
+                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
+                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors}></IqpTeamComp>
+                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
                     </div>
                 </div>
                 <div>
