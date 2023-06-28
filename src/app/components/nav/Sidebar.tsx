@@ -19,16 +19,16 @@ export function Sidebar() {
                         <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Home</Link>
                     </li>
                     <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Applications & Tools</Link>
+                        <Link onClick={menuToggle} href={"/applications"} className={"menuLink"}>Applications & Tools</Link>
                     </li>
                     <li className={"list"}>
                         <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Impacts</Link>
                     </li>
                     <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Open Data</Link>
+                        <Link onClick={menuToggle} href={"/opendata"} className={"menuLink"}>Open Data</Link>
                     </li>
                     <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Publications</Link>
+                        <Link onClick={menuToggle} href={"/publications"} className={"menuLink"}>Publications</Link>
                     </li>
                     <li className={"list"}>
                         <Link onClick={menuToggle} href={"/projects"} className={"menuLink"}>Student Projects</Link>

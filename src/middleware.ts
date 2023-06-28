@@ -1,6 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
 import {SignJWT, jwtVerify, type JWTPayload} from 'jose';
 //this middleware is to validate authentication
+//TODO expire is not working
 export async function middleware(request:NextRequest) {
     let token = request.cookies.get("token")?.value;
     if(token == undefined) {
