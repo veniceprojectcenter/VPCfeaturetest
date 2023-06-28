@@ -7,14 +7,19 @@ import fabioPic from "@/app/resources/IMG-1346.png";
 import fabio1 from "@/app/resources/Fabio1.jpg";
 import fabio2 from "@/app/resources/Fabio2.jpg";
 import fabio3 from "@/app/resources/Fabio3.webp";
-import fabio4 from "@/app/resources/Fabio4.jpg"
-import fabio5 from "@/app/resources/Fabio5.png"
+import fabio4 from "@/app/resources/Fabio4.jpg";
+import fabio5 from "@/app/resources/Fabio5.png";
+
 
 import Link from "next/link";
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './homePage.css';
+import './components/random/random.css';
 import {menuToggle} from "@/app/components/nav/menuToggle";
+import {request} from "https";
+import {AutoSlideshow} from "@/app/components/random/AutoSlideshow/AutoSlideshow";
+import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 
 export default function Home() {
 
@@ -22,45 +27,91 @@ export default function Home() {
     const studentProjectCaptions = ["Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","Vacation Rentals and Residential Housing in Venice"];
     const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
 
-    const publicationColors = ["#777777", "#777777", "#777777"];
-    const publicationCaptions = ["Making History: an Emergent System for the Systematic Accrual of Transcriptions of Historic Manuscripts","The Future of Spatial Data Infrastructures: Capacity-building for the Emergence of Municipal SDIs","Venezia la Città dei Rii"];
-    const publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
-    const [publicationSlideIndex, setPublicationSlideIndex] = React.useState(0);
-    const publicationSlideDelay = 4200;
-    const timeoutRef = React.useRef(null);
+    let publicationColors = ["#FF0000", "#00FF00", "#0000FF"];
+    let publicationCaptions = ["Yoooooo looooook at these bridges broooooo","21 can you do something for me","Je suis un pomme"];
+    let publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
+    let publicationPicWidth = 420;
+    let publicationPicHeight = 690;
+    let publicationSlideDelay = 1738;
 
-    const applicationsToolsColors = ["#000000","#000000","#000000"];
-    const applicationsToolsCaptions = ["Dashboard","Bridges story map","Wifi hotspots"];
-    const applicationsToolsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Ponte_delle_Tette_%28Venice%29.jpg/1200px-Ponte_delle_Tette_%28Venice%29.jpg","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062"];
-    const applicationsToolsLinks = ["http://dashboard.cityknowledge.net/#/venice","https://storymaps.arcgis.com/stories/0e9aea9fc6c54b0eb9df8a5d80a37130","http://wifi.veniceprojectcenter.org/"];
+    const publicationID = "ID 2";
+
+    const [publicationData,setPublicationData] = useState<any | undefined>(undefined);
+
+    let applicationsToolsColors:string[] = ["#000000","#000000","#000000"];
+    let applicationsToolsCaptions = ["Dashboard","Bridges story map","Wifi hotspots"];
+    let applicationsToolsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Ponte_delle_Tette_%28Venice%29.jpg/1200px-Ponte_delle_Tette_%28Venice%29.jpg","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062"];
+    let applicationsToolsLinks = ["http://dashboard.cityknowledge.net/#/venice","https://storymaps.arcgis.com/stories/0e9aea9fc6c54b0eb9df8a5d80a37130","http://wifi.veniceprojectcenter.org/"];
 
     const impactsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130",VeniceMapThing];
     const impactsCaptions = ["","","","","",""];
 
-    function resetTimeout() {
-        if(timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
+    useEffect(() => {
+        const getPublicationData = async() => {
+            let response = await fetch(`/api/random/AutoSlideshow/?id=${publicationID}`,{
+                method: "GET",
+            });
+
+            console.log(response);
+            const publicationResponse = await response.json();
+            setPublicationData(publicationResponse);
+            console.log(publicationResponse.backgroundColors);
+            console.log(publicationResponse.slideDelay);
         }
+
+        getPublicationData();
+        return () => {
+
+        }
+    },[]);
+
+    if(publicationData != undefined) {
+        publicationColors = publicationData.backgroundColors;
+        publicationCaptions = publicationData.pictureCaptions;
+        publicationPictures = publicationData.pictures;
+        publicationSlideDelay = publicationData.slideDelay;
+        publicationPicWidth = publicationData.picWidth;
+        publicationPicHeight = publicationData.picHeight;
     }
+    // @ts-ignore
 
-    React.useEffect(() => {
-        resetTimeout();
-        // @ts-ignore
-        timeoutRef.current = setTimeout(
-           () =>
-               setPublicationSlideIndex((prevIndex) =>
-                   prevIndex === publicationColors.length - 1 ? 0 : prevIndex + 1
-               ),publicationSlideDelay
-       );
 
-       return () => {resetTimeout();};
-    }, [publicationSlideIndex]);
+    // @ts-ignore
+    const enterSlideshow = async (event) => {
+        console.log("Enter Slideshow method entered");
+        event.preventDefault();
+        if(event.target == null) {
+            console.log("target is null");
+        } else {
+            console.log("Creating Request");
+            let request = {
+                type:"enterSlideshow",
+                backgroundColors:publicationColors,
+                pictureCaptions:publicationCaptions,
+                slideDelay: publicationSlideDelay,
+                pictures: publicationPictures,
+                picWidth: publicationPicWidth,
+                picHeight: publicationPicHeight
+            };
+            console.log("Request Created");
+
+            let response = await fetch("/api/random/AutoSlideshow",{
+                method: "POST",
+                body: JSON.stringify(request)
+            });
+            console.log("method successfully fetched");
+            let responseJSON = await response.json();
+            console.log(responseJSON);
+            console.log(responseJSON.response);
+        }
+
+    }
 
   return (
       <div className = {"homePage flex flex-col"}>
           <div className={"opendata"}>
               <div className = {"lefttt"}>
-                  <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"} loading="lazy"></Image>
+                  <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"}></Image>
                   <div className = {"vpcStatement"}><p className = {"text-white"}>For 30 years we have been studying solutions to preserve and improve life in the city of Venice.</p></div>
               </div>
               <div className = {"rightt"}>
@@ -82,39 +133,18 @@ export default function Home() {
                          key = {index}
                          style = {{backgroundColor}}>
                         <figure className = {"picContainer"}>
-                            <Image src={studentProjectPictures[index]} width={500} height = {"500"} alt={"iqp image"} className={"studentProjectPic"} loading="lazy"></Image>
+                            <Image src={studentProjectPictures[index]} width={500} height = {"500"} alt={"iqp image"} className={"studentProjectPic"}></Image>
                             <figcaption className="studentProjectTitle">{studentProjectCaptions[index]}</figcaption>
                         </figure>
                     </div>
                   ))}
               </div>
-              <button className = {"seeAll"}><Link href={"/ProjectContent"}>See All {"--->"} </Link></button>
+              <button className = {"seeAll"}><Link href={"/projects"}>See All {"-->"} </Link></button>
           </div>
           <div className = {"publications"}>
-              <h1 className={"ptitle"}><p className = {"text-white"}>Publications</p></h1>
-              <div className={"slideshowContainer"}>
-                  <div className={"slideshow"} style={{transform: `translate3d(${-publicationSlideIndex * 100}%, 0, 0)`}}>
-                      {publicationColors.map((backgroundColor, index) => (
-                          <div className="slide"
-                               key={index}
-                               style={{backgroundColor }}>
-                              <div className={"picContainer"}>
-                                  <Image width = {400} height = {500} src={publicationPictures[index]} alt={"iqp image"} className={"publicationPic w-auto"} loading="lazy"></Image>
-                                  <p className="publicationTitle">{publicationCaptions[index]}</p>
-                              </div>
-                          </div>
-                      ))}
-                  </div>
-                  <div className="dots">
-                      {publicationColors.map((_, idx) => (
-                          <div key={idx}
-                               className={`dot${publicationSlideIndex === idx ? " active" : ""}`}
-                               onClick = {() => {setPublicationSlideIndex(idx);}}>
-                          </div>
-                      ))}
-                  </div>
-              </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All {"--->"}</Link></button>
+              <h1 className={"ptitle"}><p className = {"text-white"} onClick={enterSlideshow}>Publications</p></h1>
+              <AutoSlideshow backgroundColors={publicationColors} pictureCaptions={publicationCaptions} slideDelay={publicationSlideDelay} pictures={publicationPictures} picWidth={publicationPicWidth} picHeight={publicationPicHeight}/>
+              <button className = {"seeAll"}><Link href={"/"}>See All {"-->"}</Link></button>
           </div>
           <div className = {"applicationsTools"}>
               <h1 className={"attitle"}><p className = {"text-white"}>Applications & Tools</p></h1>
@@ -129,13 +159,13 @@ export default function Home() {
                             <button>
                           <figure className = {"picContainer"}>
                               <Link href={applicationsToolsLinks[index]} target={"_blank"}>
-                              <Image src={applicationsToolsPictures[index]} width={"500"} height = {"500"} alt={"iqp image"} className={"applicationToolPic"} loading="lazy"></Image></Link>
+                              <Image src={applicationsToolsPictures[index]} width={"500"} height = {"500"} alt={"iqp image"} className={"applicationToolPic"}></Image></Link>
                               <figcaption className="applicationToolTitle">{applicationsToolsCaptions[index]}</figcaption>
                           </figure></button>
                       </div>
                   ))}
               </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All {"--->"}</Link></button>
+              <button className = {"seeAll"}><Link href={"/"}>See All {"-->"}</Link></button>
           </div>
           <div className = {"impacts"}>
               <h1 className = {"impactsTitle"}><p className = {"text-white"}>Impacts</p></h1>
@@ -146,17 +176,17 @@ export default function Home() {
                   <div className = {"leftImpacts flex flex-row"}>
                       <div className = {"bigImpact"}>
                           <div className={"picContainer"}>
-                                <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}   loading="lazy"></Image>
+                                <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                                 <div className="impactTitle">{impactsCaptions[0]}</div>
                           </div>
                       </div>
                       <div className = {"limpacts flex flex-col"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
+                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[1]}</div>
                           </div>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
+                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[2]}</div>
                           </div>
                       </div>
@@ -164,23 +194,23 @@ export default function Home() {
                   <div className = {"rightImpacts flex flex-row"}>
                       <div className = {"rimpacts flex flex-col"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
+                              <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[3]}</div>
                           </div>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
+                              <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[4]}</div>
                           </div>
                       </div>
                       <div className = {"bigImpact"}>
                           <div className={"picContainer"}>
-                              <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"} loading="lazy"></Image>
+                              <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[5]}</div>
                           </div>
                       </div>
                   </div>
               </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All {"--->"}</Link></button>
+              <button className = {"seeAll"}><Link href={"/"}>See All {"-->"}</Link></button>
           </div>
       </div>
   )

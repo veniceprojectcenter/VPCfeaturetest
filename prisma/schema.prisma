@@ -4,8 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider   = "postgresql"
-  url        = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Project {
@@ -23,7 +23,7 @@ model Project {
 
 model Dataurl {
   id        String       @id @unique @default(uuid())
-  projectId String       
+  projectId String
   url       String
   text      String
   type      DATAURL_TYPE
@@ -45,6 +45,16 @@ model Maintainer {
   password String
 }
 
+model AutoSlideshow {
+  id               Int      @id @unique @default(autoincrement())
+  backgroundColors String[]
+  pictureCaptions  String[]
+  slideDelay       Float
+  pictures         String[]
+  picWidth         Int
+  picHeight        Int
+}
+
 enum DATAURL_TYPE {
   DOWNLOAD
   EMBED
@@ -57,4 +67,3 @@ enum PROJECT_TYPE {
   APP
   PUBLICATION
 }
-

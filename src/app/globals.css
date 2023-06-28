@@ -39,7 +39,7 @@ body {
 }
 
 .flexNavBar .menuBox .menu {
-    @apply text-2xl;
+    font-size:2vw;
     @apply text-white;
     font-family:"Verdana","Garamond","Times New Roman","Courier New";
 }
@@ -49,7 +49,7 @@ body {
 }
 
 .flexNavBar .vpcBox .VPC {
-    font-size:125%;
+    font-size:1.414vw;
     color:white;
     text-align:right;
     font-family:"Verdana","Times New Roman","Garamond","Courier New";
@@ -60,7 +60,7 @@ body {
 }
 
 .flexNavBar .loginBox .logIn {
-    font-size:100%;
+    font-size:1vw;
     color:white;
     font-family:"Verdana","Times New Roman","Garamond","Courier New";
 }
@@ -173,7 +173,7 @@ body {
 }
 
 .footer .addressSection {
-    height:90%;
+    height:10vh;
     width:25%;
     margin:auto;
     display: flex;
@@ -183,20 +183,20 @@ body {
 }
 
 .footer .addressSection .sectionTitle {
-    font-size:1.4em;
-    margin:2%;
+    font-size:1.8vw;
+    margin:0.2vw 0.5vw 0.4vw;
     color:white;
     font-weight: bold;
 }
 
 .footer .addressSection .address {
-    font-size:0.8em;
-    margin:1%;
+    font-size:1vw;
+    margin:0.2vw 0.5vw 0.4vw;
     color:white;
 }
 
 .footer .studentSection {
-    height:90%;
+    height:10vh;
     width:25%;
     margin:auto;
     display: flex;
@@ -205,26 +205,26 @@ body {
 }
 
 .footer .studentSection .sectionTitle {
-    font-size:1.4em;
+    font-size:1.7vw;
     margin:2%;
     color:white;
     font-weight: bold;
 }
 
 .footer .studentSection .program{
-    font-size:0.8em;
+    font-size:1vw;
     margin:1%;
     color:white;
 }
 
 .footer .studentSection .team {
-    font-size:0.8em;
+    font-size:1vw;
     margin:1%;
     color:white;
 }
 
 .footer .wpiSection {
-    height:90%;
+    height:10vh;
     width:25%;
     margin:auto;
     display: flex;
@@ -233,20 +233,21 @@ body {
 }
 
 .footer .wpiSection .sectionTitle {
-    font-size:1.4em;
+    font-size:1.7vw;
     margin:2%;
     color:white;
     font-weight: bold;
 }
 
 .footer .wpiSection .wpi {
-    font-size:0.8em;
+    font-size:1vw;
     margin:1%;
     color:white;
 }
 
 .footer .wpiSection .wpiGlobal {
-    font-size:0.8em;
+    font-size:1vw;
     margin:1%;
     color:white;
 }
+

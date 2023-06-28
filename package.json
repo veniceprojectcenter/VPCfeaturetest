@@ -1,4 +1,4 @@
-  {
+{
   "name": "venice-project-center",
   "version": "0.1.0",
   "private": true,
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@netlify/next": "^1.4.6",
-    "@prisma/client": "^4.15.0",
+    "@prisma/client": "^4.16.1",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
@@ -47,7 +47,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/sanitize-html": "^2.9.0",
     "eslint-plugin-storybook": "^0.6.12",
-    "prisma": "^4.15.0",
+    "prisma": "^4.16.1",
     "storybook": "^7.0.18"
   }
 }
