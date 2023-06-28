@@ -1,6 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
 import {AutoSlideshow} from "@prisma/client";
 import {prisma} from '../../db';
+import {generateSlideshow} from "@/app/api/random/AutoSlideshow/generateSlideshow";
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
     if(id === null) {
@@ -59,28 +60,6 @@ export async function POST(request: NextRequest) {
             response:"Slideshow Entered unsuccessfully"
         }
         return JSON.stringify(response);
-    }
-
-}
-
-export async function generateSlideshow(backgroundColors:string[],pictureCaptions:string[],slideDelay:number,pictures:string[],picWidth:number,picHeight:number) {
-    console.log("prisma connection established");
-    try {
-        console.log("Before tweet creation");
-        await prisma.autoSlideshow.create({
-            data: {
-                backgroundColors:backgroundColors,
-                pictureCaptions:pictureCaptions,
-                slideDelay:slideDelay,
-                pictures:pictures,
-                picWidth:picWidth,
-                picHeight
-            }
-        });
-        console.log("After autoslideshow creation");
-    } catch(error) {
-        console.log("Database error");
-        throw error;
     }
 
 }
