@@ -53,7 +53,10 @@ export async function POST(request: Request) {
                 title: project.title,
                 description: project.description,
                 tags: project.tags,
+                term:project.term,
                 img: project.img,
+                year:project.year,
+                type:project.type,
                 dataurls: {
                     createMany: {
                         data: dataUrls

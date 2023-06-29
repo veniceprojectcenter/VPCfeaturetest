@@ -7,6 +7,7 @@ import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import PopupWithClose from "@/app/components/random/PopupWithClose";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
+import {DataUrlForm} from "@/app/components/ProjectContent/DataUrlForm";
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
@@ -106,24 +107,13 @@ export function EditableProject(props:{id:string}) {
                     {dataurl.text}
                 </a>)
         });
+        // @ts-ignore
+        let addLink = (event) => {
+
+        }
         dataElements.push(
             <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
-                <div className={"m-10"}>
-                    <form>
-                        <label>Url Input</label>
-                        <input type={"text"}/>
-                        <div></div>
-                        <label> link text </label>
-                        <input type={"text"}/>
-                        <h1>type</h1>
-                        <select>
-                            <option>DOWNLOAD</option>
-                            <option>LINK</option>
-                            <option>EMBED</option> {/* TODO make a good way to display embeds on projects */}
-                        </select>
-                        <input type={"submit"}/>
-                    </form>
-                </div>
+                <DataUrlForm editableProject={editedProject} setProject={setEditedProject}></DataUrlForm>
             </PopupWithClose>
         )
         return (
