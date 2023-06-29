@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
-import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
-import Popup from "reactjs-popup";
-import popupWindow, {OpenButton} from "@/app/components/random/PopupWithClose";
+import {IqpTeamComp} from "@/app/components/ProjectContent/IqpTeamComp";
+import {OpenButton} from "@/app/components/random/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import PopupWithClose from "@/app/components/random/PopupWithClose";
@@ -11,7 +10,7 @@ import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescrip
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
-    let [editedProject,setEditedProject] = useState<Project>({} as (Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}))
+    let [editedProject,setEditedProject] = useState<Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}>({} as (Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}))
     let [loading,setLoading] = useState(true)
     let [open,setOpen] = useState(false);
     let dataUrls:Dataurl[] = []
@@ -36,25 +35,50 @@ export function EditableProject(props:{id:string}) {
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
-        switch (target.id) {
+        let idWithoutNum = target.id.replace(/[0-9]/g, '').replace(/ /g,"").toLowerCase();
+        let index = -1;
+        console.log(idWithoutNum)
+        switch (idWithoutNum) {
             case 'description':
+                console.log(target.id)
                 editedProject.description = event.target.textContent;
                 break;
             case 'title':
+                console.log(target.id)
                 editedProject.title = event.target.textContent;
                 break;
             case 'year':
+                console.log(target.id)
                 editedProject.year = parseInt(event.target.textContent);
                 break;
             case 'term':
                 //TODO add checks to make sure its a valid term
                 editedProject.term = event.target.textContent[0];
                 break;
+            case 'team':
+                index = parseInt(target.id.replace(/\D/g,''));
+                if(editedProject.iqp_team?.team[index]!==undefined) {
+                    editedProject.iqp_team.team[index] = event.target.textContent;
+                }
+                break;
+            case 'sponsors':
+                index = parseInt(target.id.replace(/\D/g,''));
+                if(editedProject.iqp_team?.sponsors[index]!==undefined) {
+                    editedProject.iqp_team.sponsors[index] = event.target.textContent;
+                }
+                break;
+            case 'advisors':
+                index = parseInt(target.id.replace(/\D/g,''));
+                if(editedProject.iqp_team?.advisors[index]!==undefined) {
+                    editedProject.iqp_team.advisors[index] = event.target.textContent;
+                }
+                break;
         }
         setEditedProject(editedProject);
     }
     // @ts-ignore
     let commit = async (event) => {
+        console.log(editedProject)
         let create = await fetch(window.location.origin+"/api/projects",{
             method:"POST",
             body:JSON.stringify(editedProject),
@@ -78,17 +102,19 @@ export function EditableProject(props:{id:string}) {
         }
         dataElements = dataUrls.map((dataurl,index) => {
             return(
-                <a href={dataurl.url}    key={dataurl.id + "link"} className={"text-white rounded border-4 text-base"}>
+                <a href={dataurl.url}  key={dataurl.id + "link"} className={"text-white rounded border-4 text-base"}>
                     {dataurl.text}
                 </a>)
         });
         dataElements.push(
             <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
-                <div>
+                <div className={"m-10"}>
                     <form>
-                        <h1>Url Input</h1>
+                        <label>Url Input</label>
                         <input type={"text"}/>
-                        <h1> link text </h1>
+                        <div></div>
+                        <label> link text </label>
+                        <input type={"text"}/>
                         <h1>type</h1>
                         <select>
                             <option>DOWNLOAD</option>
@@ -122,9 +148,9 @@ export function EditableProject(props:{id:string}) {
                         </div>
                     </div>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
-                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors}></IqpTeamComp>
-                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
+                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Team"} team={project.iqp_team?.team} idPrefix={"team"}></IqpTeamComp>
+                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"sponsors"}></IqpTeamComp>
+                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"advisor"}></IqpTeamComp>
                     </div>
                 </div>
                 <div>

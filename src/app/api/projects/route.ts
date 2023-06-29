@@ -24,28 +24,87 @@ export async function GET(request:NextRequest) {
 }
 
 export async function POST(request: Request) {
-    let project:Project = await request.json();
-    if(project.id == undefined) {
-        const createProject = await prisma.project.create({data:project});
+    let project: (Project & { iqp_team: IqpTeam | null, dataurls: Dataurl[] | null }) = await request.json();
+    if (project.id == undefined) {
+        let createProjectData: Project = project;
+        let iqpTeamQuery = {};
+        let dataUrls: Dataurl[] = [];
+        if (project.iqp_team != null) {
+            iqpTeamQuery = {
+                connectOrCreate: {
+                    where: {
+                        id: project.iqp_team.id
+                    },
+                    create: {
+                        id: project.iqp_team.id,
+                        sponsors: project.iqp_team.sponsors,
+                        advisors: project.iqp_team.advisors,
+                        team: project.iqp_team.team
+                    }
+
+                }
+            }
+        }
+        if (project.dataurls != null) {
+            dataUrls = project.dataurls;
+        }
+        const createProjectWithTeam = await prisma.project.create({
+            data: {
+                title: project.title,
+                description: project.description,
+                tags: project.tags,
+                img: project.img,
+                dataurls: {
+                    createMany: {
+                        data: dataUrls
+                    }
+                },
+                iqp_team: iqpTeamQuery
+            }
+        });
         return NextResponse.json("created project");
     } else {
-        const updateProject = await prisma.project.update({
-            where:{
-                id:project.id
-            },
-            data:{
-                title:project.title,
-                description:project.description,
-                type:project.type,
-                term:project.term,
-                img:project.img,
-                tags:project.tags,
-                year:project.year,
-            }
-        })
-        return NextResponse.json("updated project");
-
+        if (project.iqp_team != null) {
+            const updateProject = await prisma.project.update({
+                where: {
+                    id: project.id
+                },
+                data: {
+                    title: project.title,
+                    description: project.description,
+                    type: project.type,
+                    term: project.term,
+                    img: project.img,
+                    tags: project.tags,
+                    year: project.year,
+                    iqp_team: {
+                        update: {
+                            id: project.iqp_team.id,
+                            team: project.iqp_team.team,
+                            advisors: project.iqp_team.advisors,
+                            sponsors: project.iqp_team.sponsors
+                        }
+                    }
+                }
+            });
+        } else {
+            const updateProject = await prisma.project.update({
+                where: {
+                    id: project.id
+                },
+                data: {
+                    title: project.title,
+                    description: project.description,
+                    type: project.type,
+                    term: project.term,
+                    img: project.img,
+                    tags: project.tags,
+                    year: project.year,
+                }
+            });
+        }
     }
+    return NextResponse.json("updated project");
 }
 
 //TODO rework and simplify

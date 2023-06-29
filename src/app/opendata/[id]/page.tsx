@@ -1,6 +1,6 @@
 import {getProject} from "@/app/api/projects/route";
 import {Dataurl} from "@prisma/client";
-import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
+import {IqpTeamComp} from "@/app/components/ProjectContent/IqpTeamComp";
 import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
