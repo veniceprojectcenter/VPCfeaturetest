@@ -46,9 +46,9 @@ export default async function Page({params}: {
                         <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
-                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors}></IqpTeamComp>
-                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
+                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team} idPrefix={"Team"}></IqpTeamComp>
+                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"Sponsors"}></IqpTeamComp>
+                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"Advisors"}></IqpTeamComp>
                     </div>
                 </div>
             </div>
