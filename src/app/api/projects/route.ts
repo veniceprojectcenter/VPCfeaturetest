@@ -67,8 +67,31 @@ export async function POST(request: Request) {
         });
         return NextResponse.json("created project");
     } else {
+        let dataUrls:Dataurl[] = [];
+        if(project.dataurls != null) {
+            for (let i = 0; i < project.dataurls.length; i++) {
+                dataUrls.push(project.dataurls[i]);
+            }
+        }
+        let upsertObject = dataUrls.map((dataUrl) => {
+            return {
+                where: {
+                    id:dataUrl.id
+                },
+                update: {
+                    url: dataUrl.url,
+                    text: dataUrl.text,
+                    type: dataUrl.type,
+                },
+                create: {
+                    url: dataUrl.url,
+                    text: dataUrl.text,
+                    type: dataUrl.type,
+                }
+            }
+        });
         if (project.iqp_team != null) {
-            const updateProject = await prisma.project.update({
+            const updateProject =   await prisma.project.update({
                 where: {
                     id: project.id
                 },
@@ -87,6 +110,9 @@ export async function POST(request: Request) {
                             advisors: project.iqp_team.advisors,
                             sponsors: project.iqp_team.sponsors
                         }
+                    },
+                    dataurls: {
+                        upsert: upsertObject
                     }
                 }
             });

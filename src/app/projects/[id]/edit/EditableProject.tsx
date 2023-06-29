@@ -113,7 +113,7 @@ export function EditableProject(props:{id:string}) {
         }
         dataElements.push(
             <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
-                <DataUrlForm editableProject={editedProject} setProject={setEditedProject}></DataUrlForm>
+                <DataUrlForm editableProject={editedProject} setProject={setEditedProject} postSubmitCallback={() => setOpen(false)}></DataUrlForm>
             </PopupWithClose>
         )
         return (

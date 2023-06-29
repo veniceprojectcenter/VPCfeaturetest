@@ -3,7 +3,9 @@ import React from "react";
 import {Dataurl, DATAURL_TYPE, IqpTeam, Project} from "@prisma/client";
 
 export function DataUrlForm(props:{editableProject:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null},
-    setProject:(value: (((prevState: Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) => Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})) => void}) {
+    setProject:(value: (((prevState: Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) => Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})) => void,
+    postSubmitCallback?:Function}
+) {
     let addDataUrl = (event:React.FormEvent<HTMLFormElement>)  => {
         event.preventDefault();
         //This is adding the data of the from onto the target without breaking the type system
@@ -21,6 +23,9 @@ export function DataUrlForm(props:{editableProject:Project & {iqp_team: IqpTeam 
         }
         props.editableProject.dataurls?.push(dataUrl);
         props.setProject(props.editableProject);
+        if(props.postSubmitCallback != undefined) {
+            props.postSubmitCallback()
+        }
     }
     return(
     <div className={"m-10"}>
