@@ -65,7 +65,7 @@ export function EditableProject(props:{id:string}) {
         }
         dataElements = dataUrls.map((dataurl,index) => {
             return(
-                <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl}></EditableDataUrl>
+                <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={(project) => setEditedProject(project)}></EditableDataUrl>
             )
         });
         dataElements.push(
