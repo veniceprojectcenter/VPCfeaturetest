@@ -1,8 +1,8 @@
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {fetchProjects} from "@/app/projects/[id]/fetchProjects";
+import {fetchProjects} from "@/app/components/ProjectContent/fetchProjects";
 import {getProject} from "@/app/api/projects/route";
-import {IqpTeamComp} from "@/app/components/ProjectContent/IqpTeamComp";
+import {IqpTeamComp} from "@/app/components/ProjectContent/iqpTeam/IqpTeamComp";
 import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl/DataUrlDisplay";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";

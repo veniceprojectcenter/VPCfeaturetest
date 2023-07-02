@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
-import {IqpTeamComp} from "@/app/components/ProjectContent/IqpTeamComp";
-import {OpenButton} from "@/app/components/random/PopupWithClose";
+import {IqpTeamComp} from "@/app/components/ProjectContent/iqpTeam/IqpTeamComp";
+import {PopUpButton} from "@/app/components/random/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import PopupWithClose from "@/app/components/random/PopupWithClose";
@@ -13,40 +13,21 @@ import {UpdateProject} from "@/app/components/ProjectContent/editingCode/UpdateP
 import {set} from "zod";
 import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitProject";
 import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
+import {FetchProjects} from "@/app/components/ProjectContent/fetchProjects";
+import {IqpTeamForm} from "@/app/components/ProjectContent/iqpTeam/IqpTeamForm";
 
-export function EditableProject(props:{id:string}) {
-    let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
-    let [editedProject,setEditedProject] = useState<Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}>({} as (Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}))
-    let [loading,setLoading] = useState(true)
-    let [open,setOpen] = useState(false);
+export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}}) {
+    let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})>(props.project)
+    let [editedProject,setEditedProject] = useState<Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}>(props.project)
     let dataUrls:Dataurl[] = []
+    let [test,setTest] = useState(false);
     let dataElements:JSX.Element[] = []
     let term = "";
 
-    //This loads the project from the database
-    useEffect(() => {
-        const getData = async () => {
-            let projects = await getProject(props.id)
-            console.log(projects)
-            setProject(projects.projects[0])
-            setEditedProject(projects.projects[0]);
-            setLoading(false)
-        }
-        getData()
-        return () => {
-
-        }
-    },[props.id])
-    // this returns loading if the page is still requesting data
-    if(loading) {
-        return (<div className={"text-white"}>
-            loading
-        </div>)
-    }
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
-        UpdateProject(target.id,target.textContent,editedProject,(project) => setEditedProject(project));
+        UpdateProject(target.id,target.textContent,editedProject,(project) => setEditedProject({...project}));
     }
     // @ts-ignore
     let commit = async (event) => {
@@ -65,13 +46,15 @@ export function EditableProject(props:{id:string}) {
         }
         dataElements = dataUrls.map((dataurl,index) => {
             return(
-                <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={(project) => setEditedProject(project)}></EditableDataUrl>
+                <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={ (project) => setEditedProject(project)}></EditableDataUrl>
             )
         });
         dataElements.push(
-            <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
-                <DataUrlForm editableProject={editedProject} onUpdateState={(project) => setEditedProject(project)}  postSubmitCallback={() => setOpen(false)}></DataUrlForm>
-            </PopupWithClose>
+            <PopUpButton>
+                <DataUrlForm editableProject={editedProject} onUpdateState={(project) => {
+                    setEditedProject({...project});
+                }}></DataUrlForm>
+            </PopUpButton>
         )
         return (
             <div className={"flex flex-col"}>
@@ -95,7 +78,7 @@ export function EditableProject(props:{id:string}) {
                         </div>
                     </div>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Team"} team={project.iqp_team?.team} idPrefix={"team"}></IqpTeamComp>
+                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Team"} team={project.iqp_team?.team} idPrefix={"team"}/>
                         <IqpTeamComp onBlur={leftFocus} contentEditable title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"sponsors"}></IqpTeamComp>
                         <IqpTeamComp onBlur={leftFocus} contentEditable title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"advisor"}></IqpTeamComp>
                     </div>
@@ -110,11 +93,4 @@ export function EditableProject(props:{id:string}) {
     return (<ProjectNotFound></ProjectNotFound>)
 }
 
-async function getProject(id:string):Promise<ProjectRequestResponse> {
-    let domain = (new URL(window.location.href));
-    let projectsResponse = await fetch(domain.origin+"/api/projects/?id="+id,{
-        method: "GET"
-    });
-    return await projectsResponse.json();
-}
 

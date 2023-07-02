@@ -12,7 +12,7 @@ export default function EditableDataUrl(props:{dataurl:Dataurl
 
     return(
         <div>
-            <PopupWithClose open={open} setOpen={setOpen}>
+            <PopupWithClose open={open} setOpenCallback={(value) => setOpen(value)}>
                 <div className={"m-20"}>
                     <DataUrlForm editableProject={props.editableProject} onUpdateState={props.onUpdateState} postSubmitCallback={() => setOpen(false)} dataUrl={props.dataurl}></DataUrlForm>
                 </div>
