@@ -7,7 +7,10 @@ import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import PopupWithClose from "@/app/components/random/PopupWithClose";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
-import {DataUrlForm} from "@/app/components/ProjectContent/DataUrlForm";
+import {DataUrlForm} from "@/app/components/ProjectContent/DataUrl/DataUrlForm";
+import {DataUrlButton} from "@/app/components/ProjectContent/DataUrl/DataUrlButton";
+import {UpdateProject} from "@/app/components/ProjectContent/DataUrl/UpdateProject";
+import {set} from "zod";
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
@@ -38,44 +41,7 @@ export function EditableProject(props:{id:string}) {
         let target = event.target;
         let idWithoutNum = target.id.replace(/[0-9]/g, '').replace(/ /g,"").toLowerCase();
         let index = -1;
-        console.log(idWithoutNum)
-        switch (idWithoutNum) {
-            case 'description':
-                console.log(target.id)
-                editedProject.description = event.target.textContent;
-                break;
-            case 'title':
-                console.log(target.id)
-                editedProject.title = event.target.textContent;
-                break;
-            case 'year':
-                console.log(target.id)
-                editedProject.year = parseInt(event.target.textContent);
-                break;
-            case 'term':
-                //TODO add checks to make sure its a valid term
-                editedProject.term = event.target.textContent[0];
-                break;
-            case 'team':
-                index = parseInt(target.id.replace(/\D/g,''));
-                if(editedProject.iqp_team?.team[index]!==undefined) {
-                    editedProject.iqp_team.team[index] = event.target.textContent;
-                }
-                break;
-            case 'sponsors':
-                index = parseInt(target.id.replace(/\D/g,''));
-                if(editedProject.iqp_team?.sponsors[index]!==undefined) {
-                    editedProject.iqp_team.sponsors[index] = event.target.textContent;
-                }
-                break;
-            case 'advisors':
-                index = parseInt(target.id.replace(/\D/g,''));
-                if(editedProject.iqp_team?.advisors[index]!==undefined) {
-                    editedProject.iqp_team.advisors[index] = event.target.textContent;
-                }
-                break;
-        }
-        setEditedProject(editedProject);
+        UpdateProject(target.id,target.textContent,editedProject,setEditedProject);
     }
     // @ts-ignore
     let commit = async (event) => {
@@ -103,14 +69,9 @@ export function EditableProject(props:{id:string}) {
         }
         dataElements = dataUrls.map((dataurl,index) => {
             return(
-                <a href={dataurl.url}  key={dataurl.id + "link"} className={"text-white rounded border-4 text-base"}>
-                    {dataurl.text}
-                </a>)
+                <DataUrlButton key={dataurl.id+"buttion"} dataurl={dataurl}></DataUrlButton>
+            )
         });
-        // @ts-ignore
-        let addLink = (event) => {
-
-        }
         dataElements.push(
             <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
                 <DataUrlForm editableProject={editedProject} setProject={setEditedProject} postSubmitCallback={() => setOpen(false)}></DataUrlForm>
