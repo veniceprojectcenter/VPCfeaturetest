@@ -1,7 +1,7 @@
 import Popup from "reactjs-popup";
 import React, {Children, useState} from "react";
 
-export default function PopupWithClose(props:{open:boolean, setOpen: (value: (((prevState: boolean) => boolean) | boolean)) => void,children:React.ReactNode,openButton:React.ReactNode}) {
+export default function PopupWithClose(props:{open:boolean, setOpen: (value: (((prevState: boolean) => boolean) | boolean)) => void,children:React.ReactNode,openButton?:React.ReactNode}) {
 
     return (
         <div>

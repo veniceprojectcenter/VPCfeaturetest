@@ -1,8 +1,12 @@
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
+export interface OnUpdateStateCallback {
+    (project:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}):void
+}
+
 
 export function UpdateProject(id:string,content:string
     ,editedProject:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}
-    ,setEditedProject:(value: (((prevState: Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) => Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})) => void ) {
+    ,OnUpdatedState: OnUpdateStateCallback ) {
     let idWithoutNum = id.replace(/[0-9]/g, '').replace(/ /g,"").toLowerCase();
     let index = -1;
     console.log(idWithoutNum)
@@ -39,5 +43,5 @@ export function UpdateProject(id:string,content:string
             }
             break;
     }
-    setEditedProject(editedProject);
+    OnUpdatedState(editedProject);
 }

@@ -1,9 +1,10 @@
 "use client"
 import React from "react";
 import {Dataurl, DATAURL_TYPE, IqpTeam, Project} from "@prisma/client";
+import {OnUpdateStateCallback} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 
 export function DataUrlForm(props:{editableProject:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null},
-    setProject:(value: (((prevState: Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) => Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})) => void,
+    onUpdateState:OnUpdateStateCallback,
     postSubmitCallback?:Function}
 ) {
     let addDataUrl = (event:React.FormEvent<HTMLFormElement>)  => {
@@ -22,7 +23,7 @@ export function DataUrlForm(props:{editableProject:Project & {iqp_team: IqpTeam 
             projectId:props.editableProject.id
         }
         props.editableProject.dataurls?.push(dataUrl);
-        props.setProject(props.editableProject);
+        props.onUpdateState(props.editableProject);
         if(props.postSubmitCallback != undefined) {
             props.postSubmitCallback()
         }

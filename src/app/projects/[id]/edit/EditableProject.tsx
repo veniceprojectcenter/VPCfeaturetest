@@ -9,8 +9,10 @@ import PopupWithClose from "@/app/components/random/PopupWithClose";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 import {DataUrlForm} from "@/app/components/ProjectContent/DataUrl/DataUrlForm";
 import {DataUrlButton} from "@/app/components/ProjectContent/DataUrl/DataUrlButton";
-import {UpdateProject} from "@/app/components/ProjectContent/DataUrl/UpdateProject";
+import {UpdateProject} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 import {set} from "zod";
+import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitProject";
+import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
 
 export function EditableProject(props:{id:string}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | undefined>(undefined)
@@ -21,6 +23,7 @@ export function EditableProject(props:{id:string}) {
     let dataElements:JSX.Element[] = []
     let term = "";
 
+    //This loads the project from the database
     useEffect(() => {
         const getData = async () => {
             let projects = await getProject(props.id)
@@ -34,27 +37,20 @@ export function EditableProject(props:{id:string}) {
 
         }
     },[props.id])
-
-
-    // @ts-ignore
-    let leftFocus = (event) => {
-        let target = event.target;
-        let idWithoutNum = target.id.replace(/[0-9]/g, '').replace(/ /g,"").toLowerCase();
-        let index = -1;
-        UpdateProject(target.id,target.textContent,editedProject,setEditedProject);
-    }
-    // @ts-ignore
-    let commit = async (event) => {
-        console.log(editedProject)
-        let create = await fetch(window.location.origin+"/api/projects",{
-            method:"POST",
-            body:JSON.stringify(editedProject),
-        });
-    }
+    // this returns loading if the page is still requesting data
     if(loading) {
         return (<div className={"text-white"}>
             loading
         </div>)
+    }
+    // @ts-ignore
+    let leftFocus = (event) => {
+        let target = event.target;
+        UpdateProject(target.id,target.textContent,editedProject,(project) => setEditedProject(project));
+    }
+    // @ts-ignore
+    let commit = async (event) => {
+        await CommitProject(editedProject);
     }
     if(project != undefined) {
         if(project.dataurls != null) {
@@ -69,12 +65,12 @@ export function EditableProject(props:{id:string}) {
         }
         dataElements = dataUrls.map((dataurl,index) => {
             return(
-                <DataUrlButton key={dataurl.id+"buttion"} dataurl={dataurl}></DataUrlButton>
+                <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl}></EditableDataUrl>
             )
         });
         dataElements.push(
             <PopupWithClose open={open} setOpen={setOpen} openButton={OpenButton(setOpen)}>
-                <DataUrlForm editableProject={editedProject} setProject={setEditedProject} postSubmitCallback={() => setOpen(false)}></DataUrlForm>
+                <DataUrlForm editableProject={editedProject} onUpdateState={(project) => setEditedProject(project)}  postSubmitCallback={() => setOpen(false)}></DataUrlForm>
             </PopupWithClose>
         )
         return (
