@@ -3,9 +3,6 @@ export function IqpTeamComp(props:{title:string,team:string[] | undefined,idPref
         let elementsList = props.team.map((advisor, index) => {
             return (<h1 onBlur={props.onBlur} suppressContentEditableWarning contentEditable={props.contentEditable} className={"flex mx-3 text-white font-bold"}  id={props.idPrefix + " " + index} key={advisor + index}>{advisor}</h1>)
         });
-        if(props.addElementButton != undefined) {
-            elementsList.push(props.addElementButton)
-        }
         return (
             <div className={""}>
                 <h1 className={"text-white mt-9 mb-3"}>
@@ -15,6 +12,7 @@ export function IqpTeamComp(props:{title:string,team:string[] | undefined,idPref
                     {elementsList.map((item) => (
                         item
                     ))}
+                    {props.addElementButton}
                 </div>
             </div>
         )

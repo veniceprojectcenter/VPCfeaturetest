@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
 import {IqpTeamComp} from "@/app/components/ProjectContent/iqpTeam/IqpTeamComp";
-import {PopUpButton} from "@/app/components/random/PopupWithClose";
+import {PopUpButton} from "@/app/components/random/popup/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
-import PopupWithClose from "@/app/components/random/PopupWithClose";
+import PopupWithClose from "@/app/components/random/popup/PopupWithClose";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 import {DataUrlForm} from "@/app/components/ProjectContent/DataUrl/DataUrlForm";
 import {DataUrlButton} from "@/app/components/ProjectContent/DataUrl/DataUrlButton";
@@ -15,6 +15,7 @@ import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitP
 import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
 import {FetchProjects} from "@/app/components/ProjectContent/fetchProjects";
 import {IqpTeamForm} from "@/app/components/ProjectContent/iqpTeam/IqpTeamForm";
+import {publishCloseEvent} from "@/app/components/random/popup/CloseEvent";
 
 export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})>(props.project)
@@ -53,7 +54,7 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
             <PopUpButton>
                 <DataUrlForm editableProject={editedProject} onUpdateState={(project) => {
                     setEditedProject({...project});
-                }}></DataUrlForm>
+                }} postSubmitCallback={() => publishCloseEvent("close")}></DataUrlForm>
             </PopUpButton>
         )
         return (
@@ -78,9 +79,21 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
                         </div>
                     </div>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Team"} team={project.iqp_team?.team} idPrefix={"team"}/>
-                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"sponsors"}></IqpTeamComp>
-                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"advisor"}></IqpTeamComp>
+                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Team"} team={project.iqp_team?.team} idPrefix={"team"} addElementButton={
+                            <PopUpButton>
+                                <div></div>
+                            </PopUpButton>
+                        }/>
+                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"sponsors"} addElementButton={
+                            <PopUpButton>
+                                <div></div>
+                            </PopUpButton>
+                        }/>
+                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"advisor"} addElementButton={
+                            <PopUpButton>
+                                <div></div>
+                            </PopUpButton>
+                        }/>
                     </div>
                 </div>
                 <div>

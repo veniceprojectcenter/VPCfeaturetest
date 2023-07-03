@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
-import PopupWithClose from "@/app/components/random/PopupWithClose";
+import PopupWithClose from "@/app/components/random/popup/PopupWithClose";
 import {DataUrlForm} from "@/app/components/ProjectContent/DataUrl/DataUrlForm";
 import {OnUpdateStateCallback} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 
