@@ -7,3 +7,7 @@ variable "aws_region" {
 variable "versel_token" {
   description = "versel api token"
 }
+
+variable "DATABASE_URL" {
+  description = "database url"
+}
