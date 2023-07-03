@@ -6,7 +6,7 @@ import {OnUpdateStateCallback} from "@/app/components/ProjectContent/editingCode
 export function DataUrlForm(props:{editableProject:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null},
     onUpdateState:OnUpdateStateCallback,
     dataUrl?:Dataurl,
-    postSubmitCallback?:Function}
+    closeCallback?:Function}
 ) {
     let addDataUrlOrUpdate = (event:React.FormEvent<HTMLFormElement>)  => {
         event.preventDefault();
@@ -34,14 +34,13 @@ export function DataUrlForm(props:{editableProject:Project & {iqp_team: IqpTeam 
         }
         props.editableProject.dataurls?.push(dataUrl);
         props.onUpdateState(props.editableProject);
-        if(props.postSubmitCallback != undefined) {
-            props.postSubmitCallback()
+        if(props.closeCallback != undefined) {
+            props.closeCallback()
         }
     }
     return(
     <div className={"m-10"}>
         <form onSubmit={(event) => {
-            event.preventDefault()
             addDataUrlOrUpdate(event);
         }}>
             <label>Url Input</label>

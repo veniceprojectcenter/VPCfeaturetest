@@ -1,6 +1,5 @@
 import Popup from "reactjs-popup";
-import React, {Children, useRef, useState} from "react";
-import {subscribeClose} from "@/app/components/random/popup/CloseEvent";
+import React, {useState} from "react";
 
 export default function PopupWithClose(props:{open:boolean, setOpenCallback:(value:boolean)=> void,children?:React.ReactNode}) {
     return (
@@ -25,19 +24,20 @@ export default function PopupWithClose(props:{open:boolean, setOpenCallback:(val
 
 export function PopUpButton(props:{children?:React.ReactNode}) {
     let [open,setOpen] = useState(false);
-    function postSubmitCallback() {
+    function closeCallback() {
         setOpen(false);
     }
     let childrenWithProps = props.children;
+    //this allows children to call a
     if(props.children != undefined) {
         if (React.isValidElement(props.children)) {
-            childrenWithProps = React.cloneElement(props.children as JSX.Element, {postSubmitCallback})
+            childrenWithProps = React.cloneElement(props.children as JSX.Element, {closeCallback})
         }
     }
 
     return (
         <div>
-            <PopupWithClose open={open} setOpenCallback={(value) => setOpen(value)}>{props.children}</PopupWithClose>
+            <PopupWithClose open={open} setOpenCallback={(value) => setOpen(value)}>{childrenWithProps}</PopupWithClose>
             <button className={""} onClick={() => setOpen(true)}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                      stroke="white" className="w-6 h-6">

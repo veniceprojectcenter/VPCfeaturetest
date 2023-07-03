@@ -14,7 +14,7 @@ export default function EditableDataUrl(props:{dataurl:Dataurl
         <div>
             <PopupWithClose open={open} setOpenCallback={(value) => setOpen(value)}>
                 <div className={"m-20"}>
-                    <DataUrlForm editableProject={props.editableProject} onUpdateState={props.onUpdateState} postSubmitCallback={() => setOpen(false)} dataUrl={props.dataurl}></DataUrlForm>
+                    <DataUrlForm editableProject={props.editableProject} onUpdateState={props.onUpdateState} closeCallback={() => setOpen(false)} dataUrl={props.dataurl}></DataUrlForm>
                 </div>
             </PopupWithClose>
             <button onClick={()=> setOpen(true)} key={props.dataurl.id + "link"} className={"text-white rounded border-4 text-base"}>
