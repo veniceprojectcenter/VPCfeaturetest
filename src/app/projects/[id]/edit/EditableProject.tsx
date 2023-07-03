@@ -42,7 +42,7 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
         }
         dataElements = dataUrls.map((dataurl,index) => {
             return(
-                <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={ (project) => setEditedProject(project)}></EditableDataUrl>
+                <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={ (project) => setEditedProject({...project})}></EditableDataUrl>
             )
         });
         dataElements.push(
@@ -55,6 +55,12 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
         return (
             <div className={"flex flex-col"}>
                 <ProjectTitleCard project={project} onBlur={leftFocus} contentEditable>
+                    <PopUpButton className={"flex items-center my-20"} customButton={
+                        <div className={"text-white  border-white border-2"}>
+                            change image
+                        </div>
+                    }>
+                    </PopUpButton>
                     <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
                         <h1 className={"text-white flex items-center"}>YEAR: </h1>
                         <h1 className={"text-white mx-3 flex items-center"} id={"year"} onBlur={leftFocus} contentEditable suppressContentEditableWarning={true}>{project.year}</h1>

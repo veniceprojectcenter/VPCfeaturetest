@@ -22,8 +22,9 @@ export default function PopupWithClose(props:{open:boolean, setOpenCallback:(val
     )
 }
 
-export function PopUpButton(props:{children?:React.ReactNode}) {
+export function PopUpButton(props:{customButton?:React.ReactNode,children?:React.ReactNode,className?:string}) {
     let [open,setOpen] = useState(false);
+    let button = plusSign(); // this sets the default button
     function closeCallback() {
         setOpen(false);
     }
@@ -34,16 +35,23 @@ export function PopUpButton(props:{children?:React.ReactNode}) {
             childrenWithProps = React.cloneElement(props.children as JSX.Element, {closeCallback})
         }
     }
-
+    if(props.customButton != undefined) {
+        button = props.customButton as React.JSX.Element;
+    }
     return (
         <div>
             <PopupWithClose open={open} setOpenCallback={(value) => setOpen(value)}>{childrenWithProps}</PopupWithClose>
-            <button className={""} onClick={() => setOpen(true)}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                     stroke="white" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                </svg>
+            <button className={props.className} onClick={() => setOpen(true)}>
+                {button}
             </button>
         </div>
     )
+}
+
+export function plusSign() {
+    return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                                 stroke="white" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+    </svg>)
 }
