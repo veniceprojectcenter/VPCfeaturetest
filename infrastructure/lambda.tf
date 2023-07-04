@@ -8,6 +8,11 @@ resource "aws_lambda_function" "writeFile" {
   }
 }
 
+data "archive_file" "writeFileZip" {
+  type = "zip"
+  output_path = ""
+}
+
 
 resource "aws_iam_role" "lambda_role" {
   name = "vpc-lambdaroll"
