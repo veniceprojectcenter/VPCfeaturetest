@@ -1,6 +1,7 @@
 resource "aws_lambda_function" "writeFile" {
   function_name = ""
   role          = aws_iam_role.lambda_role.arn
+  filename = data.archive_file.writeFileZip.output_path
   environment {
     variables = {
       bucket = aws_s3_bucket.vpcBucket.bucket
@@ -10,7 +11,8 @@ resource "aws_lambda_function" "writeFile" {
 
 data "archive_file" "writeFileZip" {
   type = "zip"
-  output_path = ""
+  source_dir = "./lambdas/writeFileLambda"
+  output_path = "./bin/writeFileLambda"
 }
 
 
