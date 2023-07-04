@@ -1,0 +1,27 @@
+website 70% completed as of 7/4
+infrastructure 20% compleate as of 7/4
+
+7/4
+[] add ability to upload files to edit(no need to call api) - website
+[] finish ability to create projects - website
+[] html sanitation - website
+[] tags - website
+7/5
+[] finish connecting route to stage - infrastructure
+[] import and style impacts - website
+[] add edit to all other pages - website
+[] tag filtiering
+7/6
+[] pick a database to use and module it in terraform - infrastructure
+[] add websites to matching iqps - website/setup
+[] write scripts for importing data into infrastucture - infrastructure
+[] connect the api route to the website adn test file upload - website/infrastructure
+[] put tarraform state into an s3 bucket -infrastructure
+7/7
+[] see if its posible to move all existing applications to a cheaper location - infrastructure
+[] set up full production environment on local infrastructure - infrastructure
+[] prepare website for demo by bugfixing and filling content - inrfrastructure
+[] take a backup of the sql state so that re imports are easy -infrastructure
+7/8
+[] do demo
+[]

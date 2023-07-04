@@ -7,6 +7,7 @@ resource "aws_apigatewayv2_api" "vpc_file_api" {
 resource "aws_apigatewayv2_stage" "imgStage" {
   api_id = aws_apigatewayv2_api.vpc_file_api.id
   name   = "img"
+  auto_deploy = true
 
 }
 
