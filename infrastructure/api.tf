@@ -1,24 +1,26 @@
 # aws api gateway stuff
-resource "aws_apigatewayv2_api" "vpc_file_api" {
-  name          = "vpc_file_api"
-  protocol_type = "HTTP"
+resource "aws_api_gateway_rest_api" "vpc_file_api" {
+  name = "vpc_file_api"
 }
 
-resource "aws_apigatewayv2_stage" "imgStage" {
-  api_id = aws_apigatewayv2_api.vpc_file_api.id
-  name   = "img"
-  auto_deploy = true
-
+#this adds the /files route to our api
+resource "aws_api_gateway_resource" "vpc_file_resource" {
+  rest_api_id   = aws_api_gateway_rest_api.vpc_file_api.id
+  parent_id     = aws_api_gateway_rest_api.vpc_file_api.root_resource_id
+  path_part     = "files"
 }
 
-resource "aws_apigatewayv2_integration" "invokeLambda" {
-  api_id           = aws_apigatewayv2_api.vpc_file_api.id
-  integration_type = "AWS_PROXY"
-  integration_uri = aws_lambda_function.writeFile.invoke_arn
+resource "aws_api_gateway_method" "files_get_method" {
+  authorization = "NONE"
+  http_method   = "POST"
+  resource_id   = aws_api_gateway_resource.vpc_file_resource.id
+  rest_api_id   = aws_api_gateway_rest_api.vpc_file_api.id
 }
 
-resource "aws_apigatewayv2_route" "addImage" {
-  api_id    = aws_apigatewayv2_api.vpc_file_api.id
-  route_key = "POST /imgs"
-  target = "integrations/${aws_apigatewayv2_integration.invokeLambda.id}"
+resource "aws_api_gateway_integration" "get_file_integration" {
+  resource_id = aws_api_gateway_resource.vpc_file_resource.id
+  rest_api_id = aws_api_gateway_rest_api.vpc_file_api.id
+  http_method = aws_api_gateway_method.files_get_method.http_method
+  type        = "MOCK"
+  #uri =  aws_lambda_function.writeFile.invoke_arn
 }

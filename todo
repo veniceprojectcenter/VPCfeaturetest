@@ -7,10 +7,9 @@ infrastructure 20% compleate as of 7/4
 7/5
 [] import and style impacts - website
 [] fix auth
-[] finish connecting route to stage - infrastructure
-[] add edit to all other pages - website
+[x] finish connecting route to stage - infrastructure
+[x] add edit to all other pages - website
 [] add ability to add tags and categories
-[] tag filtiering
 7/6
 [] pick a database to use and module it in terraform - infrastructure
 [] add websites to matching iqps - website/setup
@@ -27,3 +26,4 @@ infrastructure 20% compleate as of 7/4
 
 
 [] html sanitation - website
+[] tag filtiering
