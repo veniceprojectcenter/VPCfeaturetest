@@ -3,7 +3,8 @@ import {SignJWT, jwtVerify, type JWTPayload} from 'jose';
 //this middleware is to validate authentication
 //TODO expire is not working
 export async function middleware(request:NextRequest) {
-    let token = request.cookies.get("token")?.value;
+    let authCookie = request.cookies.get("token");
+    let token = authCookie?.value;
     if(token == undefined) {
         if(request.nextUrl.pathname.includes("/edit")) {
             console.log(new URL("/",request.url).toString());

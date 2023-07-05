@@ -5,22 +5,24 @@ infrastructure 20% compleate as of 7/4
 [x] add ability to upload files to edit(no need to call api) - website
 [x] finish ability to create projects - website
 7/5
-[] import and style impacts - website
-[] fix auth
+[] import impacts - website
+[x] style impacts - website
+[x] fix auth
+[] make a way to add users
 [x] finish connecting route to stage - infrastructure
 [x] add edit to all other pages - website
 [x] write recommendations
 [] record training materials
 7/6
 [] pick a database to use and module it in terraform - infrastructure
+[] move all applications into versel with terraform
 [] add websites to matching iqps - website/setup
-[] write scripts for importing data into infrastucture - infrastructure
-[] connect the api route to the website adn test file upload - website/infrastructure
-[] put tarraform state into an s3 bucket -infrastructure
+[] write scripts for importing data into infrastructure - infrastructure
+[] put terraform state into an s3 bucket -infrastructure
 7/7
-[] see if its posible to move all existing applications to a cheaper location - infrastructure
+[] connect the api route to the website and test file upload - website/infrastructure
 [] set up full production environment on local infrastructure - infrastructure
-[] prepare website for demo by bugfixing and filling content - inrfrastructure
+[] prepare website for demo by bugfix and filling content - infrastructure
 [] take a backup of the sql state so that re imports are easy -infrastructure
 7/8
 [] do demo

@@ -6,12 +6,16 @@ import {Maintainer} from "@prisma/client";
 export default async function Page() {
     const router = useRouter();
 
+    let maintainerListRequest = await fetch(     "/auth/list", {
+        method:"GET"
+    });
+    let maintainerList:Maintainer[] = await maintainerListRequest.json();
 
     // @ts-ignore I don't like that I have to do this, but it's the easiest way
     const handleSub = async (event) => {
         event.preventDefault();
         // @ts-ignore
-        await fetch("/api/auth/login", {
+        await fetch("/api/auth/create", {
             method: "POST",
             body: JSON.stringify({
                 username:event.target.username.value,
@@ -31,6 +35,18 @@ export default async function Page() {
                 <input className={"text-black"} type="password" id="password" name="password" required />
                 <button className={"text-white"} type="submit">Submit</button>
             </form>
+            <div>
+                {maintainerList.map((maintainer) => {
+                  return(  <div>
+                        <h1>
+                            {maintainer.id}
+                        </h1>
+                      <h1>
+                          {maintainer.username}
+                      </h1>
+                    </div>)
+                })}
+            </div>
         </div>
     )
 }

@@ -5,7 +5,7 @@ provider "aws" {
 provider "vercel" {
   api_token = var.versel_token
 }
-
+#vercel projects
 resource "vercel_project" "vpc_project" {
   name = "venice-project-center"
   framework = "nextjs"
