@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import React, {ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler, useCallback, useState} from "react";
+import {Dataurl, DATAURL_TYPE, IqpTeam, Project} from "@prisma/client";
 import {IqpTeamComp} from "@/app/components/ProjectContent/iqpTeam/IqpTeamComp";
 import {PopUpButton} from "@/app/components/random/popup/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
@@ -10,13 +10,14 @@ import {UpdateProject} from "@/app/components/ProjectContent/editingCode/UpdateP
 import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitProject";
 import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
 import {IqpTeamForm} from "@/app/components/ProjectContent/iqpTeam/IqpTeamForm";
+import {uploadFile} from "@/helpers/uploadFile";
 
 
 export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})>(props.project)
     let [editedProject,setEditedProject] = useState<Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}>(props.project)
+    let [fileState,setFileState] = useState<File | null>(null)
     let dataUrls:Dataurl[] = []
-    let [test,setTest] = useState(false);
     let dataElements:JSX.Element[] = []
     let term = "";
 
@@ -29,6 +30,20 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
     let commit = async (event) => {
         await CommitProject(editedProject);
     }
+    let onFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+        const target = event.target as typeof event.target & {
+            files:File[]
+        }
+        setFileState(target.files[0])
+    }
+
+
+    const uploadFileEvent = useCallback( async (event: React.MouseEvent<HTMLButtonElement>) => {
+        if(fileState != null) {
+            await uploadFile(fileState);
+        }
+    }, [fileState]);
+
     if(project != undefined) {
         if(project.dataurls != null) {
             for (let i = 0; i < project.dataurls.length; i++) {
@@ -52,14 +67,19 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
                 }}></DataUrlForm>
             </PopUpButton>
         )
+
         return (
             <div className={"flex flex-col"}>
                 <ProjectTitleCard project={project} onBlur={leftFocus} contentEditable>
                     <PopUpButton className={"flex items-center my-20"} customButton={
                         <div className={"text-white  border-white border-2"}>
                             change image
+                        </div>}>
+                        <div className={"m-20"}>
+                            <h1>current file:{fileState?.name ? fileState.name:"no file selected"}</h1>
+                            <input className={"w-auto"} onChange={onFileChange} type={"file"}/>
+                            <button onClick={async (event) => {await uploadFileEvent(event)}} >upload file </button>
                         </div>
-                    }>
                     </PopUpButton>
                     <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
                         <h1 className={"text-white flex items-center"}>YEAR: </h1>

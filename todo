@@ -2,13 +2,12 @@ website 70% completed as of 7/4
 infrastructure 20% compleate as of 7/4
 
 7/4
-[] add ability to upload files to edit(no need to call api) - website
+[x] add ability to upload files to edit(no need to call api) - website
 [] finish ability to create projects - website
-[] html sanitation - website
-[] tags - website
 7/5
-[] finish connecting route to stage - infrastructure
 [] import and style impacts - website
+[] fix auth
+[] finish connecting route to stage - infrastructure
 [] add edit to all other pages - website
 [] tag filtiering
 7/6
@@ -24,4 +23,6 @@ infrastructure 20% compleate as of 7/4
 [] take a backup of the sql state so that re imports are easy -infrastructure
 7/8
 [] do demo
-[]
+
+
+[] html sanitation - website
