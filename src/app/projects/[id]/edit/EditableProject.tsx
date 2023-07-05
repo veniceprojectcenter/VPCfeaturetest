@@ -1,7 +1,6 @@
-import React, {ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler, useCallback, useState} from "react";
-import {Dataurl, DATAURL_TYPE, IqpTeam, Project} from "@prisma/client";
-import {IqpTeamComp} from "@/app/components/ProjectContent/iqpTeam/IqpTeamComp";
-import {PopUpButton} from "@/app/components/random/popup/PopupWithClose";
+import React, {useCallback, useState} from "react";
+import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import PopupWithClose, {PopUpButton} from "@/app/components/random/popup/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
@@ -9,18 +8,18 @@ import {DataUrlForm} from "@/app/components/ProjectContent/DataUrl/DataUrlForm";
 import {UpdateProject} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitProject";
 import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
-import {IqpTeamForm} from "@/app/components/ProjectContent/iqpTeam/IqpTeamForm";
 import {uploadFile} from "@/helpers/uploadFile";
+import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 
 
 export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}}) {
     let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})>(props.project)
     let [editedProject,setEditedProject] = useState<Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}>(props.project)
     let [fileState,setFileState] = useState<File | null>(null)
+    let [confirmationOpen,setConfirmationOpen] = useState(false);
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
-
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
@@ -28,7 +27,9 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
     }
     // @ts-ignore
     let commit = async (event) => {
-        await CommitProject(editedProject);
+        editedProject.id = await CommitProject(editedProject);
+        setEditedProject({...editedProject});
+        setConfirmationOpen(true);
     }
     let onFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target as typeof event.target & {
@@ -70,6 +71,9 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
 
         return (
             <div className={"flex flex-col"}>
+                <PopupWithClose open={confirmationOpen} setOpenCallback={() => setConfirmationOpen(true)}>
+                   <h1> successfully created or updated project with id {editedProject.id}</h1>
+                </PopupWithClose>
                 <ProjectTitleCard project={project} onBlur={leftFocus} contentEditable>
                     <PopUpButton className={"flex items-center my-20"} customButton={
                         <div className={"text-white  border-white border-2"}>
@@ -99,29 +103,8 @@ export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | nu
                             })}
                         </div>
                     </div>
-                    <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Team"} team={project.iqp_team?.team} idPrefix={"team"} addElementButton={
-                            <PopUpButton>
-                                <IqpTeamForm editableProject={editedProject} onUpdateState={(project) => {
-                                    setEditedProject({...project})
-                                }} iqpTeamId={"team"}></IqpTeamForm>
-                            </PopUpButton>
-                        }/>
-                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"sponsors"} addElementButton={
-                            <PopUpButton>
-                                <IqpTeamForm editableProject={editedProject} onUpdateState={(project) => {
-                                    setEditedProject({...project})
-                                }} iqpTeamId={"sponsors"}></IqpTeamForm>
-                            </PopUpButton>
-                        }/>
-                        <IqpTeamComp onBlur={leftFocus} contentEditable title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"advisor"} addElementButton={
-                            <PopUpButton>
-                                <IqpTeamForm editableProject={editedProject} onUpdateState={(project) => {
-                                    setEditedProject({...project})
-                                }} iqpTeamId={"advisors"}></IqpTeamForm>
-                            </PopUpButton>
-                        }/>
-                    </div>
+                    {project.iqp_team ?
+                    <IqpTeamDisplay project={project} editedProject={editedProject} editProjectCallback={setEditedProject}></IqpTeamDisplay> : <div/>}
                 </div>
                 <div>
                     <button className={"text-white w-full border-white border-2 text-4xl my-10"} onClick={commit}>commit</button>

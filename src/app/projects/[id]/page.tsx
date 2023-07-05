@@ -5,6 +5,7 @@ import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl/DataUrlDis
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
+import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 
 
 //TODO make a good way to store embeds on project

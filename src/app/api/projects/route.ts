@@ -1,8 +1,9 @@
 import {NextRequest, NextResponse} from "next/server";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {Project, IqpTeam, Dataurl, PROJECT_TYPE,} from '@prisma/client'
+import {Project, IqpTeam, Dataurl, PROJECT_TYPE, Prisma,} from '@prisma/client'
 import { prisma } from '../db'
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
+import DataurlCreateManyProjectInput = Prisma.DataurlCreateManyProjectInput;
 
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
@@ -28,25 +29,19 @@ export async function POST(request: Request) {
     if (project.id == undefined) {
         let createProjectData: Project = project;
         let iqpTeamQuery = {};
-        let dataUrls: Dataurl[] = [];
+        let dataUrls: DataurlCreateManyProjectInput[] = [];
         if (project.iqp_team != null) {
             iqpTeamQuery = {
-                connectOrCreate: {
-                    where: {
-                        id: project.iqp_team.id
-                    },
-                    create: {
-                        id: project.iqp_team.id,
-                        sponsors: project.iqp_team.sponsors,
-                        advisors: project.iqp_team.advisors,
-                        team: project.iqp_team.team
-                    }
-
+                create: {
+                    id: project.iqp_team.id,
+                    sponsors: project.iqp_team.sponsors,
+                    advisors: project.iqp_team.advisors,
+                    team: project.iqp_team.team
                 }
             }
         }
         if (project.dataurls != null) {
-            dataUrls = project.dataurls;
+            dataUrls = project.dataurls as DataurlCreateManyProjectInput[];
         }
         const createProjectWithTeam = await prisma.project.create({
             data: {
@@ -65,7 +60,7 @@ export async function POST(request: Request) {
                 iqp_team: iqpTeamQuery
             }
         });
-        return NextResponse.json("created project");
+        return NextResponse.json(createProjectWithTeam);
     } else {
         let dataUrls:Dataurl[] = [];
         if(project.dataurls != null) {
@@ -116,6 +111,7 @@ export async function POST(request: Request) {
                     }
                 }
             });
+            return NextResponse.json(updateProject);
         } else {
             const updateProject = await prisma.project.update({
                 where: {
@@ -131,9 +127,9 @@ export async function POST(request: Request) {
                     year: project.year,
                 }
             });
+            return NextResponse.json(updateProject);
         }
     }
-    return NextResponse.json("updated project");
 }
 
 //TODO rework and simplify
