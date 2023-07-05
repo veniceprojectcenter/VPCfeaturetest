@@ -125,7 +125,10 @@ export async function POST(request: Request) {
                     img: project.img,
                     tags: project.tags,
                     year: project.year,
-                }
+                    dataurls: {
+                        upsert: upsertObject
+                    }
+                },
             });
             return NextResponse.json(updateProject);
         }

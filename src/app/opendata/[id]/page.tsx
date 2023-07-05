@@ -20,7 +20,11 @@ export default async function Page({params}: {
         }
         return (
             <div className={"flex flex-col"}>
-                <ProjectTitleCard project={project}></ProjectTitleCard>
+                <ProjectTitleCard project={project}>
+                    <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
+                        <h1 className={"text-white mr-20 flex items-center"}>YEAR: {project.year} | TERM: {project.term}</h1>
+                    </div>
+                </ProjectTitleCard>
                 <div className={"flex flex-col"}>
                     <div className={"basis-1/2 "}>
                         <ProjectDescription project={project}></ProjectDescription>

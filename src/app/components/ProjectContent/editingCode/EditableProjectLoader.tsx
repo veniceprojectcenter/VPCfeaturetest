@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {FetchProjects} from "@/app/components/ProjectContent/fetchProjects";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
-import {EditableProject} from "@/app/projects/[id]/edit/EditableProject";
+import {EditableProject} from "@/app/components/ProjectContent/editingCode/EditableProject";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 
 export default function EditableProjectLoader(props:{id:string}) {
