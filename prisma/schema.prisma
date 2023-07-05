@@ -51,6 +51,7 @@ model AutoSlideshow {
   pictureCaptions  String[]
   slideDelay       Float
   pictures         String[]
+  links            String[]
   picWidth         Int
   picHeight        Int
 }

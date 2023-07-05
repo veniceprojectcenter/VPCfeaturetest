@@ -1,7 +1,9 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
-export function AutoSlideshow(props:{backgroundColors:string[],pictureCaptions:string[],slideDelay:number,pictures:string[],picWidth:number,picHeight:number}) {
+import "./AutoSlideshow.css"
+export function AutoSlideshow(props:{backgroundColors:string[],pictureCaptions:string[],slideDelay:number,pictures:string[],links:string[],picWidth:number,picHeight:number}) {
 
     const [publicationSlideIndex, setPublicationSlideIndex] = React.useState(0);
     const timeoutRef = React.useRef(null);
@@ -32,10 +34,12 @@ export function AutoSlideshow(props:{backgroundColors:string[],pictureCaptions:s
                     <div className="slide"
                          key={index}
                          style={{backgroundColor}}>
-                        <div className={"picContainer"}>
-                            <Image width = {props.picWidth} height = {props.picHeight} src={props.pictures[index]} alt={"iqp image"} className={"slidePic h-auto"}></Image>
-                            <p className="slideTitle">{props.pictureCaptions[index]}</p>
-                        </div>
+                        <Link href={props.links[index]}>
+                            <div className={"picContainer"}>
+                                <Image width = {props.picWidth} height = {props.picHeight} src={props.pictures[index]} alt={"iqp image"} className={"slidePic h-auto"}></Image>
+                                <p className="slideTitle">{props.pictureCaptions[index]}</p>
+                            </div>
+                        </Link>
                     </div>
                 ))}
             </div>

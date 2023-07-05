@@ -15,10 +15,10 @@ import Link from "next/link";
 
 import React, {useEffect, useState} from 'react';
 import './homePage.css';
-import './components/random/random.css';
+import './components/random/AutoSlideshow.css';
 import {menuToggle} from "@/app/components/nav/menuToggle";
 import {request} from "https";
-import {AutoSlideshow} from "@/app/components/random/AutoSlideshow/AutoSlideshow";
+import {AutoSlideshow} from "@/app/components/random/AutoSlideshow";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 
 export default function Home() {
@@ -27,14 +27,15 @@ export default function Home() {
     const studentProjectCaptions = ["Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","Vacation Rentals and Residential Housing in Venice"];
     const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
 
-    let publicationColors = ["#FF0000", "#00FF00", "#0000FF"];
+    let publicationColors = ["#00FFFF", "#FF00FF", "#FFFF00"];
     let publicationCaptions = ["Yoooooo looooook at these bridges broooooo","21 can you do something for me","Je suis un pomme"];
     let publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
-    let publicationPicWidth = 420;
-    let publicationPicHeight = 690;
-    let publicationSlideDelay = 1738;
+    let publicationLinks = ["/","/","/"];
+    let publicationPicWidth = 700;
+    let publicationPicHeight = 500;
+    let publicationSlideDelay = 3600;
 
-    const publicationID = "ID 2";
+    const publicationID = "first";
 
     const [publicationData,setPublicationData] = useState<any | undefined>(undefined);
 
@@ -70,6 +71,7 @@ export default function Home() {
         publicationCaptions = publicationData.pictureCaptions;
         publicationPictures = publicationData.pictures;
         publicationSlideDelay = publicationData.slideDelay;
+        publicationLinks = publicationData.links;
         publicationPicWidth = publicationData.picWidth;
         publicationPicHeight = publicationData.picHeight;
     }
@@ -90,6 +92,7 @@ export default function Home() {
                 pictureCaptions:publicationCaptions,
                 slideDelay: publicationSlideDelay,
                 pictures: publicationPictures,
+                links:publicationLinks,
                 picWidth: publicationPicWidth,
                 picHeight: publicationPicHeight
             };
@@ -102,6 +105,7 @@ export default function Home() {
             console.log("method successfully fetched");
             let responseJSON = await response.json();
             console.log(responseJSON);
+
             console.log(responseJSON.response);
         }
 
@@ -143,7 +147,7 @@ export default function Home() {
           </div>
           <div className = {"publications"}>
               <h1 className={"ptitle"}><p className = {"text-white"} onClick={enterSlideshow}>Publications</p></h1>
-              <AutoSlideshow backgroundColors={publicationColors} pictureCaptions={publicationCaptions} slideDelay={publicationSlideDelay} pictures={publicationPictures} picWidth={publicationPicWidth} picHeight={publicationPicHeight}/>
+              <AutoSlideshow backgroundColors={publicationColors} pictureCaptions={publicationCaptions} slideDelay={publicationSlideDelay} pictures={publicationPictures} links = {publicationLinks} picWidth={publicationPicWidth} picHeight={publicationPicHeight}/>
               <button className = {"seeAll"}><Link href={"/"}>See All {"-->"}</Link></button>
           </div>
           <div className = {"applicationsTools"}>

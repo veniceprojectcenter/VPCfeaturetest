@@ -33,6 +33,9 @@ export function Sidebar() {
                     <li className={"list"}>
                         <Link onClick={menuToggle} href={"/projects"} className={"menuLink"}>Student Projects</Link>
                     </li>
+                    <li className={"list"}>
+                        <Link onClick={menuToggle} href={"/podcasts"} className={"menuLink"}>Podcasts</Link>
+                    </li>
                 </ul>
                 <div className = {"sidebarNavlist"}>
                     {
