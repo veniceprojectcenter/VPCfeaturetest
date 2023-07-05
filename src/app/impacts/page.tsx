@@ -1,5 +1,6 @@
 import {Navlist} from "@/app/components/nav/Navlist";
 import {NavListSearch} from "@/app/components/nav/NavListSearch";
+import {PROJECT_TYPE} from "@prisma/client";
 
 export default function Page() {
     return(
@@ -10,7 +11,7 @@ export default function Page() {
                 </div>
             </div>
             <div className={"w-fit basis-full"}>
-                <NavListSearch type={"PUBLICATION"}></NavListSearch>
+                <NavListSearch type={PROJECT_TYPE.IMPACT}></NavListSearch>
             </div>
         </div>
     );

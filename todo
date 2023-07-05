@@ -9,7 +9,8 @@ infrastructure 20% compleate as of 7/4
 [] fix auth
 [x] finish connecting route to stage - infrastructure
 [x] add edit to all other pages - website
-[] add ability to add tags and categories
+[x] write recommendations
+[] record training materials
 7/6
 [] pick a database to use and module it in terraform - infrastructure
 [] add websites to matching iqps - website/setup
@@ -27,3 +28,4 @@ infrastructure 20% compleate as of 7/4
 
 [] html sanitation - website
 [] tag filtiering
+[] add ability to add tags and categories
