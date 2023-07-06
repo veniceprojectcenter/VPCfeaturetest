@@ -9,13 +9,13 @@ datasource db {
 }
 
 model Project {
-  id          String       @id @unique @default(uuid())
+  id          String          @id @unique @default(uuid())
   title       String
   description String
-  tags        String[]
+  tags        tagsOnProject[]
   img         String?
   type        PROJECT_TYPE
-  term        String?      @db.Char(1)
+  term        String?         @db.Char(1)
   year        Int
   dataurls    Dataurl[]
   iqp_team    IqpTeam?
@@ -55,6 +55,22 @@ model AutoSlideshow {
   picHeight        Int
 }
 
+model tagsOnProject {
+  projectId  String
+  tagId      String
+  tag        Tag      @relation(fields: [tagId], references: [id])
+  project    Project  @relation(fields: [projectId], references: [id])
+  assignedAt DateTime @default(now())
+
+  @@id([projectId, tagId])
+}
+
+model Tag {
+  id            String          @id @unique @default(uuid())
+  name          String
+  tagsOnProject tagsOnProject[]
+}
+
 enum DATAURL_TYPE {
   DOWNLOAD
   EMBED
@@ -66,5 +82,4 @@ enum PROJECT_TYPE {
   DATA
   APP
   PUBLICATION
-  IMPACT
 }
