@@ -1,12 +1,11 @@
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
-import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {fetchProjects} from "@/app/projects/[id]/fetchProjects";
 import {getProject} from "@/app/api/projects/route";
-import {IqpTeamComp} from "@/app/projects/IqpTeamComp";
-import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl";
+import {IqpTeamComp} from "@/app/components/ProjectContent/iqpTeam/IqpTeamComp";
+import {DataUrlDisplay} from "@/app/components/ProjectContent/DataUrl/DataUrlDisplay";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
+import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 
 
 //TODO make a good way to store embeds on project
@@ -46,15 +45,14 @@ export default async function Page({params}: {
                         <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team}></IqpTeamComp>
-                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors}></IqpTeamComp>
-                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors}></IqpTeamComp>
+                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team} idPrefix={"Team"}></IqpTeamComp>
+                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"Sponsors"}></IqpTeamComp>
+                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"Advisors"}></IqpTeamComp>
                     </div>
                 </div>
             </div>
         );
     } else {
-        //TODO make this a comp
         return (<ProjectNotFound></ProjectNotFound>)
     }
 }

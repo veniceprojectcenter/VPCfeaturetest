@@ -29,7 +29,9 @@ export async function POST(request:NextRequest) {
         algorithm: "HS256",
     })
     console.log(token)
-    cookies().set("token", token, {maxAge: hoursToMs(5)});
+    cookies().set("token", token, {
+        expires: Date.now() + hoursToMs(5)
+    });
     return NextResponse.json("authenticated!")
 }
 

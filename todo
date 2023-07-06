@@ -1,0 +1,33 @@
+website 70% completed as of 7/4
+infrastructure 20% compleate as of 7/4
+
+7/4
+[x] add ability to upload files to edit(no need to call api) - website
+[x] finish ability to create projects - website
+7/5
+[] import impacts - website
+[x] style impacts - website
+[x] fix auth
+[x] make a way to add users
+[x] finish connecting route to stage - infrastructure
+[x] add edit to all other pages - website
+[x] write recommendations
+[] record training materials
+7/6
+[] pick a database to use and module it in terraform - infrastructure
+[] move all applications into versel with terraform
+[] add websites to matching iqps - website/setup
+[] write scripts for importing data into infrastructure - infrastructure
+[] put terraform state into an s3 bucket -infrastructure
+7/7
+[] connect the api route to the website and test file upload - website/infrastructure
+[] set up full production environment on local infrastructure - infrastructure
+[] prepare website for demo by bugfix and filling content - infrastructure
+[] take a backup of the sql state so that re imports are easy -infrastructure
+7/8
+[] do demo
+
+
+[] html sanitation - website
+[] tag filtiering
+[] add ability to add tags and categories

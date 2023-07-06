@@ -1,8 +1,9 @@
 import {NextRequest, NextResponse} from "next/server";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {Project, IqpTeam, Dataurl, PROJECT_TYPE,} from '@prisma/client'
+import {Project, IqpTeam, Dataurl, PROJECT_TYPE, Prisma,} from '@prisma/client'
 import { prisma } from '../db'
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
+import DataurlCreateManyProjectInput = Prisma.DataurlCreateManyProjectInput;
 
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
@@ -24,27 +25,113 @@ export async function GET(request:NextRequest) {
 }
 
 export async function POST(request: Request) {
-    let project:Project = await request.json();
-    if(project.id == undefined) {
-        const createProject = await prisma.project.create({data:project});
-        return NextResponse.json("created project");
-    } else {
-        const updateProject = await prisma.project.update({
-            where:{
-                id:project.id
-            },
-            data:{
-                title:project.title,
-                description:project.description,
-                type:project.type,
-                term:project.term,
-                img:project.img,
-                tags:project.tags,
-                year:project.year,
+    let project: (Project & { iqp_team: IqpTeam | null, dataurls: Dataurl[] | null }) = await request.json();
+    if (project.id == undefined) {
+        let createProjectData: Project = project;
+        let iqpTeamQuery = {};
+        let dataUrls: DataurlCreateManyProjectInput[] = [];
+        if (project.iqp_team != null) {
+            iqpTeamQuery = {
+                create: {
+                    id: project.iqp_team.id,
+                    sponsors: project.iqp_team.sponsors,
+                    advisors: project.iqp_team.advisors,
+                    team: project.iqp_team.team
+                }
             }
-        })
-        return NextResponse.json("updated project");
-
+        }
+        if (project.dataurls != null) {
+            dataUrls = project.dataurls as DataurlCreateManyProjectInput[];
+        }
+        const createProjectWithTeam = await prisma.project.create({
+            data: {
+                title: project.title,
+                description: project.description,
+                tags: project.tags,
+                term:project.term,
+                img: project.img,
+                year:project.year,
+                type:project.type,
+                dataurls: {
+                    createMany: {
+                        data: dataUrls
+                    }
+                },
+                iqp_team: iqpTeamQuery
+            }
+        });
+        return NextResponse.json(createProjectWithTeam);
+    } else {
+        let dataUrls:Dataurl[] = [];
+        if(project.dataurls != null) {
+            for (let i = 0; i < project.dataurls.length; i++) {
+                dataUrls.push(project.dataurls[i]);
+            }
+        }
+        let upsertObject = dataUrls.map((dataUrl) => {
+            return {
+                where: {
+                    id:dataUrl.id
+                },
+                update: {
+                    url: dataUrl.url,
+                    text: dataUrl.text,
+                    type: dataUrl.type,
+                },
+                create: {
+                    url: dataUrl.url,
+                    text: dataUrl.text,
+                    type: dataUrl.type,
+                }
+            }
+        });
+        if (project.iqp_team != null) {
+            const updateProject =   await prisma.project.update({
+                where: {
+                    id: project.id
+                },
+                data: {
+                    title: project.title,
+                    description: project.description,
+                    type: project.type,
+                    term: project.term,
+                    img: project.img,
+                    tags: project.tags,
+                    year: project.year,
+                    iqp_team: {
+                        update: {
+                            id: project.iqp_team.id,
+                            team: project.iqp_team.team,
+                            advisors: project.iqp_team.advisors,
+                            sponsors: project.iqp_team.sponsors
+                        }
+                    },
+                    dataurls: {
+                        upsert: upsertObject
+                    }
+                }
+            });
+            return NextResponse.json(updateProject);
+        } else {
+            const updateProject = await prisma.project.update({
+                where: {
+                    id: project.id
+                },
+                data: {
+                    title: project.title,
+                    description: project.description,
+                    type: project.type,
+                    term: project.term,
+                    img: project.img,
+                    tags: project.tags,
+                    year: project.year,
+                    dataurls: {
+                        upsert: upsertObject
+                    }
+                },
+            });
+            return NextResponse.json(updateProject);
+        }
     }
 }
 

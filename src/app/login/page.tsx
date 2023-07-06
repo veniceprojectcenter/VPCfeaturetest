@@ -1,9 +1,11 @@
 "use client"
 import {useRouter} from "next/navigation";
 import React from "react";
+import {Maintainer} from "@prisma/client";
 
 export default async function Page() {
     const router = useRouter();
+
 
     // @ts-ignore I don't like that I have to do this, but it's the easiest way
     const handleSub = async (event) => {
@@ -16,6 +18,7 @@ export default async function Page() {
                 password:event.target.password.value
             })
         })
+        //TODO let them know if they are authenticated or not
         await router.push("/")
     }
     return(
