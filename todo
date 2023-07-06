@@ -8,7 +8,7 @@ infrastructure 20% compleate as of 7/4
 [] import impacts - website
 [x] style impacts - website
 [x] fix auth
-[] make a way to add users
+[x] make a way to add users
 [x] finish connecting route to stage - infrastructure
 [x] add edit to all other pages - website
 [x] write recommendations

@@ -6,7 +6,7 @@ export async function middleware(request:NextRequest) {
     let authCookie = request.cookies.get("token");
     let token = authCookie?.value;
     if(token == undefined) {
-        if(request.nextUrl.pathname.includes("/edit")) {
+        if(request.nextUrl.pathname.includes("/edit") || request.nextUrl.pathname.includes("/login/create")) {
             console.log(new URL("/",request.url).toString());
             return NextResponse.redirect(new URL("/",request.url))
         }
@@ -24,7 +24,7 @@ export async function middleware(request:NextRequest) {
         }
     }).catch(() => {
         // if the error thrown is because the JWT is unauthorized, return a 401 error
-        if(request.nextUrl.pathname.includes("/edit")) {
+        if(request.nextUrl.pathname.includes("/edit") || request.nextUrl.pathname.includes("/login/create")) {
             return NextResponse.redirect(new URL("/"))
         }
         return NextResponse.next();
