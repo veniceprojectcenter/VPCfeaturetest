@@ -57,17 +57,16 @@ model AutoSlideshow {
 
 model tagsOnProject {
   projectId  String
-  tagId      String
-  tag        Tag      @relation(fields: [tagId], references: [id])
+  name      String
+  tag        Tag      @relation(fields: [name], references: [name])
   project    Project  @relation(fields: [projectId], references: [id])
   assignedAt DateTime @default(now())
 
-  @@id([projectId, tagId])
+  @@id([projectId, name])
 }
 
 model Tag {
-  id            String          @id @unique @default(uuid())
-  name          String
+  name          String @id @unique
   tagsOnProject tagsOnProject[]
 }
 

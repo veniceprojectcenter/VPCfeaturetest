@@ -47,7 +47,6 @@ export async function POST(request: Request) {
             data: {
                 title: project.title,
                 description: project.description,
-                tags: project.tags,
                 term:project.term,
                 img: project.img,
                 year:project.year,
@@ -96,7 +95,6 @@ export async function POST(request: Request) {
                     type: project.type,
                     term: project.term,
                     img: project.img,
-                    tags: project.tags,
                     year: project.year,
                     iqp_team: {
                         update: {
@@ -123,7 +121,6 @@ export async function POST(request: Request) {
                     type: project.type,
                     term: project.term,
                     img: project.img,
-                    tags: project.tags,
                     year: project.year,
                     dataurls: {
                         upsert: upsertObject
