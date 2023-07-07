@@ -303,7 +303,7 @@
 
 .impacts .sixImpacts {
     width:100%;
-    height:500px;
+    height:350px;
 }
 
 .impacts .sixImpacts .leftImpacts {
@@ -464,7 +464,7 @@
     border-radius: 40px;
     margin-left:auto;
     margin-right:auto;
-    margin-top:20%;
+    margin-top:42vh;
     padding: 1%;
     transition: box-shadow 0.5s ease-in-out;
 }

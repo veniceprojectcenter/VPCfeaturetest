@@ -60,9 +60,9 @@
     border-radius: 50%;
     cursor: pointer;
     margin: 15px 7px 0px;
-    background-color: #c4c4c4;
+    background-color: #ACACAC;
 }
 
 .slideshowContainer .dots .dot.active {
-    background-color: #6a0dad;
+    background-color: #B00B69;
 }

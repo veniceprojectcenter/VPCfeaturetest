@@ -12,6 +12,7 @@ export async function GET(request:NextRequest) {
     } else if(id === "first") {
         try {
             const returnedSlide = await prisma.autoSlideshow.findFirst();
+            console.log(returnedSlide);
             return NextResponse.json(returnedSlide);
         } catch(error) {
             let response = {
@@ -49,7 +50,7 @@ export async function POST(request: NextRequest) {
     console.log(JSoN);
     if(JSoN.type === "enterSlideshow") {
         console.log("Slideshow method about to start");
-        await generateSlideshow(JSoN.backgroundColors,JSoN.pictureCaptions,JSoN.slideDelay,JSoN.pictures,JSoN.picWidth,JSoN.picHeight);
+        await generateSlideshow(JSoN.backgroundColors,JSoN.pictureCaptions,JSoN.slideDelay,JSoN.pictures,JSoN.links,JSoN.picWidth,JSoN.picHeight);
         let response = {
             response:"Slideshow Entered successfully"
         }

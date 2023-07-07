@@ -15,7 +15,13 @@ export function Footer() {
                         Campo SS. Cosma e Damiano, 624-625
                         Giudecca
                         30133 – Venice - Italy
-                    </Link></p>
+                    </Link>
+                </p>
+                <p className = {"streetView"}>
+                    <Link href={"https://www.google.com/maps/@45.4258642,12.3230009,3a,75y,162.93h,107.92t/data=!3m6!1e1!3m4!1sOG5MXfW9hy4CXFRg67kgYA!2e0!7i13312!8i6656?entry=ttu"} target={"_blank"}>
+                        Street View
+                    </Link>
+                </p>
             </div>
             <div className = {"studentSection"}>
                 <h1 className = {"sectionTitle"}>Students</h1>

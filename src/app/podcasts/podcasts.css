@@ -1,0 +1,18 @@
+
+.podcastPage {
+    align-items: center;
+}
+
+.podcastPage .podcastTitle {
+    color:white;
+    font-size:4.2vw;
+    margin:0.5vh auto 1.5vh;
+    font-family: Verdana,Garamond;
+}
+
+.podcastPage .podcastsDescription {
+    color:white;
+    font-size:1.2vw;
+    margin:0.5vh auto 1.5vh;
+    font-family: Verdana,Garamond;
+}
