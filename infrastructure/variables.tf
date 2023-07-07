@@ -11,3 +11,6 @@ variable "versel_token" {
 variable "DATABASE_URL" {
   description = "database url"
 }
+data "aws_caller_identity" "current" {
+
+}

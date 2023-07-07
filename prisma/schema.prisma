@@ -39,6 +39,7 @@ model IqpTeam {
   project   Project  @relation(fields: [projectId], references: [id])
 }
 
+
 model Maintainer {
   id       String @id @unique @default(uuid())
   username String

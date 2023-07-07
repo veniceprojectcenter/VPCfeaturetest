@@ -21,6 +21,7 @@ resource "aws_api_gateway_integration" "get_file_integration" {
   resource_id = aws_api_gateway_resource.vpc_file_resource.id
   rest_api_id = aws_api_gateway_rest_api.vpc_file_api.id
   http_method = aws_api_gateway_method.files_get_method.http_method
-  type        = "MOCK"
-  #uri =  aws_lambda_function.writeFile.invoke_arn
+  type        = "AWS_PROXY"
+  integration_http_method = "POST"
+  uri =  aws_lambda_function.writeFile.invoke_arn
 }
