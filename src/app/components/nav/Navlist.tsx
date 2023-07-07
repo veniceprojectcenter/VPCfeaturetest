@@ -4,6 +4,7 @@ import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectReques
 import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import {useEffect, useState} from "react";
 import {Project, PROJECT_TYPE} from "@prisma/client";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 interface NavlistProps {
     type: PROJECT_TYPE
@@ -16,7 +17,7 @@ interface NavlistProps {
 export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
     const [loading, setLoading] = useState(true)
-    let projects:Project[] = [];
+    let projects:FullProject[] = [];
     useEffect(() => {
         const getData = async () => {
             let data = await getProjects(props.type);

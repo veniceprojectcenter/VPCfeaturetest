@@ -1,8 +1,9 @@
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
 import {OnUpdateStateCallback} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 import React from "react";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
-export function IqpTeamForm(props:{editableProject:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null},
+export function IqpTeamForm(props:{editableProject:FullProject,
     iqpTeamId:string,
     onUpdateState:OnUpdateStateCallback,
     closeCallback?:Function}

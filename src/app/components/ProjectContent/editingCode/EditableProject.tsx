@@ -10,11 +10,12 @@ import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitP
 import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
 import {uploadFile} from "@/helpers/uploadFile";
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 
-export function EditableProject(props:{project:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}}) {
-    let [project,setProject] = useState<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})>(props.project)
-    let [editedProject,setEditedProject] = useState<Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}>(props.project)
+export function EditableProject(props:{project:FullProject}) {
+    let [project,setProject] = useState<FullProject>(props.project)
+    let [editedProject,setEditedProject] = useState<FullProject>(props.project)
     let [fileState,setFileState] = useState<File | null>(null)
     let [confirmationOpen,setConfirmationOpen] = useState(false);
     let dataUrls:Dataurl[] = []
