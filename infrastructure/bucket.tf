@@ -1,3 +1,3 @@
-resource "aws_s3_bucket" "vpcBucket" {
-  bucket = "venice-project-center-file-bucket"
+resource "aws_s3_bucket" "vpcFileBucket" {
+  bucket = "venice-project-center-bucket"
 }

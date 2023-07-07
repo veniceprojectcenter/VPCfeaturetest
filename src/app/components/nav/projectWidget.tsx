@@ -2,8 +2,9 @@ import {Project} from "@prisma/client";
 import Image from "next/image";
 import Link from 'next/link'
 import {reduceTextSection, wordListToString} from "@/helpers/stringHelpers";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 interface ProjectLinkProps {
-    project: Project
+    project: FullProject
 }
 
 
@@ -13,12 +14,14 @@ export function ProjectWidget({project}: ProjectLinkProps) {
         imgSrc = project.img
     }
     let projectTags = ""
-    for (let i = 0; i < project.tags.length; i++) {
-        if(i < project.tags.length-1) {
-            projectTags += project.tags[i] + ","
-        } else {
-            projectTags += project.tags[i];
-        }
+    if(project.tags != null) {
+            for (let i = 0; i < project.tags.length; i++) {
+                if (i < project.tags.length - 1) {
+                    projectTags += project.tags[i].name + ","
+                } else {
+                    projectTags += project.tags[i].name;
+                }
+            }
     }
     let reducedProjectDescription = reduceTextSection(project.description,20);
     reducedProjectDescription.push("...");

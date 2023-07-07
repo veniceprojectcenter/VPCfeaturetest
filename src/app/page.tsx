@@ -47,24 +47,26 @@ export default function Home() {
     const impactsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130",VeniceMapThing];
     const impactsCaptions = ["","","","","",""];
 
-    useEffect(() => {
-        const getPublicationData = async() => {
-            let response = await fetch(`/api/random/AutoSlideshow/?id=${publicationID}`,{
-                method: "GET",
-            });
-
-            console.log(response);
-            const publicationResponse = await response.json();
-            setPublicationData(publicationResponse);
-            console.log(publicationResponse.backgroundColors);
-            console.log(publicationResponse.slideDelay);
-        }
-
-        getPublicationData();
-        return () => {
-
-        }
-    },[]);
+    // useEffect(() => {
+    //     const getPublicationData = async() => {
+    //         let response = await fetch(`/api/random/AutoSlideshow/?id=${publicationID}`,{
+    //             method: "GET",
+    //         });
+    //
+    //         console.log(response);
+    //         const publicationResponse = await response.json();
+    //         if(publicationResponse != undefined) {
+    //             setPublicationData(publicationResponse);
+    //             console.log(publicationResponse.backgroundColors);
+    //             console.log(publicationResponse.slideDelay);
+    //         }
+    //     }
+    //
+    //     getPublicationData();
+    //     return () => {
+    //
+    //     }
+    // },[]);
 
     if(publicationData != undefined) {
         publicationColors = publicationData.backgroundColors;

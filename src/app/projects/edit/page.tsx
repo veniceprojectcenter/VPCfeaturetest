@@ -1,6 +1,7 @@
 "use client"
 import {EditableProject} from "@/app/components/ProjectContent/editingCode/EditableProject";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 export default function Page() {
     let project: Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null} = {} as Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null};
@@ -15,6 +16,6 @@ export default function Page() {
     project.iqp_team.advisors = [];
 
     return(
-        <EditableProject project={project as Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}}></EditableProject>
+        <EditableProject project={project as FullProject}></EditableProject>
     )
 }

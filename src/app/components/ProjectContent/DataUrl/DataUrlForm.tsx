@@ -3,8 +3,9 @@ import React, {useCallback, useState} from "react";
 import {Dataurl, DATAURL_TYPE, IqpTeam, Project, PROJECT_TYPE} from "@prisma/client";
 import {OnUpdateStateCallback} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 import {uploadFile} from "@/helpers/uploadFile";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
-export function DataUrlForm(props:{editableProject:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null},
+export function DataUrlForm(props:{editableProject:FullProject,
     onUpdateState:OnUpdateStateCallback,
     dataUrl?:Dataurl,
     closeCallback?:Function}

@@ -2,12 +2,12 @@ resource "aws_lambda_function" "writeFile" {
   function_name = "write_file_to_bucket"
   runtime = "nodejs16.x"
   handler = "index.handler"
-  role          = aws_iam_role.lambda_role.arn
+  role          = aws_iam_role.lambda_execution_role.arn
   filename = data.archive_file.writeFileZip.output_path
   source_code_hash = filebase64sha256(data.archive_file.writeFileZip.output_path)
   environment {
     variables = {
-      bucket = aws_s3_bucket.vpcBucket.bucket
+      bucket = aws_s3_bucket.vpcFileBucket.bucket
     }
   }
 }
@@ -19,8 +19,8 @@ data "archive_file" "writeFileZip" {
 }
 
 
-resource "aws_iam_role" "lambda_role" {
-  name = "vpclambdaroll"
+resource "aws_iam_role" "lambda_execution_role" {
+  name = "vpclambdaExecutionroll"
 
   assume_role_policy = <<EOF
 {
@@ -51,7 +51,7 @@ resource "aws_iam_policy" "lambda_policy" {
         "s3:ListBucket",
         "s3:GetObject"
       ],
-      "Resource": "${aws_s3_bucket.vpcBucket.arn}/*"
+      "Resource": "${aws_s3_bucket.vpcFileBucket.arn}/*"
     }
   ]
 }
@@ -59,6 +59,6 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "handler_lambda_policy" {
-  role       = aws_iam_role.lambda_role.name
+  role       = aws_iam_role.lambda_execution_role.name
   policy_arn = aws_iam_policy.lambda_policy.arn
 }

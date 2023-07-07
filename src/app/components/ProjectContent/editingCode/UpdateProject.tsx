@@ -1,11 +1,12 @@
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 export interface OnUpdateStateCallback {
-    (project:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}):void
+    (project:FullProject):void
 }
 
 
 export function UpdateProject(id:string,content:string
-    ,editedProject:Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}
+    ,editedProject:FullProject
     ,OnUpdatedState: OnUpdateStateCallback ) {
     let idWithoutNum = id.replace(/[0-9]/g, '').replace(/ /g,"").toLowerCase();
     let index = -1;

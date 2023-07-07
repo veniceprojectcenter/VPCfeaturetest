@@ -9,13 +9,13 @@ datasource db {
 }
 
 model Project {
-  id          String       @id @unique @default(uuid())
+  id          String          @id @unique @default(uuid())
   title       String
   description String
-  tags        String[]
+  tags        tagsOnProject[]
   img         String?
   type        PROJECT_TYPE
-  term        String?      @db.Char(1)
+  term        String?         @db.Char(1)
   year        Int
   dataurls    Dataurl[]
   iqp_team    IqpTeam?
@@ -54,6 +54,21 @@ model AutoSlideshow {
   links            String[]
   picWidth         Int
   picHeight        Int
+}
+
+model tagsOnProject {
+  projectId  String
+  name      String
+  tag        Tag      @relation(fields: [name], references: [name])
+  project    Project  @relation(fields: [projectId], references: [id])
+  assignedAt DateTime @default(now())
+
+  @@id([projectId, name])
+}
+
+model Tag {
+  name          String @id @unique
+  tagsOnProject tagsOnProject[]
 }
 
 enum DATAURL_TYPE {

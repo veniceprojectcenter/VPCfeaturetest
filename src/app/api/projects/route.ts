@@ -4,6 +4,7 @@ import {Project, IqpTeam, Dataurl, PROJECT_TYPE, Prisma,} from '@prisma/client'
 import { prisma } from '../db'
 import {ProjectGetRequestBody} from "@/app/api/projects/datatypes/ProjectGetRequestBody";
 import DataurlCreateManyProjectInput = Prisma.DataurlCreateManyProjectInput;
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
@@ -47,7 +48,6 @@ export async function POST(request: Request) {
             data: {
                 title: project.title,
                 description: project.description,
-                tags: project.tags,
                 term:project.term,
                 img: project.img,
                 year:project.year,
@@ -96,7 +96,6 @@ export async function POST(request: Request) {
                     type: project.type,
                     term: project.term,
                     img: project.img,
-                    tags: project.tags,
                     year: project.year,
                     iqp_team: {
                         update: {
@@ -123,7 +122,6 @@ export async function POST(request: Request) {
                     type: project.type,
                     term: project.term,
                     img: project.img,
-                    tags: project.tags,
                     year: project.year,
                     dataurls: {
                         upsert: upsertObject
@@ -136,14 +134,16 @@ export async function POST(request: Request) {
 }
 
 //TODO rework and simplify
-export async function getProject(id:string,type:string):Promise<(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})[]> {
-    let projects:(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null})[] = [];
+export async function getProject(id:string,type:string):Promise<FullProject[]> {
+    let projects:FullProject[] = [];
     if(id === "") {
         if(type === "") {
             projects = await prisma.project.findMany({
                 include: {
                     dataurls: true,
-                    iqp_team: true
+                    iqp_team: true,
+                    tags: true
+
                 }
             });
         } else {
@@ -154,19 +154,20 @@ export async function getProject(id:string,type:string):Promise<(Project & {iqp_
                 },
                 include: {
                     dataurls: true,
-                    iqp_team: true
+                    iqp_team: true,
+                    tags: true
                 }
             });
-            console.log(projects)
         }
     } else {
-        const project:(Project & {iqp_team: IqpTeam | null, dataurls: Dataurl[] | null}) | null = await prisma.project.findFirst({
+        const project:FullProject | null = await prisma.project.findFirst({
             where: {
                 id: id
             },
             include:{
                 dataurls:true,
                 iqp_team:true,
+                tags:true
             }
         });
         if(project != null) {
