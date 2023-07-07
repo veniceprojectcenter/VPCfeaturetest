@@ -3,7 +3,7 @@ import {PopUpButton} from "@/app/components/random/popup/PopupWithClose";
 import {IqpTeamForm} from "@/app/components/ProjectContent/iqpTeam/IqpTeamForm";
 import React from "react";
 import {Dataurl, IqpTeam, Project} from "@prisma/client";
-import {FullProject} from "@/app/components/ProjectContent/fullProject";
+import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 export function IqpTeamDisplay(props:{project:FullProject,editedProject:FullProject,
     // @ts-ignore
