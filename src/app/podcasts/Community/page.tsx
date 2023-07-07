@@ -17,17 +17,17 @@ export default function Page() {
                                         "The lack of jobs available for residents because of loss of local businesses",
                                         "Why and how the average age of residents to grows higher"];
     let episodeLinks = ["https://www.youtube.com/embed/6otibCUER3I",
-        "https://www.youtube.com/embed/Us3LBnwPNM8",
-        "https://www.youtube.com/embed/0R8CpjAYPcY",
-        "https://www.youtube.com/embed/ZZ5LpwO-An4",
-        "https://www.youtube.com/embed/z6AF4HPpWF8",
-        "https://www.youtube.com/embed/FzoXQKumgCw"];
+        "https://www.youtube.com/embed/XV-cCzhT7i0?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/TD1JUh8UyAM?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/t6pqxafXJMo?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/NzgMy9h6eDE?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/uZWGRCRj06U?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm"];
     let episodeTitles = ["Venice Project Center – Introduction",
-        "Batu Khan: The Final Nut Trailer",
-        "Rat multiplying meme",
-        "HEYYEYAAEYAAAEYAEYAA",
-        "Synthizens of Synthos",
-        "Is The Government Spying On Schizophrenics Enough?"];
+        "Housing and Renting",
+        "The Boundaries of Venice",
+        "Local Food and Neighborhood Stores",
+        "Made in Venice: Past, Present and Future",
+        "Venice Big Data"];
 
     return(<SeasonPage pageWidth={"5/6"} seasonTitle={"Community/Overtourism"} seasonColor = {"bg-rose-400"} seasonDescription={"Tourism is an essential part of the Venetian economy. It provides millions of dollars of economic benefit to the city, however, it causes significant problems as well."} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
 }

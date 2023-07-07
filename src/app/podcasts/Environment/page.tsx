@@ -20,17 +20,17 @@ export default function Page() {
         "subtitel",
         "System in place and proposed that protect the city from sewage and pollution"];
     let episodeLinks = ["https://www.youtube.com/embed/6otibCUER3I",
-        "https://www.youtube.com/embed/yNCgpaMlOcs",
-        "https://www.youtube.com/embed/z6AF4HPpWF8",
-        "https://www.youtube.com/embed/ZZ5LpwO-An4",
-        "https://www.youtube.com/embed/EeELtjzwIkc",
-        "https://www.youtube.com/embed/lvwZQTB4iv4"];
+        "https://www.youtube.com/embed/XV-cCzhT7i0?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/TD1JUh8UyAM?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/t6pqxafXJMo?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/NzgMy9h6eDE?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
+        "https://www.youtube.com/embed/uZWGRCRj06U?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm"];
     let episodeTitles = ["Venice Project Center – Introduction",
-        "Cucuí Ganon Dos (Extended Mid Suavemente Cut) Suave @TerminalMontage",
-        "Synthizens of Synthos",
-        "HEYYEYAAEYAAAEYAEYAA",
-        "Jynxi “light work no reaction” original clip",
-        "capybara ok i pull up"];
+        "Housing and Renting",
+        "The Boundaries of Venice",
+        "Local Food and Neighborhood Stores",
+        "Made in Venice: Past, Present and Future",
+        "Venice Big Data"];
 
     return(<SeasonPage pageWidth={"5/6"} seasonTitle={seasonTitle} seasonColor = {seasonColor} seasonDescription={seasonDescription} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import "./SeasonPage.css"
 import React from "react";
 import Image from "next/image";
-import fabioPic from "@/app/resources/IMG-1346.png";
+import veniceMapThing from "@/app/resources/VeniceMapThing.png";
 
 export function SeasonPage(props:{pageWidth:string,seasonTitle:string,seasonColor:string,seasonDescription:string,episodeNames:string[],episodeThumbnails:string[],episodeDescriptions:string[],episodeLinks:string[],episodeTitles:string[]}) {
 
@@ -57,7 +57,7 @@ export function SeasonPage(props:{pageWidth:string,seasonTitle:string,seasonColo
                                                                 console.log("Episode set to : ");
                                                                 console.log(currentEpisode);}}>
                                         <a className = {"anker relative flex flex-row"}>
-                                            <span className = {"episodeThumbnail"}><Image width = {36} height = {36} src={fabioPic/*props.episodeThumbnails[index]*/} alt={"iqp image"} className={"h-auto"}></Image></span>
+                                            <span className = {"episodeThumbnail"}><Image width = {36} height = {36} src={veniceMapThing/*props.episodeThumbnails[index]*/} alt={"iqp image"} className={"h-auto"}></Image></span>
                                             <span className = {"episodeName"}>{episodeName}</span>
                                         </a>
 
