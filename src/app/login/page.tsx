@@ -22,14 +22,17 @@ export default async function Page() {
         await router.push("/")
     }
     return(
-        <div>
+        <div className={"grid place-items-center "}>
             <form onSubmit={handleSub}>
-                <label htmlFor="username">Think</label>
-                <label className={"text-white"}>username</label>
-                <input className={"text-black"} type="text" id="username" name="username" required />
-                <label className={"text-white"}>password</label>
-                <input className={"text-black"} type="password" id="password" name="password" required />
-                <button className={"text-white"} type="submit">Submit</button>
+                <div className={"flex flex-col"}>
+                    <label className={"text-white"}>username:</label>
+                    <input className={"text-black rounded-md"} type="text" id="username" name="username" required />
+                    <div className={"m-10"}></div>
+                    <label className={"text-white"}>password:</label>
+                    <input className={"text-black rounded-md"} type="password" id="password" name="password" required />
+                    <div className={"m-2"}></div>
+                    <button className={"text-white rounded-full border-white border-4"} type="submit">Login</button>
+                </div>
             </form>
         </div>
     )
