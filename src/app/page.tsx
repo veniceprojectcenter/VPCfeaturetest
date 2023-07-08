@@ -28,7 +28,7 @@ export default function Home() {
     const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
 
     let publicationColors = ["#00FFFF", "#FF00FF", "#FFFF00"];
-    let publicationCaptions = ["Yoooooo looooook at these bridges broooooo","21 can you do something for me","Je suis un pomme"];
+    let publicationCaptions = ["Emergent systems","Spacial Data","Venezia la catta dei rii"];
     let publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
     let publicationLinks = ["/","/","/"];
     let publicationPicWidth = 700;
