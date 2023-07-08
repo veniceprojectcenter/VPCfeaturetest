@@ -3,11 +3,12 @@ resource "aws_api_gateway_rest_api" "vpc_file_api" {
   name = "vpc_file_api"
 }
 
+
 #this adds the /files route to our api
 resource "aws_api_gateway_resource" "vpc_file_resource" {
   rest_api_id   = aws_api_gateway_rest_api.vpc_file_api.id
   parent_id     = aws_api_gateway_rest_api.vpc_file_api.root_resource_id
-  path_part     = "files"
+  path_part     = "add"
 }
 
 resource "aws_api_gateway_method" "files_get_method" {
@@ -24,4 +25,31 @@ resource "aws_api_gateway_integration" "get_file_integration" {
   type        = "AWS_PROXY"
   integration_http_method = "POST"
   uri =  aws_lambda_function.writeFile.invoke_arn
+}
+resource "aws_api_gateway_method_response" "options_200" {
+  rest_api_id   = aws_api_gateway_rest_api.vpc_file_api.id
+  resource_id   = aws_api_gateway_resource.vpc_file_resource.id
+  http_method   = aws_api_gateway_method.files_get_method.http_method
+  status_code   = "200"
+  response_models = {
+    "application/json" = "Empty"
+  }
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = true,
+    "method.response.header.Access-Control-Allow-Methods" = true,
+    "method.response.header.Access-Control-Allow-Origin" = true
+  }
+  depends_on = ["aws_api_gateway_method.options_method"]
+}
+
+resource "aws_api_gateway_deployment" "fileApiDeployment" {
+  depends_on = [aws_api_gateway_integration.get_file_integration]
+
+  rest_api_id = aws_api_gateway_rest_api.vpc_file_api.id
+  stage_name  = "file"
+
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
