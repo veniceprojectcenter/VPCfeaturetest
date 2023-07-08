@@ -25,6 +25,14 @@ infrastructure 20% compleate as of 7/4
 [] prepare website for demo by bugfix and filling content - infrastructure
 [] take a backup of the sql state so that re imports are easy -infrastructure
 7/8
+[] make the image take up the full size of the top
+[] make log in look a it more presentable(drop shadow)
+[] add the taging section to the project section
+[] change images
+[] fix applicatons
+[] fix cors on the api and change images
+[] change fount
+7/8
 [] do demo
 
 
