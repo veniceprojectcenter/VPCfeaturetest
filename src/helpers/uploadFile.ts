@@ -3,7 +3,7 @@ export async function uploadFile(file:File):Promise<string> {
     let url = process.env.NEXT_PUBLIC_FILE_API_URL;
     console.log(url)
     if(url != undefined) {
-        const awsResponce = await fetch(url+"/file/add",{
+        const awsResponce = await fetch(url+"/add",{
             method:"POST",
             body: JSON.stringify({
                 filename:file.name

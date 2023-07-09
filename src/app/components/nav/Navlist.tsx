@@ -52,7 +52,8 @@ function filterFunc(param:string) {
 
 async function getProjects(type:PROJECT_TYPE) {
     let domain = (new URL(window.location.href));
-    const  res = await fetch(  domain.origin + `/api/projects?type=${type}`, {
+    let url = domain.origin + `/api/projects?type=${type}`;
+    const  res = await fetch(url, {
         method:"GET"
     })
     const data: ProjectRequestResponse = await res.json();
