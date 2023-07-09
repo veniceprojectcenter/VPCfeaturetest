@@ -35,3 +35,13 @@ resource "vercel_project_environment_variable" "jwt_secret"  {
   key="JWT_SECRET"
   value= var.JWT_SECRET
 }
+
+
+resource "vercel_project" "bridge_app" {
+  name = "bridge-app"
+  git_repository = {
+    type ="github"
+    production_branch = "main"
+    repo="nick-leslie/bridges-application-test"
+  }
+}
