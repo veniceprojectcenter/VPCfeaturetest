@@ -42,7 +42,9 @@ export function EditableProject(props:{project:FullProject}) {
 
     const uploadFileEvent = useCallback( async (event: React.MouseEvent<HTMLButtonElement>) => {
         if(fileState != null) {
-            await uploadFile(fileState);
+            let newUrl = await uploadFile(fileState);
+            editedProject.img = newUrl;
+            setEditedProject({...editedProject})
         }
     }, [fileState]);
 

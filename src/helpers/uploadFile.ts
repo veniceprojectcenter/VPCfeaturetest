@@ -21,7 +21,7 @@ export async function uploadFile(file:File):Promise<string> {
                     body: file
                 })
                 //console.log(await  bucketResponce.body)
-                return file.name
+                return awsBody.getUrl;
             }
         } catch (error) {
             console.log("error");

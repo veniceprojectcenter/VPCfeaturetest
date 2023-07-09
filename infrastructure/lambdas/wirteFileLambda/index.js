@@ -10,15 +10,16 @@ exports.handler= async (event,context, callback) => {
     console.log(JSON.parse(event.body));
     let body = JSON.parse(event.body);
     let key = randomUUID()
+    let bucketName = process.env.bucket;
     // this gets an upload url
     const url = s3.getSignedUrl('putObject',{
-        Bucket: process.env.bucket,
+        Bucket: bucketName,
         Key: key,
         Expires:300 // 5 min timer
     })
     const responseBody = {
         uploadUrl: url,
-        fileKey: key,
+        getUrl: `https://${bucketName}.s3.amazonaws.com/${key}`,
         ContentType: ""
     }
     return {
