@@ -11,7 +11,18 @@ export async function uploadFile(file:File):Promise<string> {
         })
         try {
             let awsBody = await awsResponce.json()
-            console.log(awsBody.uploadUrl)
+            let uploadUrl = awsBody.uploadUrl;
+            if(uploadUrl != undefined) {
+                let responce = await fetch(uploadUrl, {
+                    method:"PUT",
+                    headers: {
+                        "Content-Type":"multipart/form-data"
+                    },
+                    body: file
+                })
+                //console.log(await  bucketResponce.body)
+                return file.name
+            }
         } catch (error) {
             console.log("error");
             return "failed to upload"

@@ -1,7 +1,8 @@
 "use client"
 import {Navlist} from "@/app/components/nav/Navlist";
-import {useState} from "react";
+import {Suspense, useState} from "react";
 import {PROJECT_TYPE} from "@prisma/client";
+import NavLoading from "@/app/components/nav/NavLoading";
 
 export function NavListSearch(props:{type:PROJECT_TYPE}) {
     let [searchParam,setSearchParam] = useState("");
@@ -12,7 +13,7 @@ export function NavListSearch(props:{type:PROJECT_TYPE}) {
                     setSearchParam(e.target.value);}} placeholder={"Search Projects..."} className={"bg-transparent w-max h-50 outline-none text-2xl"}/>
             </div>
             <div>
-               <Navlist search={searchParam} type={props.type}></Navlist>
+                <Navlist search={searchParam} type={props.type}></Navlist>
             </div>
         </div>
     );
