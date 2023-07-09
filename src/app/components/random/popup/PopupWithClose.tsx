@@ -32,7 +32,13 @@ export function PopUpButton(props:{customButton?:React.ReactNode,children?:React
     //this allows children to call a
     if(props.children != undefined) {
         if (React.isValidElement(props.children)) {
-            childrenWithProps = React.cloneElement(props.children as JSX.Element, {closeCallback})
+            React.Children.map(props.children,function (child) {
+                if(child.props.closeCallback) {
+                    return React.cloneElement(child as JSX.Element, {closeCallback})
+                }
+                return child
+            })
+            //childrenWithProps = React.cloneElement(props.children as JSX.Element, {closeCallback})
         }
     }
     if(props.customButton != undefined) {

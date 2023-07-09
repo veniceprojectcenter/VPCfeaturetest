@@ -37,6 +37,12 @@ const nextConfig = {
                 hostname:'upload.wikimedia.org',
                 port:'',
                 pathname:"**"
+            },
+            {
+                protocol:'https',
+                hostname:'venice-project-center-bucket.s3.amazonaws.com',
+                port:'',
+                pathname:"**"
             }
         ]
     }
