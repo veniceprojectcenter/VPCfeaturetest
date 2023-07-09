@@ -36,6 +36,12 @@ resource "vercel_project_environment_variable" "jwt_secret"  {
   value= var.JWT_SECRET
 }
 
+resource "vercel_project_environment_variable" "fileUploadUrl" {
+  project_id = vercel_project.vpc_project.id
+  key        = "NEXT_PUBLIC_FILE_API_URL"
+  value      = aws_api_gateway_deployment.fileApiDeployment.invoke_url
+  target = ["production","preview","development"]
+}
 
 resource "vercel_project" "bridge_app" {
   name = "bridge-app"

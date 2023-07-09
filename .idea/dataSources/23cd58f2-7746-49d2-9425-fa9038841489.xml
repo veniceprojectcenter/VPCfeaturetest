@@ -10,7 +10,7 @@
 16384||16394|T|G
 16398||-9223372036854775808|C|G
 16398||16386|C|G</Grants>
-      <IntrospectionStateNumber>26784</IntrospectionStateNumber>
+      <IntrospectionStateNumber>30770</IntrospectionStateNumber>
       <ServerVersion>14.7</ServerVersion>
       <StartupTime>1687505891</StartupTime>
       <TimeZones>true ACDT
@@ -806,7 +806,7 @@ false Zulu
 14351||10|C|G
 14351||-9223372036854775808|U|G
 14351||10|U|G</Grants>
-      <IntrospectionStateNumber>26784</IntrospectionStateNumber>
+      <IntrospectionStateNumber>30770</IntrospectionStateNumber>
       <ObjectId>14717</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -821,17 +821,17 @@ false Zulu
     <role id="5" parent="1" name="pg_database_owner">
       <ObjectId>6171</ObjectId>
     </role>
-    <role id="6" parent="1" name="pg_read_all_data">
-      <ObjectId>6181</ObjectId>
+    <role id="6" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
     </role>
-    <role id="7" parent="1" name="pg_write_all_data">
-      <ObjectId>6182</ObjectId>
-    </role>
-    <role id="8" parent="1" name="pg_monitor">
+    <role id="7" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
       <RoleGrants>3374
 3375
 3377</RoleGrants>
+    </role>
+    <role id="8" parent="1" name="pg_read_all_data">
+      <ObjectId>6181</ObjectId>
     </role>
     <role id="9" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
@@ -839,30 +839,31 @@ false Zulu
     <role id="10" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
     </role>
-    <role id="11" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
-    </role>
-    <role id="12" parent="1" name="pg_read_server_files">
+    <role id="11" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
     </role>
-    <role id="13" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="14" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="15" parent="1" name="pg_signal_backend">
+    <role id="12" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
     </role>
-    <role id="16" parent="1" name="rds_superuser">
-      <ObjectId>16386</ObjectId>
-      <RoleGrants>16387!
-16389!
-3373!
-4200!</RoleGrants>
+    <role id="13" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
     </role>
-    <role id="17" parent="1" name="rds_replication">
-      <ObjectId>16387</ObjectId>
+    <role id="14" parent="1" name="pg_write_all_data">
+      <ObjectId>6182</ObjectId>
+    </role>
+    <role id="15" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="16" parent="1" name="postgres">
+      <CanLogin>1</CanLogin>
+      <CreateDb>1</CreateDb>
+      <CreateRole>1</CreateRole>
+      <ObjectId>16396</ObjectId>
+      <RoleGrants>16386</RoleGrants>
+      <ValidUntil>infinity</ValidUntil>
+    </role>
+    <role id="17" parent="1" name="rds_ad">
+      <ObjectId>16393</ObjectId>
     </role>
     <role id="18" parent="1" name="rds_iam">
       <ObjectId>16388</ObjectId>
@@ -870,10 +871,17 @@ false Zulu
     <role id="19" parent="1" name="rds_password">
       <ObjectId>16389</ObjectId>
     </role>
-    <role id="20" parent="1" name="rds_ad">
-      <ObjectId>16393</ObjectId>
+    <role id="20" parent="1" name="rds_replication">
+      <ObjectId>16387</ObjectId>
     </role>
-    <role id="21" parent="1" name="rdsadmin">
+    <role id="21" parent="1" name="rds_superuser">
+      <ObjectId>16386</ObjectId>
+      <RoleGrants>16387!
+16389!
+3373!
+4200!</RoleGrants>
+    </role>
+    <role id="22" parent="1" name="rdsadmin">
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <Config>TimeZone=utc
@@ -895,14 +903,6 @@ default_transaction_read_only=off</Config>
       <ObjectId>10</ObjectId>
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
-      <ValidUntil>infinity</ValidUntil>
-    </role>
-    <role id="22" parent="1" name="postgres">
-      <CanLogin>1</CanLogin>
-      <CreateDb>1</CreateDb>
-      <CreateRole>1</CreateRole>
-      <ObjectId>16396</ObjectId>
-      <RoleGrants>16386</RoleGrants>
       <ValidUntil>infinity</ValidUntil>
     </role>
     <role id="23" parent="1" name="rdsrepladmin">
@@ -4308,7 +4308,7 @@ default_transaction_read_only=off</Config>
     </schema>
     <schema id="272" parent="2" name="public">
       <Current>1</Current>
-      <IntrospectionStateNumber>26784</IntrospectionStateNumber>
+      <IntrospectionStateNumber>30770</IntrospectionStateNumber>
       <ObjectId>16907</ObjectId>
       <StateNumber>25993</StateNumber>
       <OwnerName>postgres</OwnerName>
