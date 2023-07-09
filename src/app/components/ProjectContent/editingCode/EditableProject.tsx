@@ -74,7 +74,7 @@ export function EditableProject(props:{project:FullProject}) {
 
         return (
             <div className={"flex flex-col"}>
-                <PopupWithClose open={confirmationOpen} setOpenCallback={() => setConfirmationOpen(true)}>
+                <PopupWithClose open={confirmationOpen} setOpenCallback={(value) => setConfirmationOpen(value)}>
                    <h1> successfully created or updated project with id {editedProject.id}</h1>
                 </PopupWithClose>
                 <ProjectTitleCard project={project} onBlur={leftFocus} contentEditable>
@@ -83,9 +83,14 @@ export function EditableProject(props:{project:FullProject}) {
                             change image
                         </div>}>
                         <div className={"m-20"}>
+                            {
+                                //TODO make it so when you upload it closes the screen
+                            }
                             <h1>current file:{fileState?.name ? fileState.name:"no file selected"}</h1>
                             <input className={"w-auto"} onChange={onFileChange} type={"file"}/>
-                            <button onClick={async (event) => {await uploadFileEvent(event)}} >upload file </button>
+                            <button onClick={async (event) => {
+                                await uploadFileEvent(event)
+                            }} >upload file </button>
                         </div>
                     </PopUpButton>
                     <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
