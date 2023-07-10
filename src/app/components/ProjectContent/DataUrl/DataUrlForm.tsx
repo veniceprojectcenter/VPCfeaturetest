@@ -81,6 +81,7 @@ export function DataUrlForm(props:{editableProject:FullProject,
                     </div>:
                 <div>
                     <input onChange={onFileChange} name={"inputFile"} type={"file"}/>
+                    <h1 className={"text-white"}>it may take awhile for the file to upload please do not close the popup </h1>
                 </div>
                 }
             </div>
