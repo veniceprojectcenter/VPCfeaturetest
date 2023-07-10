@@ -3,9 +3,12 @@ import {Dataurl} from "@prisma/client";
 import {DataUrlArray, isDataUrlArray} from "@/app/api/projects/dataurl/DataUrlArray";
 import {prisma} from "@/app/api/db";
 
-export async function POST(request:NextRequest) {
-    let dataUrl:DataUrlArray | Dataurl = {data:[]}
 
+
+export async function POST(request:NextRequest) {
+    console.log("gameing")
+    let dataUrl:DataUrlArray | Dataurl = {data:[]}
+    console.log("hello world")
     try {
         dataUrl = await request.json();
     } catch (error) {
