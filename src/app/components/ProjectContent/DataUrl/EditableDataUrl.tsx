@@ -11,13 +11,20 @@ export default function EditableDataUrl(props:{dataurl:Dataurl
 
     let [open,setOpen] = useState(false);
     function deleteDataUrl() {
-        const index = props.editableProject.dataurls?.indexOf(props.dataurl);
-        if (index != undefined && index > -1) {
-            props.editableProject.dataurls?.splice(index,1);
+        if(props.editableProject.dataurls != undefined) {
+            const index = props.editableProject.dataurls.indexOf(props.dataurl);
+            if (index != undefined && index > -1) {
+                props.editableProject.dataurls?.splice(index, 1);
+            }
+            setOpen(false);
+            let url = window.location.origin + "/api/projects/dataurl/delete";
+            console.log(url)
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(props.dataurl)
+            })
+            props.onUpdateState(props.editableProject);
         }
-        setOpen(false);
-        console.log(props.editableProject);
-        props.onUpdateState(props.editableProject);
     }
     return(
         <div>
