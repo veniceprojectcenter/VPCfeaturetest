@@ -26,8 +26,9 @@ export default function Home() {
     const studentProjectColors = ["#000000","#000000","#000000"];
     const studentProjectCaptions = ["Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","Vacation Rentals and Residential Housing in Venice"];
     const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
+    let studentProjectLinks = ["/","/","/"];
 
-    let publicationColors = ["#00FFFF", "#FF00FF", "#FFFF00"];
+    let publicationColors = ["#000000", "#000000", "#000000"];
     let publicationCaptions = ["Emergent systems","Spacial Data","Venezia la catta dei rii"];
     let publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
     let publicationLinks = ["/","/","/"];
@@ -173,7 +174,7 @@ export default function Home() {
               </div>
               <button className = {"seeAll"}><Link href={"/"}>See All {"-->"}</Link></button>
           </div>
-          <div className = {"impacts"}>
+          <div className = {"impacts flex flex-col"}>
               <h1 className = {"impactsTitle"}><p className = {"text-white"}>Impacts</p></h1>
               <div className={"impactsDescription"}>
                   <p className = {"text-white"}>We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions in the city.</p>
