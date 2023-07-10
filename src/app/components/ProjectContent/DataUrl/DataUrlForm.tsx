@@ -11,6 +11,7 @@ export function DataUrlForm(props:{editableProject:FullProject,
     closeCallback?:Function}
 ) {
     let [renderUrlLine,setRenderUrlLine] = useState(true);
+    let [file,setFileState] = useState<File | undefined>(undefined)
     let addDataUrlOrUpdate = async (event:React.FormEvent<HTMLFormElement>)  => {
         event.preventDefault();
         //This is adding the data of the from onto the target without breaking the type system
@@ -18,15 +19,15 @@ export function DataUrlForm(props:{editableProject:FullProject,
             url: {value:string} | undefined,
             buttonText: {value:string}
             dataType: {value:DATAURL_TYPE}
-            inputFile: {value:File} | undefined
         }
         let url = "";
         if(target.url != undefined) {
             url = target.url.value;
         }
         let dataUrl:Dataurl;
-        if(target.inputFile  != undefined) {
-            url = await uploadFile(target.inputFile.value);
+        if(file  != undefined) {
+            url = await uploadFile(file);
+            console.log(url)
         }
         if(props.dataUrl != undefined) {
             dataUrl = props.dataUrl;
@@ -61,7 +62,12 @@ export function DataUrlForm(props:{editableProject:FullProject,
             setRenderUrlLine(true);
         }
     }, []);
-
+    let onFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+        const target = event.target as typeof event.target & {
+            files:File[]
+        }
+        setFileState(target.files[0])
+    }
     return(
     <div className={"m-10"}>
         <form  onSubmit={async (event) => {
@@ -74,7 +80,8 @@ export function DataUrlForm(props:{editableProject:FullProject,
                         <input className={"text-black"} defaultValue={props.dataUrl?.url} type={"text"} name={"url"}/>
                     </div>:
                 <div>
-                    <input name={"inputFile"} type={"file"}/>
+                    <input onChange={onFileChange} name={"inputFile"} type={"file"}/>
+                    <h1 className={"text-white"}>it may take awhile for the file to upload please do not close the popup </h1>
                 </div>
                 }
             </div>

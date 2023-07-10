@@ -6,6 +6,7 @@ import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
+import EmbedUrlDisplay from "@/app/components/ProjectContent/DataUrl/EmbedUrlDisplay";
 
 
 //TODO make a good way to store embeds on project
@@ -50,6 +51,7 @@ export default async function Page({params}: {
                         <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"Advisors"}></IqpTeamComp>
                     </div>
                 </div>
+                <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
             </div>
         );
     } else {

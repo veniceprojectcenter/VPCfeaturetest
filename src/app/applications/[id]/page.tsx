@@ -26,6 +26,7 @@ export default async function Page({params}: {
                 <ProjectTitleCard project={project}></ProjectTitleCard>
                     <div className={"flex flex-col"}>
                         <ProjectDescription project={project}></ProjectDescription>
+                        <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                         <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>
                     </div>
                 </div>

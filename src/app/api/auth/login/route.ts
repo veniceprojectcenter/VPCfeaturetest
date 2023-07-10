@@ -7,6 +7,11 @@ import {cookies} from "next/headers";
 
 const expireHours = 5;
 
+export type AuthResponce = {
+    authenticated: boolean
+    name: string
+}
+
 export async function POST(request:NextRequest) {
     let maintainer:Maintainer;
     try {
@@ -22,7 +27,11 @@ export async function POST(request:NextRequest) {
     let valid = await login(maintainer.username,maintainer.password);
     console.log(valid)
     if(!valid) {
-        return NextResponse.json("incorrect password or username")
+        let authResponce:AuthResponce = {
+            authenticated:false,
+            name:maintainer.username
+        }
+        return NextResponse.json(authResponce)
     }
     let token = jwt.sign({id: maintainer.id, username: maintainer.username}, secret,{
         expiresIn:hoursToMs(5),
@@ -32,7 +41,11 @@ export async function POST(request:NextRequest) {
     cookies().set("token", token, {
         expires: Date.now() + hoursToMs(5)
     });
-    return NextResponse.json("authenticated!")
+    let authResponce:AuthResponce = {
+        authenticated:true,
+        name:maintainer.username
+    }
+    return NextResponse.json(authResponce)
 }
 
 function hoursToMs(hours:number) {
