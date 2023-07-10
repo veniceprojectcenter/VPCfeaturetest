@@ -9,7 +9,7 @@ export async function uploadFile(file:File):Promise<string> {
             const awsResponce = await fetch(url + "/add", {
                 method: "POST",
                 body: JSON.stringify({
-                    filename: file.name
+                    filename: file.name.replaceAll(" ","-")
                 })
             })
             try {
