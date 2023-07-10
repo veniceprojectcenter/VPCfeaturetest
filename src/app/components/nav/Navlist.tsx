@@ -1,18 +1,10 @@
-"use client"
-import fetch from "node-fetch";
-import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
-import {ProjectWidget} from "@/app/components/nav/projectWidget";
-import {useEffect, useState} from "react";
 import {Project, PROJECT_TYPE} from "@prisma/client";
+import {useEffect, useState} from "react";
+import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
+import {ProjectWidget} from "@/app/components/nav/projectWidget";
+import NavLoading from "@/app/components/nav/NavLoading";
 
-interface NavlistProps {
-    type: PROJECT_TYPE
-}
-
-interface NavlistProps {
-    type: PROJECT_TYPE
-}
 
 export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
@@ -35,7 +27,7 @@ export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
         console.log(projects);
     }
     if (loading) {
-        return <h1 className={"text-white w-full"}>loading...</h1>
+        return <NavLoading></NavLoading>
     }
     return( <div className={"text-white flex-col"}>
         {projects.map((project) => {
@@ -60,7 +52,8 @@ function filterFunc(param:string) {
 
 async function getProjects(type:PROJECT_TYPE) {
     let domain = (new URL(window.location.href));
-    const  res = await fetch(  domain.origin + `/api/projects?type=${type}`, {
+    let url = domain.origin + `/api/projects?type=${type}`;
+    const  res = await fetch(url, {
         method:"GET"
     })
     const data: ProjectRequestResponse = await res.json();

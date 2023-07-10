@@ -10,8 +10,11 @@ body {
     background-color: black;
 
     min-height: 100%;
+    /*
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue,Garamond, sans-serif;
+     */
+    font-family: "Gilroy Light", system-ui;
 }
 
 .pageLayout {
@@ -41,7 +44,7 @@ body {
 .flexNavBar .menuBox .menu {
     font-size:2vw;
     @apply text-white;
-    font-family:"Verdana","Garamond","Times New Roman","Courier New";
+    /*font-family:"Verdana","Garamond","Times New Roman","Courier New";*/
 }
 
 .flexNavBar .vpcBox {
@@ -52,7 +55,7 @@ body {
     font-size:1.414vw;
     color:white;
     text-align:right;
-    font-family:"Verdana","Times New Roman","Garamond","Courier New";
+    /*font-family:"Verdana","Times New Roman","Garamond","Courier New";*/
 }
 
 .flexNavBar .loginBox {
@@ -62,7 +65,7 @@ body {
 .flexNavBar .loginBox .logIn {
     font-size:1vw;
     color:white;
-    font-family:"Verdana","Times New Roman","Garamond","Courier New";
+    /*font-family:"Verdana","Times New Roman","Garamond","Courier New";*/
 }
 
 .sidebar {
@@ -110,7 +113,7 @@ body {
     color:white;
     text-align:center;
     border-radius: 5px;
-    font-family:"Verdana","Garamond","Times New Roman","Courier New";
+    /*font-family:"Verdana","Garamond","Times New Roman","Courier New";*/
 }
 
 .closeMenu:hover {
@@ -133,7 +136,7 @@ body {
     background:black;
     border-radius:5px;
     color: white;
-    font-family:"Verdana","Garamond","Times New Roman","Courier New";
+    /*font-family:"Verdana","Garamond","Times New Roman","Courier New";*/
     transition: background-color 0.3s ease-out;
 }
 

@@ -1,0 +1,109 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id              String            @id @unique @default(uuid())
+  title           String
+  description     String
+  tags            tagsOnProject[]
+  img             String?
+  type            PROJECT_TYPE
+  term            String?           @db.Char(1)
+  year            Int
+  dataurls        Dataurl[]
+  iqp_team        IqpTeam?
+  IqpEntityOnTeam IqpEntityOnTeam[]
+}
+
+model Dataurl {
+  id        String       @id @unique @default(uuid())
+  projectId String
+  url       String
+  text      String
+  type      DATAURL_TYPE
+  Project   Project      @relation(fields: [projectId], references: [id])
+}
+
+model IqpTeam {
+  id         Int               @id @unique @default(autoincrement())
+  iqpEntitys IqpEntityOnTeam[]
+  projectId  String            @unique
+  project    Project           @relation(fields: [projectId], references: [id])
+}
+
+model IqpEntity {
+  id              String            @id @unique @default(uuid())
+  name            String
+  type            IQP_ENTITY_TYPE
+  IqpEntityOnTeam IqpEntityOnTeam[]
+}
+
+model IqpEntityOnTeam {
+  projectId   String
+  iqpEntityID String
+  entity      IqpEntity @relation(fields: [iqpEntityID], references: [id])
+  project     Project   @relation(fields: [projectId], references: [id])
+  assignedAt  DateTime  @default(now())
+  IqpTeam     IqpTeam?  @relation(fields: [iqpTeamId], references: [id])
+  iqpTeamId   Int?
+
+  @@id([projectId, iqpEntityID])
+}
+
+model Maintainer {
+  id       String @id @unique @default(uuid())
+  username String
+  password String
+}
+
+model AutoSlideshow {
+  id               Int      @id @unique @default(autoincrement())
+  backgroundColors String[]
+  pictureCaptions  String[]
+  slideDelay       Float
+  pictures         String[]
+  picWidth         Int
+  picHeight        Int
+}
+
+model tagsOnProject {
+  projectId  String
+  name       String
+  tag        Tag      @relation(fields: [name], references: [name])
+  project    Project  @relation(fields: [projectId], references: [id])
+  assignedAt DateTime @default(now())
+
+  @@id([projectId, name])
+}
+
+model Tag {
+  name          String          @id @unique
+  tagsOnProject tagsOnProject[]
+}
+
+enum DATAURL_TYPE {
+  DOWNLOAD
+  EMBED
+  LINK
+}
+
+enum IQP_ENTITY_TYPE {
+  SPONSOR
+  STUDENT
+  ADVISOR
+}
+
+enum PROJECT_TYPE {
+  IQP
+  DATA
+  APP
+  PUBLICATION
+  IMPACT
+}

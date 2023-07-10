@@ -11,3 +11,10 @@ variable "versel_token" {
 variable "DATABASE_URL" {
   description = "database url"
 }
+
+variable "JWT_SECRET" {
+  description = "json web token sighning key"
+}
+data "aws_caller_identity" "current" {
+
+}
