@@ -1,4 +1,6 @@
 export function IqpTeamComp(props:{title:string,team:string[] | undefined,idPrefix:string,onBlur?: (event: any) => void,contentEditable?: boolean,addElementButton?:JSX.Element}) {
+
+    // @ts-ignore
     if(props.team != undefined) {
         let elementsList = props.team.map((advisor, index) => {
             return (<h1 onBlur={props.onBlur} suppressContentEditableWarning contentEditable={props.contentEditable} className={"flex mx-3 text-white font-bold"}  id={props.idPrefix + " " + index} key={advisor + index}>{advisor}</h1>)

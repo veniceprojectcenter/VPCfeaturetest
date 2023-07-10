@@ -67,6 +67,7 @@ export function EditableProject(props:{project:FullProject}) {
         dataElements.push(
             <PopUpButton>
                 <DataUrlForm editableProject={editedProject} onUpdateState={(project) => {
+                    console.log(project)
                     setEditedProject({...project});
                 }}></DataUrlForm>
             </PopUpButton>
@@ -112,7 +113,10 @@ export function EditableProject(props:{project:FullProject}) {
                         </div>
                     </div>
                     {project.iqp_team ?
-                    <IqpTeamDisplay project={project} editedProject={editedProject} editProjectCallback={setEditedProject}></IqpTeamDisplay> : <div/>}
+                    <IqpTeamDisplay project={project} editedProject={editedProject} leftFocus={leftFocus} editProjectCallback={(project) => {
+                        console.log(project)
+                        setEditedProject({...project})
+                    }}></IqpTeamDisplay> : <div/>}
                 </div>
                 <div>
                     <button className={"text-white w-full border-white border-2 text-4xl my-10"} onClick={commit}>commit</button>
