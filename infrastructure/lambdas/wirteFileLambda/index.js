@@ -7,20 +7,18 @@ const {randomUUID} = require('crypto'); //Crypto is part of Node.js runtime sinc
 
 //this is the main function body for the serverless lambda function
 exports.handler= async (event,context, callback) => {
-    console.log(JSON.parse(event.body));
     let body = JSON.parse(event.body);
     let key = randomUUID()
     let bucketName = process.env.bucket;
     // this gets an upload url
     const url = s3.getSignedUrl('putObject',{
         Bucket: bucketName,
-        Key: key,
+        Key: body.filename,
         Expires:300 // 5 min timer
     })
     const responseBody = {
         uploadUrl: url,
-        getUrl: `https://${bucketName}.s3.amazonaws.com/${key}`,
-        ContentType: ""
+        getUrl: `https://${bucketName}.s3.amazonaws.com/${body.filename}`,
     }
     return {
         statusCode: 200,
