@@ -2,6 +2,7 @@ import {NextRequest, NextResponse} from "next/server";
 import {AutoSlideshow} from "@prisma/client";
 import {prisma} from '../../db';
 import {generateSlideshow} from "./generateSlideshow";
+import {generateOpenData} from "./generateOpenData";
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
     if(id === null) {

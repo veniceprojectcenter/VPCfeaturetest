@@ -1,10 +1,10 @@
 import {prisma} from "@/app/api/db";
 
-export async function generateSlideshow(vpcStatement:string,openDataParagraph:string,openDataPic:string) {
+export async function generateOpenData(vpcStatement:string,openDataParagraph:string,openDataPic:string) {
     console.log("prisma connection established");
     try {
         console.log("Before opern ddaata creation");
-        await prisma.OpenDataSection.create({
+        await prisma.openDataSection.create({
             data: {
                 vpcStatement:vpcStatement,
                 openDataParagraph:openDataParagraph,

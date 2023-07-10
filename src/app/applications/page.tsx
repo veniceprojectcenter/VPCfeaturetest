@@ -5,8 +5,12 @@ export default function Page() {
     return(
         <div className={"flex-row flex mx-10"}>
             <div className={"basis-1/3 back"}>
-                <div className={"flex flex-col text-white"}>
-                    <h1>input params</h1>
+                <div className={"flex flex-col text-white fixed"}>
+                    <div>
+                        <h1 className={"text-5xl font-bold mb-5"}>Applications</h1>
+                        <h1 className={"text-5xl font-bold"}>& Tools</h1>
+                    </div>
+                    <h1 className = {"my-5"}>input params</h1>
                 </div>
             </div>
             <div className={"w-fit basis-full"}>
