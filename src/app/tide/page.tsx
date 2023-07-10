@@ -158,7 +158,7 @@ export default function Home() {
                             console.log("In Editing mode");}}>Edit URL</button>
                         <button className={"bg-white my-1 mx-2"} type="button" onClick = {() => {{openDataPicURLToggle()}
                             console.log("Committed");}}>Commit</button>
-                        <p className = {"openDataPicURL text-white"} suppressContentEditableWarning={"true"} contentEditable={"true"}>{openDataPic}</p>
+                        <p className = {"openDataPicURL text-white"} suppressContentEditableWarning contentEditable={"true"}>{openDataPic}</p>
                     </div>
                     <div className = {"vpcStatement"}><p contentEditable={vpcStatementEditable} className = {"text-white"}>{vpcStatement}</p></div>
                     <div className = {"flex flex-row"}>
