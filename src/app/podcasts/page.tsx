@@ -7,10 +7,13 @@ import {useEffect, useState} from "react";
 
 export default function Page() {
 
-    let seasonColors = ["#F79646","#41B8D5","#FF8C84","#9BBB59"];
-    let seasonCaptions = ["Historical Conservation (5 episodes)","Canal Walls (5 episodes)","Community/Over-tourism (5 episodes)","Environmental Conservation (5 episodes)"];
-    let seasonPictures = ["https://s3.amazonaws.com/hive-engine/podcastss/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/podcastss/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/podcastss/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/podcastss/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888"];
-    let seasonLinks = ["./podcasts/History","./podcasts/CanalWalls","./podcasts/Community","./podcasts/Environment"];
+    let seasonColors = ["#F79646","#FF8C84","#41B8D5","#9BBB59"];
+    let seasonCaptions = ["Heritage","Tourism and Demographics","Urban Infrastructure","Environment"];
+    let seasonPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/480/original/open-uri20180817-3363-em8rkn?1534507116",
+                                    "https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/491/original/open-uri20180817-3363-k8psec?1534507148",
+                                    "https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/477/original/open-uri20180817-3363-1bucdbw?1534507101",
+                                    "https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/496/original/open-uri20180817-3363-qrubz7?1534507181"];
+    let seasonLinks = ["./podcasts/Heritage","./podcasts/Tourism","./podcasts/UrbanInfrastructure","./podcasts/Environment"];
     let seasonPicWidth = 600;
     let seasonPicHeight = 800;
     let seasonSlideDelay = 3200;
@@ -80,7 +83,7 @@ export default function Page() {
     }
 
     return(<div className = {"podcastPage flex flex-col justify-center mx-auto w-3/4"}>
-                <h1 className = {"podcastTitle"} onClick={enterSlideshow}>Podcasts</h1>
+                <h1 className = {"podcastTitle"} onClick={enterSlideshow}>Docuseries</h1>
                 <p className = {"podcastsDescription my-4"}>Here is the compilation of episodes about the history of the VPC gathered by the 35th anniversary team. The episodes are split into respective themes of the projects they contain. </p>
                 <div className = {"w-5/6 justify-center mx-auto"}>
                     <AutoSlideshow backgroundColors={seasonColors} pictureCaptions={seasonCaptions} slideDelay={seasonSlideDelay} pictures={seasonPictures} links={seasonLinks} picWidth={seasonPicWidth} picHeight={seasonPicHeight}/>

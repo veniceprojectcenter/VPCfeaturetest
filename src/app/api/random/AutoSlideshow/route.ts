@@ -2,6 +2,7 @@ import {NextRequest, NextResponse} from "next/server";
 import {AutoSlideshow} from "@prisma/client";
 import {prisma} from '../../db';
 import {generateSlideshow} from "./generateSlideshow";
+import {generateOpenData} from "./generateOpenData";
 export async function GET(request:NextRequest) {
     let id = await request.nextUrl.searchParams.get("id");
     if(id === null) {
@@ -55,6 +56,14 @@ export async function POST(request: NextRequest) {
             response:"Slideshow Entered successfully"
         }
         console.log("AutoSlideshow method finished");
+        return NextResponse.json(response);
+    } else if(JSoN.type === "enterOpenData") {
+        console.log("Open Data method about to start");
+        await generateOpenData(JSoN.vpcStatement,JSoN.openDataParagraph,JSoN.openDataPic);
+        let response = {
+            response:"Open Data Entered successfully"
+        }
+        console.log("Open Data method finished");
         return NextResponse.json(response);
     } else {
         let response = {

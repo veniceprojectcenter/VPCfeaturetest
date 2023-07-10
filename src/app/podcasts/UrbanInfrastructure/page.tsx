@@ -16,7 +16,7 @@ export default function Page() {
                                 "https://theromanguy.com/wp-content/uploads/Venice-canals-featured-780x420.jpeg"];
 
     let episodeDescriptions = ["Pick any episode to start watching!",
-                                        "History and Significance of the canals",
+                                        "Heritage and Significance of the canals",
                                         "What systems exist to stop future damage of the walls",
                                         "How boats are used in Venice","How boat turbulence and waves work and how they can erode canal walls",
                                         "How the size of boats determines the type of damage and the steps taken to protect the walls"];
@@ -33,6 +33,6 @@ export default function Page() {
                                     "Made in Venice: Past, Present and Future",
                                     "Venice Big Data"];
 
-    return(<SeasonPage pageWidth={"5/6"} seasonTitle={"Canal Walls"} seasonColor = {"bg-sky-400"} seasonDescription={"Throughout the years the flow of water throughout the canals has caused extensive damage to the walls."} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
+    return(<SeasonPage pageWidth={"5/6"} seasonTitle={"Urban Infrastructure"} seasonColor = {"bg-sky-400"} seasonDescription={"Throughout the years the flow of water throughout the canals has caused extensive damage to the walls."} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
 }
 

@@ -10,7 +10,7 @@ export default function Page() {
                         <h1 className={"text-5xl font-bold mb-5"}>Publications</h1>
                     </div>
                 </div>
-                <p className={"text-white"}>
+                <p className={"text-white relative"}>
                     We have always tried to give back to the city and to people the knowledge gathered during the years of activity by publishing articles and collaborating in scientific publications.
                 </p>
             </div>

@@ -6,7 +6,7 @@ export default function Page() {
     let episodeNames = ["Infrastructure","Changes Over Time","Churches","Scoules & Guilds","Outdoor Art"];
     let episodeThumbnails = ["https://theromanguy.com/wp-content/uploads/Venice-canals-featured-780x420.jpeg","https://theromanguy.com/wp-content/uploads/Venice-canals-featured-780x420.jpeg","https://theromanguy.com/wp-content/uploads/Venice-canals-featured-780x420.jpeg","https://theromanguy.com/wp-content/uploads/Venice-canals-featured-780x420.jpeg","https://theromanguy.com/wp-content/uploads/Venice-canals-featured-780x420.jpeg"];
 
-    let episodeDescriptions = ["Pick any episode to start watching!","Information about cultural buildings and arts in Venice","History of Venice’s borders, economy, and demographics","The art and infrastructure of churches and how they are repurposed","Report of the state of fraternities, guilds, and monastery groups in Venice","Venetian public art and documentation of the types of damages they accrue"];
+    let episodeDescriptions = ["Pick any episode to start watching!","Information about cultural buildings and arts in Venice","Heritage of Venice’s borders, economy, and demographics","The art and infrastructure of churches and how they are repurposed","Report of the state of fraternities, guilds, and monastery groups in Venice","Venetian public art and documentation of the types of damages they accrue"];
     let episodeLinks = ["https://www.youtube.com/embed/6otibCUER3I",
         "https://www.youtube.com/embed/XV-cCzhT7i0?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
         "https://www.youtube.com/embed/TD1JUh8UyAM?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",
@@ -20,5 +20,5 @@ export default function Page() {
         "Made in Venice: Past, Present and Future",
         "Venice Big Data"];
 
-    return(<SeasonPage pageWidth={"5/6"} seasonTitle={"Historical Conservation"} seasonColor = {"bg-orange-400"} seasonDescription={"The Venetian Republic was founded at the end of the 7th century, and as a result has a large amount of history. It is important that we work to preserve this history. "} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
+    return(<SeasonPage pageWidth={"5/6"} seasonTitle={"Heritage"} seasonColor = {"bg-orange-400"} seasonDescription={"The Venetian Republic was founded at the end of the 7th century, and as a result has a large amount of history. It is important that we work to preserve this history. "} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
 }

@@ -12,7 +12,7 @@ export function NavListSearch(props:{type:PROJECT_TYPE}) {
                 <input value={searchParam} onInput={e => { // @ts-ignore
                     setSearchParam(e.target.value);}} placeholder={"Search Projects..."} className={"bg-transparent w-max h-50 outline-none text-2xl"}/>
             </div>
-            <div>
+            <div className = {"my-5"}>
                 <Navlist search={searchParam} type={props.type}></Navlist>
             </div>
         </div>
