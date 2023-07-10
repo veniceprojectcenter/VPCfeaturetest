@@ -29,5 +29,5 @@ export default function Page() {
         "Made in Venice: Past, Present and Future",
         "Venice Big Data"];
 
-    return(<SeasonPage pageWidth={"5/6"} seasonTitle={"Community/Overtourism"} seasonColor = {"bg-rose-400"} seasonDescription={"Tourism is an essential part of the Venetian economy. It provides millions of dollars of economic benefit to the city, however, it causes significant problems as well."} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
+    return(<SeasonPage pageWidth={"5/6"} seasonTitle={"Tourism and Demographics"} seasonColor = {"bg-rose-400"} seasonDescription={"Tourism is an essential part of the Venetian economy. It provides millions of dollars of economic benefit to the city, however, it causes significant problems as well."} episodeNames={episodeNames} episodeThumbnails={episodeThumbnails} episodeDescriptions={episodeDescriptions} episodeLinks={episodeLinks} episodeTitles={episodeTitles}/>);
 }

@@ -16,8 +16,8 @@ export default function Page() {
     let episodeDescriptions = ["Pick any episode to start watching!",
         "What is the Lagoon",
         "Implementation of cleaner energy and recycling techniques in Venice",
-        "Subtitelent",
-        "subtitel",
+        "How water flows through the canals",
+        "How Venice gets its food, as well as the various gardens spread throughout",
         "System in place and proposed that protect the city from sewage and pollution"];
     let episodeLinks = ["https://www.youtube.com/embed/6otibCUER3I",
         "https://www.youtube.com/embed/XV-cCzhT7i0?list=PLWnELGmjl00Zh-Qz83gxg-CHfFFJoeLkm",

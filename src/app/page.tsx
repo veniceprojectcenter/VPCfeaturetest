@@ -26,8 +26,9 @@ export default function Home() {
     const studentProjectColors = ["#000000","#000000","#000000"];
     const studentProjectCaptions = ["Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","Vacation Rentals and Residential Housing in Venice"];
     const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
+    let studentProjectLinks = ["/","/","/"];
 
-    let publicationColors = ["#00FFFF", "#FF00FF", "#FFFF00"];
+    let publicationColors = ["#000000", "#000000", "#000000"];
     let publicationCaptions = ["Emergent systems","Spacial Data","Venezia la catta dei rii"];
     let publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
     let publicationLinks = ["/","/","/"];
@@ -46,6 +47,7 @@ export default function Home() {
 
     const impactsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130",VeniceMapThing];
     const impactsCaptions = ["","","","","",""];
+    const impactsLinks = ["http://dashboard.cityknowledge.net/#/venice","/","/","/","/","http://dashboard.cityknowledge.net/#/venice"];
 
     // useEffect(() => {
     //     const getPublicationData = async() => {
@@ -122,7 +124,7 @@ export default function Home() {
               </div>
               <div className = {"rightt"}>
                   <div className = {"titleBox"}>
-                      <button className = {"opendataTitle"}><Link href={"/"}>Open Data</Link></button>
+                      <button className = {"opendataTitle"}><Link href={"/opendata"}>Open Data</Link></button>
                   </div>
                   <div className = {"opendataParagraph"}><p className = {"text-white"}>Years of activity have allowed us to collect a considerable amount of data concerning the city.
                           This data is the basis for the operation of many services useful to the community, and are used daily by applications and predictive models. We are proud of our Open approach, giving access to our data in order to support and enhance the quality of life in the city.</p></div>
@@ -138,10 +140,11 @@ export default function Home() {
                     <div className = "sampleProject"
                          key = {index}
                          style = {{backgroundColor}}>
+                        <Link href = {studentProjectLinks[index]}>
                         <figure className = {"picContainer"}>
                             <Image src={studentProjectPictures[index]} width={500} height = {"500"} alt={"iqp image"} className={"studentProjectPic"}></Image>
                             <figcaption className="studentProjectTitle">{studentProjectCaptions[index]}</figcaption>
-                        </figure>
+                        </figure></Link>
                     </div>
                   ))}
               </div>
@@ -171,9 +174,9 @@ export default function Home() {
                       </div>
                   ))}
               </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All {"-->"}</Link></button>
+              <button className = {"seeAll"}><Link href={"/applications"}>See All {"-->"}</Link></button>
           </div>
-          <div className = {"impacts"}>
+          <div className = {"impacts flex flex-col"}>
               <h1 className = {"impactsTitle"}><p className = {"text-white"}>Impacts</p></h1>
               <div className={"impactsDescription"}>
                   <p className = {"text-white"}>We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions in the city.</p>
@@ -181,43 +184,49 @@ export default function Home() {
               <div className = {"sixImpacts flex flex-row"}>
                   <div className = {"leftImpacts flex flex-row"}>
                       <div className = {"bigImpact"}>
+                          <Link href={impactsLinks[0]} target = {"_blank"}>
                           <div className={"picContainer"}>
                                 <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                                 <div className="impactTitle">{impactsCaptions[0]}</div>
-                          </div>
+                          </div></Link>
                       </div>
                       <div className = {"limpacts flex flex-col"}>
+                          <Link href = {impactsLinks[1]}>
                           <div className={"picContainer"}>
                               <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[1]}</div>
-                          </div>
+                          </div></Link>
+                          <Link href = {impactsLinks[2]}>
                           <div className={"picContainer"}>
                               <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[2]}</div>
-                          </div>
+                          </div></Link>
                       </div>
                   </div>
                   <div className = {"rightImpacts flex flex-row"}>
                       <div className = {"rimpacts flex flex-col"}>
+                          <Link href = {impactsLinks[3]}>
                           <div className={"picContainer"}>
                               <Image src={impactsPictures[2]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[3]}</div>
-                          </div>
+                          </div></Link>
+                          <Link href = {impactsLinks[4]}>
                           <div className={"picContainer"}>
                               <Image src={impactsPictures[1]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[4]}</div>
-                          </div>
+                          </div></Link>
                       </div>
                       <div className = {"bigImpact"}>
+                          <Link href = {impactsLinks[5]} target = {"_blank"}>
                           <div className={"picContainer"}>
                               <Image src={impactsPictures[0]} width={"500"} height={"500"} max-width={"100%"} alt={"iqp image"} className = {"impactPic"}></Image>
                               <div className="impactTitle">{impactsCaptions[5]}</div>
-                          </div>
+                          </div></Link>
                       </div>
                   </div>
               </div>
-              <button className = {"seeAll"}><Link href={"/"}>See All {"-->"}</Link></button>
+              <button className = {"seeAll"}><Link href={"/impacts"}>See All {"-->"}</Link></button>
           </div>
       </div>
-  )
+  );
 }

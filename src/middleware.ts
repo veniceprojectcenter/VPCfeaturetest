@@ -5,6 +5,7 @@ import {SignJWT, jwtVerify, type JWTPayload} from 'jose';
 export async function middleware(request:NextRequest) {
     let authCookie = request.cookies.get("token");
     let token = authCookie?.value;
+
     if(token == undefined) {
         if(request.nextUrl.pathname.includes("/edit") || request.nextUrl.pathname.includes("/login/create")) {
             console.log(new URL("/",request.url).toString());
@@ -12,6 +13,7 @@ export async function middleware(request:NextRequest) {
         }
         return NextResponse.next();
     }
+
     let secret = process.env.JWT_SECRET;
     if(secret == undefined) {
         return NextResponse.next();
