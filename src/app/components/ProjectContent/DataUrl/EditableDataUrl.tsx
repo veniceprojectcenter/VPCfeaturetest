@@ -16,6 +16,7 @@ export default function EditableDataUrl(props:{dataurl:Dataurl
             props.editableProject.dataurls?.splice(index,1);
         }
         setOpen(false);
+        console.log(props.editableProject);
         props.onUpdateState(props.editableProject);
     }
     return(

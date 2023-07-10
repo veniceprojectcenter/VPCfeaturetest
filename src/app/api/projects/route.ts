@@ -26,7 +26,7 @@ export async function GET(request:NextRequest) {
 }
 
 export async function POST(request: Request) {
-    let project: (Project & { iqp_team: IqpTeam | null, dataurls: Dataurl[] | null }) = await request.json();
+    let project: (FullProject) = await request.json();
     if (project.id == undefined) {
         let createProjectData: Project = project;
         let iqpTeamQuery = {};
