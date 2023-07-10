@@ -68,6 +68,7 @@
 
 .opendata .rightt .opendataParagraph {
     margin-top: 5%;
+    transform: translateX(20%);
     font-size: 1.5vw;
 }
 
@@ -286,8 +287,6 @@
     margin-right:auto;
     margin-top:7%;
     margin-bottom:7%;
-    display: flex;
-    flex-direction:column;
     justify-content: center;
 }
 
@@ -464,7 +463,7 @@
     border-radius: 40px;
     margin-left:auto;
     margin-right:auto;
-    margin-top:42vh;
+    margin-top:64vh;
     padding: 1%;
     transition: box-shadow 0.5s ease-in-out;
 }

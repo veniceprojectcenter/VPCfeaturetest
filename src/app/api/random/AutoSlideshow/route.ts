@@ -56,6 +56,14 @@ export async function POST(request: NextRequest) {
         }
         console.log("AutoSlideshow method finished");
         return NextResponse.json(response);
+    } else if(JSoN.type === "enterOpenData") {
+        console.log("Open Data method about to start");
+        await generateOpenData(JSoN.vpcStatement,JSoN.openDataParagraph,JSoN.openDataPic);
+        let response = {
+            response:"Open Data Entered successfully"
+        }
+        console.log("Open Data method finished");
+        return NextResponse.json(response);
     } else {
         let response = {
             response:"Slideshow Entered unsuccessfully"

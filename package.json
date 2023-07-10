@@ -48,7 +48,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/sanitize-html": "^2.9.0",
     "eslint-plugin-storybook": "^0.6.12",
-    "prisma": "^4.16.1",
+    "prisma": "^4.16.2",
     "storybook": "^7.0.18"
   }
 }

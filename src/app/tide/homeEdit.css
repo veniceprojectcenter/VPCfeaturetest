@@ -1,0 +1,496 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.veniceMapHomepage {
+
+}
+
+.homePage {
+    display: flex;
+    flex-direction:column;
+    z-index: 1;
+}
+
+.opendata {
+    top:15%;
+    left:7%;
+    width:86%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    margin-bottom:8%;
+    display: flex;
+    flex-direction:row;
+}
+
+.opendata .lefttt {
+    display:flex;
+    flex-direction:column;
+    top:0;
+    left:7%;
+    width: 70%;
+    height: 50%;
+}
+
+.opendata .lefttt .vpcStatement {
+    font-size: 2.5vw;
+    margin-top: 5%;
+}
+
+.opendata .lefttt .editOpenDataPic {
+
+}
+
+.opendata .lefttt .editOpenDataPic .openDataPicURL {
+    width: 0%;
+    height:20px;
+    visibility:hidden;
+    border: 2px solid #AAAAAA;
+    transition: all 0.5s ease;
+}
+
+.opendata .lefttt .editOpenDataPic .editOpenDataPicURL {
+    visibility: visible;
+    align-items:center;
+    border: 2px solid #FFFFFF;
+    padding:1px;
+    box-shadow: 0 0px 5px rgba(255,255,255,0.4);
+    transition: all 0.5s ease;
+}
+
+.opendata .rightt {
+    display:flex;
+    width: 30%;
+    flex-direction:column;
+}
+
+.opendata .rightt .titleBox {
+    @apply content-center;
+}
+
+.opendata .rightt .titleBox .opendataTitle {
+    @apply self-center;
+    color:white;
+    left:20%;
+    font-size:3vw;
+    border-color:white;
+    border-width:medium;
+    border-radius: 40px;
+    margin: auto;
+    padding: 4%;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.opendata .rightt .titleBox .opendataTitle:hover {
+    box-shadow: 0 0 0.5em white;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.opendata .rightt .opendataParagraph {
+    margin-top: 5%;
+    font-size: 1.5vw;
+}
+
+.studentProjects {
+    left:7%;
+    width:86%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    margin-bottom:8%;
+    display: flex;
+    flex-direction:column;
+    vertical-align: middle;
+}
+
+.studentProjects .sptitle {
+    font-size: 4.2vw;
+    margin:1%;
+}
+
+.studentProjects .studentProjectsDescription {
+    font-size:1.5vw;
+}
+
+.studentProjects .sampleProjects {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin-top : 3%;
+    height:auto;
+}
+
+.studentProjects .sampleProjects .sampleProject {
+    width: 32%;
+    height:auto;
+    border-color: white;
+    padding: 2%;
+    transition: width 1s ease-in-out,height 1s ease-in-out;
+
+    margin:auto;
+    justify-content:center;
+    align-items:center;
+}
+
+.studentProjects .sampleProjects .sampleProject .picContainer {
+    justify-content: center;
+    align-items:center;
+    margin:2%;
+}
+
+.studentProjects .sampleProjects .sampleProject .picContainer:hover {
+    justify-content: center;
+    align-items:center;
+    margin:-1%;
+    transition: all 0.25s ease-in-out;
+}
+
+.studentProjects .sampleProjects .sampleProject .picContainer .studentProjectPic {
+    height:auto;
+    position:relative;
+}
+
+.studentProjects .sampleProjects .sampleProject .picContainer .studentProjectTitle {
+    font-size: 1.7vw;
+    background-color: rgb(128,128,128,0.5);
+    color: white;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 2px 5px;
+    bottom: 0.5em;
+    transform: translate(2em,-2em);
+}
+
+.studentProjects .seeAll {
+    @apply self-center;
+    color:white;
+    left:20%;
+    font-size:2.7vw;
+    border-color:white;
+    border-width:medium;
+    border-radius: 40px;
+    margin: auto;
+    padding: 1%;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.studentProjects .seeAll:hover {
+    box-shadow: 0 0 0.5em white;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.publications {
+    width:72%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    margin-bottom:8%;
+    display: flex;
+    flex-direction:column;
+    vertical-align: middle;
+}
+
+.publications .ptitle {
+    font-size: 3.7vw;
+    margin-bottom: 3%;
+}
+
+.publications .seeAll {
+    @apply self-center;
+    color:white;
+    left:20%;
+    font-size:2.7vw;
+    border-color:white;
+    border-width:medium;
+    border-radius: 40px;
+    margin: auto;
+    padding: 1%;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.publications .seeAll:hover {
+    box-shadow: 0 0 0.5em white;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.applicationsTools {
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    margin-bottom:8%;
+    display: flex;
+    flex-direction:column;
+}
+
+.applicationsTools .attitle {
+    font-size: 4.2vw;
+    margin:1%;
+}
+
+.applicationsTools .applicationsToolsDescription {
+    font-size: 1.5vw;
+    margin:1%;
+}
+
+.applicationsTools .sampleTools {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin-top : 3%;
+}
+
+.applicationsTools .sampleTools .sampleTool {
+    width: 25%;
+    height:auto;
+    margin-top:3%;
+    margin-bottom:3%;
+    border-color: white;
+    padding: 2%;
+    transition: width 500ms ease-in-out,height 500ms ease-in-out;
+}
+
+.applicationsTools .sampleTools .sampleTool:hover {
+    width: 30%;
+    margin-top:1%;
+    margin-bottom:1%;
+    padding: 2%;
+    transition: width 1s ease-in-out,height 1s ease-in-out;
+}
+
+.applicationsTools .sampleTools .sampleTool .picContainer {
+    justify-content: center;
+    align-items:center;
+    height:100%;
+}
+
+.applicationsTools .sampleTools .sampleTool .picContainer .applicationToolPic {
+    height:auto;
+    position:relative;
+}
+
+.applicationsTools .sampleTools .sampleTool .picContainer .applicationToolTitle {
+    color: #f2f2f2;
+    font-size: 1.6vw;
+    text-align: center;
+    margin-top:1.4vw;
+    position:relative;
+    bottom: 8px;
+    width: 100%;
+}
+
+.applicationsTools .seeAll {
+    @apply self-center;
+    color:white;
+    left:20%;
+    font-size:2vw;
+    border-color:white;
+    border-width:medium;
+    border-radius: 40px;
+    margin-top:5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.applicationsTools .seeAll:hover {
+    box-shadow: 0 0 0.5em white;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.impacts {
+    width:92%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:7%;
+    margin-bottom:7%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+.impacts .impactsTitle {
+    font-size: 4vw;
+    margin:1%;
+}
+
+.impacts .impactsDescription {
+    font-size: 2vw;
+    margin:1%;
+}
+
+.impacts .sixImpacts {
+    width:100%;
+    height:350px;
+}
+
+.impacts .sixImpacts .leftImpacts {
+    width:48%;
+    margin:auto;
+}
+
+.impacts .sixImpacts .leftImpacts .bigImpact {
+    width:48%;
+    margin:auto;
+    justify-content:center;
+    align-items:center;
+}
+
+.impacts .sixImpacts .leftImpacts .bigImpact .picContainer {
+    justify-content:center;
+    align-items:center;
+    margin:2%;
+}
+
+.impacts .sixImpacts .leftImpacts .bigImpact .picContainer:hover {
+    justify-content:center;
+    align-items:center;
+    margin:-1%;
+    transition: all 0.25s ease-in-out;
+}
+
+
+.impacts .sixImpacts .leftImpacts .bigImpact .picContainer .impactPic {
+    height:auto;
+    position:relative;
+}
+
+.impacts .sixImpacts .leftImpacts .bigImpact .picContainer .impactTitle {
+    color:#FFFFFF;
+    font-size: 1.5vw;
+    padding: 2px 5px;
+    bottom: 0.5em;
+    transform: translate(2vw,-1vw);
+    width:100%;
+}
+
+.impacts .sixImpacts .leftImpacts .limpacts {
+    width:48%;
+    margin:auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.impacts .sixImpacts .leftImpacts .limpacts .picContainer {
+    justify-content:center;
+    align-items:center;
+    margin:2%;
+}
+
+.impacts .sixImpacts .leftImpacts .limpacts .picContainer:hover {
+    justify-content:center;
+    align-items:center;
+    margin:-1%;
+    transition: all 0.25s ease-in-out;
+}
+
+.impacts .sixImpacts .leftImpacts .limpacts .picContainer .impactPic {
+    height:auto;
+    position:relative;
+}
+
+.impacts .sixImpacts .leftImpacts .limpacts .picContainer .impactTitle {
+    color:#00FFFF;
+    font-size:1.5vw;
+    padding: 2px 5px;
+    bottom: 8px;
+    transform: translate(2vw,-1vw);
+    width:100%;
+}
+
+.impacts .sixImpacts .rightImpacts {
+    width:48%;
+    margin:auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.impacts .sixImpacts .rightImpacts .rimpacts {
+    width:48%;
+    margin:auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.impacts .sixImpacts .rightImpacts .rimpacts .picContainer {
+    justify-content:center;
+    align-items:center;
+    margin:2%;
+}
+
+.impacts .sixImpacts .rightImpacts .rimpacts .picContainer:hover {
+    justify-content:center;
+    align-items:center;
+    margin:-1%;
+    transition: all 0.25s ease-in-out;
+}
+
+.impacts .sixImpacts .rightImpacts .rimpacts .picContainer .impactPic {
+    height:auto;
+    position:relative;
+}
+
+.impacts .sixImpacts .rightImpacts .rimpacts .picContainer .impactTitle {
+    color:#00AA00;
+    font-size:1.5vw;
+    padding: 2px 5px;
+    bottom: 8px;
+    transform: translate(2vw,-1vw);
+    width:100%;
+}
+
+.impacts .sixImpacts .rightImpacts .bigImpact {
+    width:48%;
+    margin:auto;
+    justify-content:center;
+    align-items:center;
+}
+
+.impacts .sixImpacts .rightImpacts .bigImpact .picContainer {
+    justify-content:center;
+    align-items:center;
+    margin:2%;
+}
+
+.impacts .sixImpacts .rightImpacts .bigImpact .picContainer:hover {
+    justify-content:center;
+    align-items:center;
+    margin:-1%;
+    transition: all 0.25s ease-in-out;
+}
+
+.impacts .sixImpacts .rightImpacts .bigImpact .picContainer .impactPic {
+    height:auto;
+    position:relative;
+}
+
+.impacts .sixImpacts .rightImpacts .bigImpact .picContainer .impactTitle {
+    color:#00FFFF;
+    font-size:1.5vw;
+    padding: 2px 5px;
+    bottom: 8px;
+    transform: translate(2vw,-1vw);
+    width:100%;
+}
+
+.impacts .seeAll {
+    color:white;
+    left:20%;
+    font-size:2.7vw;
+    border-color:white;
+    border-width:medium;
+    border-radius: 40px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:42vh;
+    padding: 1%;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.impacts .seeAll:hover {
+    box-shadow: 0 0 0.5em white;
+    transition: box-shadow 0.5s ease-in-out;
+}

@@ -58,7 +58,7 @@ model AutoSlideshow {
 
 model tagsOnProject {
   projectId  String
-  name      String
+  name       String
   tag        Tag      @relation(fields: [name], references: [name])
   project    Project  @relation(fields: [projectId], references: [id])
   assignedAt DateTime @default(now())
@@ -67,7 +67,7 @@ model tagsOnProject {
 }
 
 model Tag {
-  name          String @id @unique
+  name          String          @id @unique
   tagsOnProject tagsOnProject[]
 }
 
@@ -83,4 +83,11 @@ enum PROJECT_TYPE {
   APP
   PUBLICATION
   IMPACT
+}
+
+model OpenDataSection {
+  id                Int    @id @unique @default(autoincrement())
+  vpcStatement      String
+  openDataParagraph String
+  openDataPic       String
 }
