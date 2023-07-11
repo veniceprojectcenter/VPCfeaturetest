@@ -6,11 +6,35 @@ export async function generateSlideshow(backgroundColors:string[],pictureCaption
         console.log("Before tweet creation");
         await prisma.autoSlideshow.create({
             data: {
-                backgroundColors:backgroundColors,
-                pictureCaptions:pictureCaptions,
+                backgroundColors: {
+                    create: backgroundColors.map((color) => {
+                        return {
+                            color:color
+                        }
+                    })
+                },
+                pictureCaptions:{
+                    create: pictureCaptions.map((pictureCaptions) =>{
+                        return {
+                            caption:pictureCaptions
+                        }
+                    })
+                },
                 slideDelay:slideDelay,
-                pictures:pictures,
-                links:links,
+                pictures: {
+                    create: pictures.map((pictures) => {
+                        return {
+                            url:pictures
+                        }
+                    })
+                },
+                links:{
+                    create: links.map((link) => {
+                        return {
+                            url:link
+                        }
+                    })
+                },
                 picWidth:picWidth,
                 picHeight:picHeight
             }
