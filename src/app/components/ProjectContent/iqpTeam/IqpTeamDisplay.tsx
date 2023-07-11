@@ -9,27 +9,28 @@ export function IqpTeamDisplay(props:{project:FullProject,editedProject:FullProj
     // @ts-ignore
     leftFocus?:(event) => void,
     editProjectCallback:(project:FullProject) => void}) {
+    console.log(typeof props.project.iqp_team?.team)
     return(
         <div className={"basis-1/2 flex flex-col ml-9"}>
-            <IqpTeamComp onBlur={props.leftFocus} contentEditable title={"Team"} team={props.project.iqp_team?.team} idPrefix={"team"} addElementButton={
+            <IqpTeamComp onBlur={props.leftFocus} contentEditable title={"Team"} team={props.project.iqp_team?.team} idPrefix={"STUDENT"} addElementButton={
                 <PopUpButton>
                     <IqpTeamForm editableProject={props.editedProject} onUpdateState={(project) => {
                         props.editProjectCallback({...project})
-                    }} iqpTeamId={"team"}></IqpTeamForm>
+                    }} iqpTeamId={"STUDENT"}></IqpTeamForm>
                 </PopUpButton>
             }/>
-            <IqpTeamComp onBlur={props.leftFocus} contentEditable title={"Sponsors"} team={props.project.iqp_team?.sponsors} idPrefix={"sponsors"} addElementButton={
+            <IqpTeamComp onBlur={props.leftFocus} contentEditable title={"Sponsors"} team={props.project.iqp_team?.team} idPrefix={"SPONSOR"} addElementButton={
                 <PopUpButton>
                     <IqpTeamForm editableProject={props.editedProject} onUpdateState={(project) => {
                         props.editProjectCallback({...project})
-                    }} iqpTeamId={"sponsors"}></IqpTeamForm>
+                    }} iqpTeamId={"SPONSOR"}></IqpTeamForm>
                 </PopUpButton>
             }/>
-            <IqpTeamComp onBlur={props.leftFocus} contentEditable title={"Advisors"} team={props.project.iqp_team?.advisors} idPrefix={"advisor"} addElementButton={
+            <IqpTeamComp onBlur={props.leftFocus} contentEditable title={"Advisors"} team={props.project.iqp_team?.team} idPrefix={"ADVISOR"} addElementButton={
                 <PopUpButton>
                     <IqpTeamForm editableProject={props.editedProject} onUpdateState={(project) => {
                         props.editProjectCallback({...project})
-                    }} iqpTeamId={"advisors"}></IqpTeamForm>
+                    }} iqpTeamId={"ADVISOR"}></IqpTeamForm>
                 </PopUpButton>
             }/>
         </div>

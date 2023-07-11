@@ -1,10 +1,10 @@
-import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import {Dataurl, IPQ_ENTITY_TYPE, IqpEntity, IqpTeam, Project} from "@prisma/client";
 import {OnUpdateStateCallback} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 import React from "react";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 export function IqpTeamForm(props:{editableProject:FullProject,
-    iqpTeamId:string,
+    iqpTeamId:IPQ_ENTITY_TYPE,
     onUpdateState:OnUpdateStateCallback,
     closeCallback?:Function}
 ) {
@@ -14,16 +14,14 @@ export function IqpTeamForm(props:{editableProject:FullProject,
         const target = event.target as typeof event.target & {
             name: {value:string},
         }
-        switch (props.iqpTeamId) {
-            case "team":
-                props.editableProject.iqp_team?.team.push(target.name.value)
-                break;
-            case "advisors":
-                props.editableProject.iqp_team?.advisors.push(target.name.value)
-                break;
-            case "sponsors":
-                props.editableProject.iqp_team?.sponsors.push(target.name.value)
-                break;
+        if(props.editableProject.iqp_team != undefined) {
+            let newIqpTeam: IqpEntity = {
+                id: "",
+                name: target.name.value,
+                type: props.iqpTeamId,
+                teamId: props.editableProject.iqp_team.id
+            }
+            props.editableProject.iqp_team.team?.push(newIqpTeam)
         }
         props.onUpdateState(props.editableProject)
         if(props.closeCallback != undefined) {

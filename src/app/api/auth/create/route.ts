@@ -7,6 +7,7 @@ interface UserInfo {
 }
 
 export async function POST(request:NextRequest) {
+    console.log("user")
     let userInfo:UserInfo = {username:"",password:""};
     try {
         userInfo = await request.json();

@@ -25,22 +25,10 @@ export function UpdateProject(id:string,content:string
             //TODO add checks to make sure its a valid term
             editedProject.term = content[0];
             break;
-        case 'team':
+        case 'iqpentity':
             index = parseInt(id.replace(/\D/g,''));
-            if(editedProject.iqp_team?.team[index]!==undefined) {
-                editedProject.iqp_team.team[index] = content
-            }
-            break;
-        case 'sponsors':
-            index = parseInt(id.replace(/\D/g,''));
-            if(editedProject.iqp_team?.sponsors[index]!==undefined) {
-                editedProject.iqp_team.sponsors[index] = content
-            }
-            break;
-        case 'advisors':
-            index = parseInt(id.replace(/\D/g,''));
-            if(editedProject.iqp_team?.advisors[index]!==undefined) {
-                editedProject.iqp_team.advisors[index] = content
+            if(editedProject.iqp_team?.team?.at(index) !== undefined) {
+                editedProject.iqp_team.team[index].name = content
             }
             break;
     }
