@@ -12,6 +12,10 @@ terraform {
       source  = "integrations/github"
       version = "~> 5.0"
     }
+    planetscale = {
+      source  = "koslib/planetscale"
+      version = "0.5.2"
+    }
   }
 }
 

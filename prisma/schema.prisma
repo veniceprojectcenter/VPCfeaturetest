@@ -4,14 +4,14 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Project {
   id          String          @id @unique @default(uuid())
-  title       String
-  description String
+  title       String          @db.Text
+  description String          @db.Text
   tags        tagsOnProject[]
   img         String?
   type        PROJECT_TYPE
@@ -32,13 +32,18 @@ model Dataurl {
 
 model IqpTeam {
   id        Int      @id @unique @default(autoincrement())
-  sponsors  String[]
-  team      String[]
+  team      IqpEntity[]
   projectId String   @unique
-  advisors  String[]
   project   Project  @relation(fields: [projectId], references: [id])
 }
 
+model IqpEntity {
+  id String @unique @id @default(uuid())
+  name String
+  teamId Int
+  type IPQ_ENTITY_TYPE
+  team IqpTeam @relation(fields: [teamId], references: [id])
+}
 
 model Maintainer {
   id       String @id @unique @default(uuid())
@@ -48,15 +53,38 @@ model Maintainer {
 
 model AutoSlideshow {
   id               Int      @id @unique @default(autoincrement())
-  backgroundColors String[]
-  pictureCaptions  String[]
+  backgroundColors color[]
+  pictureCaptions  caption[]
   slideDelay       Float
-  pictures         String[]
-  links            String[]
+  pictures         picture[]
+  links            link[]
   picWidth         Int
   picHeight        Int
 }
-
+model color {
+  id String @unique @default(uuid())
+  color String
+  SlideShowId Int
+  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+}
+model caption {
+  id String @unique @default(uuid())
+  caption String
+  SlideShowId Int
+  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+}
+model picture {
+  id String @unique @default(uuid())
+  url String
+  SlideShowId Int
+  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+}
+model link {
+  id String @unique @default(uuid())
+  url String
+  SlideShowId Int
+  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+}
 model tagsOnProject {
   projectId  String
   name       String
@@ -76,6 +104,12 @@ enum DATAURL_TYPE {
   DOWNLOAD
   EMBED
   LINK
+}
+
+enum IPQ_ENTITY_TYPE {
+  STUDENT
+  SPONSOR
+  ADVISOR
 }
 
 enum PROJECT_TYPE {

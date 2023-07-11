@@ -15,6 +15,13 @@ variable "DATABASE_URL" {
 variable "JWT_SECRET" {
   description = "json web token sighning key"
 }
-data "aws_caller_identity" "current" {
+variable "PLANETSCALE_TOKEN" {
+  description = "a planetscale developer token"
+}
+variable "PLANETSCALE_TOKEN_ID" {
+  description = "a planetscale developer token id"
+}
+
+variable "PLANETSCALE_ORG" {
 
 }

@@ -7,6 +7,7 @@ import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescription";
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 import EmbedUrlDisplay from "@/app/components/ProjectContent/DataUrl/EmbedUrlDisplay";
+import {FullIqpTeam} from "@/app/components/ProjectContent/FullProject";
 
 
 //TODO make a good way to store embeds on project
@@ -17,13 +18,8 @@ export default async function Page({params}: {
     let projects = await getProject(params.id,"");
     if(projects.length > 0) {
         let project = projects[0];
-        let team:IqpTeam = {
-            id:-1,
-            sponsors:[],
-            advisors:[],
-            team:[],
-            projectId:""
-        }
+        let team:FullIqpTeam = {
+        } as FullIqpTeam
         let dataUrls:Dataurl[] = []
         if(project.iqp_team != null) {
             team = project.iqp_team;
@@ -46,9 +42,9 @@ export default async function Page({params}: {
                         <DataUrlDisplay dataurls={dataUrls}></DataUrlDisplay>
                     </div>
                     <div className={"basis-1/2 flex flex-col ml-9"}>
-                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team} idPrefix={"Team"}></IqpTeamComp>
-                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.sponsors} idPrefix={"Sponsors"}></IqpTeamComp>
-                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.advisors} idPrefix={"Advisors"}></IqpTeamComp>
+                        <IqpTeamComp title={"Team"} team={project.iqp_team?.team} idPrefix={"STUDENT"}></IqpTeamComp>
+                        <IqpTeamComp title={"Sponsors"} team={project.iqp_team?.team} idPrefix={"SPONSOR"}></IqpTeamComp>
+                        <IqpTeamComp title={"Advisors"} team={project.iqp_team?.team} idPrefix={"ADVISOR"}></IqpTeamComp>
                     </div>
                 </div>
                 <EmbedUrlDisplay dataurls={dataUrls}></EmbedUrlDisplay>

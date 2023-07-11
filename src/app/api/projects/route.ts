@@ -26,18 +26,18 @@ export async function GET(request:NextRequest) {
 }
 
 export async function POST(request: Request) {
-    let project: (FullProject) = await request.json();
+    let project:FullProject = await request.json();
+    let test = project;
     if (project.id == undefined) {
-        let createProjectData: Project = project;
         let iqpTeamQuery = {};
         let dataUrls: DataurlCreateManyProjectInput[] = [];
         if (project.iqp_team != null) {
             iqpTeamQuery = {
                 create: {
                     id: project.iqp_team.id,
-                    sponsors: project.iqp_team.sponsors,
-                    advisors: project.iqp_team.advisors,
-                    team: project.iqp_team.team
+                    team: {
+                        create: project.iqp_team.team
+                    },
                 }
             }
         }
@@ -100,9 +100,23 @@ export async function POST(request: Request) {
                     iqp_team: {
                         update: {
                             id: project.iqp_team.id,
-                            team: project.iqp_team.team,
-                            advisors: project.iqp_team.advisors,
-                            sponsors: project.iqp_team.sponsors
+                            team: {
+                                upsert: project.iqp_team.team?.map((entity) => {
+                                    return {
+                                        where:{
+                                            id:entity.id
+                                        },
+                                        update: {
+                                            name:entity.name,
+                                            type:entity.type
+                                        },
+                                        create: {
+                                            name:entity.name,
+                                            type:entity.type
+                                        },
+                                    }
+                                })
+                            },
                         }
                     },
                     dataurls: {
@@ -141,7 +155,11 @@ export async function getProject(id:string,type:string):Promise<FullProject[]> {
             projects = await prisma.project.findMany({
                 include: {
                     dataurls: true,
-                    iqp_team: true,
+                    iqp_team: {
+                        include: {
+                            team:true,
+                        }
+                    },
                     tags: true
 
                 }
@@ -154,7 +172,11 @@ export async function getProject(id:string,type:string):Promise<FullProject[]> {
                 },
                 include: {
                     dataurls: true,
-                    iqp_team: true,
+                    iqp_team: {
+                        include: {
+                            team:true,
+                        }
+                    },
                     tags: true
                 }
             });
@@ -166,7 +188,11 @@ export async function getProject(id:string,type:string):Promise<FullProject[]> {
             },
             include:{
                 dataurls:true,
-                iqp_team:true,
+                iqp_team: {
+                    include: {
+                        team:true,
+                    }
+                },
                 tags:true
             }
         });
