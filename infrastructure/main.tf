@@ -51,3 +51,11 @@ resource "vercel_project" "bridge_app" {
     repo="nick-leslie/bridges-application-test"
   }
 }
+#resource "vercel_project" "canals-app" {
+#  name = "canals-app"
+#  git_repository = {
+#    type = "github"
+#    production_branch = "main"
+#    repo = "veniceprojectcenter/vpc-canalsapp.git"
+#  }
+#}

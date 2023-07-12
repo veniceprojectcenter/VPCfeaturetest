@@ -16,6 +16,10 @@ terraform {
       source  = "koslib/planetscale"
       version = "0.5.2"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.0.0"
+    }
   }
 }
 
