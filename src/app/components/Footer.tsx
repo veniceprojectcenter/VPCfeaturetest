@@ -25,8 +25,8 @@ export function Footer() {
             </div>
             <div className = {"studentSection"}>
                 <h1 className = {"sectionTitle"}>Students</h1>
-                <p className = {"program"}><Link href={"/"} >Program</Link></p>
-                <p className = {"team"}><Link href={"/"} >Team</Link></p>
+                <p className = {"program"}><Link href={"/program"} >Program</Link></p>
+                <p className = {"team"}><Link href={"/team"} >Team</Link></p>
             </div>
             <div className = {"wpiSection"}>
                 <h1 className = {"sectionTitle"}>WPI</h1>
