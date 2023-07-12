@@ -27,7 +27,8 @@ export default function Page() {
         "Nicola Musolino",
         "Andrea Scarpa",
         "Michele Montanari",
-        "Giacomo Giugie"
+        "Giacomo Giugie",
+        "Nick Leslie"
     ];
     let teamMemberPics = ["https://www.veniceprojectcenter.org/assets/fabio_carrera-de3b507fdac0b870902c90d97147c38f6b64134425c82ceedd4781606be248fa.jpg",
         "https://www.veniceprojectcenter.org/assets/tomaso_minelli-fbd576f39a5f435d20ba1b99438c34ecc2344ec7d9d5745abfb9e9d4dfd257e4.jpg",
@@ -36,7 +37,8 @@ export default function Page() {
         "https://www.veniceprojectcenter.org/assets/nicola_musolino-acaf647092fd0b2b226bcd3a3b1afc2b562c0e2373ecd6c78583a53418379077.jpg",
         "https://www.veniceprojectcenter.org/assets/ascarpa-29c7f775dd0cb6e5a76a01726bb30e64171a2c4618a92107163453f4d0e8345c.jpg",
         "https://www.veniceprojectcenter.org/assets/mmontanari-de6e11902afb1f8320d5b6591aff686ea56487a760f784b0dde83a43417f4212.jpg",
-        "https://www.veniceprojectcenter.org/assets/ggiugie-cf2ad76c313682018cbfbaca49ed466783025e3075369f5c326cb7d573ac0650.jpg"
+        "https://www.veniceprojectcenter.org/assets/ggiugie-cf2ad76c313682018cbfbaca49ed466783025e3075369f5c326cb7d573ac0650.jpg",
+        "/NickPNG.png"
     ];
     let teamMemberRoles = ["Founder & Director",
         "CTO",
@@ -45,7 +47,8 @@ export default function Page() {
         "Full Stack Developer",
         "Full Stack Developer",
         "Backend Developer",
-        "Intern"
+        "Intern",
+        "MVP of current site"
     ];
 
     return (
