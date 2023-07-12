@@ -31,6 +31,7 @@ export default function Page() {
         <div className = {"programPage flex flex-col"}>
             <div className = {"heading"}>
                 <img src="https://www.veniceprojectcenter.org/assets/1-b023a86defce385621a6e30d03e1c4a2a38ae8b103826663eed67eee5e7aac88.jpg"></img>
+                <div className={"overlay"}></div>
                 <h1>VENICE PROJECT CENTER{"\n"}
                     TEAM PROGRAM</h1>
             </div>
