@@ -1,0 +1,35 @@
+
+.team_el {
+    display: grid;
+    grid-template-columns: 1fr 1fr minmax(100px, auto);
+    grid-template-rows: 1fr auto auto;
+    margin-bottom: 30px;
+
+    color: #ffffff;
+    font-family: 'Gilroy';
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.team_el img {
+    grid-area: 1 / 1 / 4 / 3;
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.team_el .name {
+    grid-area: 4 / 1 / 5 / 3;
+    text-transform: uppercase;
+    font-weight: 600;
+    position: relative;
+}
+
+.team_el .role {
+    grid-area: 5 / 2 / 6 / 4;
+    position: relative;
+}

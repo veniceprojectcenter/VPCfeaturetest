@@ -1,0 +1,107 @@
+
+.programPage {
+    width:100%;
+}
+
+.programPage .heading {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 450px;
+
+    color: #ffffff;
+    font-family: "Verdana","Gilroy";
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.programPage .heading img {
+    grid-area: 1 / 1 / 2 / 2;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.programPage .heading h1 {
+    grid-area: 1 / 1 / 2 / 2;
+    place-self: center;
+    text-align: center;
+
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.programPage .heading h2 {
+    grid-area: 2 / 1 / 3 / 2;
+    place-self: center;
+    text-align: center;
+
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.programPage .info1 {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 56px;
+    grid-gap: 32px;
+}
+
+.programPage .info1 .info_el {
+    color: #ffffff;
+    font-family: 'Gilroy';
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.programPage .info1 .info_el .label {
+    color:white;
+    font-weight: 600;
+}
+
+.programPage .info1 .info_el .elem {
+    color:white;
+}
+
+.programPage .info2 {
+    display: grid;
+    grid-template-areas: "left right";
+    grid-template-columns: 1fr 1fr;
+}
+
+.programPage .info2 .left {
+    grid-area: left;
+    padding: 56px;
+}
+
+.programPage .info2 .left p {
+    font-size: 16px;
+    line-height: 24px;
+    color:white;
+}
+
+.programPage .info2 .right {
+    grid-area: right;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 250px 250px;
+}
+
+.programPage .info2 .right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
