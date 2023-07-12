@@ -1,5 +1,8 @@
+resource "random_pet" "random" {
+}
+
 resource "aws_s3_bucket" "vpcFileBucket" {
-  bucket = "venice-project-center-bucket"
+  bucket = "venice-project-center-file-bucket-${random_pet.random.id}"
 }
 //TODO replace the allowed origns with our domain name
 resource "aws_s3_bucket_cors_configuration" "vpc_s3_cors" {

@@ -38,18 +38,18 @@ resource "aws_api_gateway_integration" "get_file_integration" {
   integration_http_method = "POST"
   uri =  aws_lambda_function.writeFile.invoke_arn
 }
-resource "aws_api_gateway_integration_response" "vpc_file_response" {
-  http_method = aws_api_gateway_method.files_get_method.http_method
-  resource_id = aws_api_gateway_resource.vpc_file_resource.id
-  rest_api_id = aws_api_gateway_rest_api.vpc_file_api.id
-  status_code = 200
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-    "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT'",
-    "method.response.header.Access-Control-Allow-Origin" = "'*'"
-  }
-  depends_on = ["aws_api_gateway_method_response.file_response_200"]
-}
+#resource "aws_api_gateway_integration_response" "vpc_file_response" {
+#  http_method = aws_api_gateway_method.files_get_method.http_method
+#  resource_id = aws_api_gateway_resource.vpc_file_resource.id
+#  rest_api_id = aws_api_gateway_rest_api.vpc_file_api.id
+#  status_code = 200
+#  response_parameters = {
+#    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+#    "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT'",
+#    "method.response.header.Access-Control-Allow-Origin" = "'*'"
+#  }
+#  depends_on = aws_api_gateway_method_response.file_response_200
+#}
 
 resource "aws_api_gateway_deployment" "fileApiDeployment" {
   depends_on = [aws_api_gateway_integration.get_file_integration]
