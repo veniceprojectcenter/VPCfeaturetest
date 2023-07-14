@@ -20,6 +20,10 @@ export async function POST(request:NextRequest) {
                 password: encrypted
             }
         })
+        return NextResponse.json({
+            text:"created user",
+            user:user
+        })
     })
     return NextResponse.json("added user")
 }
