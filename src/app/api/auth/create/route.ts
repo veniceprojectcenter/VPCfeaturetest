@@ -7,7 +7,6 @@ interface UserInfo {
 }
 
 export async function POST(request:NextRequest) {
-    console.log("user")
     let userInfo:UserInfo = {username:"",password:""};
     try {
         userInfo = await request.json();
@@ -15,10 +14,12 @@ export async function POST(request:NextRequest) {
         return NextResponse.json("bad data");
     }
     await hash(userInfo.password,10,async (err,encrypted) => {
+        console.log("in hash")
         if(err != undefined) {
             return NextResponse.json(err)
         }
         try {
+            console.log("trying to add hash")
             let user = await prisma.maintainer.create({
                 data: {
                     username: userInfo.username,
@@ -32,6 +33,7 @@ export async function POST(request:NextRequest) {
         } catch (err) {
             return NextResponse.json(err);
         }
+
     })
     return NextResponse.json("added user")
 }
