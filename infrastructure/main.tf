@@ -15,7 +15,7 @@ resource "vercel_project" "vpc_project" {
     type="github"
     production_branch = "main"
     #change this latter to the vpc git account
-    repo="nick-leslie/Venice-Project-Center-weboverhall"
+    repo="venice-project-center/V23E-STORY-website"
   }
 }
 resource "vercel_project_environment_variable" "db_env"  {
@@ -45,14 +45,14 @@ resource "vercel_project_environment_variable" "fileUploadUrl" {
   target = ["production","preview","development"]
 }
 
-resource "vercel_project" "bridge_app" {
-  name = "bridge-app"
-  git_repository = {
-    type ="github"
-    production_branch = "main"
-    repo="nick-leslie/bridges-application-test"
-  }
-}
+#resource "vercel_project" "bridge_app" {
+#  name = "bridge-app"
+#  git_repository = {
+#    type ="github"
+#    production_branch = "main"
+#    repo="nick-leslie/bridges-application-test"
+#  }
+#}
 #resource "vercel_project" "canals-app" {
 #  name = "canals-app"
 #  git_repository = {
