@@ -10,9 +10,11 @@ export async function POST(request:NextRequest) {
     let userInfo:UserInfo = {username:"",password:""};
     try {
         userInfo = await request.json();
+        console.log("got user info" + userInfo)
     } catch (error) {
         return NextResponse.json("bad data");
     }
+    console.log("past user info awaiting hash")
     await hash(userInfo.password,10,async (err,encrypted) => {
         console.log("in hash")
         if(err != undefined) {
