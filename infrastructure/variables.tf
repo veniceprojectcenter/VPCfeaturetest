@@ -25,3 +25,7 @@ variable "PLANETSCALE_TOKEN_ID" {
 variable "PLANETSCALE_ORG" {
 
 }
+
+variable "aws_access_key_id" {}
+
+variable "aws_secret_access_key" {}
