@@ -55,7 +55,7 @@ function hoursToMs(hours:number) {
 async function login(username:string,password:string) {
     let maintainerFromDb = await prisma.maintainer.findFirst({where:{
             username:username
-        }})
+    }})
     if(maintainerFromDb == null) {
         return false;
     }
