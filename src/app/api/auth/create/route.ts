@@ -15,15 +15,23 @@ export async function POST(request:NextRequest) {
         return NextResponse.json("bad data");
     }
     await hash(userInfo.password,10,async (err,encrypted) => {
-        let user =  await prisma.maintainer.create({data: {
-                username:userInfo.username,
-                password: encrypted
-            }
-        })
-        return NextResponse.json({
-            text:"created user",
-            user:user
-        })
+        if(err != undefined) {
+            return NextResponse.json(err)
+        }
+        try {
+            let user = await prisma.maintainer.create({
+                data: {
+                    username: userInfo.username,
+                    password: encrypted
+                }
+            })
+            return NextResponse.json({
+                text: "created user",
+                user: user
+            })
+        } catch (err) {
+            return NextResponse.json(err);
+        }
     })
     return NextResponse.json("added user")
 }
