@@ -7,9 +7,9 @@ import DataurlCreateManyProjectInput = Prisma.DataurlCreateManyProjectInput;
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 export async function GET(request:NextRequest) {
+    console.log(process.env.DATABASE_URL)
     let id = await request.nextUrl.searchParams.get("id");
     let type = await request.nextUrl.searchParams.get("type");
-    console.log(type)
     let data: ProjectRequestResponse;
     if(id == null) {
         const allProjects = await getProject("",type == null ? "" : type);
