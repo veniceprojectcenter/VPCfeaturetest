@@ -9,7 +9,7 @@ import fabio2 from "@/app/resources/Fabio2.jpg";
 import fabio3 from "@/app/resources/Fabio3.webp";
 import fabio4 from "@/app/resources/Fabio4.jpg";
 import fabio5 from "@/app/resources/Fabio5.png";
-import {openDataPicURLToggle} from "@/app/tide/openDataPicURLToggle";
+import {openDataPicURLToggle} from "@/app/edit/openDataPicURLToggle";
 
 
 import Link from "next/link";

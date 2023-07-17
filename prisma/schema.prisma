@@ -44,6 +44,10 @@ model IqpEntity {
   type IPQ_ENTITY_TYPE
   team IqpTeam @relation(fields: [teamId], references: [id])
 }
+model validEmails {
+  id String @unique @id @default(uuid())
+  email String
+}
 
 model Maintainer {
   id       String @id @unique @default(uuid())
