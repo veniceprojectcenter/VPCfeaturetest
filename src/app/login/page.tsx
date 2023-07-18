@@ -1,13 +1,10 @@
-"use client"
-import {useRouter} from "next/navigation";
-import React, {useState} from "react";
-import {AuthResponce} from "@/app/api/auth/login/route";
-import {LoginPageComp} from "@/app/login/LoginPageComp";
+import {GoogleSignInButton} from "@/app/components/auth/GoogleSignInButton";
 
-export default async function Page() {
-    const router = useRouter();
 
+export default function Page() {
     return(
-        <LoginPageComp></LoginPageComp>
+        <div className={"grid justify-items-center"}>
+            <GoogleSignInButton></GoogleSignInButton>
+        </div>
     )
 }
