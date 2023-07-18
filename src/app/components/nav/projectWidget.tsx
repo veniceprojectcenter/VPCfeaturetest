@@ -40,9 +40,9 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                     </h1>
                 </div>
                 </div>
-                <div className={"flex flex-col"}>
-                    {projectTags}
-                </div>
+                {/*<div className={"flex flex-col"}>*/}
+                {/*    {projectTags}*/}
+                {/*</div>*/}
             </div>
         </Link>
     )
