@@ -23,8 +23,8 @@ export default function CreatePage() {
         await fetch("/api/auth/create", {
             method: "POST",
             body: JSON.stringify({
-                username:event.target.username.value,
-                password:event.target.password.value
+                id:"",
+                email:event.target.username.value,
             })
         })
         await setReloadCall();
@@ -34,9 +34,7 @@ export default function CreatePage() {
             <form onSubmit={handleSub}>
                 <label htmlFor="username">Think</label>
                 <label className={"text-white"}>username</label>
-                <input className={"text-black"} type="text" id="username" name="username" required />
-                <label className={"text-white"}>password</label>
-                <input className={"text-black"} type="password" id="password" name="password" required />
+                <input className={"text-black"} type="text" id="email" name="email" required />
                 <button className={"text-white"} type="submit">Submit</button>
             </form>
             <MaintainerList reloadTrigger={reload} postReloadCallback={setReloadCall}></MaintainerList>

@@ -2,28 +2,32 @@ import {NextRequest, NextResponse} from "next/server";
 import {Dataurl} from "@prisma/client";
 import {DataUrlArray, isDataUrlArray} from "@/app/api/projects/dataurl/DataUrlArray";
 import {prisma} from "@/app/api/db";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 
 
 
 export async function POST(request:NextRequest) {
-    console.log("gameing")
-    let dataUrl:DataUrlArray | Dataurl = {data:[]}
-    console.log("hello world")
-    try {
-        dataUrl = await request.json();
-    } catch (error) {
-        return NextResponse.json("bad request")
-    }
-    if(isDataUrlArray(dataUrl)) {
-        for (let i = 0; i < dataUrl.data.length; i++) {
-            let dataUrlObeject = dataUrl.data[i];
-            await createOrUpdateDataUrl(dataUrlObeject)
+    const session = await getServerSession(authOptions)
+    if(session != null) {
+        let dataUrl: DataUrlArray | Dataurl = {data: []}
+        try {
+            dataUrl = await request.json();
+        } catch (error) {
+            return NextResponse.json("bad request")
         }
-    } else {
-        await createOrUpdateDataUrl(dataUrl)
-    }
+        if (isDataUrlArray(dataUrl)) {
+            for (let i = 0; i < dataUrl.data.length; i++) {
+                let dataUrlObeject = dataUrl.data[i];
+                await createOrUpdateDataUrl(dataUrlObeject)
+            }
+        } else {
+            await createOrUpdateDataUrl(dataUrl)
+        }
 
-    return NextResponse.json("created or updated data urls")
+        return NextResponse.json("created or updated data urls")
+    }
+    return NextResponse.json("not authenticated",{status:404})
 }
 
 async function createOrUpdateDataUrl(dataUrl:Dataurl) {

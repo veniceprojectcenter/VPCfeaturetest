@@ -1,13 +1,13 @@
 import {NextRequest, NextResponse} from "next/server";
 import {prisma} from "@/app/api/db";
 import { hash } from 'bcrypt';
+import {getServerSession} from "next-auth";
 interface UserInfo {
     username: string,
     password: string
 }
 
 export async function POST(request:NextRequest) {
-    let session
     let userEmail = {id:"", email:""}
     try {
         userEmail = await request.json();

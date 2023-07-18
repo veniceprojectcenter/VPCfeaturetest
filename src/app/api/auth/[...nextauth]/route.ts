@@ -1,4 +1,4 @@
-import NextAuth, {Account, Profile, User} from 'next-auth'
+import NextAuth, {Account, NextAuthOptions, Profile, User} from 'next-auth'
 import Google from 'next-auth/providers/google'
 import {CredentialInput} from "next-auth/providers";
 import {AdapterUser} from "next-auth/adapters";
@@ -6,8 +6,7 @@ import {mockSession} from "next-auth/client/__tests__/helpers/mocks";
 import user = mockSession.user;
 import {prisma} from "@/app/api/db";
 
-
-const handler = NextAuth({
+export const authOptions:NextAuthOptions = {
     providers: [
         Google({
             // @ts-ignore
@@ -42,6 +41,8 @@ const handler = NextAuth({
     pages: {
         signIn: '/signin'
     }
-})
+}
+
+const handler = NextAuth(authOptions)
 
 export {handler as GET, handler as POST}
