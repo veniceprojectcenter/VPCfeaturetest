@@ -29,14 +29,18 @@ export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
     if (loading) {
         return <NavLoading></NavLoading>
     }
-    return( <div className={"text-white flex-col"}>
-        {projects.map((project) => {
-                return (
-                    <ProjectWidget key={project.id} project={project}></ProjectWidget>
-                )
-            }
-        )}
-    </div>);
+    if(projects != undefined) {
+        return (<div className={"text-white flex-col"}>
+            {projects.map((project) => {
+                    return (
+                        <ProjectWidget key={project.id} project={project}></ProjectWidget>
+                    )
+                }
+            )}
+        </div>);
+    } else {
+        return (<div></div>)
+    }
 }
 function filterFunc(param:string) {
     return function (element:Project,index:number) {
@@ -53,9 +57,13 @@ function filterFunc(param:string) {
 async function getProjects(type:PROJECT_TYPE) {
     let domain = (new URL(window.location.href));
     let url = domain.origin + `/api/projects?type=${type}`;
-    const  res = await fetch(url, {
-        method:"GET"
+    const res = await fetch(url, {
+        method: "GET"
     })
-    const data: ProjectRequestResponse = await res.json();
-    return data;
+    try {
+        const data: ProjectRequestResponse = await res.json();
+        return data;
+    } catch (error) {
+        return undefined
+    }
 }

@@ -35,7 +35,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                     <h1 className={"font-bold"}>
                          {project.title}
                     </h1>
-                    <h1>
+                    <h1 className={"basis-full shrink"}>
                         {wordListToString(reducedProjectDescription)}
                     </h1>
                 </div>
