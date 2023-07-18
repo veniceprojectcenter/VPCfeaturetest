@@ -34,8 +34,8 @@ resource "vercel_project_environment_variable" "file_url_env"  {
 resource "vercel_project_environment_variable" "jwt_secret"  {
   project_id = vercel_project.vpc_project.id
   target = ["production","preview","development"]
-  key="JWT_SECRET"
-  value= var.JWT_SECRET
+  key="NEXTAUTH_SECRET"
+  value= var.NEXTAUTH_SECRET
 }
 
 resource "vercel_project_environment_variable" "fileUploadUrl" {
