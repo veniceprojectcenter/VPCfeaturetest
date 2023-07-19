@@ -26,6 +26,13 @@ variable "PLANETSCALE_ORG" {
 
 }
 
+variable "GOOGLE_ID" {
+  description = "google oauth id"
+}
+variable "GOOGLE_SECRET" {
+  description = "google oauth secret"
+}
+
 variable "aws_access_key_id" {}
 
 variable "aws_secret_access_key" {}

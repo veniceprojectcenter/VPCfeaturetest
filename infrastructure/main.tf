@@ -44,7 +44,18 @@ resource "vercel_project_environment_variable" "fileUploadUrl" {
   value      = aws_api_gateway_deployment.fileApiDeployment.invoke_url
   target = ["production","preview","development"]
 }
-
+resource "vercel_project_environment_variable" "googleId" {
+  key        = vercel_project.vpc_project.id
+  project_id = "GOOGLE_ID"
+  value      = var.GOOGLE_ID
+  target = ["production","preview","development"]
+}
+resource "vercel_project_environment_variable" "googleSecret" {
+  key        = vercel_project.vpc_project.id
+  project_id = "GOOGLE_SECRET"
+  value      = var.GOOGLE_SECRET
+  target = ["production","preview","development"]
+}
 #resource "vercel_dns_record" "" {
 #  domain     = "veniceprojectcenter.org"
 #  project_id = vercel_project.vpc_project.id
