@@ -45,14 +45,14 @@ resource "vercel_project_environment_variable" "fileUploadUrl" {
   target = ["production","preview","development"]
 }
 resource "vercel_project_environment_variable" "googleId" {
-  key        = vercel_project.vpc_project.id
-  project_id = "GOOGLE_ID"
+  project_id = vercel_project.vpc_project.id
+  key        = "GOOGLE_ID"
   value      = var.GOOGLE_ID
   target = ["production","preview","development"]
 }
 resource "vercel_project_environment_variable" "googleSecret" {
-  key        = vercel_project.vpc_project.id
-  project_id = "GOOGLE_SECRET"
+  project_id = vercel_project.vpc_project.id
+  key        = "GOOGLE_SECRET"
   value      = var.GOOGLE_SECRET
   target = ["production","preview","development"]
 }
