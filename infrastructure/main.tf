@@ -44,6 +44,19 @@ resource "vercel_project_environment_variable" "fileUploadUrl" {
   value      = aws_api_gateway_deployment.fileApiDeployment.invoke_url
   target = ["production","preview","development"]
 }
+resource "vercel_project_environment_variable" "fileUploadUrl" {
+  project_id = vercel_project.vpc_project.id
+  key        = "NEXTAUTH_SECRET"
+  value      = var.NEXTAUTH_SECRET
+  target = ["production","preview","development"]
+}
+
+#resource "vercel_dns_record" "" {
+#  domain     = "veniceprojectcenter.org"
+#  project_id = vercel_project.vpc_project.id
+#  name       = "new"
+#  type       = ""
+#}
 
 #resource "vercel_project" "bridge_app" {
 #  name = "bridge-app"
