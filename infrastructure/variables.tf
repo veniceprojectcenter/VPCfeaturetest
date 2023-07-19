@@ -12,7 +12,7 @@ variable "DATABASE_URL" {
   description = "database url"
 }
 
-variable "JWT_SECRET" {
+variable "NEXTAUTH_SECRET" {
   description = "json web token sighning key"
 }
 variable "PLANETSCALE_TOKEN" {
@@ -24,6 +24,13 @@ variable "PLANETSCALE_TOKEN_ID" {
 
 variable "PLANETSCALE_ORG" {
 
+}
+
+variable "GOOGLE_ID" {
+  description = "google oauth id"
+}
+variable "GOOGLE_SECRET" {
+  description = "google oauth secret"
 }
 
 variable "aws_access_key_id" {}

@@ -1,8 +1,8 @@
 -- CreateTable
 CREATE TABLE `Project` (
     `id` VARCHAR(191) NOT NULL,
-    `title` VARCHAR(191) NOT NULL,
-    `description` VARCHAR(191) NOT NULL,
+    `title` TEXT NOT NULL,
+    `description` TEXT NOT NULL,
     `img` VARCHAR(191) NULL,
     `type` ENUM('IQP', 'DATA', 'APP', 'PUBLICATION', 'IMPACT') NOT NULL,
     `term` CHAR(1) NULL,
@@ -35,32 +35,22 @@ CREATE TABLE `IqpTeam` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `IqpStudent` (
+CREATE TABLE `IqpEntity` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `teamId` INTEGER NOT NULL,
+    `type` ENUM('STUDENT', 'SPONSOR', 'ADVISOR') NOT NULL,
 
-    UNIQUE INDEX `IqpStudent_id_key`(`id`),
+    UNIQUE INDEX `IqpEntity_id_key`(`id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `IqpSponsor` (
+CREATE TABLE `validEmails` (
     `id` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NOT NULL,
-    `teamId` INTEGER NOT NULL,
+    `email` VARCHAR(191) NOT NULL,
 
-    UNIQUE INDEX `IqpSponsor_id_key`(`id`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `IqpAdvisor` (
-    `id` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NOT NULL,
-    `teamId` INTEGER NOT NULL,
-
-    UNIQUE INDEX `IqpAdvisor_id_key`(`id`),
+    UNIQUE INDEX `validEmails_id_key`(`id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -156,13 +146,7 @@ ALTER TABLE `Dataurl` ADD CONSTRAINT `Dataurl_projectId_fkey` FOREIGN KEY (`proj
 ALTER TABLE `IqpTeam` ADD CONSTRAINT `IqpTeam_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `IqpStudent` ADD CONSTRAINT `IqpStudent_teamId_fkey` FOREIGN KEY (`teamId`) REFERENCES `IqpTeam`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `IqpSponsor` ADD CONSTRAINT `IqpSponsor_teamId_fkey` FOREIGN KEY (`teamId`) REFERENCES `IqpTeam`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `IqpAdvisor` ADD CONSTRAINT `IqpAdvisor_teamId_fkey` FOREIGN KEY (`teamId`) REFERENCES `IqpTeam`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `IqpEntity` ADD CONSTRAINT `IqpEntity_teamId_fkey` FOREIGN KEY (`teamId`) REFERENCES `IqpTeam`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `color` ADD CONSTRAINT `color_SlideShowId_fkey` FOREIGN KEY (`SlideShowId`) REFERENCES `AutoSlideshow`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -181,3 +165,4 @@ ALTER TABLE `tagsOnProject` ADD CONSTRAINT `tagsOnProject_name_fkey` FOREIGN KEY
 
 -- AddForeignKey
 ALTER TABLE `tagsOnProject` ADD CONSTRAINT `tagsOnProject_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+

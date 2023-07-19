@@ -34,8 +34,8 @@ resource "vercel_project_environment_variable" "file_url_env"  {
 resource "vercel_project_environment_variable" "jwt_secret"  {
   project_id = vercel_project.vpc_project.id
   target = ["production","preview","development"]
-  key="JWT_SECRET"
-  value= var.JWT_SECRET
+  key="NEXTAUTH_SECRET"
+  value= var.NEXTAUTH_SECRET
 }
 
 resource "vercel_project_environment_variable" "fileUploadUrl" {
@@ -44,6 +44,24 @@ resource "vercel_project_environment_variable" "fileUploadUrl" {
   value      = aws_api_gateway_deployment.fileApiDeployment.invoke_url
   target = ["production","preview","development"]
 }
+resource "vercel_project_environment_variable" "googleId" {
+  project_id = vercel_project.vpc_project.id
+  key        = "GOOGLE_ID"
+  value      = var.GOOGLE_ID
+  target = ["production","preview","development"]
+}
+resource "vercel_project_environment_variable" "googleSecret" {
+  project_id = vercel_project.vpc_project.id
+  key        = "GOOGLE_SECRET"
+  value      = var.GOOGLE_SECRET
+  target = ["production","preview","development"]
+}
+#resource "vercel_dns_record" "" {
+#  domain     = "veniceprojectcenter.org"
+#  project_id = vercel_project.vpc_project.id
+#  name       = "new"
+#  type       = ""
+#}
 
 #resource "vercel_project" "bridge_app" {
 #  name = "bridge-app"

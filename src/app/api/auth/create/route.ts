@@ -1,32 +1,33 @@
 import {NextRequest, NextResponse} from "next/server";
 import {prisma} from "@/app/api/db";
 import { hash } from 'bcrypt';
+import {getServerSession} from "next-auth";
 interface UserInfo {
     username: string,
     password: string
 }
 
 export async function POST(request:NextRequest) {
-    let userInfo:UserInfo = {username:"",password:""};
+    let userEmail = {id:"", email:""}
     try {
-        userInfo = await request.json();
+        userEmail = await request.json();
         console.log("got user info")
     } catch (error) {
         return NextResponse.json("bad data");
     }
-    console.log("past user info awaiting hash")
-    console.log(userInfo)
-    let hashedPassword = await hash(userInfo.password,10);
-    let user = await prisma.maintainer.create({
-        data: {
-            username: userInfo.username,
-            password: hashedPassword
+    let addedEmail = prisma.validEmails.upsert({
+        where: {
+            id:userEmail.id
+        },
+        update: {
+            email:userEmail.email
+        },
+        create: {
+            email:userEmail.email
         }
     })
-    console.log("created user")
-    console.log(user)
     return NextResponse.json({
         text: "created user",
-        user: user
+        user: addedEmail
     })
 }
