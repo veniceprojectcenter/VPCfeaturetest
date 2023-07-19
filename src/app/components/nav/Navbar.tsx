@@ -28,7 +28,9 @@ export function Navbar() {
             </div>
             <div className={"vpcBox"}><h1 className={"VPC"}><Link href={"/"}>Venice Project Center</Link></h1></div>
             <div className={"loginBox"}>
-                <button className={"logIn text-white"}><Link href={"/api/auth/login"}>Log In</Link></button>
+                <button className={"logIn text-white"}>
+                    <Link href={"/login"}>Log In</Link>
+                </button>
             </div>
         </div>
     )
