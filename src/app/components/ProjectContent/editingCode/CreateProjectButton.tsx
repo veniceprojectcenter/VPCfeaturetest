@@ -9,7 +9,7 @@ export function CreateProjectButton() {
     if(session) {
         return (
             <div className={"mx-10 text-white flex flex-row w-max"}>
-                <button className={"border-white border-2 rounded-lg  w-fit"}>
+                <button className={"border-white border-2 rounded-lg  w-fit"} onClick={() => router.push(pathname+"/edit")}>
                     create project
                 </button>
             </div>
