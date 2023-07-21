@@ -10,7 +10,7 @@ export function Navbar() {
     const { data: session } = useSession()
     if(session) {
         return (
-            <div className={"flex text-3xl font-bold w-full flex-row text-white"}>
+            <div className={"flex text-3xl w-full flex-row text-white"}>
                 <div className={"basis-3/12"}>
                     <button onClick={menuToggle} className={"menu ml-3"}>Menu</button>
                 </div>
