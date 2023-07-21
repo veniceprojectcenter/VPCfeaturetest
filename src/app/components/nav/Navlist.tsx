@@ -4,6 +4,7 @@ import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectReques
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
 import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import NavLoading from "@/app/components/nav/NavLoading";
+import {CreateProjectButton} from "@/app/components/ProjectContent/editingCode/CreateProjectButton";
 
 
 export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
@@ -30,7 +31,9 @@ export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
         return <NavLoading></NavLoading>
     }
     if(projects != undefined) {
-        return (<div className={"text-white flex-col"}>
+        return (
+        <div className={"text-white flex flex-col w-fit"}>
+            <CreateProjectButton></CreateProjectButton>
             {projects.map((project) => {
                     return (
                         <ProjectWidget key={project.id} project={project}></ProjectWidget>

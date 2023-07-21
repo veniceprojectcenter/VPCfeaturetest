@@ -10,27 +10,29 @@ export function Navbar() {
     const { data: session } = useSession()
     if(session) {
         return (
-            <div className={"flexNavBar"}>
-                <div className={"menuBox"}>
-                    <button onClick={menuToggle} className={"menu"}>Menu</button>
+            <div className={"flex text-3xl font-bold w-full flex-row text-white"}>
+                <div className={"basis-3/12"}>
+                    <button onClick={menuToggle} className={"menu ml-3"}>Menu</button>
                 </div>
-                <div className={"vpcBox"}><h1 className={"VPC"}><Link href={"/"}>Venice Project Center</Link></h1></div>
-                <div className={"loginBox"}>
-                    <button className={"logIn text-white"} onClick={() => signOut()}>Log out</button>
+                <div className={"basis-6/12 grid justify-items-center"}><h1 className={"VPC"}>
+                    <Link href={"/"}>Venice Project Center</Link></h1>
+                </div>
+                <div className={"grid basis-3/12 w-fit shrink justify-items-end"}>
+                    <button className={"logIn text-white mr-3"} onClick={() => signOut()}>Log out</button>
                 </div>
             </div>
         )
     }
     return (
-        <div className={"flexNavBar"}>
-            <div className={"menuBox"}>
-                <button onClick={menuToggle} className={"menu"}>Menu</button>
+        <div className={"flex text-3xl w-full flex-row text-white"}>
+            <div className={"basis-3/12"}>
+                <button onClick={menuToggle} className={"menu ml-3"}>Menu</button>
             </div>
-            <div className={"vpcBox"}><h1 className={"VPC"}><Link href={"/"}>Venice Project Center</Link></h1></div>
-            <div className={"loginBox"}>
-                <button className={"logIn text-white"}>
-                    <Link href={"/login"}>Log In</Link>
-                </button>
+            <div className={"basis-6/12 grid justify-items-center"}><h1 className={"VPC"}>
+                <Link href={"/"}>Venice Project Center</Link></h1>
+            </div>
+            <div className={"grid basis-3/12 w-fit shrink justify-items-end"}>
+                <Link className={"mr-3"} href={"/login"}>Login</Link>
             </div>
         </div>
     )

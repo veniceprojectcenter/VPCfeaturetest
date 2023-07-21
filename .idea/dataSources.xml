@@ -47,7 +47,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://tia9fmisxc8g4sefpheb:pscale_pw_vAV602vHjfOoy3QfNBUcpJ2gM1bM61R1lvz7gsA4cE@aws.connect.psdb.cloud/venice_project_center?sslaccept=strict</jdbc-url>
+      <jdbc-url>jdbc:mysql://aws.connect.psdb.cloud/venice_project_center?sslaccept=strict</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

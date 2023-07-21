@@ -27,7 +27,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     reducedProjectDescription.push("...");
     // @ts-ignore
     return(
-        <Link className={"mx-10"} href={`${urlPathFromProject(project)}/${project.id}`}>
+        <Link className={"m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
             <div className={"text-white flex flex-row"}>
                 <Image className={"rounded-full mx-5"} src={imgSrc} height={50} width={50} alt={"iqp image"}></Image>
                 <div>
