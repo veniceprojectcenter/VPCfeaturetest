@@ -5,13 +5,12 @@ import NavLoading from "@/app/components/nav/NavLoading";
 
 export default function Page() {
     return(
-        <div className={"flex-row flex mx-10"}>
-            <div className={"basis-1/6 back"}>
+        <div className={"flex-col md:flex-row flex mx-10"}>
+            <div className={"basis-2/6 back"}>
                 <div className={""}>
                     <div className={"flex flex-col text-white mr-5"}>
                         <div className={""}>
-                            <h1 className={"text-5xl font-bold mb-5"}>Student</h1>
-                            <h1 className={"text-5xl font-bold"}>Projects</h1>
+                            <h1 className={"text-4xl font-bold mb-5"}>Student Projects</h1>
                         </div>
                         <div className={"static"}>
                             <p className={"my-4"}>

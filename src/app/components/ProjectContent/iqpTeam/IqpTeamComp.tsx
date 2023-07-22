@@ -8,7 +8,7 @@ export function IqpTeamComp(props:{title:string,team:IqpEntity[] | null | undefi
             if(props.team[i].type === props.idPrefix) {
                 elementsList.push(<h1 onBlur={props.onBlur} suppressContentEditableWarning
                                       contentEditable={props.contentEditable}
-                                      className={"flex mx-3 text-white font-bold"} id={"iqpEntity " + i}
+                                      className={"flex mx-3 text-white"} id={"iqpEntity " + i}
                                       key={props.team[i].name + i}>
                     {props.team[i].name}
                 </h1>);

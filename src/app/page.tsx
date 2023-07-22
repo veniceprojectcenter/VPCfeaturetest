@@ -117,17 +117,40 @@ export default function Home() {
 
   return (
       <div className = {"homePage flex flex-col"}>
-          <div className={"opendata"}>
-              <div className = {"lefttt"}>
-                  <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"}></Image>
-                  <div className = {"vpcStatement"}><p className = {"text-white"}>For 30 years we have been studying solutions to preserve and improve life in the city of Venice.</p></div>
-              </div>
-              <div className = {"rightt"}>
-                  <div className = {"titleBox"}>
-                      <button className = {"opendataTitle"}><Link href={"/opendata"}>Open Data</Link></button>
+          <div className={"text-white bg-[url('./resources/VeniceMapThing.png')] grid xl:grid-cols-2 gap-0 bg-no-repeat ml-20"} style={{height: "653px"}} >
+              <div className={"grid grid-cols-2"}>
+                  <div></div>
+                  <div></div>
+                  <div className = {"text-3xl font-bold xl:w-96"}>
+                      <p className ={"text-white"}>
+                          For 30 years we have been studying solutions to preserve and improve life in the city of Venice.
+                      </p>
                   </div>
-                  <div className = {"opendataParagraph"}><p className = {"text-white"}>Years of activity have allowed us to collect a considerable amount of data concerning the city.
-                          This data is the basis for the operation of many services useful to the community, and are used daily by applications and predictive models. We are proud of our Open approach, giving access to our data in order to support and enhance the quality of life in the city.</p></div>
+              </div>
+              <div></div>
+              <div></div>
+              <div className = {"flex-row flex"}>
+                  <div className = {"mx-5 text-3xl font-bold basis-6/12"}>
+                      <div className={"grid grid-cols-2 justify-items-center"}>
+                          <h1 className = {""}>
+                              Open
+                          </h1>
+                          <div className={"grid justify-items-center"}>
+                            <div className={"border mt-5 h-0 w-24 border-white"} ></div>
+                          </div>
+                      </div>
+                      <h1 className={"ml-20"}>
+                          Data
+                      </h1>
+                  </div>
+                  <div className={"flex flex-col"}>
+                  <div className = {""}>
+                      <p className = {""}>Years of activity have allowed us to collect a considerable amount of data concerning the city.
+                          This data is the basis for the operation of many services useful to the community, and are used daily by applications and predictive models. We are proud of our Open approach, giving access to our data in order to support and enhance the quality of life in the city.
+                      </p>
+                  </div>
+                  <Link className={"border p-2 rounded-full hover:drop-shadow-2xl hover:shadow-white text-3xl"} href={"/opendata"}>See all</Link>
+                  </div>
               </div>
           </div>
           <div className={"studentProjects"}>
