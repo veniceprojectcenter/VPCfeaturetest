@@ -127,8 +127,8 @@ export default function Home() {
                       </p>
                   </div>
               </div>
-              <div></div>
-              <div></div>
+              <div/>
+              <div/>
               <div className = {"flex-row flex"}>
                   <div className = {"mx-5 text-3xl font-bold basis-6/12"}>
                       <div className={"grid grid-cols-2 justify-items-center"}>
@@ -136,7 +136,7 @@ export default function Home() {
                               Open
                           </h1>
                           <div className={"grid justify-items-center"}>
-                            <div className={"border mt-5 h-0 w-24 border-white"} ></div>
+                            <div className={"border ml-4 mt-5 h-0 w-20 border-white"} ></div>
                           </div>
                       </div>
                       <h1 className={"ml-20"}>

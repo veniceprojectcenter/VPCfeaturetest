@@ -38,7 +38,7 @@ export default function Page() {
         "https://www.veniceprojectcenter.org/assets/ascarpa-29c7f775dd0cb6e5a76a01726bb30e64171a2c4618a92107163453f4d0e8345c.jpg",
         "https://www.veniceprojectcenter.org/assets/mmontanari-de6e11902afb1f8320d5b6591aff686ea56487a760f784b0dde83a43417f4212.jpg",
         "https://www.veniceprojectcenter.org/assets/ggiugie-cf2ad76c313682018cbfbaca49ed466783025e3075369f5c326cb7d573ac0650.jpg",
-        "/NickPNG.png"
+        "/src/app/team/Nick.jpg"
     ];
     let teamMemberRoles = ["Founder & Director",
         "CTO",
@@ -48,7 +48,7 @@ export default function Page() {
         "Full Stack Developer",
         "Backend Developer",
         "Intern",
-        "MVP of current site"
+        "Student Developer"
     ];
 
     return (
