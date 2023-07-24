@@ -12,8 +12,8 @@ export function StudentProjectsSection() {
     ]
     return(
         <div className={"text-white"}>
-            <div className={"flex flex-row mx-40 my-10 mr-60"}>
-                <div className={"ml-28"}>
+            <div className={"flex flex-col  xl:flex-row md:mx-40 my-10 md:mr-60"}>
+                <div className={"xl:ml-28"}>
                     <div className={"flex flex-row mb-2"}>
                         <h1 className={"text-4xl font-bold"}>
                             STUDENTS'
@@ -33,7 +33,7 @@ export function StudentProjectsSection() {
                     </HomePageLink>
                 </div>
             </div>
-            <div className = {"sampleProjects flex-row flex"}>
+            <div className = {"sampleProjects flex-col xl:flex-row flex"}>
                 {studentProjects.map((project)=> {
                     // eslint-disable-next-line react/jsx-key
                     return <StudentProjectCard data={project}></StudentProjectCard>
