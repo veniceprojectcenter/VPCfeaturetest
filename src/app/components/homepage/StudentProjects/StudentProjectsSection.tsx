@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import {newSudentProjectData, StudentProjectCard} from "@/app/components/homepage/StudentProjects/StudentProjectCard";
+import {HomePageLink} from "@/app/components/homepage/HomePageLink";
 
 export function StudentProjectsSection() {
     const studentProjects = [
@@ -10,18 +11,34 @@ export function StudentProjectsSection() {
         newSudentProjectData("#000000","Vacation Rentals and Residential Housing in Venice","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071","/")
     ]
     return(
-        <div className={"studentProjects"}>
-            <h1 className={"sptitle"}><p className = {"text-white"}>Student Projects</p></h1>
-            <div className={"studentProjectsDescription"}>
-                <p className = {"text-white"}>Every year since 1988, WPI students have carried out relevant projects in order to solve issues and problems of the city of Venice with a scientific and technological approach. In 30 years of activity, the projects have covered a wide range of topics, from conservation of cultural heritage to in-depth analysis of the hydrogeological data of the lagoon. Many of these projects have inspired and started the creation of Venetian start-ups.</p>
+        <div className={"text-white"}>
+            <div className={"flex flex-row mx-40 my-10 mr-60"}>
+                <div className={"ml-28"}>
+                    <div className={"flex flex-row mb-2"}>
+                        <h1 className={"text-4xl font-bold"}>
+                            STUDENTS'
+                        </h1>
+                        <div className={"mt-7 h-0 w-48 border border-white"}></div>
+                    </div>
+                    <h1 className={"ml-20 text-4xl font-bold"}>
+                        PROJECT
+                    </h1>
+                </div>
+                <div className={"mx-5 studentProjectsDescription"}>
+                    <p className={"flex shrink text-white my-5"}>
+                        Every year since 1988, WPI students have carried out relevant projects in order to solve issues and problems of the city of Venice with a scientific and technological approach. In 30 years of activity, the projects have covered a wide range of topics, from conservation of cultural heritage to in-depth analysis of the hydrogeological data of the lagoon. Many of these projects have inspired and started the creation of Venetian start-ups.
+                    </p>
+                    <HomePageLink href={"/projects"}>
+                        <h1 className={"text-base font-bold"}>See All</h1>
+                    </HomePageLink>
+                </div>
             </div>
-            <div className = {"sampleProjects"}>
+            <div className = {"sampleProjects flex-row flex"}>
                 {studentProjects.map((project)=> {
                     // eslint-disable-next-line react/jsx-key
                     return <StudentProjectCard data={project}></StudentProjectCard>
                 })}
             </div>
-            <button className = {"seeAll"}><Link href={"/projects"}>See All {"-->"} </Link></button>
         </div>
     )
 }

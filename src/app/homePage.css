@@ -101,7 +101,7 @@
     height:auto;
 }
 
-.studentProjects .sampleProjects .sampleProject {
+.sampleProjects .sampleProject {
     width: 32%;
     height:auto;
     border-color: white;
@@ -113,25 +113,25 @@
     align-items:center;
 }
 
-.studentProjects .sampleProjects .sampleProject .picContainer {
+.sampleProjects .sampleProject .picContainer {
     justify-content: center;
     align-items:center;
     margin:2%;
 }
 
-.studentProjects .sampleProjects .sampleProject .picContainer:hover {
+.sampleProjects .sampleProject .picContainer:hover {
     justify-content: center;
     align-items:center;
     margin:-1%;
     transition: all 0.25s ease-in-out;
 }
 
-.studentProjects .sampleProjects .sampleProject .picContainer .studentProjectPic {
+.sampleProjects .sampleProject .picContainer .studentProjectPic {
     height:auto;
     position:relative;
 }
 
-.studentProjects .sampleProjects .sampleProject .picContainer .studentProjectTitle {
+.sampleProjects .sampleProject .picContainer .studentProjectTitle {
     font-size: 1vw;
     background-color: rgb(128,128,128,0.5);
     color: white;
@@ -143,7 +143,7 @@
     transform: translate(2em,-2em);
 }
 
-.studentProjects .seeAll {
+.seeAll {
     @apply self-center;
     color:white;
     left:20%;
