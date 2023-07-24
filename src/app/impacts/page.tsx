@@ -4,7 +4,7 @@ import {PROJECT_TYPE} from "@prisma/client";
 
 export default function Page() {
     return(
-        <div className={"flex-row flex mx-10"}>
+        <div className={"flex-col md:flex-row flex mx-10"}>
             <div className={"basis-1/3 back"}>
                 <div className={"flex flex-col text-white"}>
                     <h1>input params</h1>

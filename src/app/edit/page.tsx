@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import {Navlist} from "@/app/components/nav/Navlist";
-import VeniceMapThing from "@/app/resources/VeniceMapThing.png";
+import VeniceMapThing from "@/app/resources/VeniceMap.png";
 import fabioPic from "@/app/resources/IMG-1346.png";
 import fabio1 from "@/app/resources/Fabio1.jpg";
 import fabio2 from "@/app/resources/Fabio2.jpg";

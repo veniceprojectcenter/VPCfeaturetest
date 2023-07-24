@@ -1,19 +1,4 @@
-"use client"
-
-import Image from 'next/image'
-import {Navlist} from "@/app/components/nav/Navlist";
-import VeniceMapThing from "@/app/resources/VeniceMapThing.png";
-import fabioPic from "@/app/resources/IMG-1346.png";
-import fabio1 from "@/app/resources/Fabio1.jpg";
-import fabio2 from "@/app/resources/Fabio2.jpg";
-import fabio3 from "@/app/resources/Fabio3.webp";
-import fabio4 from "@/app/resources/Fabio4.jpg";
-import fabio5 from "@/app/resources/Fabio5.png";
-
-
 import Link from "next/link";
-
-import React, {useEffect, useState} from 'react';
 import './team.css';
 import {AutoSlideshow} from "@/app/components/random/AutoSlideshow";
 import {TeamMember} from "@/app/components/random/TeamMember";

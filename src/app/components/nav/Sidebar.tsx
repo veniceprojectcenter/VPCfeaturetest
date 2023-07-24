@@ -14,29 +14,29 @@ export function Sidebar() {
         <nav className={"sidebar"}>
             <button onClick={menuToggle} className={"closeMenu"}>Close</button>
             <div className={"sidebar-content"}>
-                <ul className={"lists"}>
-                    <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Home</Link>
-                    </li>
-                    <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/applications"} className={"menuLink"}>Applications & Tools</Link>
-                    </li>
+                <div className={"text-white mx-16 text-4xl font-bold "}>
+                    <div className={"my-7"}>
+                        <Link onClick={menuToggle} href={"/"} className={""}>Home</Link>
+                    </div>
+                    <div className={"my-7"}>
+                        <Link onClick={menuToggle} href={"/applications"} className={""}>Applications & Tools</Link>
+                    </div>
                     {/*<li className={"list"}>*/}
                     {/*    <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Impacts</Link>*/}
                     {/*</li>*/}
-                    <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/opendata"} className={"menuLink"}>Open Data</Link>
-                    </li>
-                    <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/publications"} className={"menuLink"}>Publications</Link>
-                    </li>
-                    <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/projects"} className={"menuLink"}>Student Projects</Link>
-                    </li>
-                    <li className={"list"}>
-                        <Link onClick={menuToggle} href={"/podcasts"} className={"menuLink"}>Docu-Series</Link>
-                    </li>
-                </ul>
+                    <div className={"my-7"}>
+                        <Link onClick={menuToggle} href={"/opendata"} className={""}>Open Data</Link>
+                    </div>
+                    <div className={"my-10"}>
+                        <Link onClick={menuToggle} href={"/publications"} className={""}>Publications</Link>
+                    </div>
+                    <div className={"my-7"}>
+                        <Link onClick={menuToggle} href={"/projects"} className={""}>Student Projects</Link>
+                    </div>
+                    <div className={"my-7"}>
+                        <Link onClick={menuToggle} href={"/podcasts"} className={""}>Docu-Series</Link>
+                    </div>
+                </div>
                 <div className = {"sidebarNavlist"}>
                     {
                         // TODO this makes it so we scroll for awhile

@@ -28,7 +28,7 @@ export default function RootLayout({
                   <div className = {"pageLayout"}>
                       <Navbar/>
                       <Sidebar/>
-                      <div className = {"pageContent w-full"}>
+                      <div className = {"pageContent lg:mx-5 w-fit"}>
                           {children}
                           <Footer/>
                       </div>
