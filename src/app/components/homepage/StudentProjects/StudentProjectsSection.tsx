@@ -16,7 +16,7 @@ export function StudentProjectsSection() {
                 <div className={"xl:ml-28"}>
                     <div className={"flex flex-row mb-2"}>
                         <h1 className={"text-4xl font-bold"}>
-                            STUDENTS'
+                            STUDENTS
                         </h1>
                         <div className={"mt-7 h-0 w-48 border border-white"}></div>
                     </div>
