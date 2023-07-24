@@ -13,13 +13,14 @@ export function PublicationSection() {
     let publicationSlideDelay = 3600;
 
     return(
-        <div className = {"mx-2"}>
-            <div className={"grid md:justify-items-end mb-36"}>
+        <div className = {"mx-2 md:mx-10"}>
+            <div className={"grid mb-36"}>
                 <div className={"flex-row flex items-center"}>
-                    <div className={"w-0 h-0 md:w-80 md:border md:border-white"}></div>
                     <h1 className={"text-5xl text-white font-bold"}>
                         PUBLICATIONS
                     </h1>
+                    <div className={"w-0 h-0 md:w-80 md:border md:border-white"}></div>
+
                 </div>
             </div>
             <AutoSlideshow backgroundColors={publicationColors} pictureCaptions={publicationCaptions} slideDelay={publicationSlideDelay} pictures={publicationPictures} links = {publicationLinks} picWidth={publicationPicWidth} picHeight={publicationPicHeight}/>
