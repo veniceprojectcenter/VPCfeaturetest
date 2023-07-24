@@ -22,13 +22,10 @@ import {AutoSlideshow} from "@/app/components/random/AutoSlideshow";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
 import {HomePageLink} from "@/app/components/homepage/HomePageLink";
 import {HomePageLanding} from "@/app/components/homepage/HomePageLanding";
+import {StudentProjectsSection} from "@/app/components/homepage/StudentProjects/StudentProjectsSection";
 
 export default function Home() {
 
-    const studentProjectColors = ["#000000","#000000","#000000"];
-    const studentProjectCaptions = ["Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","Vacation Rentals and Residential Housing in Venice"];
-    const studentProjectPictures = ["https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071"];
-    let studentProjectLinks = ["/","/","/"];
 
     let publicationColors = ["#000000", "#000000", "#000000"];
     let publicationCaptions = ["Emergent systems","Spacial Data","Venezia la catta dei rii"];
@@ -120,26 +117,7 @@ export default function Home() {
   return (
       <div className = {"homePage flex flex-col"}>
           <HomePageLanding></HomePageLanding>
-          <div className={"studentProjects"}>
-              <h1 className={"sptitle"}><p className = {"text-white"}>Student Projects</p></h1>
-              <div className={"studentProjectsDescription"}>
-                  <p className = {"text-white"}>Every year since 1988, WPI students have carried out relevant projects in order to solve issues and problems of the city of Venice with a scientific and technological approach. In 30 years of activity, the projects have covered a wide range of topics, from conservation of cultural heritage to in-depth analysis of the hydrogeological data of the lagoon. Many of these projects have inspired and started the creation of Venetian start-ups.</p>
-              </div>
-              <div className = {"sampleProjects"}>
-                  {studentProjectColors.map((backgroundColor,index) => (
-                    <div className = "sampleProject"
-                         key = {index}
-                         style = {{backgroundColor}}>
-                        <Link href = {studentProjectLinks[index]}>
-                        <figure className = {"picContainer"}>
-                            <Image src={studentProjectPictures[index]} width={500} height = {"500"} alt={"iqp image"} className={"studentProjectPic"}></Image>
-                            <figcaption className="studentProjectTitle">{studentProjectCaptions[index]}</figcaption>
-                        </figure></Link>
-                    </div>
-                  ))}
-              </div>
-              <button className = {"seeAll"}><Link href={"/projects"}>See All {"-->"} </Link></button>
-          </div>
+          <StudentProjectsSection></StudentProjectsSection>
           <div className = {"publications"}>
               <h1 className={"ptitle"}><p className = {"text-white"} onClick={enterSlideshow}>Publications</p></h1>
               <AutoSlideshow backgroundColors={publicationColors} pictureCaptions={publicationCaptions} slideDelay={publicationSlideDelay} pictures={publicationPictures} links = {publicationLinks} picWidth={publicationPicWidth} picHeight={publicationPicHeight}/>
