@@ -19,8 +19,7 @@ export function PublicationSection() {
                     <h1 className={"text-5xl text-white font-bold"}>
                         PUBLICATIONS
                     </h1>
-                    <div className={"w-0 h-0 md:w-80 md:border md:border-white"}></div>
-
+                    <div className={"mx-2 w-0 h-0 md:w-80 md:border md:border-white"}></div>
                 </div>
             </div>
             <AutoSlideshow backgroundColors={publicationColors} pictureCaptions={publicationCaptions} slideDelay={publicationSlideDelay} pictures={publicationPictures} links = {publicationLinks} picWidth={publicationPicWidth} picHeight={publicationPicHeight}/>
