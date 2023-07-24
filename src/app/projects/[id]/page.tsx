@@ -32,12 +32,15 @@ export default async function Page({params}: {
                 dataUrls.push(project.dataurls[i]);
             }
         }
+        console.log(project.term)
         return (
             <div className={"flex flex-col"}>
                 {/*@ts-ignore*/}
                 <ProjectTitleCard project={project}>
                     <div className={"text-white font-bold basis-1/2 flex-shrink place-content-end flex flex-row"}>
-                        <h1 className={"text-white mr-20 flex items-center"}>YEAR: {project.year} | TERM: {project.term}</h1>
+                        <h1 className={"text-white mr-20 flex items-center"}>YEAR: {project.year}</h1>
+                        {project.term !== null ?
+                            <h1 className={"text-white mr-20 flex items-center"}>| TERM: {project.term}</h1> : <div/>}
                     </div>
                 </ProjectTitleCard>
                 <div className={"flex md:flex-row flex-col"}>

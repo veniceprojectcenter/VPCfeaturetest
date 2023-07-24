@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import {Navlist} from "@/app/components/nav/Navlist";
-import VeniceMapThing from "@/app/resources/VeniceMapThing.png";
+import veniceMap from "@/app/resources/VeniceMap.png";
 import fabioPic from "@/app/resources/IMG-1346.png";
 import fabio1 from "@/app/resources/Fabio1.jpg";
 import fabio2 from "@/app/resources/Fabio2.jpg";
@@ -20,6 +20,8 @@ import {menuToggle} from "@/app/components/nav/menuToggle";
 import {request} from "https";
 import {AutoSlideshow} from "@/app/components/random/AutoSlideshow";
 import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectRequestResponse";
+import {HomePageLink} from "@/app/components/homepage/HomePageLink";
+import {HomePageLanding} from "@/app/components/homepage/HomePageLanding";
 
 export default function Home() {
 
@@ -45,7 +47,7 @@ export default function Home() {
     let applicationsToolsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Ponte_delle_Tette_%28Venice%29.jpg/1200px-Ponte_delle_Tette_%28Venice%29.jpg","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062"];
     let applicationsToolsLinks = ["http://dashboard.cityknowledge.net/#/venice","https://storymaps.arcgis.com/stories/0e9aea9fc6c54b0eb9df8a5d80a37130","http://wifi.veniceprojectcenter.org/"];
 
-    const impactsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130",VeniceMapThing];
+    const impactsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130",veniceMap];
     const impactsCaptions = ["","","","","",""];
     const impactsLinks = ["http://dashboard.cityknowledge.net/#/venice","/","/","/","/","http://dashboard.cityknowledge.net/#/venice"];
 
@@ -117,19 +119,7 @@ export default function Home() {
 
   return (
       <div className = {"homePage flex flex-col"}>
-          <div className={"opendata"}>
-              <div className = {"lefttt"}>
-                  <Image src={VeniceMapThing} alt={"iqp image"} className={"veniceMapHomepage"}></Image>
-                  <div className = {"vpcStatement"}><p className = {"text-white"}>For 30 years we have been studying solutions to preserve and improve life in the city of Venice.</p></div>
-              </div>
-              <div className = {"rightt"}>
-                  <div className = {"titleBox"}>
-                      <button className = {"opendataTitle"}><Link href={"/opendata"}>Open Data</Link></button>
-                  </div>
-                  <div className = {"opendataParagraph"}><p className = {"text-white"}>Years of activity have allowed us to collect a considerable amount of data concerning the city.
-                          This data is the basis for the operation of many services useful to the community, and are used daily by applications and predictive models. We are proud of our Open approach, giving access to our data in order to support and enhance the quality of life in the city.</p></div>
-              </div>
-          </div>
+          <HomePageLanding></HomePageLanding>
           <div className={"studentProjects"}>
               <h1 className={"sptitle"}><p className = {"text-white"}>Student Projects</p></h1>
               <div className={"studentProjectsDescription"}>

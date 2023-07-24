@@ -3,8 +3,8 @@ import {NavListSearch} from "@/app/components/nav/NavListSearch";
 
 export default function Page() {
     return(
-        <div className={"flex-row flex mx-10"}>
-            <div className={"basis-1/6 back"}>
+        <div className={"sm:flex-col lg:flex-row flex mx-10"}>
+            <div className={"basis-2/6 back"}>
                 <div className={"flex flex-col text-white mr-5"}>
                     <div>
                         <h1 className={"text-5xl font-bold mb-5 tracking-widest"}>OPENDATA</h1>

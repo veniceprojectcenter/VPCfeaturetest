@@ -52,7 +52,7 @@
     @apply self-center;
     color:white;
     left:20%;
-    font-size:3vw;
+    font-size:1vw;
     border-color:white;
     border-width:medium;
     border-radius: 40px;
@@ -69,7 +69,7 @@
 .opendata .rightt .opendataParagraph {
     margin-top: 5%;
     transform: translateX(20%);
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 .studentProjects {
@@ -85,12 +85,12 @@
 }
 
 .studentProjects .sptitle {
-    font-size: 4.2vw;
+    font-size: 3.2vw;
     margin:1%;
 }
 
 .studentProjects .studentProjectsDescription {
-    font-size:1.5vw;
+    font-size:1vw;
 }
 
 .studentProjects .sampleProjects {
@@ -132,7 +132,7 @@
 }
 
 .studentProjects .sampleProjects .sampleProject .picContainer .studentProjectTitle {
-    font-size: 1.7vw;
+    font-size: 1vw;
     background-color: rgb(128,128,128,0.5);
     color: white;
     position: relative;
@@ -147,7 +147,7 @@
     @apply self-center;
     color:white;
     left:20%;
-    font-size:2.7vw;
+    font-size:2vw;
     border-color:white;
     border-width:medium;
     border-radius: 40px;
@@ -173,7 +173,7 @@
 }
 
 .publications .ptitle {
-    font-size: 3.7vw;
+    font-size: 3vw;
     margin-bottom: 3%;
 }
 
@@ -206,12 +206,12 @@
 }
 
 .applicationsTools .attitle {
-    font-size: 4.2vw;
+    font-size: 4vw;
     margin:1%;
 }
 
 .applicationsTools .applicationsToolsDescription {
-    font-size: 1.5vw;
+    font-size: 1vw;
     margin:1%;
 }
 
@@ -291,7 +291,7 @@
 }
 
 .impacts .impactsTitle {
-    font-size: 4vw;
+    font-size: 3vw;
     margin:1%;
 }
 
@@ -338,7 +338,7 @@
 
 .impacts .sixImpacts .leftImpacts .bigImpact .picContainer .impactTitle {
     color:#FFFFFF;
-    font-size: 1.5vw;
+    font-size: 1vw;
     padding: 2px 5px;
     bottom: 0.5em;
     transform: translate(2vw,-1vw);
@@ -413,7 +413,7 @@
 
 .impacts .sixImpacts .rightImpacts .rimpacts .picContainer .impactTitle {
     color:#00AA00;
-    font-size:1.5vw;
+    font-size:1vw;
     padding: 2px 5px;
     bottom: 8px;
     transform: translate(2vw,-1vw);

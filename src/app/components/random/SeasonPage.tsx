@@ -4,7 +4,7 @@ import Link from "next/link";
 import "./SeasonPage.css"
 import React from "react";
 import Image from "next/image";
-import veniceMapThing from "@/app/resources/VeniceMapThing.png";
+import veniceMapThing from "@/app/resources/VeniceMap.png";
 
 export function SeasonPage(props:{pageWidth:string,seasonTitle:string,seasonColor:string,seasonDescription:string,episodeNames:string[],episodeThumbnails:string[],episodeDescriptions:string[],episodeLinks:string[],episodeTitles:string[]}) {
 
