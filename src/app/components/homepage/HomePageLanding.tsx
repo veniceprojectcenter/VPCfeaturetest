@@ -21,11 +21,11 @@ export function HomePageLanding() {
                 <div className={"collapse md:invisible"}/>
                 <div className={"collapse md:invisible"}/>
                 <div className = {"basis-7/12 flex-col md:flex-row flex"}>
-                    <div className = {"my-5 sm:mr-20 text-5xl mr-20 font-bold basis-2/12"}>
+                    <div className = {"my-5 sm:mr-20 text-4xl mr-20 font-bold basis-2/12"}>
                         <div className={"grid grid-cols-2 lg:justify-items-center mb-5"}>
                             <div className={"col-span-2 flex-row flex"}>
                                 <h1 className={""}>
-                                    Open
+                                    OPEN
                                 </h1>
                                 <div className={"mx-2 grid"}>
                                     <div className={"mt-7 h-0 w-48 border border-white"} ></div>
@@ -33,7 +33,7 @@ export function HomePageLanding() {
                             </div>
                         </div>
                         <h1 className={"ml-20 md:mr-16"}>
-                            Data
+                            DATA
                         </h1>
                     </div>
                     <div className={"flex flex-col"}>
@@ -44,7 +44,9 @@ export function HomePageLanding() {
                             </p>
                         </div>
                         <div className={"w-60"}>
-                            <HomePageLink href={"/opendata"}>See All</HomePageLink>
+                            <HomePageLink href={"/opendata"}>
+                                <h1 className={"text-base font-bold"}>See All</h1>
+                            </HomePageLink>
                         </div>
                     </div>
                 </div>
