@@ -14,9 +14,10 @@ import {ProjectRequestResponse} from "@/app/api/projects/datatypes/ProjectReques
 import {HomePageLink} from "@/app/components/homepage/HomePageLink";
 import {HomePageLanding} from "@/app/components/homepage/HomePageLanding";
 import {StudentProjectsSection} from "@/app/components/homepage/StudentProjects/StudentProjectsSection";
-import {PublicationSection} from "@/app/components/homepage/PublicationSection";
+import {PublicationSection} from "@/app/components/homepage/publications/PublicationSection";
 import {ApplicationSection} from "@/app/components/homepage/ApplicationSection";
 import {ImpactsSection} from "@/app/components/homepage/impacts/ImpactsSection";
+import {PublicationCard} from "@/app/components/homepage/publications/PublicationCard";
 
 export default function Home() {
 
@@ -80,11 +81,12 @@ export default function Home() {
 
     return (
         <div className = {"homePage flex flex-col"}>
-            <HomePageLanding></HomePageLanding>
-            <StudentProjectsSection></StudentProjectsSection>
-            <PublicationSection></PublicationSection>
-            <ApplicationSection></ApplicationSection>
-            <ImpactsSection></ImpactsSection>
+            <PublicationCard href={"/"} src={veniceMap} alt={"map of vencie"} txt={"venice map"} width={500} height={500}></PublicationCard>
+            {/*<HomePageLanding></HomePageLanding>*/}
+            {/*<StudentProjectsSection></StudentProjectsSection>*/}
+            {/*<PublicationSection></PublicationSection>*/}
+            {/*<ApplicationSection></ApplicationSection>*/}
+            {/*<ImpactsSection></ImpactsSection>*/}
         </div>
 
     );
