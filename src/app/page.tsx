@@ -16,7 +16,7 @@ import {HomePageLanding} from "@/app/components/homepage/HomePageLanding";
 import {StudentProjectsSection} from "@/app/components/homepage/StudentProjects/StudentProjectsSection";
 import {PublicationSection} from "@/app/components/homepage/PublicationSection";
 import {ApplicationSection} from "@/app/components/homepage/ApplicationSection";
-import {ImpactsSection} from "@/app/components/homepage/ImpactsSection";
+import {ImpactsSection} from "@/app/components/homepage/impacts/ImpactsSection";
 
 export default function Home() {
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import veniceMap from "@/app/resources/VeniceMap.png";
 import {HomePageLink} from "@/app/components/homepage/HomePageLink";
-import {ImpactCard} from "@/app/components/homepage/ImpactCard";
+import {ImpactCard} from "@/app/components/homepage/impacts/ImpactCard";
 
 export function ImpactsSection() {
 
@@ -11,7 +11,7 @@ export function ImpactsSection() {
     const impactsLinks = ["http://dashboard.cityknowledge.net/#/venice","/","/","/","/","http://dashboard.cityknowledge.net/#/venice"];
 
     return(
-        <div className = {"impacts flex flex-col"}>
+        <div className = {"mx-2 xl:mx-10 impacts flex flex-col"}>
             <div className={"grid justify-items-center my-10"}>
                 <h1 className = {"text-white font-bold text-5xl my-5"}>IMPACTS</h1>
                 <p className = {"text-white"}>We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions in the city.</p>
