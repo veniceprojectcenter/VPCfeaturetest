@@ -81,12 +81,11 @@ export default function Home() {
 
     return (
         <div className = {"homePage flex flex-col"}>
-            <PublicationCard href={"/"} src={veniceMap} alt={"map of vencie"} txt={"venice map"} width={500} height={500}></PublicationCard>
-            {/*<HomePageLanding></HomePageLanding>*/}
-            {/*<StudentProjectsSection></StudentProjectsSection>*/}
-            {/*<PublicationSection></PublicationSection>*/}
-            {/*<ApplicationSection></ApplicationSection>*/}
-            {/*<ImpactsSection></ImpactsSection>*/}
+            <HomePageLanding></HomePageLanding>
+            <StudentProjectsSection></StudentProjectsSection>
+            <PublicationSection></PublicationSection>
+            <ApplicationSection></ApplicationSection>
+            <ImpactsSection></ImpactsSection>
         </div>
 
     );
