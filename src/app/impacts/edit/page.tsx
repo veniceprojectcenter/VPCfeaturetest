@@ -7,6 +7,7 @@ export default function Page() {
     let project:FullProject = {} as FullProject;
     project.title = "create a project"
     project.description = "click click on the data elements to edit them"
+    project.year = new Date().getFullYear();
     project.type = "IMPACT";
     project.dataurls = []
     return(
