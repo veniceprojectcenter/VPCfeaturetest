@@ -21,13 +21,13 @@ export function Sidebar() {
                     <div className={"my-7"}>
                         <Link onClick={menuToggle} href={"/applications"} className={""}>Applications & Tools</Link>
                     </div>
-                    {/*<li className={"list"}>*/}
-                    {/*    <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Impacts</Link>*/}
-                    {/*</li>*/}
+                    <div className={"ny-7"}>
+                        <Link onClick={menuToggle} href={"/"} className={"menuLink"}>Impacts</Link>
+                    </div>
                     <div className={"my-7"}>
                         <Link onClick={menuToggle} href={"/opendata"} className={""}>Open Data</Link>
                     </div>
-                    <div className={"my-10"}>
+                    <div className={"my-7"}>
                         <Link onClick={menuToggle} href={"/publications"} className={""}>Publications</Link>
                     </div>
                     <div className={"my-7"}>
