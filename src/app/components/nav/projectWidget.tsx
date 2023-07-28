@@ -58,5 +58,7 @@ export function urlPathFromProject(project:Project) {
             return "/opendata"
         case "IQP":
             return "/projects"
+        case "IMPACT":
+            return "/impacts"
     }
 }
