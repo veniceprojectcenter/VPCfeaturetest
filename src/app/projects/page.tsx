@@ -10,7 +10,7 @@ export default function Page() {
                 <div className={""}>
                     <div className={"flex flex-col text-white mr-5"}>
                         <div className={""}>
-                            <h1 className={"text-4xl font-bold mb-5"}>Student Projects</h1>
+                            <h1 className={"text-4xl font-bold mb-5"}>STUDENT PROJECTS</h1>
                         </div>
                         <div className={"static"}>
                             <p className={"my-4"}>
