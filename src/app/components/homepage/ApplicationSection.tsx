@@ -8,7 +8,7 @@ export function ApplicationSection() {
     let applicationsToolsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Ponte_delle_Tette_%28Venice%29.jpg/1200px-Ponte_delle_Tette_%28Venice%29.jpg", "https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062"];
     let applicationsToolsLinks = ["http://dashboard.cityknowledge.net/#/venice", "https://storymaps.arcgis.com/stories/0e9aea9fc6c54b0eb9df8a5d80a37130", "http://wifi.veniceprojectcenter.org/"];
     //TODO modify slide show to have it display only 1 at a time
-    return <div className={"mx-2 my-10 grid xl:grid-cols-3"}>
+    return <div className={"mx-2 my-10 grid xl:mx-10 xl:grid-cols-3"}>
         <div className={"flex flex-col my-5"}>
             <div className={"text-white text-5xl font-bold flex flex-col"}>
                 <h1 className={""}>APPLICATIONS</h1>
