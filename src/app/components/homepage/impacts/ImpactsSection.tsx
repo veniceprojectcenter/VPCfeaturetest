@@ -6,8 +6,8 @@ import {ImpactCard} from "@/app/components/homepage/impacts/ImpactCard";
 
 export function ImpactsSection() {
 
-    const impactsPictures = ["https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/061/original/61.png?1536744567","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876","https://s3.amazonaws.com/hive-engine/applications/imgs/000/000/060/original/60.png?1536744062","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130",veniceMap];
-    const impactsCaptions = ["test impact caption","test impact caption","test impact caption","test impact caption","test impact caption","New Venice ProjectCenter website"];
+    const impactsPictures = ["https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/065/medium/cover-copia-2.jpg?1536678721","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/064/medium/cover-copia.jpg?1536678505","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/067/medium/cover_%281%29.jpg?1536679499","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/066/medium/cover-copia_%282%29.jpg?1536679280","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/066/medium/cover-copia_%282%29.jpg?1536679280","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/062/medium/cover-copia_%284%29.jpg?1536678114"];
+    const impactsCaptions = ["Housing and renting","Unearthing Patterns in Venetian History","Preserving Venetian Bell Towers Through Virtual Experiences","The Boundaries of Venice","Local Food and Neighborhood Stores","made in venice"];
     const impactsLinks = ["http://dashboard.cityknowledge.net/#/venice","/","/","/","/","http://dashboard.cityknowledge.net/#/venice"];
 
     return(
