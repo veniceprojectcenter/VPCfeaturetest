@@ -1,6 +1,10 @@
-"use client"
-
 import "./programPage.css"
+import programHeader from "./program-header.jpg"
+import venice1 from "./venice1.png"
+import venice2 from "./venice2.png"
+import venice3 from "./venice3.png"
+import venice4 from "./venice4.png"
+import Image from "next/image";
 
 export default function Page() {
 
@@ -22,15 +26,15 @@ export default function Page() {
     "1/6 PQP in the term preceding departure, ID 2050 in the term preceding departure, Language preparation preceding departure.",
     "Visa Not Required for US Citizens - International Students Should Confirm Personal Status."];
 
-    let venicePics = ["https://www.veniceprojectcenter.org/assets/p1-c164190f8b2dc1a8882fee91754b25a1995f6e85b39f9eed956deb31854836ee.png",
-    "https://www.veniceprojectcenter.org/assets/p2-4a3b82642a5106ffb44fdff6ca150741ec8c017a6f66c65c9f0a7a8b97f37190.png",
-    "https://www.veniceprojectcenter.org/assets/p3-8dfa25224bb95758b245f0af8c3a4eb7fc691ea405b41a657f8fe6641f93ce16.png",
-    "https://www.veniceprojectcenter.org/assets/p4-d10bf493e5b16ec486ddd22ac93af2d8505bf4f254e229a84a79e9b441f08269.png"];
+    let venicePics = [venice1,
+    venice2,
+    venice3,
+    venice4];
 
     return (
         <div className = {"programPage flex flex-col"}>
             <div className = {"heading"}>
-                <img src="https://www.veniceprojectcenter.org/assets/1-b023a86defce385621a6e30d03e1c4a2a38ae8b103826663eed67eee5e7aac88.jpg"></img>
+                <Image src={programHeader} alt={"an image of a student working on a project"}></Image>
                 <div className={"overlay"}></div>
                 <h1>VENICE PROJECT CENTER{"\n"}
                     TEAM PROGRAM</h1>
@@ -49,7 +53,7 @@ export default function Page() {
                 </div>
                 <div className = {"right"}>
                     {venicePics.map((venicePic,index) => (
-                        <img key = {index} src={venicePic}></img>
+                        <Image key = {index} src={venicePic} alt={"an image of the city of venice"}></Image>
                     ))}
                 </div>
             </div>
