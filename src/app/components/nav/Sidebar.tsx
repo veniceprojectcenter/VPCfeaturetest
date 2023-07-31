@@ -14,7 +14,7 @@ export function Sidebar() {
         <nav className={"sidebar"}>
             <button onClick={menuToggle} className={"closeMenu"}>Close</button>
             <div className={"sidebar-content"}>
-                <div className={"text-white mx-16 text-4xl font-bold "}>
+                <div className={"text-white mx-32 text-3xl font-bold "}>
                     <div className={"my-7"}>
                         <Link onClick={menuToggle} href={"/"} className={""}>Home</Link>
                     </div>

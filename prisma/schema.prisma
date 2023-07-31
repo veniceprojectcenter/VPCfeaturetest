@@ -9,16 +9,17 @@ datasource db {
 }
 
 model Project {
-  id          String          @id @unique @default(uuid())
-  title       String          @db.Text
-  description String          @db.Text
-  tags        tagsOnProject[]
-  img         String?
-  type        PROJECT_TYPE
-  term        String?         @db.Char(1)
-  year        Int
-  dataurls    Dataurl[]
-  iqp_team    IqpTeam?
+  id           String          @id @unique @default(uuid())
+  title        String          @db.Text
+  description  String          @db.Text
+  tags         tagsOnProject[]
+  img          String?
+  type         PROJECT_TYPE
+  term         String?         @db.Char(1)
+  year         Int
+  dataurls     Dataurl[]
+  iqp_team     IqpTeam?
+  HomePageCard HomePageCard[]
 }
 
 model Dataurl {
@@ -31,21 +32,22 @@ model Dataurl {
 }
 
 model IqpTeam {
-  id        Int      @id @unique @default(autoincrement())
+  id        Int         @id @unique @default(autoincrement())
   team      IqpEntity[]
-  projectId String   @unique
-  project   Project  @relation(fields: [projectId], references: [id])
+  projectId String      @unique
+  project   Project     @relation(fields: [projectId], references: [id])
 }
 
 model IqpEntity {
-  id String @unique @id @default(uuid())
-  name String
+  id     String          @id @unique @default(uuid())
+  name   String
   teamId Int
-  type IPQ_ENTITY_TYPE
-  team IqpTeam @relation(fields: [teamId], references: [id])
+  type   IPQ_ENTITY_TYPE
+  team   IqpTeam         @relation(fields: [teamId], references: [id])
 }
+
 model validEmails {
-  id String @unique @id @default(uuid())
+  id    String @id @unique @default(uuid())
   email String
 }
 
@@ -56,7 +58,7 @@ model Maintainer {
 }
 
 model AutoSlideshow {
-  id               Int      @id @unique @default(autoincrement())
+  id               Int       @id @unique @default(autoincrement())
   backgroundColors color[]
   pictureCaptions  caption[]
   slideDelay       Float
@@ -65,30 +67,35 @@ model AutoSlideshow {
   picWidth         Int
   picHeight        Int
 }
+
 model color {
-  id String @unique @default(uuid())
-  color String
+  id          String        @unique @default(uuid())
+  color       String
   SlideShowId Int
-  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+  slideShow   AutoSlideshow @relation(fields: [SlideShowId], references: [id])
 }
+
 model caption {
-  id String @unique @default(uuid())
-  caption String
+  id          String        @unique @default(uuid())
+  caption     String
   SlideShowId Int
-  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+  slideShow   AutoSlideshow @relation(fields: [SlideShowId], references: [id])
 }
+
 model picture {
-  id String @unique @default(uuid())
-  url String
+  id          String        @unique @default(uuid())
+  url         String
   SlideShowId Int
-  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+  slideShow   AutoSlideshow @relation(fields: [SlideShowId], references: [id])
 }
+
 model link {
-  id String @unique @default(uuid())
-  url String
+  id          String        @unique @default(uuid())
+  url         String
   SlideShowId Int
-  slideShow AutoSlideshow @relation(fields: [SlideShowId], references: [id])
+  slideShow   AutoSlideshow @relation(fields: [SlideShowId], references: [id])
 }
+
 model tagsOnProject {
   projectId  String
   name       String
@@ -130,3 +137,13 @@ model OpenDataSection {
   openDataParagraph String
   openDataPic       String
 }
+//TODO add this for a Project card
+// model ProjectCard {
+//   id        String       @id @unique @default(uuid())
+//   title     String
+//   pictureUrl String
+//   caption   String
+//   type      PROJECT_TYPE
+//   project   Project      @relation(fields: [projectId], references: [id])
+//   projectId String
+// }
