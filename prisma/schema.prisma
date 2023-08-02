@@ -19,7 +19,6 @@ model Project {
   year         Int
   dataurls     Dataurl[]
   iqp_team     IqpTeam?
-  HomePageCard HomePageCard[]
 }
 
 model Dataurl {
