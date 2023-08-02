@@ -47,7 +47,7 @@ export default function Page() {
     ];
 
     return (
-        <div className = {"teamPage flex flex-row"}>
+        <div className = {"teamPage flex flex-col xl:flex-row"}>
             <div className = {"contact"}>
                 <h1>TEAM</h1>
                 <h2>Contacts</h2>

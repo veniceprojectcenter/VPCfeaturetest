@@ -14,7 +14,7 @@ export function HomePageLanding() {
                             For 30 years we have been studying solutions to preserve and improve life in the city of Venice.
                         </p>
                         <HomePageLink href={"/program"}>
-                            <h1 className={"text-base font-bold"}>Future wpi Students</h1>
+                            <h1 className={"text-base font-bold"}>Future WPI Students</h1>
                         </HomePageLink>
                     </div>
                 </div>
