@@ -5,6 +5,7 @@ import {FullProject} from "@/app/components/ProjectContent/FullProject";
 import {ProjectWidget} from "@/app/components/nav/projectWidget";
 import NavLoading from "@/app/components/nav/NavLoading";
 import {CreateProjectButton} from "@/app/components/ProjectContent/editingCode/CreateProjectButton";
+import {LoadingWidget} from "@/app/components/nav/LoadingWidget";
 
 
 export function Navlist(props: {search:string,type:PROJECT_TYPE}) {

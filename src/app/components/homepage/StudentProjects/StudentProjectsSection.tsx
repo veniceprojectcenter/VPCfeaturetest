@@ -12,7 +12,7 @@ export function StudentProjectsSection() {
     ]
     return(
         <div className={"text-white"}>
-            <div className={"flex flex-col  xl:flex-row md:mx-40 my-10 md:mr-60"}>
+            <div className={"flex flex-col  xl:flex-row mx-2 md:mx-40 my-10 md:mr-60"}>
                 <div className={"xl:ml-28"}>
                     <div className={"flex flex-row mb-2"}>
                         <h1 className={"text-4xl font-bold"}>
@@ -26,7 +26,7 @@ export function StudentProjectsSection() {
                         PROJECT
                     </h1>
                 </div>
-                <div className={"mx-5 studentProjectsDescription"}>
+                <div className={"studentProjectsDescription"}>
                     <p className={"flex shrink text-white my-5"}>
                         Every year since 1988, WPI students have carried out relevant projects in order to solve issues and problems of the city of Venice with a scientific and technological approach. In 30 years of activity, the projects have covered a wide range of topics, from conservation of cultural heritage to in-depth analysis of the hydrogeological data of the lagoon. Many of these projects have inspired and started the creation of Venetian start-ups.
                     </p>

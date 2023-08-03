@@ -14,9 +14,9 @@ export function PublicationSection() {
 
     return(
         <div className = {"mx-2 md:mx-10"}>
-            <div className={"grid mb-36"}>
+            <div className={"grid my-10 xl:mb-36"}>
                 <div className={"flex-row flex items-center"}>
-                    <h1 className={"text-5xl text-white font-bold"}>
+                    <h1 className={"text-5xl xl:text-5xl text-white font-bold"}>
                         PUBLICATIONS
                     </h1>
                     <div className={"mx-2 w-0 h-0 md:w-80 md:border md:border-white"}></div>

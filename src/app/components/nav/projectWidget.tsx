@@ -27,18 +27,18 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     reducedProjectDescription.push("...");
     // @ts-ignore
     return(
-        <Link className={"m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
+        <Link className={"mx-2 my-4 md:m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
             <div className={"text-white flex flex-row"}>
-                <Image className={"rounded-full mx-5"} src={imgSrc} height={50} width={50} alt={"iqp image"}></Image>
+                <Image className={"rounded-full mx-5 w-[50px] h-[50px]"} src={imgSrc} height={50} width={50} alt={"iqp image"}></Image>
                 <div>
-                <div className={"flex flex-col"}>
-                    <h1 className={"font-bold"}>
-                         {project.title}
-                    </h1>
-                    <h1 className={"basis-full shrink"}>
-                        {wordListToString(reducedProjectDescription)}
-                    </h1>
-                </div>
+                    <div className={"flex flex-col"}>
+                        <h1 className={"font-bold"}>
+                             {project.title}
+                        </h1>
+                        <h1 className={"basis-full shrink"}>
+                            {wordListToString(reducedProjectDescription)}
+                        </h1>
+                    </div>
                 </div>
                 {/*<div className={"flex flex-col"}>*/}
                 {/*    {projectTags}*/}

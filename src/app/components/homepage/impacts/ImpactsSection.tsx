@@ -12,7 +12,7 @@ export function ImpactsSection() {
 
     return(
         <div className = {"mx-2 xl:mx-10 impacts flex flex-col"}>
-            <div className={"grid justify-items-center my-10"}>
+            <div className={"grid xl:justify-items-center my-10"}>
                 <h1 className = {"text-white font-bold text-5xl my-5"}>IMPACTS</h1>
                 <p className = {"text-white"}>We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions in the city.</p>
             </div>

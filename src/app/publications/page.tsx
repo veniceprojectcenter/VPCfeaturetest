@@ -3,7 +3,7 @@ import {NavListSearch} from "@/app/components/nav/NavListSearch";
 
 export default function Page() {
     return(
-        <div className={"flex-row flex mx-10"}>
+        <div className={"flex-col xl:flex-row flex mx-10"}>
             <div className={"basis-2/6 back mr-5"}>
                 <div className={"flex flex-col text-white"}>
                     <div>

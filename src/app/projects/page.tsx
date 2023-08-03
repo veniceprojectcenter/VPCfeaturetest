@@ -5,7 +5,7 @@ import NavLoading from "@/app/components/nav/NavLoading";
 
 export default function Page() {
     return(
-        <div className={"flex-col md:flex-row flex mx-10"}>
+        <div className={"flex-col xl:flex-row flex mx-10"}>
             <div className={"basis-2/6 back"}>
                 <div className={""}>
                     <div className={"flex flex-col text-white mr-5"}>
