@@ -13,6 +13,8 @@ import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDis
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
 import {UploadFileButton} from "@/app/components/ProjectContent/editingCode/UploadFileButton";
 import {DeleteProjectButton} from "@/app/components/ProjectContent/editingCode/DeleteProjectButton";
+import {router} from "next/client";
+import Link from "next/link";
 
 
 export function EditableProject(props:{project:FullProject}) {

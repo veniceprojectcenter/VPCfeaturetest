@@ -14,7 +14,7 @@ export function DeleteProjectButton(props:{project:FullProject}) {
     }
     if(props.project.id !== "") {
         return (
-            <div>
+            <>
                 <button className={"text-white w-full border-white border-2 text-4xl my-10"}
                         onClick={() => setOpen(true)}>delete project
                 </button>
@@ -26,7 +26,7 @@ export function DeleteProjectButton(props:{project:FullProject}) {
                         <button onClick={DeleteProject}>Yes</button>
                     </div>
                 </PopupWithClose>
-            </div>
+            </>
         )
     }
     return null

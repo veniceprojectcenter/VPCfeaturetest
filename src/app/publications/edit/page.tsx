@@ -5,7 +5,6 @@ import {FullProject} from "@/app/components/ProjectContent/FullProject";
 
 export default function Page() {
     let project: FullProject = {} as FullProject;
-    project.id = "";
     project.title = "create a project"
     project.description = "click click on the data elements to edit them"
     project.year = new Date().getFullYear();
