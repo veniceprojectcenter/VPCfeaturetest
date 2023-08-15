@@ -51,7 +51,14 @@ export async function POST(request: Request) {
             console.log(project)
             console.log(iqpTeamQuery)
             if (project.dataurls != null) {
-                dataUrls = project.dataurls as DataurlCreateManyProjectInput[];
+                dataUrls = project.dataurls.map((dataurl) => {
+                    return {
+                        projectId: dataurl.projectId,
+                        url: dataurl.url,
+                        text: dataurl.text,
+                        type: dataurl.type
+                    }
+                })
             }
             const createProjectWithTeam = await prisma.project.create({
                 data: {
