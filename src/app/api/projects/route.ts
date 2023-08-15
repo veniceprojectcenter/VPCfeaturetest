@@ -149,7 +149,26 @@ export async function POST(request: Request) {
             }
         }
     }
-    return NextResponse.json("not authenticated",{status:404})
+    return NextResponse.json("not authenticated",{status:401})
+}
+
+export async function DELETE(request:NextRequest) {
+    const session = await getServerSession(authOptions)
+    if(session != null) {
+        let project: FullProject = {} as FullProject;
+        try {
+            project = await request.json();
+        } catch (error) {
+            return NextResponse.json("bad boddy",{status:400})
+        }
+        await prisma.project.delete({
+            where: {
+                id: project.id
+            }
+        })
+        return NextResponse.json("successfully deleted",{status:200})
+    }
+    return NextResponse.json("not authenticated",{status:401})
 }
 
 //TODO rework and simplify

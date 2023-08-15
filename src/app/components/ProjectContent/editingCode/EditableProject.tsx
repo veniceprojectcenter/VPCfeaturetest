@@ -11,12 +11,12 @@ import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDat
 import {uploadFile} from "@/helpers/uploadFile";
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
+import {UploadFileButton} from "@/app/components/ProjectContent/editingCode/uploadFileButton";
 
 
 export function EditableProject(props:{project:FullProject}) {
     let [project,setProject] = useState<FullProject>(props.project)
     let [editedProject,setEditedProject] = useState<FullProject>(props.project)
-    let [fileState,setFileState] = useState<File | null>(null)
     let [confirmationOpen,setConfirmationOpen] = useState(false);
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
@@ -32,21 +32,22 @@ export function EditableProject(props:{project:FullProject}) {
         setEditedProject({...editedProject});
         setConfirmationOpen(true);
     }
-    let onFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        const target = event.target as typeof event.target & {
-            files:File[]
+
+
+
+    const uploadFileEvent = async (file:File|null) => {
+        if(file != null) {
+            try {
+                let newUrl = await uploadFile(file);
+                editedProject.img = newUrl;
+                setEditedProject({...editedProject})
+                return true
+            } catch (error) {
+                return false
+            }
         }
-        setFileState(target.files[0])
+        return false
     }
-
-
-    const uploadFileEvent = useCallback( async (event: React.MouseEvent<HTMLButtonElement>) => {
-        if(fileState != null) {
-            let newUrl = await uploadFile(fileState);
-            editedProject.img = newUrl;
-            setEditedProject({...editedProject})
-        }
-    }, [fileState]);
 
     if(project != undefined) {
         if(project.dataurls != null) {
@@ -79,27 +80,13 @@ export function EditableProject(props:{project:FullProject}) {
                    <h1> successfully created or updated project with id {editedProject.id}</h1>
                 </PopupWithClose>
                 <ProjectTitleCard project={project} onBlur={leftFocus} contentEditable>
-                    <PopUpButton className={"flex items-center my-20"} customButton={
-                        <div className={"text-white  border-white border-2"}>
-                            change image
-                        </div>}>
-                        <div className={"m-20"}>
-                            {
-                                //TODO make it so when you upload it closes the screen
-                            }
-                            <h1>current file:{fileState?.name ? fileState.name:"no file selected"}</h1>
-                            <input className={"w-auto"} onChange={onFileChange} type={"file"}/>
-                            <button onClick={async (event) => {
-                                await uploadFileEvent(event)
-                            }} >upload file </button>
-                        </div>
-                    </PopUpButton>
                     <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
                         <h1 className={"text-white flex items-center"}>YEAR: </h1>
                         <h1 className={"text-white mx-3 flex items-center"} id={"year"} onBlur={leftFocus} contentEditable suppressContentEditableWarning={true}>{project.year}</h1>
                         <h1 className={"text-white flex items-center"}>| TERM: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                     </div>
+                    <UploadFileButton uploadFileCallback={uploadFileEvent}></UploadFileButton>
                 </ProjectTitleCard>
                 <div className={"flex md:flex-row flex-col"}>
                     <div className={"basis-1/2"}>
