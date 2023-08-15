@@ -29,5 +29,5 @@ export function DeleteProjectButton(props:{project:FullProject}) {
             </div>
         )
     }
-    return
+    return null
 }
