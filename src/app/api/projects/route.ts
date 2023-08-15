@@ -30,14 +30,12 @@ export async function POST(request: Request) {
     const session = await getServerSession(authOptions)
     if(session != null) {
         let project: FullProject = await request.json();
-        let test = project;
         if (project.id == undefined) {
             let iqpTeamQuery = {};
             let dataUrls: DataurlCreateManyProjectInput[] = [];
             if (project.iqp_team != null) {
                 iqpTeamQuery = {
                     create: {
-                        id: project.iqp_team.id,
                         team: {
                             create: project.iqp_team.team
                         },
@@ -89,6 +87,7 @@ export async function POST(request: Request) {
                 }
             });
             if (project.iqp_team != null) {
+
                 const updateProject = await prisma.project.update({
                     where: {
                         id: project.id
