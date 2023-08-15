@@ -37,7 +37,13 @@ export async function POST(request: Request) {
                 iqpTeamQuery = {
                     create: {
                         team: {
-                            create: project.iqp_team.team
+                            create: project.iqp_team.team?.map((entity) => {
+                                return {
+                                    name:entity.name,
+                                    teamId:entity.teamId,
+                                    type:entity.type
+                                }
+                            })
                         },
                     }
                 }
