@@ -82,7 +82,7 @@ export function EditableProject(props:{project:FullProject}) {
                 <PopupWithClose open={confirmationOpen} setOpenCallback={(value) => setConfirmationOpen(value)}>
                    <h1> successfully created or updated project with id {editedProject.id}</h1>
                 </PopupWithClose>
-                <ProjectTitleCard project={project} onBlur={leftFocus} contentEditable>
+                <ProjectTitleCard project={editedProject} onBlur={leftFocus} contentEditable>
                     <div className={"text-white font-bold basis-1/2 place-content-end flex flex-row"}>
                         <h1 className={"text-white flex items-center"}>YEAR: </h1>
                         <h1 className={"text-white mx-3 flex items-center"} id={"year"} onBlur={leftFocus} contentEditable suppressContentEditableWarning={true}>{project.year}</h1>
@@ -93,7 +93,7 @@ export function EditableProject(props:{project:FullProject}) {
                 </ProjectTitleCard>
                 <div className={"flex md:flex-row flex-col"}>
                     <div className={"basis-1/2"}>
-                        <ProjectDescription project={project} onBlur={leftFocus} contentEditable></ProjectDescription>
+                        <ProjectDescription project={editedProject} onBlur={leftFocus} contentEditable></ProjectDescription>
                         <div className={"flex flex-row"}>
                             {dataElements.map((element,index)=> {
                                 return(<div key={"dataButton" + index}>
