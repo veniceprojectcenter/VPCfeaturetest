@@ -11,7 +11,8 @@ import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDat
 import {uploadFile} from "@/helpers/uploadFile";
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
-import {UploadFileButton} from "@/app/components/ProjectContent/editingCode/uploadFileButton";
+import {UploadFileButton} from "@/app/components/ProjectContent/editingCode/UploadFileButton";
+import {DeleteProjectButton} from "@/app/components/ProjectContent/editingCode/DeleteProjectButton";
 
 
 export function EditableProject(props:{project:FullProject}) {
@@ -107,6 +108,7 @@ export function EditableProject(props:{project:FullProject}) {
                 </div>
                 <div>
                     <button className={"text-white w-full border-white border-2 text-4xl my-10"} onClick={commit}>commit</button>
+                    <DeleteProjectButton project={editedProject}></DeleteProjectButton>
                 </div>
             </div>
 

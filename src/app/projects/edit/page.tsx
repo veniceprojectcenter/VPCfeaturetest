@@ -5,6 +5,7 @@ import {FullIqpTeam, FullProject} from "@/app/components/ProjectContent/FullProj
 
 export default function Page() {
     let project: FullProject = {} as FullProject;
+    project.id = "";
     project.title = "create a project"
     project.description = "click on the data elements to edit them"
     project.year = new Date().getFullYear();
