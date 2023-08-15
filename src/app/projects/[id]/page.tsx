@@ -8,9 +8,6 @@ import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescrip
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 import EmbedUrlDisplay from "@/app/components/ProjectContent/DataUrl/EmbedUrlDisplay";
 import {FullIqpTeam} from "@/app/components/ProjectContent/FullProject";
-import {getServerSession} from "next-auth";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
-import {Suspense} from "react";
 
 
 //TODO make a good way to store embeds on project
