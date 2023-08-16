@@ -9,6 +9,7 @@ import andrea from "@/app/team/andrea.jpg"
 import michel from "@/app/team/michele.jpg"
 import giacomo from "@/app/team/giacomo.jpg"
 import nick from "@/app/team/Nick.jpg"
+import sam from "@/app/team/Sam.png"
 
 
 
@@ -22,7 +23,8 @@ export default function Page() {
         "Andrea Scarpa",
         "Michele Montanari",
         "Giacomo Giugie",
-        "Nick Leslie"
+        "Nick Leslie",
+        "Sam David"
     ];
     let teamMemberPics = [
         fabio,
@@ -33,7 +35,8 @@ export default function Page() {
         andrea,
         michel,
         giacomo,
-        nick
+        nick,
+        sam
     ];
     let teamMemberRoles = ["Founder & Director",
         "CTO",
@@ -43,7 +46,8 @@ export default function Page() {
         "Full Stack Developer",
         "Backend Developer",
         "Intern",
-        "Student Developer"
+        "2023 rewrite Head",
+        "2023 rewrite Co-developer"
     ];
 
     return (
