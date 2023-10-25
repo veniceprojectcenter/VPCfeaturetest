@@ -23,13 +23,13 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                 }
             }
     }
-    let reducedProjectDescription = reduceTextSection(project.description,20);
-    reducedProjectDescription.push("...");
+    let reducedProjectDescription = reduceTextSection(project.description,40);
+    reducedProjectDescription.push("[more]");
     // @ts-ignore
     return(
         <Link className={"mx-2 my-4 md:m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
             <div className={"text-white flex flex-row"}>
-                <Image className={"rounded-full mx-5 w-[50px] h-[50px]"} src={imgSrc} height={50} width={50} alt={"iqp image"}></Image>
+                <Image className={"rounded-full mx-5 w-[100px] h-[100px]"} src={imgSrc} height={100} width={100} alt={"iqp image"}></Image>
                 <div>
                     <div className={"flex flex-col"}>
                         <h1 className={"font-bold"}>
