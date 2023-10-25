@@ -23,7 +23,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                 }
             }
     }
-    let reducedProjectDescription = reduceTextSection(project.description,40);
+    let reducedProjectDescription = reduceTextSection(project.description,30);
     reducedProjectDescription.push("[more]");
     // @ts-ignore
     return(
