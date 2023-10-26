@@ -27,6 +27,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     else {
         projectTags = "Undefined"
     }
+    projectTags = encodeURIComponent(projectTags);
     let reducedProjectDescription = project.description.split(".")[0];
     //reducedProjectDescription.push("[more]");
     // @ts-ignore
