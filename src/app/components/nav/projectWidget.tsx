@@ -14,11 +14,11 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     if(project.img != null) {
         imgSrc = project.img
     }
-    let projectTags = ""
+    let projectTags = "#"
     if(project.tags != null) {
             for (let i = 0; i < project.tags.length; i++) {
                 if (i < project.tags.length - 1) {
-                    projectTags += "#" + project.tags[i].name + " "
+                    projectTags += project.tags[i].name + " #"
                 } else {
                     projectTags += project.tags[i].name;
                 }
@@ -27,7 +27,6 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     else {
         projectTags = "Undefined"
     }
-    projectTags = encodeURIComponent(projectTags);
     let reducedProjectDescription = project.description.split(".")[0];
     //reducedProjectDescription.push("[more]");
     // @ts-ignore
