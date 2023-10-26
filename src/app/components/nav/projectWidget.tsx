@@ -23,8 +23,8 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                 }
             }
     }
-    let reducedProjectDescription = reduceTextSection(project.description,30);
-    reducedProjectDescription.push("[more]");
+    let reducedProjectDescription = project.description.split(".")[0];
+    //reducedProjectDescription.push("[more]");
     // @ts-ignore
     return(
         <Link className={"mx-2 my-4 md:m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
@@ -36,7 +36,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                              {project.title}
                         </h1>
                         <h1 className={"basis-full shrink"}>
-                            {wordListToString(reducedProjectDescription)}
+                            {reducedProjectDescription}
                         </h1>
                     </div>
                 </div>
