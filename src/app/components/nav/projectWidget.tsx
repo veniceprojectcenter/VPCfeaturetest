@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from 'next/link'
 import {reduceTextSection, wordListToString} from "@/helpers/stringHelpers";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
+import {margin} from "polished";
 interface ProjectLinkProps {
     project: FullProject
 }
@@ -23,19 +24,37 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                 }
             }
     }
+    else {
+        projectTags = "Undefined"
+    }
     let reducedProjectDescription = project.description.split(".")[0];
     //reducedProjectDescription.push("[more]");
     // @ts-ignore
     return(
         <Link className={"mx-2 my-4 md:m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
             <div className={"text-white flex flex-row"}>
-                <Image className={"rounded-full mx-5 w-[100px] h-[100px]"} src={imgSrc} height={100} width={100} alt={"iqp image"}></Image>
+                <Image className={"rounded-full mx-5 w-[75px] h-[75px]"} src={imgSrc} height={75} width={75} alt={"iqp image"}></Image>
                 <div>
                     <div className={"flex flex-col"}>
-                        <h1 className={"font-bold"}>
-                             {project.title}
-                        </h1>
-                        <h1 className={"basis-full shrink"}>
+                        <div className={"flex flex-row"} style={{marginBottom: "1%"}}>
+                            <div style={{flexGrow: "4"}}>
+                                <h1 className={"font-bold"}>
+                                    {project.title}
+                                </h1>
+                            </div>
+                            <div style={{flexGrow: "1"}}>
+                                <h1 className={"font-bold"} style={{textAlign: "center"}}>
+                                    {project.year}
+                                </h1>
+                            </div>
+                            <div style={{flexGrow: "5"}}>
+                                <h1 className={"font-bold"} style={{textAlign: "right"}}>
+                                    {projectTags}
+                                </h1>
+                            </div>
+
+                        </div>
+                        <h1 className={"basis-full shrink"} style={{textAlign: "justify"}}>
                             {reducedProjectDescription}
                         </h1>
                     </div>
