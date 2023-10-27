@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react";
-import {Dataurl, IqpTeam, Project, Tag} from "@prisma/client";
+import {Dataurl, IqpTeam, Project} from "@prisma/client";
 import PopupWithClose, {PopUpButton} from "@/app/components/random/popup/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";

@@ -16,7 +16,7 @@ export default function EditableDataUrl(props:{dataurl:Dataurl
             if (index != undefined && index > -1) {
                 props.editableProject.dataurls?.splice(index, 1);
             }
-            setOpen(alsef);
+            setOpen(false);
             let url = window.location.origin + "/api/projects/dataurl/delete";
             console.log(url)
             fetch(url, {
