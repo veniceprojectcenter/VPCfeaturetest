@@ -15,8 +15,8 @@ export function ProjectWidget({project}: ProjectLinkProps) {
         imgSrc = project.img
     }
     let projectTags = "#"
-    if(project.tags != null) {
-            projectTags = project.tags;
+    if(project.categories != null) {
+            projectTags = project.categories;
     }
     else {
         projectTags = "Undefined"
