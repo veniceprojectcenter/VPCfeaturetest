@@ -12,7 +12,7 @@ model Project {
   id          String          @id @unique @default(uuid())
   title       String          @db.Text
   description String          @db.Text
-  categories  String          @db.Text
+  categories  String?         @db.Text
   tags        tagsOnProject[]
   img         String?
   type        PROJECT_TYPE
