@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react";
-import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import {Dataurl, IqpTeam, Project, Tag} from "@prisma/client";
 import PopupWithClose, {PopUpButton} from "@/app/components/random/popup/PopupWithClose";
 import {ProjectNotFound} from "@/app/components/ProjectContent/ProjectNotFound";
 import {ProjectTitleCard} from "@/app/components/ProjectContent/ProjectTitleCard";
@@ -24,6 +24,7 @@ export function EditableProject(props:{project:FullProject}) {
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
+    let tags = "";
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
@@ -88,6 +89,7 @@ export function EditableProject(props:{project:FullProject}) {
                         <h1 className={"text-white mx-3 flex items-center"} id={"year"} onBlur={leftFocus} contentEditable suppressContentEditableWarning={true}>{project.year}</h1>
                         <h1 className={"text-white flex items-center"}>| TERM: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
+                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"tags"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{tags}</h1>
                     </div>
                     <UploadFileButton uploadFileCallback={uploadFileEvent}></UploadFileButton>
                 </ProjectTitleCard>

@@ -12,7 +12,7 @@ model Project {
   id           String          @id @unique @default(uuid())
   title        String          @db.Text
   description  String          @db.Text
-  tags         tagsOnProject[]
+  tags         String          @db.Text
   img          String?
   type         PROJECT_TYPE
   term         String?         @db.Char(1)
@@ -99,7 +99,7 @@ model tagsOnProject {
   projectId  String
   name       String
   tag        Tag      @relation(fields: [name], references: [name])
-  project    Project  @relation(fields: [projectId], references: [id])
+  //project    Project  @relation(fields: [projectId], references: [id])
   assignedAt DateTime @default(now())
 
   @@id([projectId, name])

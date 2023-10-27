@@ -16,13 +16,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     }
     let projectTags = "#"
     if(project.tags != null) {
-            for (let i = 0; i < project.tags.length; i++) {
-                if (i < project.tags.length - 1) {
-                    projectTags += project.tags[i].name + " #"
-                } else {
-                    projectTags += project.tags[i].name;
-                }
-            }
+            projectTags = project.tags;
     }
     else {
         projectTags = "Undefined"

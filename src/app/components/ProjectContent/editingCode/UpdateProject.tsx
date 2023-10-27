@@ -10,8 +10,12 @@ export function UpdateProject(id:string,content:string
     ,OnUpdatedState: OnUpdateStateCallback ) {
     let idWithoutNum = id.replace(/[0-9]/g, '').replace(/ /g,"").toLowerCase();
     let index = -1;
+    let tags = "";
     console.log(idWithoutNum)
     switch (idWithoutNum) {
+        case 'tags':
+            editedProject.tags = tags;
+            break;
         case 'description':
             editedProject.description = content
             break;

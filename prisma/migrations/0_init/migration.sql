@@ -7,6 +7,7 @@ CREATE TABLE `Project` (
     `type` ENUM('IQP', 'DATA', 'APP', 'PUBLICATION', 'IMPACT') NOT NULL,
     `term` CHAR(1) NULL,
     `year` INTEGER NOT NULL,
+    `tags` TEXT NOT NULL,
 
     UNIQUE INDEX `Project_id_key`(`id`),
     PRIMARY KEY (`id`)
