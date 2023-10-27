@@ -13,8 +13,8 @@ export function UpdateProject(id:string,content:string
     let tags = "";
     console.log(idWithoutNum)
     switch (idWithoutNum) {
-        case 'tags':
-            editedProject.tags = tags;
+        case 'categories':
+            editedProject.categories = content;
             break;
         case 'description':
             editedProject.description = content
