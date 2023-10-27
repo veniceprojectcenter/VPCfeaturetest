@@ -64,6 +64,11 @@ export function EditableProject(props:{project:FullProject}) {
         } else {
             term = "A"
         }
+        if(project.categories != null) {
+            categories = project.categories;
+        } else {
+            categories = "VPC"
+        }
         dataElements = dataUrls.map((dataurl,index) => {
             return(
                 <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={ (project) => setEditedProject({...project})}></EditableDataUrl>
