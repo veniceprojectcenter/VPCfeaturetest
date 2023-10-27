@@ -67,7 +67,7 @@ export function EditableProject(props:{project:FullProject}) {
         if(project.categories != null) {
             categories = project.categories;
         } else {
-            categories = "VPC"
+            categories = "Undefined"
         }
         dataElements = dataUrls.map((dataurl,index) => {
             return(

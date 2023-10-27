@@ -51,8 +51,23 @@ function filterFunc(param:string) {
         if(param === "" || param === undefined) {
             return true
         }
-        return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase());
+        return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase()) || element.categories?.toLowerCase().includes(param.toLowerCase());
 
+    }
+}
+
+function filterCat(param:string) { //this is to filter by categories, not used yet
+    return function (element:Project, index:number) {
+        if(param == "" || param == undefined) {
+            return true
+        }
+        let paramsSplitted = param.split(", ")
+        for (let i=0;i < paramsSplitted.length; i++){
+            if (element.categories?.toLowerCase().includes(paramsSplitted[i].toLowerCase())) {
+                return element.categories?.toLowerCase().includes(paramsSplitted[i].toLowerCase())
+            }
+        }
+        return element.categories?.toLowerCase().includes(param.toLowerCase())
     }
 }
 
