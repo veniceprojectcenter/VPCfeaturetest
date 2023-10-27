@@ -16,10 +16,10 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     }
     let projectTags = "#"
     if(project.categories != null) {
-            projectTags = project.categories;
+            projectTags = "Categories: " + project.categories;
     }
     else {
-        projectTags = "Undefined"
+        projectTags = "Categories: " + "Undefined"
     }
     let reducedProjectDescription = project.description.split(".")[0];
     //reducedProjectDescription.push("[more]");
