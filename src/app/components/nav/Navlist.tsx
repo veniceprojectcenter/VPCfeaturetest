@@ -67,7 +67,7 @@ function filterCat(param:string) { //this is to filter by categories, not used y
                 return element.categories?.toLowerCase().includes(paramsSplitted[i].toLowerCase())
             }
         }
-        return element.categories?.toLowerCase().includes(param.toLowerCase()) //in case it was only 1 tag
+        return element.categories?.toLowerCase().includes(param.toLowerCase()) //in case there was only 1 tag
     }
 }
 

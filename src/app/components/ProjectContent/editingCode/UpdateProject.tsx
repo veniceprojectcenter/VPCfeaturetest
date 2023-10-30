@@ -14,7 +14,7 @@ export function UpdateProject(id:string,content:string
     console.log(idWithoutNum)
     switch (idWithoutNum) {
         case 'categories':
-            editedProject.categories = content;
+            editedProject.categories = content; // TODO: think about if implementing the TOXI way is worth it
             break;
         case 'description':
             editedProject.description = content

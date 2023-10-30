@@ -194,6 +194,9 @@ export async function getProject(id:string,type:string):Promise<FullProject[]> {
     if (id === "") {
         if (type === "") {
             projects = await prisma.project.findMany({
+                orderBy: {
+                    year: 'desc'
+                },
                 include: {
                     dataurls: true,
                     iqp_team: {
@@ -208,6 +211,9 @@ export async function getProject(id:string,type:string):Promise<FullProject[]> {
         } else {
             let typeEnum = PROJECT_TYPE[type as keyof typeof PROJECT_TYPE]
             projects = await prisma.project.findMany({
+                orderBy: {
+                    year: 'desc'
+                },
                 where: {
                     type: typeEnum
                 },
