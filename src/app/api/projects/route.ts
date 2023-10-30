@@ -188,6 +188,20 @@ export async function DELETE(request:NextRequest) {
     return NextResponse.json("not authenticated",{status:401})
 }
 
+export async function getCategory(type:string):Promise<string[]>{
+    let cats: string[] = [];
+    let typeEnum = PROJECT_TYPE[type as keyof typeof PROJECT_TYPE]
+    cats = await prisma.project.findMany({
+        select: {
+            categories: true
+        },
+        where: {
+            type: typeEnum
+        }
+    })
+    return cats;
+}
+
 //TODO rework and simplify
 export async function getProject(id:string,type:string):Promise<FullProject[]> {
     let projects: FullProject[] = [];
