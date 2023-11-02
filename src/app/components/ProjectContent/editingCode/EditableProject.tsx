@@ -7,6 +7,7 @@ import {ProjectDescription} from "@/app/components/ProjectContent/ProjectDescrip
 import {DataUrlForm} from "@/app/components/ProjectContent/DataUrl/DataUrlForm";
 import {UpdateProject} from "@/app/components/ProjectContent/editingCode/UpdateProject";
 import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitProject";
+import {UpdateTags} from "@/app/components/ProjectContent/editingCode/UpdateTags";
 import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
 import {uploadFile} from "@/helpers/uploadFile";
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
@@ -33,6 +34,11 @@ export function EditableProject(props:{project:FullProject}) {
     // @ts-ignore
     let commit = async (event) => {
         editedProject.id = await CommitProject(editedProject);
+        setEditedProject({...editedProject});
+        setConfirmationOpen(true);
+    }
+    let updateTags = async () =>{
+        editedProject.id = await UpdateTags(editedProject);
         setEditedProject({...editedProject});
         setConfirmationOpen(true);
     }
@@ -118,6 +124,7 @@ export function EditableProject(props:{project:FullProject}) {
                 </div>
                 <div>
                     <button className={"text-white w-full border-white border-2 text-4xl my-10"} onClick={commit}>commit</button>
+                    <button className={"text-white w-full border-white border-2 text-4xl my-10"} onClick={updateTags}>UpdateTags</button>
                     <DeleteProjectButton project={editedProject}></DeleteProjectButton>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import {tagsOnProject, IqpTeam, Project} from "@prisma/client";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
 export interface OnUpdateStateCallback {
     (project:FullProject):void
@@ -15,6 +15,12 @@ export function UpdateProject(id:string,content:string
     switch (idWithoutNum) {
         case 'categories':
             editedProject.categories = content; // TODO: think about if implementing the TOXI way is worth it
+            let cats = editedProject.categories.split(", ");
+            let tagsTemp =[];
+            for (let i=0; i<cats.length; i++){
+                tagsTemp.push({name: cats[i]});
+                editedProject.tags = tagsTemp;
+            }
             break;
         case 'description':
             editedProject.description = content

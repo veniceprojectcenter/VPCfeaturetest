@@ -29,21 +29,17 @@ export function ProjectWidget({project}: ProjectLinkProps) {
             <div className={"text-white flex flex-row"}>
                 <Image className={"rounded-full mx-5 w-[75px] h-[75px]"} src={imgSrc} height={75} width={75} alt={"iqp image"}></Image>
                 <div>
-                    <div className={"flex flex-col"}>
-                        <div className={"flex flex-row"} style={{marginBottom: "1%"}}>
+                    <div className={"flex flex-row"}>
+                        <div className={"flex"} style={{marginBottom: "1%"}}>
                             <div style={{flexGrow: "4"}}>
                                 <h1 className={"font-bold"}>
                                     {project.title}
                                 </h1>
                             </div>
-                            <div style={{flexGrow: "1"}}>
-                                <h1 className={"font-bold"} style={{textAlign: "center"}}>
-                                    {project.year}
-                                </h1>
                             </div>
-                            <div style={{flexGrow: "5"}}>
-                                <h1 className={"font-bold"} style={{textAlign: "right"}}>
-                                    {projectTags}
+                            <div style={{flexGrow: "6"}}>
+                                <h1 className={""} style={{textAlign: "right"}}>
+                                    {project.year} | {projectTags}
                                 </h1>
                             </div>
 
@@ -56,7 +52,6 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                 {/*<div className={"flex flex-col"}>*/}
                 {/*    {projectTags}*/}
                 {/*</div>*/}
-            </div>
         </Link>
     )
 }
