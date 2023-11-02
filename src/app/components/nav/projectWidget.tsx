@@ -14,13 +14,20 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     if(project.img != null) {
         imgSrc = project.img
     }
-    let projectTags = "#"
-    if(project.categories != null) {
+
+    let projectTags = "Categories: "
+    if(project.tags != null) {
+        for (let i = 0; i < project.tags.length; i++) {
+            if (i < project.tags.length - 1) {
+                projectTags += project.tags[i].name + ", "
+            } else {
+                projectTags += project.tags[i].name;
+            }
+        }
+    }
+    /*if(project.categories != null) {
             projectTags = "Categories: " + project.categories;
-    }
-    else {
-        projectTags = "Categories: " + "Undefined"
-    }
+    }*/
     let reducedProjectDescription = project.description.split(".")[0];
     //reducedProjectDescription.push("[more]");
     // @ts-ignore
