@@ -1,7 +1,7 @@
 import {useState} from "react";
 
-export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange: (checkedValues: string[]) => void }) {
-    const [checkedTags, setCheckedTags] = useState<string[]>([]);
+export function TagInputBox(props: { allTags: string[]; checkedTags: string[]; onCheckboxChange: (checkedValues: string[]) => void }) {
+    const [checkedTags, setCheckedTags] = useState(props.checkedTags);
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value, checked } = event.target;
@@ -16,10 +16,10 @@ export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange
 
     return (
         <>
-            {props.unprocessedTags.map((tag: string) => (
+            {props.allTags.map((tag: string) => (
                 <label key={tag}>
                     {tag}
-                    <input type="checkbox" value={tag} onInput={handleCheckboxChange} /><br/>
+                    <input checked={checkedTags.includes(tag)} type="checkbox" value={tag} onInput={handleCheckboxChange} /><br/>
                 </label>
             ))}
         </>
