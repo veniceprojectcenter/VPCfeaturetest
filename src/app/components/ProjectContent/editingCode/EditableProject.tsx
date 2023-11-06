@@ -26,12 +26,13 @@ export function EditableProject(props:{project:FullProject}) {
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
-    const [categories, setCategories] = useState('Initial Value');
+    const [categori, setCategori] = useState('Initial Value');
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
-        setCategories(selectedTags.join(', '));
+        setCategori(selectedTags.join(', '));
     };
+    let categories = "";
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
@@ -83,9 +84,10 @@ export function EditableProject(props:{project:FullProject}) {
             term = "A"
         }
         if(project.categories != null) {
-            setCategories(project.categories);
+            categories = project.categories;
+            setCategori(categories);
         } else {
-            setCategories("Undefined");
+            categories = "Undefined"
         }
 
 
@@ -116,7 +118,7 @@ export function EditableProject(props:{project:FullProject}) {
                         <h1 className={"text-white flex items-center"}>| TERM: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
-                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
+                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categori}</h1>
                         <div className={"container"} style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
                             <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]} onCheckboxChange={handleCheckboxChange}/>
                         </div>
