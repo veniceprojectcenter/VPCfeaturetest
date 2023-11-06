@@ -26,13 +26,12 @@ export function EditableProject(props:{project:FullProject}) {
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
-    let categories = "";
-    const [categori, setCategori] = useState('Initial Value');
+    const [categories, setCategories] = useState('Initial Value');
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    let oldTags: string[] = [];
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
-        console.log(checkedValues);
-        setCategori(selectedTags.join(', '));
+        setCategories(selectedTags.join(', '));
     };
     // @ts-ignore
     let leftFocus = (event) => {
@@ -74,19 +73,16 @@ export function EditableProject(props:{project:FullProject}) {
                 dataUrls.push(project.dataurls[i]);
             }
         }
+        if(project.tags != null) {
+            for (let i = 0; i < project.tags.length; i++) {
+                oldTags.push(project.tags[i].name);
+            }
+        }
         if(project.term != null) {
             term = project.term;
         } else {
             term = "A"
         }
-        if(project.categories != null) {
-            categories = project.categories;
-        } else {
-            categories = "Undefined"
-        }
-
-
-
         dataElements = dataUrls.map((dataurl,index) => {
             return(
                 <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={ (project) => setEditedProject({...project})}></EditableDataUrl>
@@ -113,7 +109,7 @@ export function EditableProject(props:{project:FullProject}) {
                         <h1 className={"text-white flex items-center"}>| TERM: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
-                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categori}</h1>
+                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
                         <div className={"container"} style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
                             <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]} onCheckboxChange={handleCheckboxChange}/>
                         </div>
