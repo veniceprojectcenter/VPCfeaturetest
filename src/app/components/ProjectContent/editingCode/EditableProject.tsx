@@ -111,7 +111,7 @@ export function EditableProject(props:{project:FullProject}) {
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
                         <div className={"container"} style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
-                            <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]} onCheckboxChange={handleCheckboxChange}/>
+                            <TagInputBox unprocessedTags={oldTags} onCheckboxChange={handleCheckboxChange}/>
                         </div>
                     </div>
                     <UploadFileButton uploadFileCallback={uploadFileEvent}></UploadFileButton>
