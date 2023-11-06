@@ -26,7 +26,11 @@ export function EditableProject(props:{project:FullProject}) {
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
-    let unprocessedTs: string[] = [];
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const handleCheckboxChange = (checkedValues: string[]) => {
+        setSelectedTags(checkedValues);
+        categories = selectedTags.join(', ');
+    };
     let categories = "";
     // @ts-ignore
     let leftFocus = (event) => {
@@ -64,7 +68,7 @@ export function EditableProject(props:{project:FullProject}) {
     function genTags() {
         let z = document.querySelectorAll('[type="checkbox"]')
         console.log(z)
-        console.log(z[0].ariaChecked)
+        console.log(z[5])
     }
 
     if(project != undefined) {
@@ -114,7 +118,7 @@ export function EditableProject(props:{project:FullProject}) {
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
                         <div className={"container"} style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
-                            <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]}></TagInputBox>
+                            <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]} onCheckboxChange={handleCheckboxChange}/>
                         </div>
                         <button onClick={genTags}>Generate Tags</button>
                     </div>
