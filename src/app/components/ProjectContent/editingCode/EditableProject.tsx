@@ -26,13 +26,13 @@ export function EditableProject(props:{project:FullProject}) {
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
-    const [categori, setCategori] = useState('Initial Value');
+    let categories = "";
+    //const [categories, setCategories] = useState('Initial Value');
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
-        setCategori(selectedTags.join(', '));
+        //setCategories(selectedTags.join(', '));
     };
-    let categories = "";
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
@@ -66,6 +66,12 @@ export function EditableProject(props:{project:FullProject}) {
         return false
     }
 
+    function genTags() {
+        let z = document.querySelectorAll('[type="checkbox"]')
+        console.log(z)
+        console.log(z[5])
+    }
+
     if(project != undefined) {
         if(project.dataurls != null) {
             for (let i = 0; i < project.dataurls.length; i++) {
@@ -79,7 +85,6 @@ export function EditableProject(props:{project:FullProject}) {
         }
         if(project.categories != null) {
             categories = project.categories;
-            setCategori(categories);
         } else {
             categories = "Undefined"
         }
@@ -114,8 +119,9 @@ export function EditableProject(props:{project:FullProject}) {
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
                         <div className={"container"} style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
-                            <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]} onCheckboxChange={() => handleCheckboxChange}/>
+                            <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]} onCheckboxChange={handleCheckboxChange}/>
                         </div>
+                        <button onClick={genTags}>Generate Tags</button>
                     </div>
                     <UploadFileButton uploadFileCallback={uploadFileEvent}></UploadFileButton>
                 </ProjectTitleCard>
