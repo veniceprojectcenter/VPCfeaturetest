@@ -30,7 +30,8 @@ export async function POST(request:NextRequest) {
                 });
             }
             }
-    }}
+    }
+    return NextResponse.json("Successfully Changed the tags", {status: 200})}
     else{
         return NextResponse.json("not authenticated",{status:401})
     }

@@ -10,6 +10,7 @@ import {CommitProject} from "@/app/components/ProjectContent/editingCode/CommitP
 import {UpdateTags} from "@/app/components/ProjectContent/editingCode/UpdateTags";
 import EditableDataUrl from "@/app/components/ProjectContent/DataUrl/EditableDataUrl";
 import {uploadFile} from "@/helpers/uploadFile";
+import {TagInputBox} from "@/app/components/ProjectContent/editingCode/TagInputBox";
 import {IqpTeamDisplay} from "@/app/components/ProjectContent/iqpTeam/IqpTeamDisplay";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
 import {UploadFileButton} from "@/app/components/ProjectContent/editingCode/UploadFileButton";
@@ -25,6 +26,7 @@ export function EditableProject(props:{project:FullProject}) {
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
+    let unprocessedTs: string[] = [];
     let categories = "";
     // @ts-ignore
     let leftFocus = (event) => {
@@ -59,6 +61,10 @@ export function EditableProject(props:{project:FullProject}) {
         return false
     }
 
+    function genTags() {
+
+    }
+
     if(project != undefined) {
         if(project.dataurls != null) {
             for (let i = 0; i < project.dataurls.length; i++) {
@@ -75,6 +81,9 @@ export function EditableProject(props:{project:FullProject}) {
         } else {
             categories = "Undefined"
         }
+
+
+
         dataElements = dataUrls.map((dataurl,index) => {
             return(
                 <EditableDataUrl key={dataurl.id+"buttion"} dataurl={dataurl} editableProject={editedProject} onUpdateState={ (project) => setEditedProject({...project})}></EditableDataUrl>
@@ -101,7 +110,11 @@ export function EditableProject(props:{project:FullProject}) {
                         <h1 className={"text-white flex items-center"}>| TERM: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
-                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={true} onBlur={leftFocus}>{categories}</h1>
+                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
+                        <div className={"container"} style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
+                            <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]}></TagInputBox>
+                        </div>
+                        <button onClick={genTags}>Generate Tags</button>
                     </div>
                     <UploadFileButton uploadFileCallback={uploadFileEvent}></UploadFileButton>
                 </ProjectTitleCard>
