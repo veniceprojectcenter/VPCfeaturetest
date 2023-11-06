@@ -7,7 +7,7 @@ export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange
         const { value, checked } = event.target;
         if (checked) {
             setCheckedTags((prevCheckedTags) => [...prevCheckedTags, value]);
-        } else {
+        } else if(!checked) {
             setCheckedTags((prevCheckedTags) => prevCheckedTags.filter((tag) => tag !== value));
         }
     };
