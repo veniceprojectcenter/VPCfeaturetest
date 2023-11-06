@@ -6,7 +6,10 @@ export function TagInputBox(props: {unprocessedTags: string[]}) {
         <div>
             {props.unprocessedTags.map((tag: string) => {
                     return (
-                    <input key={tag} type={"checkbox"} value={tag}/>
+                        <label key={tag}>
+                            {tag}
+                            <input type={"checkbox"} value={tag}/>
+                        </label>
                     )
                 }
             )
