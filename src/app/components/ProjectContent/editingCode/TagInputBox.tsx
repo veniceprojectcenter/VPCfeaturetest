@@ -4,7 +4,6 @@ export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange
     const [checkedTags, setCheckedTags] = useState<string[]>([]);
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event);
         const { value, checked } = event.target;
         if (checked) {
             setCheckedTags((prevCheckedTags) => [...prevCheckedTags, value]);

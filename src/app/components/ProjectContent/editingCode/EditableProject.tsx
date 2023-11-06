@@ -27,11 +27,12 @@ export function EditableProject(props:{project:FullProject}) {
     let dataElements:JSX.Element[] = []
     let term = "";
     let categories = "";
-    //const [categories, setCategories] = useState('Initial Value');
+    const [categori, setCategori] = useState('Initial Value');
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
-        //setCategories(selectedTags.join(', '));
+        console.log(checkedValues);
+        setCategori(selectedTags.join(', '));
     };
     // @ts-ignore
     let leftFocus = (event) => {
@@ -66,11 +67,6 @@ export function EditableProject(props:{project:FullProject}) {
         return false
     }
 
-    function genTags() {
-        let z = document.querySelectorAll('[type="checkbox"]')
-        console.log(z)
-        console.log(z[5])
-    }
 
     if(project != undefined) {
         if(project.dataurls != null) {
@@ -121,7 +117,6 @@ export function EditableProject(props:{project:FullProject}) {
                         <div className={"container"} style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
                             <TagInputBox unprocessedTags={["it's", "me", "hi", "I'm","the","problem"]} onCheckboxChange={handleCheckboxChange}/>
                         </div>
-                        <button onClick={genTags}>Generate Tags</button>
                     </div>
                     <UploadFileButton uploadFileCallback={uploadFileEvent}></UploadFileButton>
                 </ProjectTitleCard>
