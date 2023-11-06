@@ -62,7 +62,9 @@ export function EditableProject(props:{project:FullProject}) {
     }
 
     function genTags() {
-
+        let z = document.querySelectorAll('[type="checkbox"]')
+        console.log(z)
+        console.log(z[0].ariaChecked)
     }
 
     if(project != undefined) {
