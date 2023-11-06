@@ -3,7 +3,7 @@ import {ProjectWidget} from "@/app/components/nav/projectWidget";
 
 export function TagInputBox(props: {unprocessedTags: string[]}) {
     return (
-        <div>
+        <>
             {props.unprocessedTags.map((tag: string) => {
                     return (
                         <label key={tag}>
@@ -12,6 +12,6 @@ export function TagInputBox(props: {unprocessedTags: string[]}) {
                         </label>
                     )
                 }
-            )
-            }</div>);
+            )}
+        </>);
 }
