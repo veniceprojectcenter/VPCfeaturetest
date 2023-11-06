@@ -4,6 +4,7 @@ export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange
     const [checkedTags, setCheckedTags] = useState<string[]>([]);
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(event);
         const { value, checked } = event.target;
         if (checked) {
             setCheckedTags((prevCheckedTags) => [...prevCheckedTags, value]);
@@ -11,7 +12,6 @@ export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange
             setCheckedTags((prevCheckedTags) => prevCheckedTags.filter((tag) => tag !== value));
         }
     };
-
     // Notify the parent component of the checked tags using the callback function
     props.onCheckboxChange(checkedTags);
 
@@ -20,7 +20,7 @@ export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange
             {props.unprocessedTags.map((tag: string) => (
                 <label key={tag}>
                     {tag}
-                    <input type="checkbox" value={tag} onChange={handleCheckboxChange} /><br/>
+                    <input type="checkbox" value={tag} onChange={(e) => handleCheckboxChange} /><br/>
                 </label>
             ))}
         </>

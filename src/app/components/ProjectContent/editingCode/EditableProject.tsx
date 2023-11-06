@@ -31,6 +31,7 @@ export function EditableProject(props:{project:FullProject}) {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
+        console.log(selectedTags);
         //setCategories(selectedTags.join(', '));
     };
     // @ts-ignore
