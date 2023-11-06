@@ -26,12 +26,12 @@ export function EditableProject(props:{project:FullProject}) {
     let dataUrls:Dataurl[] = []
     let dataElements:JSX.Element[] = []
     let term = "";
+    const [categories, setCategories] = useState('Initial Value');
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
-        categories = selectedTags.join(', ');
+        setCategories(selectedTags.join(', '));
     };
-    let categories = "";
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
@@ -83,9 +83,9 @@ export function EditableProject(props:{project:FullProject}) {
             term = "A"
         }
         if(project.categories != null) {
-            categories = project.categories;
+            setCategories(project.categories);
         } else {
-            categories = "Undefined"
+            setCategories("Undefined");
         }
 
 

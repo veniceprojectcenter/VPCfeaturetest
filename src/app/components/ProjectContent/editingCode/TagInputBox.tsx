@@ -20,7 +20,7 @@ export function TagInputBox(props: { unprocessedTags: string[]; onCheckboxChange
             {props.unprocessedTags.map((tag: string) => (
                 <label key={tag}>
                     {tag}
-                    <input type="checkbox" value={tag} onChange={handleCheckboxChange} />
+                    <input type="checkbox" value={tag} onChange={handleCheckboxChange} /><br/>
                 </label>
             ))}
         </>
