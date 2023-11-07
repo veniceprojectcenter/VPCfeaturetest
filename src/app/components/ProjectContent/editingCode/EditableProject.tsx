@@ -91,7 +91,7 @@ export function EditableProject(props: { project: FullProject }) {
     let categoryEditable = false;
 
     function enableEditCat() {
-        categoryEditable = false;
+        categoryEditable = true;
     }
 
     if (project != undefined) {
