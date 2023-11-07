@@ -88,6 +88,8 @@ export function EditableProject(props: { project: FullProject }) {
         return false
     }
 
+    let categoryEdit = false;
+
     if (project != undefined) {
         if (project.dataurls != null) {
             for (let i = 0; i < project.dataurls.length; i++) {
@@ -133,8 +135,9 @@ export function EditableProject(props: { project: FullProject }) {
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"term"} contentEditable
                             suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
-                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable
-                            suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
+                        <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable={categoryEdit}
+                            suppressContentEditableWarning={true} onBlur={leftFocus}>{categories}</h1>
+                        <button onClick={() => categoryEdit = true}>Unlock Category Manual Edit</button>
                         <div className={"container"}
                              style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
                             <TagInputBox
