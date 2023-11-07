@@ -182,7 +182,7 @@ export function EditableProject(props: { project: FullProject }) {
 
 async function getTag() {
     let domain = (new URL(window.location.href));
-    let url = domain.origin + `/api/tagcontrol/`;
+    let url = domain.origin + `/api/projects/tagcontrol`;
     const res = await fetch(url, {
         method: "GET"
     })
