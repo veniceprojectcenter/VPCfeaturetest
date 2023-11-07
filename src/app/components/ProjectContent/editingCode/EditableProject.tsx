@@ -88,6 +88,7 @@ export function EditableProject(props: { project: FullProject }) {
         return false
     }
 
+    let categoryEditable = false;
 
     if (project != undefined) {
         if (project.dataurls != null) {
@@ -135,7 +136,7 @@ export function EditableProject(props: { project: FullProject }) {
                             suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable
-                            suppressContentEditableWarning={false} onBlur={leftFocus}>{categories}</h1>
+                            suppressContentEditableWarning={categoryEditable} onBlur={leftFocus}>{categories}</h1>
                         <div className={"container"}
                              style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
                             <TagInputBox
@@ -169,6 +170,9 @@ export function EditableProject(props: { project: FullProject }) {
                     </button>
                     <button className={"text-white w-full border-white border-2 text-4xl my-10"}
                             onClick={updateTags}>UpdateTags
+                    </button>
+                    <button>
+                        onclick={categoryEditable = true} Unlock Manual Category Editing for addition/mass editing
                     </button>
                     <DeleteProjectButton project={editedProject}></DeleteProjectButton>
                 </div>
