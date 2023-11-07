@@ -35,18 +35,3 @@ export default function Page() {
         </div>
     );
 }
-
-
-async function getTag() {
-    let domain = (new URL(window.location.href));
-    let url = domain.origin + `/api/projects/tagcontrol`;
-    const res = await fetch(url, {
-        method: "GET"
-    })
-    try {
-        const data: TagRequestResponse = await res.json();
-        return data;
-    } catch (error) {
-        return undefined
-    }
-}

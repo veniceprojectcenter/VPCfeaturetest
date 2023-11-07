@@ -11,6 +11,17 @@ export async function POST(request:NextRequest) {
     const session = await getServerSession(authOptions);
     if(session != null) {
         let project: FullProject = await request.json();
+        const deleteTags = await prisma.project.update({
+            where: {id: project.id},
+            data:{
+                tags:{
+                    set: []
+                }
+            },
+            include: {
+                tags: true
+            }
+        });
         if (project.tags != null){
         if (project.id != undefined){
             for(let i=0; i< project.tags.length; i++){

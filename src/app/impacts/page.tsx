@@ -1,8 +1,15 @@
+"use client";
 import {Navlist} from "@/app/components/nav/Navlist";
 import {NavListSearch} from "@/app/components/nav/NavListSearch";
 import {PROJECT_TYPE} from "@prisma/client";
+import {FilterByTagMainPage} from "@/app/components/nav/FilterByTagMainPage";
+import React, {useState} from "react";
 
 export default function Page() {
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const handleCheckboxChange = (checkedValues: string[]) => {
+        setSelectedTags(checkedValues);
+    };
     return(
         <div className={"flex-col xl:flex-row flex mx-10"}>
             <div className={"basis-2/6 back mr-5"}>
@@ -15,8 +22,9 @@ export default function Page() {
                     We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions of the City.
                 </p>
             </div>
+            <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
             <div className={"w-fit basis-full"}>
-                <NavListSearch type={PROJECT_TYPE.IMPACT} tagsToFilter={[]}></NavListSearch>
+                <NavListSearch type={PROJECT_TYPE.IMPACT} tagsToFilter={selectedTags}></NavListSearch>
             </div>
         </div>
     );

@@ -1,7 +1,14 @@
+"use client";
 import {Navlist} from "@/app/components/nav/Navlist";
 import {NavListSearch} from "@/app/components/nav/NavListSearch";
+import {FilterByTagMainPage} from "@/app/components/nav/FilterByTagMainPage";
+import React, {useState} from "react";
 
 export default function Page() {
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const handleCheckboxChange = (checkedValues: string[]) => {
+        setSelectedTags(checkedValues);
+    };
     return(
         <div className={"flex-col xl:flex-row flex mx-10"}>
             <div className={"basis-2/6 back mr-5"}>
@@ -13,9 +20,10 @@ export default function Page() {
                 <p className={"text-white relative"}>
                     We have always tried to give back to the city and to people the knowledge gathered during the years of activity by publishing articles and collaborating in scientific publications.
                 </p>
+                <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
             </div>
             <div className={"w-fit basis-full"}>
-                <NavListSearch type={"PUBLICATION"} tagsToFilter={[]}></NavListSearch>
+                <NavListSearch type={"PUBLICATION"} tagsToFilter={selectedTags}></NavListSearch>
             </div>
         </div>
     );
