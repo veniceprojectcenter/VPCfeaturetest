@@ -13,16 +13,26 @@ export async function POST(request:NextRequest) {
         let project: FullProject = await request.json();
         if (project.tags != null){
         if (project.id != undefined){
+            const deleteTags = await prisma.project.update({
+                where: {id: project.id},
+                data: {
+                    tags: {
+                        deleteMany: {}
+                    },
+                },
+            });
             for(let i=0; i< project.tags.length; i++){
                 const updatedTags = await prisma.project.update({
                     where:{id: project.id},
                     data: {
                         tags:{
-                            deleteMany: {},
                             create:[
                                 {
                                     tag:{
-                                            create:{name: project.tags[i].name},
+                                        connectOrCreate:{
+                                            where: {name: project.tags[i].name},
+                                            create:{name: project.tags[i].name}
+                                        },
                                     },
                                 },
                             ],
