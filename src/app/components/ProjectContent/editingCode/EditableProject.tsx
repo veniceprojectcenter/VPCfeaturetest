@@ -90,6 +90,10 @@ export function EditableProject(props: { project: FullProject }) {
 
     let categoryEditable = false;
 
+    function enableEditCat() {
+        categoryEditable = false;
+    }
+
     if (project != undefined) {
         if (project.dataurls != null) {
             for (let i = 0; i < project.dataurls.length; i++) {
@@ -171,8 +175,8 @@ export function EditableProject(props: { project: FullProject }) {
                     <button className={"text-white w-full border-white border-2 text-4xl my-10"}
                             onClick={updateTags}>UpdateTags
                     </button>
-                    <button>
-                        onclick={categoryEditable = true} Unlock Manual Category Editing for addition/mass editing
+                    <button className={"text-white w-full border-white border-2 text-4xl my-10"}
+                        onClick={enableEditCat}>Unlock Manual Category Editing for addition/mass editing
                     </button>
                     <DeleteProjectButton project={editedProject}></DeleteProjectButton>
                 </div>
