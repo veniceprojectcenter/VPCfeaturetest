@@ -16,7 +16,7 @@ export default function Page() {
                 </p>
             </div>
             <div className={"w-fit basis-full"}>
-                <NavListSearch type={PROJECT_TYPE.IMPACT}></NavListSearch>
+                <NavListSearch type={PROJECT_TYPE.IMPACT} tagsToFilter={[]}></NavListSearch>
             </div>
         </div>
     );

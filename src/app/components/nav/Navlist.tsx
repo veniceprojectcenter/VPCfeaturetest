@@ -8,7 +8,7 @@ import {CreateProjectButton} from "@/app/components/ProjectContent/editingCode/C
 import {LoadingWidget} from "@/app/components/nav/LoadingWidget";
 
 
-export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
+export function Navlist(props: {search:string,type:PROJECT_TYPE, tagsToFilter:string[]}) {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
     const [loading, setLoading] = useState(true)
     let projects:FullProject[] = [];
@@ -25,7 +25,8 @@ export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
         }
     },[props.type])
     if(data != undefined) {
-        projects = data?.projects.filter(filterFunc(props.search))
+        projects = data?.projects.filter(filterCat(props.tagsToFilter))
+        projects = projects.filter(filterFunc(props.search))
         console.log(projects);
     }
     if (loading) {
@@ -51,23 +52,26 @@ function filterFunc(param:string) {
         if(param === "" || param === undefined) {
             return true
         }
-        return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase()) || element.categories?.toLowerCase().includes(param.toLowerCase());
+        return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase());
 
     }
 }
 
-function filterCat(param:string) { //this is to filter by categories, not used yet
-    return function (element:Project, index:number) {
-        if(param == "" || param == undefined) {
-            return true
-        }
-        let paramsSplitted = param.split(", ")
-        for (let i=0;i < paramsSplitted.length; i++){
-            if (element.categories?.toLowerCase().includes(paramsSplitted[i].toLowerCase())) {
-                return element.categories?.toLowerCase().includes(paramsSplitted[i].toLowerCase())
+function filterCat(param:string[]) { //this is to filter by categories, not used yet
+    return function (element:FullProject, index:number): boolean {
+        if (param.length > 0) {
+            if (element.tags?.length != undefined) {
+                for (let i = 0; i < param.length; i++) {
+                    for (let j = 0; j < element.tags?.length; j++) {
+                        if (element.tags[j].name == param[i]) {
+                            return true
+                        }
+                    }
+                }
+                return false
             }
         }
-        return element.categories?.toLowerCase().includes(param.toLowerCase()) //in case there was only 1 tag
+        return true //if there's no tags selected
     }
 }
 

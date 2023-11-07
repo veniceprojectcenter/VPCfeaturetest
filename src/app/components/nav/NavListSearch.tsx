@@ -4,7 +4,7 @@ import {Suspense, useState} from "react";
 import {PROJECT_TYPE} from "@prisma/client";
 import NavLoading from "@/app/components/nav/NavLoading";
 
-export function NavListSearch(props:{type:PROJECT_TYPE}) {
+export function NavListSearch(props:{type:PROJECT_TYPE, tagsToFilter:string[]}) {
     let [searchParam,setSearchParam] = useState("");
     return (
         <div className={"flex flex-col text-white basis-full w-full"}>
@@ -13,7 +13,7 @@ export function NavListSearch(props:{type:PROJECT_TYPE}) {
                     setSearchParam(e.target.value);}} placeholder={"Search Projects..."} className={"bg-transparent w-max h-50 outline-none text-2xl"}/>
             </div>
             <div className = {"my-5"}>
-                <Navlist search={searchParam} type={props.type}></Navlist>
+                <Navlist search={searchParam} type={props.type} tagsToFilter={props.tagsToFilter}></Navlist>
             </div>
         </div>
     );

@@ -27,7 +27,7 @@ export default function Page() {
                 </div>
             </div>
             <div className={"w-fit basis-full"}>
-                <NavListSearch type={"IQP"}></NavListSearch>
+                <NavListSearch type={"IQP"} tagsToFilter={[]}></NavListSearch>
             </div>
         </div>
     );
