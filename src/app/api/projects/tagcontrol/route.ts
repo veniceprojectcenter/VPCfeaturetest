@@ -22,10 +22,7 @@ export async function POST(request:NextRequest) {
                             create:[
                                 {
                                     tag:{
-                                        connectOrCreate:{
-                                            where: {name: project.tags[i].name},
-                                            create:{name: project.tags[i].name}
-                                        },
+                                            create:{name: project.tags[i].name},
                                     },
                                 },
                             ],
