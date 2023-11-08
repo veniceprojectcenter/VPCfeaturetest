@@ -54,8 +54,9 @@ export function EditableProject(props: { project: FullProject }) {
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
         setCategories(selectedTags.join(', '));
+        console.log(selectedTags);
         //update categories without calling left focus if checkboxes were used.
-        UpdateProject("categories",categories,editedProject,(project) => setEditedProject({...project}));
+        //UpdateProject("categories",categories,editedProject,(project) => setEditedProject({...project}));
     };
     // @ts-ignore
     let leftFocus = (event) => {
