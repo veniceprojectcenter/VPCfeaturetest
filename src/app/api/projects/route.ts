@@ -68,7 +68,6 @@ export async function POST(request: Request) {
                     img: project.img,
                     year: project.year,
                     type: project.type,
-                    categories: project.categories,
                     dataurls: {
                         createMany: {
                             data: dataUrls
@@ -115,7 +114,6 @@ export async function POST(request: Request) {
                         term: project.term,
                         img: project.img,
                         year: project.year,
-                        categories: project.categories,
                         iqp_team: {
                             update: {
                                 id: project.iqp_team.id,
@@ -156,7 +154,6 @@ export async function POST(request: Request) {
                         term: project.term,
                         img: project.img,
                         year: project.year,
-                        categories: project.categories,
                         dataurls: {
                             upsert: upsertObject
                         }

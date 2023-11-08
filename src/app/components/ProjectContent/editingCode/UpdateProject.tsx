@@ -14,7 +14,6 @@ export function UpdateProject(id:string,content:string
     console.log(idWithoutNum)
     switch (idWithoutNum) {
         case 'categories':
-            editedProject.categories = content; // TODO: think about if implementing the TOXI way is worth it
             let cats = content.split(", ");
             let tagsTemp =[];
             for (let i=0; i<cats.length; i++){

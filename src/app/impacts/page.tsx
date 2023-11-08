@@ -1,9 +1,9 @@
 "use client";
 import {Navlist} from "@/app/components/nav/Navlist";
 import {NavListSearch} from "@/app/components/nav/NavListSearch";
-import {PROJECT_TYPE} from "@prisma/client";
 import {FilterByTagMainPage} from "@/app/components/nav/FilterByTagMainPage";
 import React, {useState} from "react";
+import {PROJECT_TYPE} from "@prisma/client";
 
 export default function Page() {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -12,16 +12,16 @@ export default function Page() {
     };
     return(
         <div className={"flex-col xl:flex-row flex mx-10"}>
-            <div className={"basis-2/6 back mr-5"}>
-                <div className={"flex flex-col text-white"}>
+            <div className={"basis-2/6 back"}>
+                <div className={"flex flex-col text-white mr-5"}>
                     <div>
-                        <h1 className={"text-5xl font-bold mb-5"}>IMPACTS</h1>
+                        <h1 className={"text-5xl font-bold mb-5 tracking-widest"}>OPENDATA</h1>
                     </div>
-                </div>
-                <p className={"text-white relative"}>
-                    We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions of the City.
-                </p>
-                <div>
+                    <div>
+                        <p className={"my-4 "}>
+                            We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions of the City.
+                        </p>
+                    </div>
                     <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
                 </div>
             </div>
@@ -31,3 +31,6 @@ export default function Page() {
         </div>
     );
 }
+
+
+
