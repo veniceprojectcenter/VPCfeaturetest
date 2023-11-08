@@ -19,8 +19,8 @@ export function UpdateProject(id:string,content:string
             let tagsTemp =[];
             for (let i=0; i<cats.length; i++){
                 tagsTemp.push({name: cats[i]});
-                editedProject.tags = tagsTemp;
-            }
+                }
+            editedProject.tags = tagsTemp;
             break;
         case 'description':
             editedProject.description = content

@@ -45,7 +45,6 @@ export function EditableProject(props: { project: FullProject }) {
             allTags.push(allTagData.tags[i].name);
         }
     }
-    console.log(allTags);
 
     let dataElements: JSX.Element[] = []
     let term = "";
@@ -113,7 +112,6 @@ export function EditableProject(props: { project: FullProject }) {
         dataElements.push(
             <PopUpButton>
                 <DataUrlForm editableProject={editedProject} onUpdateState={(project) => {
-                    console.log(project)
                     setEditedProject({...project});
                 }}></DataUrlForm>
             </PopUpButton>
@@ -158,7 +156,6 @@ export function EditableProject(props: { project: FullProject }) {
                     {project.iqp_team ?
                         <IqpTeamDisplay project={project} editedProject={editedProject} leftFocus={leftFocus}
                                         editProjectCallback={(project) => {
-                                            console.log(project)
                                             setEditedProject({...project})
                                         }}></IqpTeamDisplay> : <div/>}
                 </div>
