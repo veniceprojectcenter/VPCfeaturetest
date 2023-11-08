@@ -54,6 +54,8 @@ export function EditableProject(props: { project: FullProject }) {
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
         setCategories(selectedTags.join(', '));
+        //update categories without calling left focus if checkboxes were used.
+        UpdateProject("categories",categories,editedProject,(project) => setEditedProject({...project}));
     };
     // @ts-ignore
     let leftFocus = (event) => {
@@ -132,7 +134,7 @@ export function EditableProject(props: { project: FullProject }) {
                             suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable
-                            suppressContentEditableWarning={true} onChange={leftFocus}>{categories}</h1>
+                            suppressContentEditableWarning={true} onBlur={leftFocus}>{categories}</h1>
                         <div className={"container"}
                              style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
                             <TagInputBox
