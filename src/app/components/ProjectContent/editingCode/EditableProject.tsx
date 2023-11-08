@@ -132,7 +132,7 @@ export function EditableProject(props: { project: FullProject }) {
                             suppressContentEditableWarning={true} onBlur={leftFocus}>{term}</h1>
                         <h1 className={"text-white flex items-center"}>| Categories: </h1>
                         <h1 className={"text-white ml-3 mr-20 flex items-center w-3"} id={"categories"} contentEditable
-                            suppressContentEditableWarning={true} onBlur={leftFocus}>{categories}</h1>
+                            suppressContentEditableWarning={true} onChange={leftFocus}>{categories}</h1>
                         <div className={"container"}
                              style={{overflowY: "scroll", height: "150px", alignSelf: "center"}}>
                             <TagInputBox
