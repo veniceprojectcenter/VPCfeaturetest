@@ -54,7 +54,6 @@ export function EditableProject(props: { project: FullProject }) {
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
         setCategories(selectedTags.join(', '));
-        console.log(selectedTags);
     };
     // @ts-ignore
     let leftFocus = (event) => {

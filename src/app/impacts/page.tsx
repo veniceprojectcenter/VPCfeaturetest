@@ -21,8 +21,10 @@ export default function Page() {
                 <p className={"text-white relative"}>
                     We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions of the City.
                 </p>
+                <div>
+                    <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
+                </div>
             </div>
-            <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
             <div className={"w-fit basis-full"}>
                 <NavListSearch type={PROJECT_TYPE.IMPACT} tagsToFilter={selectedTags}></NavListSearch>
             </div>
