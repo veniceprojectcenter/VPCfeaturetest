@@ -98,7 +98,7 @@ model link {
 model tagsOnProject {
   projectId  String
   name       String
-  tag        Tag      @relation(fields: [name], references: [name])
+  tag        Tag      @relation(fields: [name], references: [name], onDelete: Cascade)
   assignedAt DateTime @default(now())
   Project    Project  @relation(fields: [projectId], references: [id])
 

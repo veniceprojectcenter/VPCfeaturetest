@@ -68,3 +68,24 @@ async function getTags():Promise<Tag[]> {
     });
     return allTagsReceived;
 }
+
+
+export async function DELETE(request:NextRequest) {
+    const session = await getServerSession(authOptions)
+    if(session != null) {
+        let tags: string[];
+        try {
+            tags = await request.json();
+        } catch (error) {
+            return NextResponse.json("bad body",{status:400})
+        }
+        for(let i=0; i < tags.length; i++){
+        await prisma.tag.delete({
+            where: {
+                name: tags[i]
+            }
+        })}
+        return NextResponse.json("successfully deleted tags",{status:200})
+    }
+    return NextResponse.json("not authenticated",{status:401})
+}
