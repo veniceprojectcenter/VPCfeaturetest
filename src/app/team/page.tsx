@@ -3,7 +3,7 @@ import {TeamMember} from "@/app/components/random/TeamMember";
 import fabio from "@/app/team/fabio.jpg"
 import sarah from "@/app/team/sarah.png"
 import nick from "@/app/team/Nick.jpg"
-import alireza from "@/app/team/alireza.png"
+import alireza from "@/app/team/alireza.jpg"
 
 
 
