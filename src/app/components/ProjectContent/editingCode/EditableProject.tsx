@@ -25,6 +25,7 @@ export function EditableProject(props: { project: FullProject }) {
     let [project, setProject] = useState<FullProject>(props.project)
     let [editedProject, setEditedProject] = useState<FullProject>(props.project)
     let [confirmationOpen, setConfirmationOpen] = useState(false);
+    let [manualTagEdit, setManualTagEdit] = useState(false);
     let [allTagData, setAllTagData] = useState<TagRequestResponse | undefined>(undefined)
     let dataUrls: Dataurl[] = []
 
@@ -51,9 +52,12 @@ export function EditableProject(props: { project: FullProject }) {
     const [categories, setCategories] = useState('Initial Value');
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     let oldTags: string[] = [];
+
     const handleCheckboxChange = (checkedValues: string[]) => {
         setSelectedTags(checkedValues);
-        setCategories(selectedTags.join(', '));
+        if(!manualTagEdit) {
+            setCategories(selectedTags.join(', '));
+        }
     };
     // @ts-ignore
     let leftFocus = (event) => {
@@ -165,8 +169,11 @@ export function EditableProject(props: { project: FullProject }) {
                     <button className={"text-white w-full border-white border-2 text-4xl my-10"}
                             onClick={commit}>commit
                     </button>
-                    <button className={"text-white w-full border-white border-2 text-4xl my-10"}
+                    <button className={"text-white w-full border-white border-2"}
                             onClick={updateTags}>UpdateTags
+                    </button>
+                    <button className={"text-white w-full border-white border-2"}
+                            onClick={e => setManualTagEdit(true)}>Manual Tag Edit
                     </button>
                     <DeleteProjectButton project={editedProject}></DeleteProjectButton>
                 </div>
