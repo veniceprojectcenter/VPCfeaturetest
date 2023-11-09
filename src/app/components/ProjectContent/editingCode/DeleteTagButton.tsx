@@ -7,7 +7,7 @@ export function DeleteTagButton(props:{selectedTags:string[]}) {
     if(session) {
         return (
             <div className={"mx-10 text-white flex flex-row w-max"}>
-                <button className={"border-white border-2 rounded-lg  w-fit"} onClick={e => deleteSelectedTag}>
+                <button className={"border-white border-2 rounded-lg  w-fit"} onClick={e => deleteSelectedTag(props.selectedTags)}>
                     Delete Selected Tags
                 </button>
             </div>
