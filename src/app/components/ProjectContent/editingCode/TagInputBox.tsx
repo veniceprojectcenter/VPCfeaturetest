@@ -19,7 +19,7 @@ export function TagInputBox(props: { allTags: string[]; initialCheckedTags: stri
             {props.allTags.map((tag: string) => (
                 <label key={tag}>
                     {tag}
-                    <input type="checkbox" value={tag} onInput={handleCheckboxChange} defaultChecked={checkedTags.includes(tag)} /><br/>
+                    <input type="checkbox" value={tag} onChange={handleCheckboxChange} defaultChecked={checkedTags.includes(tag)} /><br/>
                 </label>
             ))}
         </>
