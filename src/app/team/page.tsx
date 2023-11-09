@@ -59,7 +59,7 @@ export default function Page() {
                 <a href="https://app.daaab.it/location-h3">
                     <p>
                         H3 (Ex-Herion)
-                        Campo SS. Cosma e Damiano, 624-625
+                        Campo SS. Cosma e Damiano, 624
                         Giudecca
                         30133 – Venice - Italy
                     </p>
