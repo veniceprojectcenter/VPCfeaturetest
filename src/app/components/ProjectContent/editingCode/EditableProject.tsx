@@ -58,6 +58,7 @@ export function EditableProject(props: { project: FullProject }) {
         if(!manualTagEdit) {
             setCategories(selectedTags.join(', '));
         }
+        console.log(categories)
     };
     // @ts-ignore
     let leftFocus = (event) => {
