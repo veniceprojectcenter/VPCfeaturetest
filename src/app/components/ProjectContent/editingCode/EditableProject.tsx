@@ -58,7 +58,6 @@ export function EditableProject(props: { project: FullProject }) {
         if(!manualTagEdit) {
             setCategories(selectedTags.join(', '));
         }
-        console.log(categories);
     };
     // @ts-ignore
     let leftFocus = (event) => {
@@ -73,8 +72,9 @@ export function EditableProject(props: { project: FullProject }) {
     }
     let updateTags = async () => {
         //update categories without calling left focus if checkboxes were used.
-        console.log(categories);
-        UpdateProject("categories",categories,editedProject,(project) => setEditedProject({...project}));
+        if(!manualTagEdit) {
+            UpdateProject("categories", categories, editedProject, (project) => setEditedProject({...project}));
+        }
         editedProject.id = await UpdateTags(editedProject);
         setEditedProject({...editedProject});
         setConfirmationOpen(true);
