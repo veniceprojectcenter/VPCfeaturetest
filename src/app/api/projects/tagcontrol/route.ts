@@ -84,7 +84,8 @@ export async function DELETE(request:NextRequest) {
             where: {
                 name: tags[i]
             }
-        })}
+        })
+        }
         return NextResponse.json("successfully deleted tags",{status:200})
     }
     return NextResponse.json("not authenticated",{status:401})

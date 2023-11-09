@@ -17,16 +17,17 @@ export function DeleteTagButton(props:{selectedTags:string[]}) {
 }
 
 async function deleteSelectedTag(checkedTags:string[]) {
+    console.log(checkedTags)
     let domain = (new URL(window.location.href));
     let url = domain.origin + `/api/projects/tagcontrol`;
-    const res = await fetch(url, {
-        method: "DELETE",
-        body: JSON.stringify(checkedTags)
-    });
     try {
-        const data: TagRequestResponse = await res.json();
-        return data;
-    } catch (error) {
+        const res = await fetch(url, {
+            method: "DELETE",
+            body: JSON.stringify(checkedTags)
+        });
+        return "Successfully Deleted!"
+    }
+    catch (error) {
         return undefined
     }
 }
