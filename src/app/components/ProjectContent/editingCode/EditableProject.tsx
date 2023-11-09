@@ -57,12 +57,13 @@ export function EditableProject(props: { project: FullProject }) {
         setSelectedTags(checkedValues);
         if(!manualTagEdit) {
             setCategories(selectedTags.join(', '));
+            console.log(categories)
         }
-        console.log(categories)
     };
     // @ts-ignore
     let leftFocus = (event) => {
         let target = event.target;
+        console.log(target.textContent);
         UpdateProject(target.id, target.textContent, editedProject, (project) => setEditedProject({...project}));
     }
     // @ts-ignore
