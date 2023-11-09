@@ -1,53 +1,30 @@
 import './team.css';
 import {TeamMember} from "@/app/components/random/TeamMember";
 import fabio from "@/app/team/fabio.jpg"
-import Tomaso from "@/app/team/tomaso.jpg"
 import sarah from "@/app/team/sarah.png"
-import ane from "@/app/team/ane.jpg"
-import nicola from "@/app/team/nicola.jpg"
-import andrea from "@/app/team/andrea.jpg"
-import michel from "@/app/team/michele.jpg"
-import giacomo from "@/app/team/giacomo.jpg"
 import nick from "@/app/team/Nick.jpg"
-import sam from "@/app/team/Sam.png"
+import alireza from "@/app/team/alireza.png"
 
 
 
 export default function Page() {
 
-    let teamMembers = ["Prof. Fabio Carrera",
-        "Tomaso Minelli",
+    let teamMembers = [
+        "Prof. Fabio Carrera",
         "Sarah Puccio",
-        "Ane Pina",
-        "Nicola Musolino",
-        "Andrea Scarpa",
-        "Michele Montanari",
-        "Giacomo Giugie",
         "Nick Leslie",
-        "Sam David"
+        "Alireza Dehghan"
     ];
     let teamMemberPics = [
         fabio,
-        Tomaso,
         sarah,
-        ane,
-        nicola,
-        andrea,
-        michel,
-        giacomo,
         nick,
-        sam
+        alireza
     ];
     let teamMemberRoles = ["Founder & Director",
-        "CTO",
         "Administration & Facilities",
-        "Director Assistant",
-        "Full Stack Developer",
-        "Full Stack Developer",
-        "Backend Developer",
-        "Intern",
         "2023 rewrite Head",
-        "2023 rewrite Co-developer"
+        "Developer"
     ];
 
     return (
