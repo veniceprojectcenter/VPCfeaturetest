@@ -59,7 +59,7 @@ function filterFunc(param:string) {
 
 function filterDate(param:string) {
     return function (element:Project,index:number) {
-        if(param === "" || param === undefined) {
+        if(param === "" || param === undefined || param.length < 4 ) { //year should be 4 characters!
             return true
         }
         return element.year == Number(param);
