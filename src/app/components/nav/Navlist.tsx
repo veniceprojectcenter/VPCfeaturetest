@@ -8,7 +8,7 @@ import {CreateProjectButton} from "@/app/components/ProjectContent/editingCode/C
 import {LoadingWidget} from "@/app/components/nav/LoadingWidget";
 
 
-export function Navlist(props: {search:string,type:PROJECT_TYPE, tagsToFilter:string[]}) {
+export function Navlist(props: {search:string,type:PROJECT_TYPE, tagsToFilter:string[], dateFilter:string}) {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
     const [loading, setLoading] = useState(true)
     let projects:FullProject[] = [];
@@ -27,7 +27,7 @@ export function Navlist(props: {search:string,type:PROJECT_TYPE, tagsToFilter:st
     if(data != undefined) {
         projects = data?.projects.filter(filterCat(props.tagsToFilter))
         projects = projects.filter(filterFunc(props.search))
-        console.log(projects);
+        projects = projects.filter(filterDate(props.dateFilter))
     }
     if (loading) {
         return <NavLoading></NavLoading>
@@ -54,6 +54,15 @@ function filterFunc(param:string) {
         }
         return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase());
 
+    }
+}
+
+function filterDate(param:string) {
+    return function (element:Project,index:number) {
+        if(param === "" || param === undefined) {
+            return true
+        }
+        return element.year == Number(param);
     }
 }
 

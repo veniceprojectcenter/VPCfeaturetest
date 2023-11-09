@@ -86,7 +86,9 @@ export async function DELETE(request:NextRequest) {
             }
         })
         }
+        console.log("Successfully deleted the tags");
         return NextResponse.json("successfully deleted tags",{status:200})
     }
+    console.log("Problemo!");
     return NextResponse.json("not authenticated",{status:401})
 }
