@@ -8,7 +8,7 @@ import {CreateProjectButton} from "@/app/components/ProjectContent/editingCode/C
 import {LoadingWidget} from "@/app/components/nav/LoadingWidget";
 
 
-export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
+export function Navlist(props: {search:string,type:PROJECT_TYPE, tagsToFilter:string[], dateFilter:string}) {
     const [data, setData] = useState<ProjectRequestResponse | undefined>(undefined)
     const [loading, setLoading] = useState(true)
     let projects:FullProject[] = [];
@@ -25,8 +25,9 @@ export function Navlist(props: {search:string,type:PROJECT_TYPE}) {
         }
     },[props.type])
     if(data != undefined) {
-        projects = data?.projects.filter(filterFunc(props.search))
-        console.log(projects);
+        projects = data?.projects.filter(filterCat(props.tagsToFilter))
+        projects = projects.filter(filterFunc(props.search))
+        projects = projects.filter(filterDate(props.dateFilter))
     }
     if (loading) {
         return <NavLoading></NavLoading>
@@ -53,6 +54,33 @@ function filterFunc(param:string) {
         }
         return element.title.toLowerCase().includes(param.toLowerCase()) || element.description.toLowerCase().includes(param.toLowerCase());
 
+    }
+}
+
+function filterDate(param:string) {
+    return function (element:Project,index:number) {
+        if(param === "" || param === undefined || param.length < 4 ) { //year should be 4 characters!
+            return true
+        }
+        return element.year == Number(param);
+    }
+}
+
+function filterCat(param:string[]) { //this is to filter by categories, not used yet
+    return function (element:FullProject, index:number): boolean {
+        if (param.length > 0) {
+            if (element.tags?.length != undefined) {
+                for (let i = 0; i < param.length; i++) {
+                    for (let j = 0; j < element.tags?.length; j++) {
+                        if (element.tags[j].name == param[i]) {
+                            return true
+                        }
+                    }
+                }
+                return false
+            }
+        }
+        return true //if there's no tags selected
     }
 }
 

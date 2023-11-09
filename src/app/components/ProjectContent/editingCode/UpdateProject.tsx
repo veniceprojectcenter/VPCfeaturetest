@@ -1,4 +1,4 @@
-import {Dataurl, IqpTeam, Project} from "@prisma/client";
+import {tagsOnProject, IqpTeam, Project} from "@prisma/client";
 import {FullProject} from "@/app/components/ProjectContent/FullProject";
 export interface OnUpdateStateCallback {
     (project:FullProject):void
@@ -10,8 +10,17 @@ export function UpdateProject(id:string,content:string
     ,OnUpdatedState: OnUpdateStateCallback ) {
     let idWithoutNum = id.replace(/[0-9]/g, '').replace(/ /g,"").toLowerCase();
     let index = -1;
+    let tags = "";
     console.log(idWithoutNum)
     switch (idWithoutNum) {
+        case 'categories':
+            let cats = content.split(", ");
+            let tagsTemp =[];
+            for (let i=0; i<cats.length; i++){
+                tagsTemp.push({name: cats[i]});
+                }
+            editedProject.tags = tagsTemp;
+            break;
         case 'description':
             editedProject.description = content
             break;

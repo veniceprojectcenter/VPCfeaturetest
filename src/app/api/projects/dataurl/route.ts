@@ -62,5 +62,4 @@ async function createOrUpdateDataUrl(dataUrl:Dataurl) {
             type: dataUrl.type
         }
     })
-    console.log("created data url")
 }

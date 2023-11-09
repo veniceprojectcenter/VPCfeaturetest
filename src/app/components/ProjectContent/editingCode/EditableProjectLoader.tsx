@@ -11,7 +11,6 @@ export default function EditableProjectLoader(props:{id:string}) {
     useEffect(() => {
         const getData = async () => {
             let projects = await FetchProjects(props.id)
-            console.log(projects.projects[0])
             setProject(projects.projects[0])
             setLoading(false)
         }

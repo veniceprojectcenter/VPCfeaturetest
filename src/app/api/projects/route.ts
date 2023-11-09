@@ -48,8 +48,6 @@ export async function POST(request: Request) {
                     }
                 }
             }
-            console.log(project)
-            console.log(iqpTeamQuery)
             if (project.dataurls != null) {
                 dataUrls = project.dataurls.map((dataurl) => {
                     return {
@@ -191,6 +189,9 @@ export async function getProject(id:string,type:string):Promise<FullProject[]> {
     if (id === "") {
         if (type === "") {
             projects = await prisma.project.findMany({
+                orderBy: {
+                    year: 'desc'
+                },
                 include: {
                     dataurls: true,
                     iqp_team: {
@@ -205,6 +206,9 @@ export async function getProject(id:string,type:string):Promise<FullProject[]> {
         } else {
             let typeEnum = PROJECT_TYPE[type as keyof typeof PROJECT_TYPE]
             projects = await prisma.project.findMany({
+                orderBy: {
+                    year: 'desc'
+                },
                 where: {
                     type: typeEnum
                 },
