@@ -32,9 +32,9 @@ export function FilterByTagMainPage(props: {onCheckboxChange: (checkedValues: st
             setCheckedTags((prevCheckedTags) => prevCheckedTags.filter((tag) => tag !== value));
         }
     };
-
-    // Notify the parent component of the checked tags using the callback function
-    props.onCheckboxChange(checkedTags);
+ 
+  // Notify the parent component of the checked tags using the callback function
+        props.onCheckboxChange(checkedTags);
 
     return (
         <>
