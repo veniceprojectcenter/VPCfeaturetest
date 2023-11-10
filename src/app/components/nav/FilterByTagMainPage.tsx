@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {TagRequestResponse} from "@/app/api/projects/datatypes/TagRequestResponse";
 import {DeleteTagButton} from "@/app/components/ProjectContent/editingCode/DeleteTagButton";
-import {DeleteProjectButton} from "@/app/components/ProjectContent/editingCode/DeleteProjectButton";
 
 export function FilterByTagMainPage(props: {onCheckboxChange: (checkedValues: string[]) => void}) {
     const [checkedTags, setCheckedTags] = useState<string[]>([]);
@@ -32,10 +31,10 @@ export function FilterByTagMainPage(props: {onCheckboxChange: (checkedValues: st
         } else if(!checked) {
             setCheckedTags((prevCheckedTags) => prevCheckedTags.filter((tag) => tag !== value));
         }
-        // Notify the parent component of the checked tags using the callback function
-        props.onCheckboxChange(checkedTags);
     };
-
+ 
+  // Notify the parent component of the checked tags using the callback function
+        props.onCheckboxChange(checkedTags);
 
     return (
         <>
