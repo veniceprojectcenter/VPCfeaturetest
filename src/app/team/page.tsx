@@ -1,7 +1,6 @@
 import './team.css';
 import {TeamMember} from "@/app/components/random/TeamMember";
 import fabio from "@/app/team/fabio.jpg"
-import sarah from "@/app/team/sarah.png"
 import nick from "@/app/team/Nick.jpg"
 import alireza from "@/app/team/alireza.jpg"
 
@@ -11,18 +10,15 @@ export default function Page() {
 
     let teamMembers = [
         "Prof. Fabio Carrera",
-        "Sarah Puccio",
         "Nick Leslie",
         "Alireza Dehghan"
     ];
     let teamMemberPics = [
         fabio,
-        sarah,
         nick,
         alireza
     ];
     let teamMemberRoles = ["Founder & Director",
-        "Administration & Facilities",
         "2023 rewrite Head",
         "Developer"
     ];
