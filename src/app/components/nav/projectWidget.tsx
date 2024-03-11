@@ -34,7 +34,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     return(
         <Link className={"mx-2 my-4 md:m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
             <div className={"text-white flex flex-row"}>
-                <Image className={"rounded-full mx-5 w-[75px] h-[75px]"} src={imgSrc} height={75} width={75} alt={"iqp image"}></Image>
+                <Image className={"rounded-full aspect-square mx-5 w-[75px] h-[75px]"} src={imgSrc} height={75} width={75} alt={"iqp image"}></Image>
                 <div>
                     <div className={"flex flex-row"}>
                         <div className={"flex"} style={{marginBottom: "1%"}}>
