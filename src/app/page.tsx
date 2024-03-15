@@ -25,10 +25,12 @@ export default function Home() {
     return (
         <div className = {"homePage flex flex-col"}>
             <HomePageLanding></HomePageLanding>
+            {/*
             <StudentProjectsSection></StudentProjectsSection>
             <PublicationSection></PublicationSection>
             <ApplicationSection></ApplicationSection>
             <ImpactsSection></ImpactsSection>
+            */}
         </div>
 
     );
