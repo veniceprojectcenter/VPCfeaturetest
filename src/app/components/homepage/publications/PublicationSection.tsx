@@ -5,9 +5,9 @@ import {HomePageLink} from "@/app/components/homepage/HomePageLink";
 
 export function PublicationSection() {
     let publicationColors = ["#000000", "#000000", "#000000"];
-    let publicationCaptions = ["Emergent systems","Spacial Data","Venezia la catta dei rii"];
+    let publicationCaptions = ["Emergent systems","Spatial Data","Venezia la catta dei rii"];
     let publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
-    let publicationLinks = ["/","/","/"];
+    let publicationLinks = ["https://www.semanticscholar.org/paper/Making-history%3A-an-emergent-system-for-the-accrual-Carrera/ebbd0621aa9469ece8901480cbd7ecf3fd812b20","https://www.academia.edu/32819431/The_Future_of_Spatial_Data_Infrastructures_Capacity_Building_for_the_Emergence_of_Municipal_SDIs","https://www.editori-veneti.it/libri/venezia-la-citta-dei-rii/"];
     let publicationPicWidth = 700;
     let publicationPicHeight = 500;
     let publicationSlideDelay = 3600;

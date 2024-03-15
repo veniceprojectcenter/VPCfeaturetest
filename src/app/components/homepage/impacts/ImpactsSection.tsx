@@ -8,7 +8,7 @@ export function ImpactsSection() {
 
     const impactsPictures = ["https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/065/medium/cover-copia-2.jpg?1536678721","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/064/medium/cover-copia.jpg?1536678505","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/067/medium/cover_%281%29.jpg?1536679499","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/066/medium/cover-copia_%282%29.jpg?1536679280","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/066/medium/cover-copia_%282%29.jpg?1536679280","https://s3.amazonaws.com/hive-engine/impacts/imgs/000/000/062/medium/cover-copia_%284%29.jpg?1536678114"];
     const impactsCaptions = ["Housing and renting","Unearthing Patterns in Venetian History","Preserving Venetian Bell Towers Through Virtual Experiences","The Boundaries of Venice","Local Food and Neighborhood Stores","Made in Venice"];
-    const impactsLinks = ["http://dashboard.cityknowledge.net/#/venice","/","/","/","/","http://dashboard.cityknowledge.net/#/venice"];
+    const impactsLinks = ["https://veniceprojectcenter.org/impacts/2f9608a3-60dc-4d62-987c-4cf0e8e441f5","https://veniceprojectcenter.org/impacts/6147aa5a-d455-465b-afd1-b8fb1f8e023c","https://veniceprojectcenter.org/impacts/aa274f23-e3c6-439f-9752-2cf00bcec7b8","https://veniceprojectcenter.org/impacts/b6b04c7f-f160-4c87-8fbd-89aaf2cb14ea","https://veniceprojectcenter.org/impacts/604a5cff-60f2-4533-942a-9729f22f314e","https://veniceprojectcenter.org/impacts/73300c9f-4b3a-4938-a4c5-54da24934595"];
 
     return(
         <div className = {"mx-2 xl:mx-10 impacts flex flex-col"}>
