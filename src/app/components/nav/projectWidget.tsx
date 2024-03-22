@@ -24,6 +24,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                 projectTags += project.tags[i].name;
             }
         }
+        projectTags = "";
     }
     /*if(project.categories != null) {
             projectTags = "Categories: " + project.categories;
@@ -31,12 +32,18 @@ export function ProjectWidget({project}: ProjectLinkProps) {
     let reducedProjectDescription = project.description.split(".")[0];
     //reducedProjectDescription.push("[more]");
     // @ts-ignore
-    let yearTags; // If year is not entered, we will have a value of 0 instead, and it's not aesthetically pleasing, so we create the year | tags here
-    if (project.year != 0){
-        yearTags = project.year.toString() + " | " + projectTags;
+    let categoryTags = ""; // If year is not entered, we will have a value of 0 instead, and it's not aesthetically pleasing, so we create the year | tags here
+    if (project.year != 0 && projectTags != ""){
+        categoryTags = project.year.toString() + " | " + projectTags;
     }
-    else{
-        yearTags = projectTags
+    else if(project.year == 0 && projectTags != ""){ //sometimes we have no year but there are tags
+        categoryTags = projectTags;
+    }
+    else if(project.year != 0 && projectTags == ""){ //sometimes we have no tags but there are year
+        categoryTags = project.year.toString();
+    }
+    else {  //and wouldn't you believe it but sometimes we've got no tags and no years! pathetic.
+        categoryTags = ""
     }
     return(
         <Link className={"mx-2 my-4 md:m-4"} href={`${urlPathFromProject(project)}/${project.id}`}>
@@ -53,7 +60,7 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                             </div>
                             <div style={{flexGrow: "6"}}>
                                 <h1 className={""} style={{textAlign: "right"}}>
-                                    {yearTags}
+                                    {categoryTags}
                                 </h1>
                             </div>
 

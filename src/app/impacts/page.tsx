@@ -22,7 +22,7 @@ export default function Page() {
                             We believe that our work through the years, by supporting local institutions and activities, has significantly contributed to improving the living conditions of the City.
                         </p>
                     </div>
-                    <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
+
                 </div>
             </div>
             <div className={"w-fit basis-full"}>

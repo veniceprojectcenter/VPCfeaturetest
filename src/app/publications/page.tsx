@@ -22,7 +22,7 @@ export default function Page() {
                             We have always tried to give back to the city and to people the knowledge gathered during the years of activity by publishing articles and collaborating in scientific publications.
                         </p>
                     </div>
-                    <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
+
                 </div>
             </div>
             <div className={"w-fit basis-full"}>
