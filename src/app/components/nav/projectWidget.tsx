@@ -24,6 +24,8 @@ export function ProjectWidget({project}: ProjectLinkProps) {
                 projectTags += project.tags[i].name;
             }
         }
+    }
+    else{
         projectTags = "";
     }
     /*if(project.categories != null) {
