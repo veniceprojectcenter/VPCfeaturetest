@@ -6,9 +6,9 @@ import {HomePageLink} from "@/app/components/homepage/HomePageLink";
 
 export function StudentProjectsSection() {
     const studentProjects = [
-        newSudentProjectData("#000000","Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","/"),
-        newSudentProjectData("#000000","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","/"),
-        newSudentProjectData("#000000","Vacation Rentals and Residential Housing in Venice","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071","/")
+        newSudentProjectData("#000000","Preserving Venetian Bell Towers Through Virtual Experiences Documenting the Bells and Bell Towers de Ultra","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/483/medium/open-uri20180817-3363-1dw7lu2?1534507130","https://veniceprojectcenter.org/projects/c85b2593-aee2-4156-9a86-f0681439489a"),
+        newSudentProjectData("#000000","A Greener Venice: An Exploration and Mapping of Green Spaces in the Venice Islands","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/479/medium/open-uri20180817-3363-1es27lv?1534507111","https://veniceprojectcenter.org/projects/64705bd4-043e-42eb-b794-59ea6eef8732"),
+        newSudentProjectData("#000000","Vacation Rentals and Residential Housing in Venice","https://s3.amazonaws.com/hive-engine/theses/imgs/000/001/472/medium/open-uri20180817-3363-fawu1h?1534507071","https://veniceprojectcenter.org/projects/f5e17928-bdc7-4389-9e38-68796409a9e4")
     ]
     return(
         <div className={"text-white"}>

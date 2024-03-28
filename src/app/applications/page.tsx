@@ -26,7 +26,6 @@ export default function Page() {
                             Some of these aim to become real start-ups with the goal of creating work in the city and providing useful tools to its inhabitants
                         </p>
                     </div>
-                        <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
                 </div>
             </div>
             <div className={"w-fit basis-full"}>

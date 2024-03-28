@@ -39,7 +39,7 @@ export default function Home() {
     let publicationColors = ["#00FFFF", "#FF00FF", "#FFFF00"];
     let publicationCaptions = ["Yoooooo looooook at these bridges broooooo","21 can you do something for me","Je suis un pomme"];
     let publicationPictures = ["https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/067/medium/p10.png?1536675289","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/072/medium/open-uri20180830-1548-iarn2f?1535634888","https://s3.amazonaws.com/hive-engine/publications/imgs/000/000/062/medium/open-uri20180830-1548-15efokn?1535634876"];
-    let publicationLinks = ["/","/","/"];
+    let publicationLinks = ["https://veniceprojectcenter.org/projects/7de04672-c6f4-48b1-a2b6-1c78fe561c88","https://veniceprojectcenter.org/projects/64705bd4-043e-42eb-b794-59ea6eef8732","https://veniceprojectcenter.org/projects/f5e17928-bdc7-4389-9e38-68796409a9e4"];
     let publicationPicWidth = 700;
     let publicationPicHeight = 500;
     let publicationSlideDelay = 3600;

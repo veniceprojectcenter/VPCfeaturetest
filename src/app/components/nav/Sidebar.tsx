@@ -19,10 +19,10 @@ export function Sidebar() {
                         <Link onClick={menuToggle} href={"/"} className={""}>Home</Link>
                     </div>
                     <div className={"my-7"}>
-                        <Link onClick={menuToggle} href={"/applications"} className={""}>Applications & Tools</Link>
+                        <Link onClick={menuToggle} href={"/projects"} className={""}>Student Projects</Link>
                     </div>
                     <div className={"my-7"}>
-                        <Link onClick={menuToggle} href={"/impacts"} className={""}>Impacts</Link>
+                        <Link onClick={menuToggle} href={"/applications"} className={""}>Applications & Tools</Link>
                     </div>
                     <div className={"my-7"}>
                         <Link onClick={menuToggle} href={"/opendata"} className={""}>Open Data</Link>
@@ -31,8 +31,9 @@ export function Sidebar() {
                         <Link onClick={menuToggle} href={"/publications"} className={""}>Publications</Link>
                     </div>
                     <div className={"my-7"}>
-                        <Link onClick={menuToggle} href={"/projects"} className={""}>Student Projects</Link>
+                        <Link onClick={menuToggle} href={"/impacts"} className={""}>Impacts</Link>
                     </div>
+
                     <div className={"my-7"}>
                         <Link onClick={menuToggle} href={"/podcasts"} className={""}>Docu-Series</Link>
                     </div>

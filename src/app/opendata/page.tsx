@@ -25,7 +25,7 @@ export default function Page() {
                         <p className={"my-4"}>
                             We are proud of our Open approach, giving access to our data in order to support and enhance the quality of life in the city.                        </p>
                     </div>
-                    <FilterByTagMainPage onCheckboxChange={handleCheckboxChange}/>
+
                 </div>
             </div>
             <div className={"w-fit basis-full"}>
